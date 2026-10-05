@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato indica il comando per accendere le luci di posizione",
   "correct_answer": false,
   "image": "d858676ca464e7bde2123392d72cfe99.jpeg",
-  "image_description": "Comando indicatori di direzione. Il simbolo raffigurato indica il comando degli indicatori di direzione, comunemente noti come frecce. Le frecce, una rivolta a sinistra e una a destra, indicano la possibilità di azionare gli indicatori di direzione per segnalare la propria intenzione di svoltare o cambiare corsia in una delle due direzioni.",
+  "image_description": "Simbolo del comando e della spia degli indicatori di direzione. Identifica il comando per l'azionamento degli indicatori luminosi di direzione (frecce) e contrassegna la relativa spia di funzionamento sul cruscotto, che emette una luce verde lampeggiante/intermittente quando gli indicatori di direzione sono attivati.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due frecce stilizzate, una rivolta verso sinistra e una verso destra. Entrambe le frecce sono nere su sfondo bianco e presentano una forma a gradino prima della punta della freccia. Questo simbolo è tipicamente associato al comando degli indicatori di direzione su un veicolo.",
-    "name": "Comando indicatori di direzione",
-    "description": "Il simbolo raffigurato indica il comando degli indicatori di direzione, comunemente noti come frecce. Le frecce, una rivolta a sinistra e una a destra, indicano la possibilità di azionare gli indicatori di direzione per segnalare la propria intenzione di svoltare o cambiare corsia in una delle due direzioni."
+    "visual_analysis": "L'immagine mostra un pittogramma nero su sfondo bianco composto da due frecce orizzontali orientate in senso opposto verso l'esterno: una freccia rivolta a sinistra e una freccia rivolta a destra. Le frecce sono cave con profilo a linea scura continua.",
+    "name": "Simbolo del comando e della spia degli indicatori di direzione",
+    "description": "Identifica il comando per l'azionamento degli indicatori luminosi di direzione (frecce) e contrassegna la relativa spia di funzionamento sul cruscotto, che emette una luce verde lampeggiante/intermittente quando gli indicatori di direzione sono attivati."
   },
   "quiz_metadata": {
     "core_concepts": [

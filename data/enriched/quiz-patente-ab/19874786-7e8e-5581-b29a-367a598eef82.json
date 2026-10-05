@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un tratto di strada ove esiste il pericolo di presenza di pietre sulla carreggiata",
   "correct_answer": true,
   "image": "a50e795242bbca87bdb941fb2715f989.jpeg",
-  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione.",
+  "image_description": "Segnale di caduta massi da destra. Preannuncia un tratto di strada con pericolo di caduta di pietre dalla parete rocciosa situata a destra o la possibile presenza di massi e detriti già caduti sulla carreggiata. Impone di moderare la velocità per evitare urti contro ostacoli improvvisi, mantenere un'adeguata distanza di sicurezza e prestare attenzione a brusche frenate da parte dei veicoli che precedono.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un profilo di montagna stilizzato da cui cadono dei massi, rappresentati da esagoni neri. Il pittogramma indica un pericolo di caduta massi o pietre dalla parete rocciosa. Non sono presenti pannelli integrativi né altri elementi contestuali.",
-    "name": "Segnale di pericolo di caduta massi",
-    "description": "Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione."
+    "visual_analysis": "Segnale di pericolo a forma triangolare con vertice verso l'alto, bordo perimetrale rosso e fondo bianco. All'interno è raffigurato in nero il profilo di una parete rocciosa sul lato destro con pietre e massi di varie dimensioni che precipitano verso la carreggiata (rappresentata da una linea orizzontale di base).",
+    "name": "Segnale di caduta massi da destra",
+    "description": "Preannuncia un tratto di strada con pericolo di caduta di pietre dalla parete rocciosa situata a destra o la possibile presenza di massi e detriti già caduti sulla carreggiata. Impone di moderare la velocità per evitare urti contro ostacoli improvvisi, mantenere un'adeguata distanza di sicurezza e prestare attenzione a brusche frenate da parte dei veicoli che precedono."
   },
   "quiz_metadata": {
     "core_concepts": [

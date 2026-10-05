@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato (A) indica l'unica direzione consentita",
   "correct_answer": false,
   "image": "1ae0f364d86b42a3b3d77543a680f06d.jpeg",
-  "image_description": "Pannello integrativo di percorso (A) e Pannello integrativo di direzione obbligatoria (B). Il segnale A indica una strada chiusa al traffico, con l'unica direzione consentita indicata dalla freccia. Il segnale B indica la direzione obbligatoria a destra.",
+  "image_description": "Pannelli integrativi di fine. I pannelli integrativi indicano il punto in cui cessa la validità del segnale a cui sono abbinati (es. fine di un divieto di sosta o di fermata, fine di una prescrizione o di un'area di parcheggio). Il pannello A si usa quando il segnale è posizionato perpendicolarmente rispetto al senso di marcia, mentre il pannello B quando il segnale è posto parallelamente all'asse stradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli integrativi, etichettati A e B. Il pannello A è di forma rettangolare verticale e contiene una freccia nera rivolta verso il basso, che indica una direzione. Il pannello B è di forma rettangolare orizzontale e contiene una freccia nera rivolta verso destra, che indica una direzione. Entrambi i pannelli hanno un bordo bianco su sfondo bianco. Il pannello A è posizionato sopra e leggermente a sinistra del pannello B.",
-    "name": "Pannello integrativo di percorso (A) e Pannello integrativo di direzione obbligatoria (B)",
-    "description": "Il segnale A indica una strada chiusa al traffico, con l'unica direzione consentita indicata dalla freccia. Il segnale B indica la direzione obbligatoria a destra."
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari a fondo bianco con bordo nero, etichettati con le lettere A e B. Il pannello A ha orientamento verticale e presenta una freccia nera rivolta verso il basso. Il pannello B ha orientamento orizzontale e presenta una freccia nera rivolta verso destra. Entrambi rappresentano la variante di 'fine' dei pannelli integrativi di estensione/validità della prescrizione.",
+    "name": "Pannelli integrativi di fine",
+    "description": "I pannelli integrativi indicano il punto in cui cessa la validità del segnale a cui sono abbinati (es. fine di un divieto di sosta o di fermata, fine di una prescrizione o di un'area di parcheggio). Il pannello A si usa quando il segnale è posizionato perpendicolarmente rispetto al senso di marcia, mentre il pannello B quando il segnale è posto parallelamente all'asse stradale."
   },
   "quiz_metadata": {
     "core_concepts": [

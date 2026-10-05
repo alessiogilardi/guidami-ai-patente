@@ -5,11 +5,11 @@
   "text": "La striscia bianca laterale discontinua in figura individua il bordo della strada principale, separandolo da quello della strada secondaria",
   "correct_answer": true,
   "image": "e933e1741d3256170c6d6c9959337bdf.jpeg",
-  "image_description": "Segnaletica orizzontale di corsia e bordo carreggiata. La striscia bianca laterale discontinua delimita il bordo della carreggiata. Le frecce direzionali indicano che la corsia è riservata alla svolta a sinistra. Le aree a tratteggio diagonale indicano zone non carrabili.",
+  "image_description": "Striscia bianca di margine discontinua. Indica il limite della carreggiata o della corsia principale nei tratti in cui è consentito oltrepassarla, ad esempio per l'ingresso o l'uscita da una strada secondaria, una corsia di accelerazione o decelerazione, oppure per accedere a una piazzola di sosta. Separa il flusso principale da quello secondario o dagli spazi di fermata consentiti.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra tre diverse rappresentazioni di segnaletica orizzontale.\nLa prima immagine in alto raffigura una strada con una corsia che si immette in un'altra. È presente una striscia bianca laterale discontinua che delimita il bordo della carreggiata. Vi sono anche delle aree tratteggiate diagonalmente, che indicano zone non carrabili. Una linea verticale tratteggiata indica un limite di corsia o un punto di arresto.\nLa seconda immagine mostra un incrocio a T con una corsia che curva a sinistra. Sono presenti due frecce nere, una sopra l'altra, che indicano la direzione consentita per la corsia, in questo caso, la svolta a sinistra. La corsia è delimitata da una linea bianca discontinua.\nLa terza immagine mostra un rialzo della carreggiata, ovvero un dosso artificiale, segnalato dalla forma del manto stradale e dalla presenza di una striscia bianca discontinua che delimita la corsia.",
-    "name": "Segnaletica orizzontale di corsia e bordo carreggiata",
-    "description": "La striscia bianca laterale discontinua delimita il bordo della carreggiata. Le frecce direzionali indicano che la corsia è riservata alla svolta a sinistra. Le aree a tratteggio diagonale indicano zone non carrabili."
+    "visual_analysis": "L'immagine presenta tre diversi schemi planimetrici stradali che illustrano l'uso della striscia bianca di margine discontinua: in alto, l'immissione o diramazione con corsia specializzata e zebrature (isole di traffico); al centro, un'intersezione a raso in cui la linea tratteggiata curva separa la strada principale da una strada secondaria di immissione/svolta; in basso, una carreggiata affiancata da una piazzola di sosta delimitata dalla striscia discontinua.",
+    "name": "Striscia bianca di margine discontinua",
+    "description": "Indica il limite della carreggiata o della corsia principale nei tratti in cui è consentito oltrepassarla, ad esempio per l'ingresso o l'uscita da una strada secondaria, una corsia di accelerazione o decelerazione, oppure per accedere a una piazzola di sosta. Separa il flusso principale da quello secondario o dagli spazi di fermata consentiti."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia una deviazione per lavori in corso",
   "correct_answer": false,
   "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
-  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Preannuncia, generalmente a 150 metri, un tratto di strada non rettilineo caratterizzato da una doppia curva pericolosa (la prima a sinistra) o da una serie di curve che limitano la visibilità. Richiede di moderare la velocità in relazione alla visuale, al raggio delle curve e al carico del veicolo. Su carreggiate a doppio senso di circolazione con due sole corsie impone di marciare il più vicino possibile al margine destro e vieta il sorpasso; in corrispondenza delle curve sono comunque vietate la sosta, la fermata, l'inversione e la retromarcia. Può essere integrato da pannelli indicanti l'estesa o il numero di tornanti.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice rivolto verso l'alto, caratterizzato da un bordo rosso su sfondo bianco. All'interno campeggia un pittogramma nero che raffigura un tracciato stradale con una doppia curva, la prima che piega a sinistra e la successiva verso destra.",
     "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
-    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+    "description": "Preannuncia, generalmente a 150 metri, un tratto di strada non rettilineo caratterizzato da una doppia curva pericolosa (la prima a sinistra) o da una serie di curve che limitano la visibilità. Richiede di moderare la velocità in relazione alla visuale, al raggio delle curve e al carico del veicolo. Su carreggiate a doppio senso di circolazione con due sole corsie impone di marciare il più vicino possibile al margine destro e vieta il sorpasso; in corrispondenza delle curve sono comunque vietate la sosta, la fermata, l'inversione e la retromarcia. Può essere integrato da pannelli indicanti l'estesa o il numero di tornanti."
   },
   "quiz_metadata": {
     "core_concepts": [

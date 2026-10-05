@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga ad arrestarsi all'accesso autostradale",
   "correct_answer": true,
   "image": "a76ae926b3d2617ac4d872f0b4addc24.jpeg",
-  "image_description": "Segnale di fermarsi e dare precedenza (ALT) - Stazione autostradale. Il segnale impone l'obbligo di arrestarsi in corrispondenza della linea di arresto per le operazioni di pedaggio autostradale.",
+  "image_description": "Segnale di Alt - Stazione. Segnale di prescrizione (obbligo) che impone ai conducenti di rallentare e fermarsi in corrispondenza del casello o stazione autostradale per le necessarie operazioni di pedaggio (ritiro del biglietto o pagamento).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti le scritte \"ALT\" in alto e \"STAZIONE\" in basso, separate da una linea orizzontale nera spessa. Questo è un segnale di obbligo di fermarsi in una stazione autostradale.",
-    "name": "Segnale di fermarsi e dare precedenza (ALT) - Stazione autostradale",
-    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della linea di arresto per le operazioni di pedaggio autostradale."
+    "visual_analysis": "Segnale stradale circolare con bordo rosso e fondo bianco, appartenente alla categoria dei segnali di prescrizione/obbligo. Al centro è presente una barra orizzontale nera a bordi arrotondati che separa due scritte in caratteri neri maiuscoli: la parola \"ALT\" nella parte superiore e la parola \"STAZIONE\" nella parte inferiore.",
+    "name": "Segnale di Alt - Stazione",
+    "description": "Segnale di prescrizione (obbligo) che impone ai conducenti di rallentare e fermarsi in corrispondenza del casello o stazione autostradale per le necessarie operazioni di pedaggio (ritiro del biglietto o pagamento)."
   },
   "quiz_metadata": {
     "core_concepts": [

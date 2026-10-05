@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può essere preceduto dal segnale DIRITTO DI PRECEDENZA",
   "correct_answer": false,
   "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
-  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_description": "Segnale di dare precedenza. Prescrive l'obbligo di dare la precedenza a tutti i veicoli che circolano sulla strada che si incrocia o su cui ci si va a immettere, sia che provengano da destra che da sinistra. Impone di moderare particolarmente la velocità e di arrestarsi solo in caso di necessità (se sopraggiungono veicoli), senza obbligo di fermarsi a prescindere. Si trova all'incrocio su strade secondarie prive del diritto di precedenza, sulle corsie di accelerazione e rampe di raccordo autostradali.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "visual_analysis": "Segnale stradale verticale isolato a forma di triangolo equilatero con vertice rivolto verso il basso. Presenta un fondo bianco bordato da una spessa fascia perimetrale di colore rosso vivo, privo di simboli o scritte all'interno.",
     "name": "Segnale di dare precedenza",
-    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+    "description": "Prescrive l'obbligo di dare la precedenza a tutti i veicoli che circolano sulla strada che si incrocia o su cui ci si va a immettere, sia che provengano da destra che da sinistra. Impone di moderare particolarmente la velocità e di arrestarsi solo in caso di necessità (se sopraggiungono veicoli), senza obbligo di fermarsi a prescindere. Si trova all'incrocio su strade secondarie prive del diritto di precedenza, sulle corsie di accelerazione e rampe di raccordo autostradali."
   },
   "quiz_metadata": {
     "core_concepts": [

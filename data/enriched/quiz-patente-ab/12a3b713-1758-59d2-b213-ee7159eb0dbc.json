@@ -5,11 +5,11 @@
   "text": "Il vigile disposto con le braccia ad angolo retto come in figura consente di svoltare a destra ai veicoli che arrivano dalla sua destra",
   "correct_answer": false,
   "image": "d610e27fa096d71115e187fa059bcac1.jpeg",
-  "image_description": "Segnale di agente del traffico (braccia orizzontali). L'agente della polizia si trova al centro dell'incrocio con le braccia tese orizzontalmente. Questa posizione indica che i veicoli che si avvicinano da davanti e da dietro devono fermarsi, mentre quelli che si avvicinano da destra e da sinistra possono proseguire.",
+  "image_description": "Segnalazione dell'agente del traffico con braccia ad angolo retto. La posizione dell'agente con le braccia disposte ad angolo retto consente tutte le direzioni di manovra (proseguire diritto, svoltare a destra e svoltare a sinistra) ai veicoli che provengono dalla sua sinistra. Vieta invece il transito, fermandoli o impedendone l'avanzamento, ai veicoli che provengono dalla sua destra e alle sue spalle.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una figura stilizzata di un agente di polizia in uniforme, in piedi al centro di un incrocio. L'agente ha le braccia tese orizzontalmente, perpendicolarmente al suo corpo. Ci sono delle linee stilizzate che suggeriscono le direzioni delle strade che convergono nell'incrocio. L'agente è rivolto verso l'osservatore, con il braccio destro leggermente più avanti del sinistro. Le linee a forma di V suggeriscono le direzioni di provenienza dei veicoli. In particolare, si vedono delle linee che indicano direzioni che si intersecano, formando un incrocio. La posizione delle braccia dell'agente è la chiave per interpretare il segnale.",
-    "name": "Segnale di agente del traffico (braccia orizzontali)",
-    "description": "L'agente della polizia si trova al centro dell'incrocio con le braccia tese orizzontalmente. Questa posizione indica che i veicoli che si avvicinano da davanti e da dietro devono fermarsi, mentre quelli che si avvicinano da destra e da sinistra possono proseguire."
+    "visual_analysis": "L'immagine, con sfondo bianco e disegno schematico nero, raffigura un agente del traffico (vigile) posizionato al centro di un incrocio stilizzato. L'agente è in piedi con le braccia distese orizzontalmente a formare un angolo retto tra loro (un braccio teso lateralmente e l'altro proteso in avanti). Intorno alla figura sono tracciati i vertici angolari che delimitano schematicamente i marciapiedi dell'intersezione stradale.",
+    "name": "Segnalazione dell'agente del traffico con braccia ad angolo retto",
+    "description": "La posizione dell'agente con le braccia disposte ad angolo retto consente tutte le direzioni di manovra (proseguire diritto, svoltare a destra e svoltare a sinistra) ai veicoli che provengono dalla sua sinistra. Vieta invece il transito, fermandoli o impedendone l'avanzamento, ai veicoli che provengono dalla sua destra e alle sue spalle."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il cono raffigurato si usa per indicare un parcheggio riservato",
   "correct_answer": false,
   "image": "61edff345204545bf7a2cc45613f1bca.jpeg",
-  "image_description": "Cono divisorio. Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile.",
+  "image_description": "Cono. Dispositivo temporaneo impiegato per delimitare aree di lavoro di breve durata, segnalare deviazioni provvisorie o aree interessate da incidenti stradali, nonché per la separazione provvisoria dei sensi di marcia o delle corsie. Non è destinato a cantieri di lunga durata o a segnalare ostacoli esterni alla carreggiata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un singolo cono stradale, di forma tronco-conica, con una base larga e nera. La superficie del cono è caratterizzata da bande orizzontali alternate di colore rosso e bianco, che servono a renderlo altamente visibile. Non sono presenti altri elementi o segnali nell'immagine.",
-    "name": "Cono divisorio",
-    "description": "Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile."
+    "visual_analysis": "Dispositivo a tronco di cono a sviluppo verticale con fasce orizzontali alternate bianche e rosse, poggiante su una base trapezoidale di colore nero. L'elemento è isolato su sfondo bianco neutro.",
+    "name": "Cono",
+    "description": "Dispositivo temporaneo impiegato per delimitare aree di lavoro di breve durata, segnalare deviazioni provvisorie o aree interessate da incidenti stradali, nonché per la separazione provvisoria dei sensi di marcia o delle corsie. Non è destinato a cantieri di lunga durata o a segnalare ostacoli esterni alla carreggiata."
   },
   "quiz_metadata": {
     "core_concepts": [

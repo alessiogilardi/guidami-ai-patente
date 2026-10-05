@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia l'accesso al pontile d'imbarco di navi traghetto",
   "correct_answer": false,
   "image": "c4f549e09b93507609720c28ca762b12.jpeg",
-  "image_description": "Segnale di pericolo: impianto semaforico. Il segnale preannuncia la presenza di un impianto semaforico. Le luci sono disposte in verticale: rosso, giallo, verde.",
+  "image_description": "Semaforo orizzontale. Preannuncia un impianto semaforico con lanterne disposte in posizione orizzontale, posto di norma a 150 metri dal segnale luminoso. Richiede di moderare la velocità per potersi arrestare tempestivamente se il semaforo dovesse presentare luce rossa. Il disco giallo centrale può essere sostituito da una luce gialla lampeggiante.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo sono raffigurati tre cerchi disposti orizzontalmente, che rappresentano le luci di un semaforo: rosso a sinistra, giallo al centro e verde a destra.",
-    "name": "Segnale di pericolo: impianto semaforico",
-    "description": "Il segnale preannuncia la presenza di un impianto semaforico. Le luci sono disposte in verticale: rosso, giallo, verde."
+    "visual_analysis": "Segnale di pericolo di forma triangolare con vertice rivolto verso l'alto, bordo rosso e fondo bianco. Al centro sono raffigurati tre dischi allineati orizzontalmente: a sinistra rosso, al centro giallo e a destra verde scuro/nero, rappresentanti le luci di una lanterna semaforica a sviluppo orizzontale.",
+    "name": "Semaforo orizzontale",
+    "description": "Preannuncia un impianto semaforico con lanterne disposte in posizione orizzontale, posto di norma a 150 metri dal segnale luminoso. Richiede di moderare la velocità per potersi arrestare tempestivamente se il semaforo dovesse presentare luce rossa. Il disco giallo centrale può essere sostituito da una luce gialla lampeggiante."
   },
   "quiz_metadata": {
     "core_concepts": [

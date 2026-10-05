@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito agli autocarri di massa complessiva superiore a 3,5 t. nell'orario indicato, dei giorni lavorativi",
   "correct_answer": true,
   "image": "bda430f34474e217279e28b2b9c76238.jpeg",
-  "image_description": "Divieto di transito agli autocarri con pannello integrativo di orario e giorni lavorativi. Il segnale vieta il transito ai veicoli indicati dal pittogramma (autocarri) nei giorni lavorativi, dalle ore 8:00 alle ore 20:00.",
+  "image_description": "Divieto di transito ai veicoli destinati al trasporto di merci con massa superiore a 3,5 t con pannello integrativo di fascia oraria nei giorni lavorativi. Vieta la circolazione agli autocarri (veicoli destinati al trasporto di cose) aventi massa complessiva a pieno carico superiore a 3,5 tonnellate (non essendo specificata una massa diversa), limitatamente ai giorni lavorativi (feriali) nella fascia oraria compresa tra le 8.00 e le 20.00. Il transito è consentito nei giorni festivi e fuori dall'orario indicato, nonché a tutti gli altri tipi di veicoli (come autovetture o autobus).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito raffigurante un autocarro, con un pannello integrativo sottostante. Il pannello integrativo indica un orario (8:00 - 20:00) e due simboli che rappresentano un martello e uno scalpello, comunemente associati ai giorni lavorativi. Il segnale principale è circolare con bordo rosso e sfondo bianco, con un'immagine nera di un autocarro al centro. Il pannello integrativo è rettangolare, bianco con bordo nero, contenente i simboli e l'orario.",
-    "name": "Divieto di transito agli autocarri con pannello integrativo di orario e giorni lavorativi",
-    "description": "Il segnale vieta il transito ai veicoli indicati dal pittogramma (autocarri) nei giorni lavorativi, dalle ore 8:00 alle ore 20:00."
+    "visual_analysis": "L'immagine ritrae un segnale composito verticale. Nella parte superiore è presente un segnale circolare di divieto con bordo rosso, fondo bianco e sagoma nera di un autocarro visto di profilo, privo di indicazioni di massa numerica. Nella parte inferiore è abbinato un pannello integrativo rettangolare a fondo bianco con cornice nera, recante a sinistra il simbolo dei martelli incrociati (che indica i giorni feriali/lavorativi) seguito dall'indicazione dell'intervallo orario '8,00 - 20,00'.",
+    "name": "Divieto di transito ai veicoli destinati al trasporto di merci con massa superiore a 3,5 t con pannello integrativo di fascia oraria nei giorni lavorativi",
+    "description": "Vieta la circolazione agli autocarri (veicoli destinati al trasporto di cose) aventi massa complessiva a pieno carico superiore a 3,5 tonnellate (non essendo specificata una massa diversa), limitatamente ai giorni lavorativi (feriali) nella fascia oraria compresa tra le 8.00 e le 20.00. Il transito è consentito nei giorni festivi e fuori dall'orario indicato, nonché a tutti gli altri tipi di veicoli (come autovetture o autobus)."
   },
   "quiz_metadata": {
     "core_concepts": [

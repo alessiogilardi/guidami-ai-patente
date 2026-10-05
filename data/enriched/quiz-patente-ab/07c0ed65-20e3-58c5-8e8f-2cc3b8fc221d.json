@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la possibilità di incrociare una colonna di veicoli della polizia",
   "correct_answer": false,
   "image": "5da3cc8d78e4bff5e79f129fb811fc6e.jpeg",
-  "image_description": "Indicazione stradale per comando di Polizia Stradale. Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale.",
+  "image_description": "Segnale di comando di polizia stradale. Segnale di servizio utile che fornisce all'utente della strada le indicazioni necessarie (sede, indirizzo, località e numeri di telefono) per contattare o raggiungere il più vicino comando della Polizia Stradale in caso di necessità o emergenza. Non segnala posti di blocco, né aree riservate al parcheggio o al transito dei veicoli della polizia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordo nero e sfondo bianco. Nella parte superiore, in lettere maiuscole nere, è scritto \"POLIZIA STRADALE\". Sotto questa intestazione, ci sono tre righe di testo: \"localita'\", \"indirizzo\" e \"telefoni\". Accanto a ciascuna di queste etichette, ci sono delle barre grigie che rappresentano i campi da compilare con le informazioni specifiche. Il segnale è di tipo informativo e non di prescrizione o pericolo.",
-    "name": "Indicazione stradale per comando di Polizia Stradale",
-    "description": "Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale."
+    "visual_analysis": "Segnale stradale rettangolare a fondo bianco con sottile bordo nero. Nella parte superiore reca la scritta in lettere maiuscole nere 'POLIZIA STRADALE'. Al di sotto, incolonnate a sinistra in lettere minuscole nere, compaiono le diciture 'localita\\'', 'indirizzo' e 'telefoni', affiancate da bande grigie rettangolari che rappresentano gli spazi dedicati ai rispettivi dati specifici.",
+    "name": "Segnale di comando di polizia stradale",
+    "description": "Segnale di servizio utile che fornisce all'utente della strada le indicazioni necessarie (sede, indirizzo, località e numeri di telefono) per contattare o raggiungere il più vicino comando della Polizia Stradale in caso di necessità o emergenza. Non segnala posti di blocco, né aree riservate al parcheggio o al transito dei veicoli della polizia."
   },
   "quiz_metadata": {
     "core_concepts": [

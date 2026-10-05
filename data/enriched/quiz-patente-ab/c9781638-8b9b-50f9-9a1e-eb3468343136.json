@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato è posto sul comando di accensione dei proiettori anabbaglianti",
   "correct_answer": false,
   "image": "ec7b0a5e371554e07a50c02a6506b43d.jpeg",
-  "image_description": "Spia delle luci di profondità. Questo simbolo indica l'accensione delle luci di profondità (abbaglianti). Si tratta di una spia luminosa di colore blu.",
+  "image_description": "Simbolo dei proiettori di profondità. Identifica il comando di accensione dei proiettori di profondità (fari abbaglianti) ed è riportato su una spia a luce blu sul quadro strumenti, che si illumina quando tali dispositivi sono in funzione per avvisare il conducente del loro utilizzo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra il simbolo di una spia luminosa. Il simbolo è composto da una forma stilizzata che rappresenta un fascio di luce emesso da un proiettore, con delle linee orizzontali a sinistra che indicano la direzione del fascio. Questo simbolo è universalmente riconosciuto come indicatore dell'accensione dei proiettori di profondità (abbaglianti) e la sua spia è di colore blu.",
-    "name": "Spia delle luci di profondità",
-    "description": "Questo simbolo indica l'accensione delle luci di profondità (abbaglianti). Si tratta di una spia luminosa di colore blu."
+    "visual_analysis": "Pittogramma nero su fondo bianco raffigurante la sagoma di un proiettore da cui partono, verso sinistra, cinque linee rette orizzontali e parallele che rappresentano il fascio di luce emesso.",
+    "name": "Simbolo dei proiettori di profondità",
+    "description": "Identifica il comando di accensione dei proiettori di profondità (fari abbaglianti) ed è riportato su una spia a luce blu sul quadro strumenti, che si illumina quando tali dispositivi sono in funzione per avvisare il conducente del loro utilizzo."
   },
   "quiz_metadata": {
     "core_concepts": [

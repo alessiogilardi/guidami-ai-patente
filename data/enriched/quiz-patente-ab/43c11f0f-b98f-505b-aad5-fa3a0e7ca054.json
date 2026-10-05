@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'inizio di un ponte",
   "correct_answer": false,
   "image": "d8edc21a26e5bf4c54780acbfda0797b.jpeg",
-  "image_description": "Preavviso di galleria. Il segnale preavvisa l'inizio di una galleria.",
+  "image_description": "Segnale di galleria autostradale. Segnale di indicazione posto in corrispondenza o in avvicinamento all'inizio di una galleria su autostrada. Ricorda le norme di comportamento da tenere in galleria: accendere le luci anabbaglianti, non sostare né fermarsi (salvo motivi di emergenza o diversa segnalazione), non fare inversione di marcia o retromarcia, spegnere il motore in caso di arresto prolungato nel traffico e mantenere saldo il volante per contrastare eventuali raffiche di vento laterale all'uscita.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo verde. Al centro è presente un pittogramma nero che rappresenta l'ingresso di una galleria, con una porzione di strada che entra nell'oscurità. Il pittogramma è stilizzato e mostra una forma ad arco che simboleggia la volta della galleria e una linea orizzontale che rappresenta il piano stradale. Non ci sono altri elementi visivi o segnali associati. Si tratta di un segnale di indicazione.",
-    "name": "Preavviso di galleria",
-    "description": "Il segnale preavvisa l'inizio di una galleria."
+    "visual_analysis": "Segnale stradale quadrato con fondo verde e cornice bianca. Al centro è raffigurato il profilo stilizzato dell'imbocco di una galleria: una sagoma a volta di colore nero con profilo e base bianchi, che mostra la carreggiata in prospettiva verso l'apertura d'uscita della galleria. Il fondo verde indica l'installazione su tratta autostradale.",
+    "name": "Segnale di galleria autostradale",
+    "description": "Segnale di indicazione posto in corrispondenza o in avvicinamento all'inizio di una galleria su autostrada. Ricorda le norme di comportamento da tenere in galleria: accendere le luci anabbaglianti, non sostare né fermarsi (salvo motivi di emergenza o diversa segnalazione), non fare inversione di marcia o retromarcia, spegnere il motore in caso di arresto prolungato nel traffico e mantenere saldo il volante per contrastare eventuali raffiche di vento laterale all'uscita."
   },
   "quiz_metadata": {
     "core_concepts": [

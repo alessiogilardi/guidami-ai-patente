@@ -5,11 +5,11 @@
   "text": "La striscia bianca laterale discontinua in figura può essere superata solo in caso di emergenza",
   "correct_answer": false,
   "image": "26494b439793343fd69530a0ea9f2b39.jpeg",
-  "image_description": "Striscia bianca laterale discontinua. La striscia bianca laterale discontinua delimita la carreggiata e può essere superata per cambiare corsia o per svoltare. Le frecce indicano il senso di marcia consentito.",
+  "image_description": "Strisce bianche discontinue di margine della carreggiata. Indica la possibilità di oltrepassare il limite della carreggiata normale per entrare in piazzole di sosta, fermate o raccordi stradali. A differenza della striscia continua di margine, può essere valicata non soltanto in situazioni di emergenza, ma ogni qualvolta sia consentito e necessario accedere all'area laterale delimitata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una carreggiata con segnaletica orizzontale. Nella parte superiore, una strada si biforca, con una corsia che curva a sinistra e un'altra che prosegue dritta. Entrambe le corsie sono delimitate da una striscia bianca laterale discontinua. Sulla corsia che prosegue dritta, sono presenti due frecce nere che indicano il senso di marcia consentito, ovvero dritto. Nelle parti centrali e inferiori dell'immagine, sono rappresentate due sezioni di strada rettilinea con la stessa segnaletica orizzontale: una striscia bianca laterale discontinua che delimita la carreggiata e una striscia bianca continua al centro, che separa le due direzioni di marcia. Sono presenti anche strisce bianche discontinue che delimitano le corsie di marcia. La domanda fa riferimento alla striscia bianca laterale discontinua.",
-    "name": "Striscia bianca laterale discontinua",
-    "description": "La striscia bianca laterale discontinua delimita la carreggiata e può essere superata per cambiare corsia o per svoltare. Le frecce indicano il senso di marcia consentito."
+    "visual_analysis": "L'immagine è suddivisa verticalmente in tre rappresentazioni schematiche di tratti stradali visti dall'alto: in alto è raffigurato un raccordo stradale con curve e strisce tratteggiate che guidano il flusso veicolare; al centro e in basso sono illustrate sezioni di carreggiata affiancate da piazzole trapezoidali (come piazzole di sosta o fermate autobus), delimitate dal bordo stradale mediante una striscia bianca discontinua (tratteggiata).",
+    "name": "Strisce bianche discontinue di margine della carreggiata",
+    "description": "Indica la possibilità di oltrepassare il limite della carreggiata normale per entrare in piazzole di sosta, fermate o raccordi stradali. A differenza della striscia continua di margine, può essere valicata non soltanto in situazioni di emergenza, ma ogni qualvolta sia consentito e necessario accedere all'area laterale delimitata."
   },
   "quiz_metadata": {
     "core_concepts": [

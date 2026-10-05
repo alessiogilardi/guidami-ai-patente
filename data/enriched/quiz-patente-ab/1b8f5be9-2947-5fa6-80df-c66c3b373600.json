@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato modifica le precedenti norme sulla precedenza agli incroci",
   "correct_answer": true,
   "image": "459c93f6feb9d5a601c34e1088b16155.jpeg",
-  "image_description": "Fine del diritto di precedenza. Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra.",
+  "image_description": "Fine del diritto di precedenza. Segnale di precedenza che indica la conclusione del tratto stradale in cui si godeva del diritto di precedenza. Di conseguenza, ripristina la norma generale che impone di dare la precedenza ai veicoli provenienti da destra, a meno che agli incroci successivi non siano presenti segnali specifici di \"Dare precedenza\" o \"Fermarsi e dare precedenza\" (STOP). Invita il conducente a procedere con maggiore cautela e a moderare la velocità.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale a forma di rombo con bordo bianco e sfondo bianco. Al centro, un quadrato arancione è attraversato da una barra nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di 'Fine del diritto di precedenza'.",
+    "visual_analysis": "Segnale stradale a forma romboidale (quadrato poggiato su un vertice), con sottile bordo nero, larga cornice bianca e quadrato centrale di colore giallo-arancione bordato di nero. Il segnale è barrato trasversalmente da una banda diagonale nera continua che lo attraversa dal basso a sinistra verso l'alto a destra.",
     "name": "Fine del diritto di precedenza",
-    "description": "Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra."
+    "description": "Segnale di precedenza che indica la conclusione del tratto stradale in cui si godeva del diritto di precedenza. Di conseguenza, ripristina la norma generale che impone di dare la precedenza ai veicoli provenienti da destra, a meno che agli incroci successivi non siano presenti segnali specifici di \"Dare precedenza\" o \"Fermarsi e dare precedenza\" (STOP). Invita il conducente a procedere con maggiore cautela e a moderare la velocità."
   },
   "quiz_metadata": {
     "core_concepts": [

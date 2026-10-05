@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si trova nelle vicinanze di una stazione ferroviaria",
   "correct_answer": true,
   "image": "5b1a54c826611831c1b407905d13972c.jpeg",
-  "image_description": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento. Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno.",
+  "image_description": "Segnale di auto al seguito del viaggiatore. Segnale di indicazione posto nelle vicinanze di una stazione ferroviaria o nei pressi dell'accesso destinato all'imbarco dei veicoli. Segnala all'utente la vicinanza di un impianto ferroviario che effettua il servizio di trasporto di autovetture al seguito del viaggiatore (treno con vagoni auto e cuccette). Non consente di restare a bordo del veicolo durante il viaggio in treno.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di tipo \"indicazione\" (rettangolare con bordo blu e sfondo bianco all'interno). Il pittogramma al centro raffigura un carro ferroviario con sopra un'autovettura e un letto. Questo indica la presenza di una stazione ferroviaria che offre il servizio di trasporto autovetture con possibilità di pernottamento. Il segnale è isolato, non fa parte di una scena di guida complessa o di una sequenza di segnali.",
-    "name": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento",
-    "description": "Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno."
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare a sviluppo verticale, con fondo blu scuro e sottile cornice perimetrale bianca. Nella metà superiore è presente un inserto quadrato a fondo bianco contenente il pittogramma nero di un vagone ferroviario su cui sono raffigurati, affiancati, il profilo di un'automobile e una cuccetta con letto. La parte inferiore del cartello è lasciata in tinta unita blu (spazio predisposto per iscrizioni o frecce direzionali).",
+    "name": "Segnale di auto al seguito del viaggiatore",
+    "description": "Segnale di indicazione posto nelle vicinanze di una stazione ferroviaria o nei pressi dell'accesso destinato all'imbarco dei veicoli. Segnala all'utente la vicinanza di un impianto ferroviario che effettua il servizio di trasporto di autovetture al seguito del viaggiatore (treno con vagoni auto e cuccette). Non consente di restare a bordo del veicolo durante il viaggio in treno."
   },
   "quiz_metadata": {
     "core_concepts": [

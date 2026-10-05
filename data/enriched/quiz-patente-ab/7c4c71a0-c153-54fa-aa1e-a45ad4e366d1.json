@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si trova direttamente in corrispondenza delle strisce dell'attraversamento pedonale",
   "correct_answer": true,
   "image": "abf3d7b3d288ff886b24a821cd872a9c.jpeg",
-  "image_description": "Segnale di attraversamento pedonale. Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada.",
+  "image_description": "Segnale di attraversamento pedonale. Segnale di indicazione posto nelle immediate vicinanze di un attraversamento pedonale non regolato da semaforo o da agente del traffico. Localizza l'esatta posizione delle strisce pedonali e impone ai conducenti di moderare la velocità e fermarsi per dare la precedenza ai pedoni che transitano o si accingono a transitare, vietando il sorpasso di veicoli arrestatisi per consentire l'attraversamento. Fuori dai centri abitati è preceduto a 150 metri dal relativo segnale di pericolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo blu scuro. Al centro del segnale è presente un triangolo bianco con il vertice rivolto verso l'alto. All'interno del triangolo bianco, su uno sfondo nero che rappresenta le strisce pedonali, è raffigurata la sagoma stilizzata di una persona che cammina. Il segnale è un segnale di prescrizione o indicazione relativo agli attraversamenti pedonali.",
+    "visual_analysis": "Segnale stradale verticale di forma quadrata con fondo blu e bordo bianco. All'interno è presente un triangolo equilatero bianco, con vertice rivolto verso l'alto, contenente il pittogramma nero di una figura umana stilizzata (pedone) che cammina sulle strisce pedonali (zebratura).",
     "name": "Segnale di attraversamento pedonale",
-    "description": "Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada."
+    "description": "Segnale di indicazione posto nelle immediate vicinanze di un attraversamento pedonale non regolato da semaforo o da agente del traffico. Localizza l'esatta posizione delle strisce pedonali e impone ai conducenti di moderare la velocità e fermarsi per dare la precedenza ai pedoni che transitano o si accingono a transitare, vietando il sorpasso di veicoli arrestatisi per consentire l'attraversamento. Fuori dai centri abitati è preceduto a 150 metri dal relativo segnale di pericolo."
   },
   "quiz_metadata": {
     "core_concepts": [

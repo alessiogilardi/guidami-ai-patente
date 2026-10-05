@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica di disporsi su due file per proseguire diritto",
   "correct_answer": false,
   "image": "abdee1e67c3ce68915d63029b1eb9b71.jpeg",
-  "image_description": "Direzioni consentite. Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite.",
+  "image_description": "Segnale di direzioni consentite a destra e a sinistra. Segnale di prescrizione (obbligo) posto prima di un incrocio che indica al conducente l'obbligo di scegliere tra la svolta a destra o la svolta a sinistra al prossimo incrocio, vietando categoricamente di proseguire diritto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale sono presenti due frecce bianche su sfondo blu. Una freccia punta verso sinistra e l'altra verso destra, partendo da un punto comune che indica la direzione dritta. Il segnale è un segnale di obbligo.",
-    "name": "Direzioni consentite",
-    "description": "Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite."
+    "visual_analysis": "Segnale stradale verticale di forma circolare con fondo blu e bordo perimetrale bianco. Al centro è rappresentata una freccia bianca che parte dal basso con un fusto comune verticale e si biforca curvando verso sinistra e verso destra, terminando con due punte di freccia rivolte rispettivamente verso sinistra e verso destra.",
+    "name": "Segnale di direzioni consentite a destra e a sinistra",
+    "description": "Segnale di prescrizione (obbligo) posto prima di un incrocio che indica al conducente l'obbligo di scegliere tra la svolta a destra o la svolta a sinistra al prossimo incrocio, vietando categoricamente di proseguire diritto."
   },
   "quiz_metadata": {
     "core_concepts": [

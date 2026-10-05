@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine della strada sdrucciolevole",
   "correct_answer": true,
   "image": "e9f546569e09115071eeeed6f2caa764.jpeg",
-  "image_description": "Pericolo di scivolamento (fondo stradale sdrucciolevole) con pannello integrativo di direzione destra. Il segnale di pericolo indica che la strada può essere sdrucciolevole. Il pannello integrativo indica che il pericolo si trova sulla destra.",
+  "image_description": "Segnale di strada sdrucciolevole con pannello integrativo di fine. Indica il termine del tratto di strada a fondo particolarmente sdrucciolevole o con aderenza ridotta precedentemente segnalato, avvisando i conducenti che le condizioni di pericolo sono cessate.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata un'automobile in fase di sbandata su una strada sinuosa. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con un bordo nero, contenente una freccia nera rivolta verso destra.",
-    "name": "Pericolo di scivolamento (fondo stradale sdrucciolevole) con pannello integrativo di direzione destra",
-    "description": "Il segnale di pericolo indica che la strada può essere sdrucciolevole. Il pannello integrativo indica che il pericolo si trova sulla destra."
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con vertice verso l'alto, bordo rosso e fondo bianco, che raffigura la sagoma nera posteriore di un'autovettura in sbandamento con relative tracce ondulate lasciate dagli pneumatici ('Strada sdrucciolevole'). Al di sotto del segnale è collocato un pannello integrativo rettangolare a fondo bianco e bordo nero, contenente una freccia nera rivolta verso destra che funge da pannello di fine.",
+    "name": "Segnale di strada sdrucciolevole con pannello integrativo di fine",
+    "description": "Indica il termine del tratto di strada a fondo particolarmente sdrucciolevole o con aderenza ridotta precedentemente segnalato, avvisando i conducenti che le condizioni di pericolo sono cessate."
   },
   "quiz_metadata": {
     "core_concepts": [

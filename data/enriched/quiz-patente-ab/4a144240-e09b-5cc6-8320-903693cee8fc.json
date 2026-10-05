@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta la manovra di inversione di marcia",
   "correct_answer": false,
   "image": "ba0e3bf8bcbf65be03198270e1e8b821.jpeg",
-  "image_description": "Segnale di strada senza uscita. Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita.",
+  "image_description": "Segnale di preavviso di strada senza uscita. Preavvisa che la strada che si dirama sulla destra è un vicolo cieco, ossia senza sbocco/uscita per i veicoli a motore. Non impone un obbligo di direzione: consente sia di proseguire diritto lungo la strada principale sia di svoltare a destra (ad esempio per accedere a proprietà laterali o sostare), ma avverte che per uscirne sarà necessario tornare indietro. Non vieta l'inversione di marcia e si applica a tutti i veicoli, compresi i motocicli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con angoli arrotondati. Il fondo del segnale è blu scuro. Al centro del segnale è presente una figura bianca a forma di 'T' rovesciata, con la traversa orizzontale che si estende verso destra. All'estremità destra della traversa orizzontale, vi è un rettangolo verticale di colore rosso, che rappresenta la parte finale della strada. La parte bianca della 'T' rappresenta la strada che prosegue, mentre la parte rossa indica la fine della strada.",
-    "name": "Segnale di strada senza uscita",
-    "description": "Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita."
+    "visual_analysis": "Segnale di indicazione a forma quadrata con fondo blu e sottile bordo bianco perimetrale. All'interno è raffigurato lo schema di un incrocio: una fascia bianca verticale continua (che rappresenta la prosecuzione della strada principale) con una diramazione ortogonale verso destra, anch'essa di colore bianco, la cui estremità è interrotta da una barra rossa rettangolare verticale bordata di bianco, indicante l'assenza di sbocco.",
+    "name": "Segnale di preavviso di strada senza uscita",
+    "description": "Preavvisa che la strada che si dirama sulla destra è un vicolo cieco, ossia senza sbocco/uscita per i veicoli a motore. Non impone un obbligo di direzione: consente sia di proseguire diritto lungo la strada principale sia di svoltare a destra (ad esempio per accedere a proprietà laterali o sostare), ma avverte che per uscirne sarà necessario tornare indietro. Non vieta l'inversione di marcia e si applica a tutti i veicoli, compresi i motocicli."
   },
   "quiz_metadata": {
     "core_concepts": [

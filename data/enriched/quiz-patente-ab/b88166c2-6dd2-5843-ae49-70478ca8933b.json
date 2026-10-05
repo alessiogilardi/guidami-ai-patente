@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che la strada si può allagare in caso di forte pioggia",
   "correct_answer": true,
   "image": "70eea77a9125bb7d608304c1d2e29606.jpeg",
-  "image_description": "Preavviso di depressione del piano stradale con pannello integrativo di possibile allagamento. Il segnale indica la presenza di una depressione del manto stradale, che può causare allagamenti in caso di forte pioggia.",
+  "image_description": "Segnale di cunetta con pannello integrativo di allagamento. Preavvisa una cunetta o una depressione della carreggiata soggetta ad allagarsi in caso di forti piogge. Comporta l'obbligo di moderare la velocità per prevenire fenomeni di aquaplaning, sbandamenti o possibili danni al veicolo dovuti all'accumulo di acqua.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una gobba o depressione del manto stradale in nero. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con bordo nero. Su questo pannello sono disegnate tre linee ondulate di colore blu, che rappresentano l'acqua.",
-    "name": "Preavviso di depressione del piano stradale con pannello integrativo di possibile allagamento",
-    "description": "Il segnale indica la presenza di una depressione del manto stradale, che può causare allagamenti in caso di forte pioggia."
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco, contenente il simbolo nero di una cunetta (profilo concavo della sede stradale). Al di sotto è presente un pannello integrativo rettangolare a fondo bianco bordato di nero, recante il simbolo di tre linee orizzontali ondulate che rappresentano uno specchio d'acqua o allagamento.",
+    "name": "Segnale di cunetta con pannello integrativo di allagamento",
+    "description": "Preavvisa una cunetta o una depressione della carreggiata soggetta ad allagarsi in caso di forti piogge. Comporta l'obbligo di moderare la velocità per prevenire fenomeni di aquaplaning, sbandamenti o possibili danni al veicolo dovuti all'accumulo di acqua."
   },
   "quiz_metadata": {
     "core_concepts": [

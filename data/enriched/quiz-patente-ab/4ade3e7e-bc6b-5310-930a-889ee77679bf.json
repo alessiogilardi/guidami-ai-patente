@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preavvisa l'inizio di un lungo rettilineo",
   "correct_answer": false,
   "image": "131c02a6503976f36bd837f783165e1e.jpeg",
-  "image_description": "Inizio strada extraurbana principale. Il segnale indica l'inizio di una strada extraurbana principale. Le carreggiate sono separate e non è consentito l'accesso ai pedoni, ai ciclisti e ai veicoli a motore non in grado di sviluppare una velocità di almeno 80 km/h.",
+  "image_description": "Segnale di inizio strada extraurbana principale. Indica l'inizio di una strada extraurbana principale a carreggiate separate, priva di incroci a raso. Da questo punto si applicano le relative norme di circolazione e limiti di velocità (fino a 110 km/h per le autovetture) e sono in vigore le stesse restrizioni al transito previste per le autostrade (divieto per pedoni, ciclisti, ciclomotori e altri veicoli lenti). Se barrato da una diagonale rossa ne segnala la fine.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo blu e bordi bianchi. Al centro del segnale è raffigurato un pittogramma bianco che rappresenta una strada a carreggiate separate, con un cavalcavia stilizzato che le attraversa. Le due carreggiate sono delimitate da strisce bianche continue. Questo segnale è il segnale di inizio strada extraurbana principale.",
-    "name": "Inizio strada extraurbana principale",
-    "description": "Il segnale indica l'inizio di una strada extraurbana principale. Le carreggiate sono separate e non è consentito l'accesso ai pedoni, ai ciclisti e ai veicoli a motore non in grado di sviluppare una velocità di almeno 80 km/h."
+    "visual_analysis": "Segnale di indicazione rettangolare a sviluppo verticale con fondo blu e bordo bianco. All'interno è raffigurato in bianco il simbolo prospettico di una strada a due carreggiate separate, sovrastata orizzontalmente da un cavalcavia.",
+    "name": "Segnale di inizio strada extraurbana principale",
+    "description": "Indica l'inizio di una strada extraurbana principale a carreggiate separate, priva di incroci a raso. Da questo punto si applicano le relative norme di circolazione e limiti di velocità (fino a 110 km/h per le autovetture) e sono in vigore le stesse restrizioni al transito previste per le autostrade (divieto per pedoni, ciclisti, ciclomotori e altri veicoli lenti). Se barrato da una diagonale rossa ne segnala la fine."
   },
   "quiz_metadata": {
     "core_concepts": [

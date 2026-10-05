@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato evidenzia il punto in cui finisce l'area destinata al parcheggio",
   "correct_answer": false,
   "image": "8de98a2e232b482a4d93bc29ef3486d0.jpeg",
-  "image_description": "Parcheggio con pannello integrativo di direzione sinistra. Il segnale indica la presenza di un parcheggio e il pannello integrativo con la freccia indica che il parcheggio si trova alla sinistra del segnale.",
+  "image_description": "Segnale di parcheggio con pannello integrativo di inizio (freccia orizzontale a sinistra). Indica l'inizio di un'area destinata alla sosta o parcheggio a partire dal punto in cui è posto il segnale e proseguendo nella direzione indicata dalla freccia (verso sinistra), oppure la direzione da seguire per raggiungere l'area di parcheggio. Non indica la fine dell'area di parcheggio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastante un pannello integrativo rettangolare bianco con una freccia nera che punta verso sinistra. L'insieme dei due elementi costituisce un unico segnale stradale.",
-    "name": "Parcheggio con pannello integrativo di direzione sinistra",
-    "description": "Il segnale indica la presenza di un parcheggio e il pannello integrativo con la freccia indica che il parcheggio si trova alla sinistra del segnale."
+    "visual_analysis": "L'immagine presenta un segnale stradale composito costituito da un cartello principale superiore e un pannello integrativo inferiore. Il cartello superiore è quadrato, con fondo blu, bordo bianco e una grande lettera maiuscola 'P' bianca al centro. Il pannello integrativo sottostante ha forma rettangolare a sviluppo orizzontale, fondo bianco con sottile bordo nero, e contiene una freccia orizzontale nera orientata verso sinistra.",
+    "name": "Segnale di parcheggio con pannello integrativo di inizio (freccia orizzontale a sinistra)",
+    "description": "Indica l'inizio di un'area destinata alla sosta o parcheggio a partire dal punto in cui è posto il segnale e proseguendo nella direzione indicata dalla freccia (verso sinistra), oppure la direzione da seguire per raggiungere l'area di parcheggio. Non indica la fine dell'area di parcheggio."
   },
   "quiz_metadata": {
     "core_concepts": [

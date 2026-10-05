@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la lunghezza di un tratto stradale con curve pericolose in successione",
   "correct_answer": true,
   "image": "2cf2b55d5e7067094399adb2e3e64b0c.jpeg",
-  "image_description": "Doppio salvagente (direzione altalenante) con pannello integrativo di distanza. Il segnale indica una sequenza di due curve pericolose, la prima a sinistra e la seconda a destra, che si estendono per una lunghezza di 380 metri.",
+  "image_description": "Segnale di doppia curva, la prima a destra con pannello integrativo di estesa. Preavvisa una serie di curve pericolose, la prima a destra, specificando tramite il pannello integrativo che il tratto stradale interessato ha una lunghezza (estesa) di 380 metri, a partire da 150 metri dal segnale. Impone di moderare la velocità, mantenere una traiettoria corretta e vieta il sorpasso su strade a doppio senso con una sola corsia per senso di marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero raffigurante una doppia curva, la prima verso sinistra e la seconda verso destra. Sotto il segnale principale è presente un pannello integrativo rettangolare bianco con bordo nero. Su questo pannello sono raffigurate due frecce verticali nere, una sopra e una sotto la dicitura \"380m\", anch'esse in nero. Le frecce indicano l'inizio e la fine del tratto stradale interessato dal pericolo segnalato dal segnale principale.",
-    "name": "Doppio salvagente (direzione altalenante) con pannello integrativo di distanza",
-    "description": "Il segnale indica una sequenza di due curve pericolose, la prima a sinistra e la seconda a destra, che si estendono per una lunghezza di 380 metri."
+    "visual_analysis": "L'immagine raffigura un segnale verticale composito: nella parte superiore è presente un segnale di pericolo triangolare con vertice verso l'alto, bordo rosso e fondo bianco, contenente il pittogramma nero di una doppia curva la cui prima svolta è verso destra. Nella parte inferiore è applicato un pannello integrativo rettangolare a fondo bianco con bordo nero, che riporta l'indicazione '380 m' racchiusa tra due frecce verticali nere orientate verso l'alto (pannello di estesa).",
+    "name": "Segnale di doppia curva, la prima a destra con pannello integrativo di estesa",
+    "description": "Preavvisa una serie di curve pericolose, la prima a destra, specificando tramite il pannello integrativo che il tratto stradale interessato ha una lunghezza (estesa) di 380 metri, a partire da 150 metri dal segnale. Impone di moderare la velocità, mantenere una traiettoria corretta e vieta il sorpasso su strade a doppio senso con una sola corsia per senso di marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

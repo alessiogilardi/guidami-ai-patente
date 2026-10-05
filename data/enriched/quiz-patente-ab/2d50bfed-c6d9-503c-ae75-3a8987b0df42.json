@@ -5,11 +5,11 @@
   "text": "Il delineatore raffigurato ha le punte delle frecce che segnalano le direzioni possibili",
   "correct_answer": true,
   "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
-  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_description": "Delineatore per intersezione a T. Segnale complementare installato frontalmente all'estremità di un'intersezione a forma di \"T\", dove non è possibile proseguire diritto. Le frecce divergenti indicano al conducente la necessità di svoltare obbligatoriamente verso destra o verso sinistra, segnalando le direzioni possibili.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
-    "name": "Delineatore di pericolo (deviazione)",
-    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+    "visual_analysis": "Pannello rettangolare orizzontale montato su due supporti verticali, con bande alternate bianche e nere a forma di freccia (chevron) divergenti dal centro: a sinistra le punte sono orientate verso sinistra, a destra verso destra, formando al centro una figura a rombo.",
+    "name": "Delineatore per intersezione a T",
+    "description": "Segnale complementare installato frontalmente all'estremità di un'intersezione a forma di \"T\", dove non è possibile proseguire diritto. Le frecce divergenti indicano al conducente la necessità di svoltare obbligatoriamente verso destra o verso sinistra, segnalando le direzioni possibili."
   },
   "quiz_metadata": {
     "core_concepts": [

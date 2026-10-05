@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'inizio di un percorso pedonale",
   "correct_answer": false,
   "image": "7d5994527a6ccfadd7ecf69f4ac79bee.jpeg",
-  "image_description": "Segnale di divieto di transito ai pedoni. Il segnale vieta il transito ai pedoni.",
+  "image_description": "Transito vietato ai pedoni. Vieta la circolazione e il transito ai pedoni lungo la strada o la carreggiata su cui è apposto. Non vieta invece il transito ai veicoli di qualsiasi tipo (quali autoveicoli, motocicli, ciclomotori, quadricicli e biciclette). Ha efficacia permanente nelle 24 ore, salvo diversa indicazione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la figura stilizzata di un pedone di colore nero. Questo è il segnale di divieto di transito ai pedoni.",
-    "name": "Segnale di divieto di transito ai pedoni",
-    "description": "Il segnale vieta il transito ai pedoni."
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare, con bordo perimetrale rosso su fondo bianco. Al centro del disco è raffigurata la sagoma stilizzata in colore nero di un pedone in movimento. Non sono presenti pannelli integrativi.",
+    "name": "Transito vietato ai pedoni",
+    "description": "Vieta la circolazione e il transito ai pedoni lungo la strada o la carreggiata su cui è apposto. Non vieta invece il transito ai veicoli di qualsiasi tipo (quali autoveicoli, motocicli, ciclomotori, quadricicli e biciclette). Ha efficacia permanente nelle 24 ore, salvo diversa indicazione."
   },
   "quiz_metadata": {
     "core_concepts": [

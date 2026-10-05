@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga i conducenti a passare a destra di uno spartitraffico",
   "correct_answer": true,
   "image": "f99d748827631a70c04e5d9aeac6183d.jpeg",
-  "image_description": "Presegnalazione di passaggio obbligatorio a destra. Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra.",
+  "image_description": "Segnale di passaggio obbligatorio a destra. Prescrive l'obbligo per i conducenti di superare un ostacolo fisso, uno spartitraffico, un salvagente, un'isola di traffico o un cantiere stradale lasciandolo alla propria sinistra e passando sul lato destro indicato dalla freccia. Non indica una svolta a destra né una direzione obbligatoria a un incrocio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e fondo blu. Al centro del segnale è presente una freccia bianca che punta in basso a destra, con un'inclinazione di circa 45 gradi rispetto all'orizzontale. Questo tipo di segnale rientra nella categoria dei segnali di obbligo. La freccia indica la direzione da seguire, specificando che l'ostacolo o l'area da aggirare deve essere lasciata sulla destra.",
-    "name": "Presegnalazione di passaggio obbligatorio a destra",
-    "description": "Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra."
+    "visual_analysis": "Segnale stradale circolare con fondo blu e bordo perimetrale bianco. Al centro presenta una freccia bianca rettilinea, inclinata diagonalmente verso il basso e orientata verso destra (a circa 45 gradi).",
+    "name": "Segnale di passaggio obbligatorio a destra",
+    "description": "Prescrive l'obbligo per i conducenti di superare un ostacolo fisso, uno spartitraffico, un salvagente, un'isola di traffico o un cantiere stradale lasciandolo alla propria sinistra e passando sul lato destro indicato dalla freccia. Non indica una svolta a destra né una direzione obbligatoria a un incrocio."
   },
   "quiz_metadata": {
     "core_concepts": [

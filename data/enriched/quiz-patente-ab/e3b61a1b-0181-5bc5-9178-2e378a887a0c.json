@@ -5,11 +5,11 @@
   "text": "I pannelli raffigurati hanno tante barre diagonali quanti sono i binari del passaggio a livello",
   "correct_answer": false,
   "image": "763ca110cf7b142f789b6577eb5719b4.jpeg",
-  "image_description": "Pannelli distanziometrici per passaggio a livello. I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri.",
+  "image_description": "Pannelli distanziometrici. Segnalano l'avvicinamento a un passaggio a livello di qualsiasi tipo (con o senza barriere). Vengono posizionati sul lato della strada in sequenza decrescente rispetto al numero di barre: il primo con tre barre è posto a circa 150 metri dall'attraversamento (sotto il segnale di pericolo di passaggio a livello), il secondo a due barre a circa 100 metri e il terzo a una barra a circa 50 metri. Prescrivono di moderare la velocità in vista del pericolo ferroviario.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra tre pannelli rettangolari verticali, disposti uno accanto all'altro. Ciascun pannello presenta delle barre oblique rosse su sfondo bianco. Il pannello più a sinistra ha tre barre oblique, quello centrale ne ha due e quello più a destra ne ha una. Questi pannelli sono noti come pannelli distanziometrici e vengono utilizzati per segnalare la distanza da un pericolo, in questo caso un passaggio a livello. La sequenza e il numero di barre indicano la progressiva vicinanza al passaggio a livello.",
-    "name": "Pannelli distanziometrici per passaggio a livello",
-    "description": "I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri."
+    "visual_analysis": "L'immagine mostra tre pannelli rettangolari verticali a fondo bianco, disposti in sequenza da sinistra verso destra. Il primo pannello reca tre barre oblique di colore rosso; il secondo reca due barre oblique rosse; il terzo reca una singola barra obliqua rossa. L'inclinazione delle barre sale da sinistra verso destra, tipica dell'installazione sul lato destro della carreggiata.",
+    "name": "Pannelli distanziometrici",
+    "description": "Segnalano l'avvicinamento a un passaggio a livello di qualsiasi tipo (con o senza barriere). Vengono posizionati sul lato della strada in sequenza decrescente rispetto al numero di barre: il primo con tre barre è posto a circa 150 metri dall'attraversamento (sotto il segnale di pericolo di passaggio a livello), il secondo a due barre a circa 100 metri e il terzo a una barra a circa 50 metri. Prescrivono di moderare la velocità in vista del pericolo ferroviario."
   },
   "quiz_metadata": {
     "core_concepts": [

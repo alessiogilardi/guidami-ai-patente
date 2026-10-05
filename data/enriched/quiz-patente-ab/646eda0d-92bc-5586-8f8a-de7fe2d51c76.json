@@ -5,11 +5,11 @@
   "text": "Per svoltare a sinistra i veicoli debbono tenersi sul margine destro della carreggiata",
   "correct_answer": false,
   "image": "dff3b1affd4734796911036361dd8cdc.jpeg",
-  "image_description": "Carreggiata a tre corsie per senso di marcia. La carreggiata è divisa in tre corsie per senso di marcia, delimitate da segnaletica orizzontale. Le corsie sono identificate dalle lettere A, B e C. Le corsie A e C sono le corsie esterne, mentre la corsia B è quella centrale. Le linee tratteggiate indicano che è consentito il cambio di corsia.",
+  "image_description": "Carreggiata a tre corsie. Rappresenta una carreggiata suddivisa in tre corsie delimitate da linee tratteggiate. Se la carreggiata è a senso unico di circolazione, i veicoli devono normalmente percorrere la corsia più a destra (A), mentre le altre due (B e C) sono riservate al sorpasso; in condizioni di traffico intenso o in prossimità di incroci regolati, è consentita la circolazione per file parallele.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una vista aerea di una carreggiata stradale. La carreggiata è divisa in tre corsie per senso di marcia, come indicato dalla segnaletica orizzontale. Le corsie sono etichettate con le lettere A, B e C, partendo dal basso verso l'alto. Le corsie A e C sono le corsie esterne, mentre la corsia B è la corsia centrale. Le linee bianche tratteggiate tra le corsie indicano che è consentito il cambio di corsia. Non sono presenti segnali verticali o altri elementi di traffico che possano influenzare la circolazione. La scena rappresenta una strada con più corsie per senso di marcia.",
-    "name": "Carreggiata a tre corsie per senso di marcia",
-    "description": "La carreggiata è divisa in tre corsie per senso di marcia, delimitate da segnaletica orizzontale. Le corsie sono identificate dalle lettere A, B e C. Le corsie A e C sono le corsie esterne, mentre la corsia B è quella centrale. Le linee tratteggiate indicano che è consentito il cambio di corsia."
+    "visual_analysis": "Rappresentazione schematica dall'alto di un tratto di carreggiata rettilineo, delimitato ai bordi superiore e inferiore da strisce continue bianche di margine. La carreggiata è suddivisa internamente in tre corsie parallele tramite due strisce longitudinali discontinue (tratteggiate) bianche. All'estremità sinistra, ciascuna corsia è contrassegnata da una lettera alfabetica in nero maiuscolo: la corsia inferiore è indicata con 'A', quella centrale con 'B' e quella superiore con 'C'. Non sono presenti frecce direzionali né veicoli.",
+    "name": "Carreggiata a tre corsie",
+    "description": "Rappresenta una carreggiata suddivisa in tre corsie delimitate da linee tratteggiate. Se la carreggiata è a senso unico di circolazione, i veicoli devono normalmente percorrere la corsia più a destra (A), mentre le altre due (B e C) sono riservate al sorpasso; in condizioni di traffico intenso o in prossimità di incroci regolati, è consentita la circolazione per file parallele."
   },
   "quiz_metadata": {
     "core_concepts": [

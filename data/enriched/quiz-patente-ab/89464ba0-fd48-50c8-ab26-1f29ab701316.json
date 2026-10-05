@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente ad un'autovettura di sorpassare un motociclo",
   "correct_answer": true,
   "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg",
-  "image_description": "Segnale di divieto di sorpasso. Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua.",
+  "image_description": "Segnale di divieto di sorpasso. Vieta a tutti i veicoli di sorpassare veicoli a motore, eccetto i ciclomotori a due ruote e i motocicli. Consente inoltre di sorpassare i veicoli sprovvisti di motore (come biciclette, carrozze o veicoli a braccia), purché la manovra non comporti l'invasione della corsia opposta in presenza di linea continua. Il divieto si applica anche se la manovra si può compiere senza oltrepassare la striscia continua o entro la propria semicarreggiata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono raffigurati due automobili, una rossa e una nera, affiancate. La presenza delle due automobili, una che precede l'altra, indica un divieto di sorpasso.",
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo rosso e fondo bianco. Al centro sono raffigurate due autovetture affiancate viste da dietro: quella a sinistra è di colore rosso e quella a destra è di colore nero.",
     "name": "Segnale di divieto di sorpasso",
-    "description": "Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua."
+    "description": "Vieta a tutti i veicoli di sorpassare veicoli a motore, eccetto i ciclomotori a due ruote e i motocicli. Consente inoltre di sorpassare i veicoli sprovvisti di motore (come biciclette, carrozze o veicoli a braccia), purché la manovra non comporti l'invasione della corsia opposta in presenza di linea continua. Il divieto si applica anche se la manovra si può compiere senza oltrepassare la striscia continua o entro la propria semicarreggiata."
   },
   "quiz_metadata": {
     "core_concepts": [

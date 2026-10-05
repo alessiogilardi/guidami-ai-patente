@@ -5,11 +5,11 @@
   "text": "Il segnale (A), integrato con il pannello (B), vieta la sosta soltanto nei giorni festivi",
   "correct_answer": true,
   "image": "d768224469a122fc09a78b44058a5095.jpeg",
-  "image_description": "Divieto di sosta con indicazione oraria e giorni festivi. Il segnale A, integrato dal pannello B, indica il divieto di sosta nei giorni festivi dalle ore 8:00 alle 20:00.",
+  "image_description": "Divieto di sosta con pannello integrativo di validità nei giorni festivi dalle 8:00 alle 20:00. L'abbinamento del segnale di divieto di sosta (A) con il pannello integrativo (B) vieta la sosta unicamente nei giorni festivi nella fascia oraria indicata, dalle ore 8:00 alle 20:00. Nei giorni feriali (lavorativi) e nelle ore non comprese nel pannello la sosta è invece consentita. La fermata resta comunque consentita anche durante l'orario di divieto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto, di forma circolare con bordo rosso, sfondo blu e una barra rossa diagonale. Questo è il segnale di 'Divieto di fermata'. Il pannello B è rettangolare e contiene il simbolo di una croce (che indica i giorni festivi) seguito dall'indicazione oraria '8.00 - 20.00'. L'insieme dei due elementi indica una limitazione specifica per la sosta nei giorni festivi e in un determinato intervallo orario. Pertanto, il segnale A, combinato con il pannello B, vieta la sosta nei giorni festivi dalle 8:00 alle 20:00.",
-    "name": "Divieto di sosta con indicazione oraria e giorni festivi",
-    "description": "Il segnale A, integrato dal pannello B, indica il divieto di sosta nei giorni festivi dalle ore 8:00 alle 20:00."
+    "visual_analysis": "L'immagine mostra due elementi contrassegnati da lettere: in alto, contrassegnato dalla lettera A, compare un segnale circolare di divieto con bordo rosso, fondo blu e barra diagonale rossa da sinistra verso destra (segnale di divieto di sosta); in basso, contrassegnato dalla lettera B, è presente un pannello integrativo rettangolare a fondo bianco con bordo nero recante il simbolo di una croce (indicatore di giorni festivi) seguito dall'indicazione oraria '8,00 - 20,00'.",
+    "name": "Divieto di sosta con pannello integrativo di validità nei giorni festivi dalle 8:00 alle 20:00",
+    "description": "L'abbinamento del segnale di divieto di sosta (A) con il pannello integrativo (B) vieta la sosta unicamente nei giorni festivi nella fascia oraria indicata, dalle ore 8:00 alle 20:00. Nei giorni feriali (lavorativi) e nelle ore non comprese nel pannello la sosta è invece consentita. La fermata resta comunque consentita anche durante l'orario di divieto."
   },
   "quiz_metadata": {
     "core_concepts": [

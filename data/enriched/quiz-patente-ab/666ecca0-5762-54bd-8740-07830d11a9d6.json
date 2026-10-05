@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica un'area di sosta nelle vicinanze",
   "correct_answer": false,
   "image": "fd528a3d19f2433f95aea3a08e620b90.jpeg",
-  "image_description": "Officina per veicoli. Il segnale indica la presenza di un'officina meccanica per veicoli nelle vicinanze.",
+  "image_description": "Segnale di assistenza meccanica. Indica la presenza o la vicinanza di un'officina meccanica autorizzata o di un servizio di riparazione per autoveicoli. Può essere integrato con indicazioni di distanza, direzione o orari di apertura.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu scuro e sfondo bianco all'interno. Al centro dello sfondo bianco è presente un pittogramma nero raffigurante una chiave inglese e un cacciavite incrociati, simbolo di un'officina meccanica. Sotto il pittogramma, vi è un pannello integrativo di colore blu scuro, anch'esso rettangolare. Questo segnale appartiene alla categoria dei segnali di indicazione.",
-    "name": "Officina per veicoli",
-    "description": "Il segnale indica la presenza di un'officina meccanica per veicoli nelle vicinanze."
+    "visual_analysis": "Segnale verticale rettangolare con sfondo blu e sottile bordo bianco. Nella metà superiore è presente un riquadro quadrato a fondo bianco che racchiude, in nero, il pittogramma stilizzato di una chiave inglese regolabile orientata verticalmente. La metà inferiore a fondo blu è vuota, predisposta per eventuali indicazioni aggiuntive come distanze o frecce.",
+    "name": "Segnale di assistenza meccanica",
+    "description": "Indica la presenza o la vicinanza di un'officina meccanica autorizzata o di un servizio di riparazione per autoveicoli. Può essere integrato con indicazioni di distanza, direzione o orari di apertura."
   },
   "quiz_metadata": {
     "core_concepts": [

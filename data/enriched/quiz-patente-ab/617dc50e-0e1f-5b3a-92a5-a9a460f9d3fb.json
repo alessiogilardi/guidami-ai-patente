@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preavvisa la possibilità di incontrare una caserma dei vigili del fuoco",
   "correct_answer": false,
   "image": "ca7a6476170f347036d9ae3447b28bba.jpeg",
-  "image_description": "Divieto di segnalazioni acustiche. Il segnale vieta l'uso del clacson.",
+  "image_description": "Segnale di divieto di segnalazioni acustiche. Segnale di divieto che prescrive di non azionare avvisatori acustici (clacson), salvo situazioni di effettivo e immediato pericolo o nel caso in cui si stiano trasportando feriti o persone gravemente ammalate verso un luogo di cura.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è presente il pittogramma di un clacson stilizzato, barrato da una linea diagonale rossa che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di 'Divieto di segnalazioni acustiche'.",
-    "name": "Divieto di segnalazioni acustiche",
-    "description": "Il segnale vieta l'uso del clacson."
+    "visual_analysis": "Segnale stradale verticale circolare con bordo rosso, fondo bianco e una barra diagonale rossa discendente da sinistra a destra che sbarra il disegno nero di una tromba/segnalatore acustico posto al centro.",
+    "name": "Segnale di divieto di segnalazioni acustiche",
+    "description": "Segnale di divieto che prescrive di non azionare avvisatori acustici (clacson), salvo situazioni di effettivo e immediato pericolo o nel caso in cui si stiano trasportando feriti o persone gravemente ammalate verso un luogo di cura."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un tratto di strada con banchina non praticabile",
   "correct_answer": true,
   "image": "23e99b9a1141edf7ea8cb1fe5e054ca1.jpeg",
-  "image_description": "Segnale di pericolo - Banchina pericolosa. Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione.",
+  "image_description": "Segnale di banchina pericolosa. Preannuncia un tratto di strada con banchina laterale cedevole o non praticabile, con conseguente pericolo di sprofondamento o ribaltamento nella cunetta. Impone di moderare la velocità ed evitare di accostarsi eccessivamente al margine destro della carreggiata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un bordo rosso triangolare con sfondo bianco. Al centro del segnale è raffigurato un veicolo (un'automobile) la cui ruota posteriore destra sta scendendo da una banchina rialzata, finendo su un fondo irregolare composto da detriti o pietrisco. La ruota è inclinata, suggerendo un potenziale cedimento o instabilità della banchina.",
-    "name": "Segnale di pericolo - Banchina pericolosa",
-    "description": "Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione."
+    "visual_analysis": "Segnale di pericolo di forma triangolare con vertice rivolto verso l'alto, caratterizzato da un bordo rosso e fondo bianco. All'interno è raffigurata la sagoma posteriore di un'autovettura inclinata verso destra: le ruote di sinistra poggiano su una linea orizzontale che rappresenta la carreggiata, mentre quelle di destra scendono su un dislivello con frammenti e pietrisco che indicano il cedimento del terreno.",
+    "name": "Segnale di banchina pericolosa",
+    "description": "Preannuncia un tratto di strada con banchina laterale cedevole o non praticabile, con conseguente pericolo di sprofondamento o ribaltamento nella cunetta. Impone di moderare la velocità ed evitare di accostarsi eccessivamente al margine destro della carreggiata."
   },
   "quiz_metadata": {
     "core_concepts": [

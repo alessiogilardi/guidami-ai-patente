@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un'area portuale",
   "correct_answer": false,
   "image": "d4c7c0853cebe7987cda4a4b7f7c96e8.jpeg",
-  "image_description": "Segnale di pericolo: ponte mobile. Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive.",
+  "image_description": "Segnale di ponte mobile. Preavvisa una struttura stradale mobile (ponte mobile o levatoio) azionabile per il passaggio di natanti, con conseguente temporanea interruzione del transito. Può essere integrato con pannelli distanziometrici a barre rosse oblique e con un pannello indicante gli orari di manovra o funzionamento; impone di arrestarsi qualora siano attivate le luci rosse lampeggianti o chiuse le eventuali barriere.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un ponte mobile, con una sezione sollevata che permette il passaggio di imbarcazioni sotto di esso. Le due sponde del ponte sono visibili, così come le onde che indicano la presenza di acqua. Il segnale è isolato, senza altri elementi di contesto stradale o pannelli integrativi visibili.",
-    "name": "Segnale di pericolo: ponte mobile",
-    "description": "Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive."
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice rivolto verso l'alto, caratterizzato da bordo rosso e fondo bianco. All'interno è raffigurato in nero il pittogramma di un ponte mobile, con la campata sinistra sollevata sopra uno specchio d'acqua stilizzato con linee ondulate tra due spalle di supporto.",
+    "name": "Segnale di ponte mobile",
+    "description": "Preavvisa una struttura stradale mobile (ponte mobile o levatoio) azionabile per il passaggio di natanti, con conseguente temporanea interruzione del transito. Può essere integrato con pannelli distanziometrici a barre rosse oblique e con un pannello indicante gli orari di manovra o funzionamento; impone di arrestarsi qualora siano attivate le luci rosse lampeggianti o chiuse le eventuali barriere."
   },
   "quiz_metadata": {
     "core_concepts": [

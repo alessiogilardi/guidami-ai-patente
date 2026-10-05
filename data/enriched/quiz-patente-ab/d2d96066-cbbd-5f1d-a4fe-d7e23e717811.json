@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un bivio per l'aeroporto",
   "correct_answer": false,
   "image": "cf70cb24dd929f5727132a64153fad7a.jpeg",
-  "image_description": "Segnale di pericolo - Aeroporto. Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota.",
+  "image_description": "Segnale di aeromobili. Preannuncia la vicinanza di piste per l'atterraggio e il decollo o aeroporti, segnalando il possibile pericolo dovuto al sorvolo a bassa quota di aeromobili, che possono causare forte rumore improvviso o abbagliamento temporaneo per chi guida.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurato il pittogramma di un aeroplano stilizzato in nero, in fase di volo. Questo segnale indica la prossimità di un aeroporto o di aree dove possono verificarsi voli a bassa quota.",
-    "name": "Segnale di pericolo - Aeroporto",
-    "description": "Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota."
+    "visual_analysis": "Segnale stradale di pericolo triangolare con vertice verso l'alto, caratterizzato da un bordo perimetrale rosso e fondo bianco. Al centro è raffigurata la sagoma nera stilizzata di un aeroplano visto dall'alto, orientato diagonalmente.",
+    "name": "Segnale di aeromobili",
+    "description": "Preannuncia la vicinanza di piste per l'atterraggio e il decollo o aeroporti, segnalando il possibile pericolo dovuto al sorvolo a bassa quota di aeromobili, che possono causare forte rumore improvviso o abbagliamento temporaneo per chi guida."
   },
   "quiz_metadata": {
     "core_concepts": [

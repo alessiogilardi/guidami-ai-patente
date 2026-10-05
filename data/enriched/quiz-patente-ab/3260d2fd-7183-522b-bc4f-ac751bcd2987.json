@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica il nome del fiume in vicinanza del ponte che lo attraversa",
   "correct_answer": true,
   "image": "44dba945109a45f9fb4444b61104ef3a.jpeg",
-  "image_description": "Pannello integrativo di nome di località (fiume). Il segnale indica la presenza del fiume Arno. Il pannello integrativo, posto sotto un segnale di pericolo generico (non visibile in questo estratto), fornisce informazioni specifiche sul nome del fiume che si sta per attraversare con un ponte.",
+  "image_description": "Segnale di localizzazione di un corso d'acqua. Segnale di indicazione che identifica e localizza un corso d'acqua, posto in prossimità del ponte o del viadotto che lo attraversa, indicandone la denominazione specifica. Non segnala pericoli di allagamento, mareggiate o curve.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli rettangolari sovrapposti. Il pannello superiore ha uno sfondo marrone e raffigura un pittogramma stilizzato di onde blu su sfondo bianco, che rappresenta un corso d'acqua. Il pannello inferiore è bianco con scritte nere che recitano \"fiume Arno\". Questo secondo pannello è un pannello integrativo che fornisce una specificazione al segnale principale (non visibile) a cui è abbinato. In questo caso, specifica che il corso d'acqua rappresentato dal pittogramma è il fiume Arno.",
-    "name": "Pannello integrativo di nome di località (fiume)",
-    "description": "Il segnale indica la presenza del fiume Arno. Il pannello integrativo, posto sotto un segnale di pericolo generico (non visibile in questo estratto), fornisce informazioni specifiche sul nome del fiume che si sta per attraversare con un ponte."
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari sovrapposti: quello superiore a fondo marrone reca il simbolo stilizzato di onde d'acqua blu su fondo marrone bordato di bianco; quello inferiore a fondo bianco con bordo nero reca l'iscrizione in caratteri neri 'fiume Arno'.",
+    "name": "Segnale di localizzazione di un corso d'acqua",
+    "description": "Segnale di indicazione che identifica e localizza un corso d'acqua, posto in prossimità del ponte o del viadotto che lo attraversa, indicandone la denominazione specifica. Non segnala pericoli di allagamento, mareggiate o curve."
   },
   "quiz_metadata": {
     "core_concepts": [

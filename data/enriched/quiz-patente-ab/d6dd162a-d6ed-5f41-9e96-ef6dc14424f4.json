@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito nella fascia oraria indicata, dei giorni lavorativi",
   "correct_answer": true,
   "image": "31aa0305f3629a75a7d1e6cc5e62a683.jpeg",
-  "image_description": "Divieto di transito con pannello integrativo di orario e categoria (lavoratori). Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle 8:00 alle 20:00. Il pittogramma del pannello raffigura un piccone e un martello, indicando che il divieto si applica ai veicoli che trasportano materiali o che sono impiegati in lavori.",
+  "image_description": "Divieto di transito con pannello integrativo di fascia oraria per i giorni lavorativi. Vieta la circolazione a tutti i veicoli in entrambi i sensi di marcia esclusivamente nei giorni lavorativi (feriali) all'interno della fascia oraria indicata (dalle 8:00 alle 20:00); il transito è pertanto consentito nelle restanti ore e per l'intera giornata nei giorni festivi.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito (cerchio rosso con sfondo bianco) posto sopra un pannello rettangolare. Il pannello integrativo contiene un pittogramma che rappresenta un piccone e un martello incrociati, seguito dall'indicazione oraria \"8,00 - 20,00\". Questo pannello specifica le condizioni di applicazione del segnale di divieto.",
-    "name": "Divieto di transito con pannello integrativo di orario e categoria (lavoratori)",
-    "description": "Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle 8:00 alle 20:00. Il pittogramma del pannello raffigura un piccone e un martello, indicando che il divieto si applica ai veicoli che trasportano materiali o che sono impiegati in lavori."
+    "visual_analysis": "L'immagine mostra un segnale di prescrizione composto da un cartello circolare principale e da un pannello integrativo rettangolare posto al di sotto. Il cartello superiore presenta fondo bianco bordato di rosso, privo di simboli interni (segnale di divieto di transito). Il pannello integrativo inferiore, a fondo bianco con bordo nero, riporta a sinistra il simbolo nero di due martelli incrociati (indicante i giorni lavorativi o feriali) e a destra l'indicazione della fascia oraria '8,00 - 20,00'.",
+    "name": "Divieto di transito con pannello integrativo di fascia oraria per i giorni lavorativi",
+    "description": "Vieta la circolazione a tutti i veicoli in entrambi i sensi di marcia esclusivamente nei giorni lavorativi (feriali) all'interno della fascia oraria indicata (dalle 8:00 alle 20:00); il transito è pertanto consentito nelle restanti ore e per l'intera giornata nei giorni festivi."
   },
   "quiz_metadata": {
     "core_concepts": [

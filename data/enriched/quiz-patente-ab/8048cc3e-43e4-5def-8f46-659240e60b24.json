@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica una farmacia",
   "correct_answer": false,
   "image": "48c50da3b91a82e86891d676bf735005.jpeg",
-  "image_description": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra. Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra.",
+  "image_description": "Segnale di pronto soccorso con freccia direzionale. Segnale di indicazione e servizio utile che indica la direzione o l'accesso da seguire per raggiungere l'ingresso di un posto di pronto soccorso medico.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo bianco e sfondo bianco. Nella parte superiore è presente un riquadro bianco con all'interno una croce greca rossa, simbolo di pronto soccorso medico. Sotto questo riquadro, vi è una freccia nera orizzontale che punta verso destra. L'insieme dei simboli indica la direzione da seguire per raggiungere un pronto soccorso medico.",
-    "name": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra",
-    "description": "Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra."
+    "visual_analysis": "Segnale stradale rettangolare verticale a fondo bianco contornato da un bordo sottile nero. All'interno, nella metà superiore, è presente un riquadro con angoli smussati contenente una croce greca di colore rosso (simbolo del pronto soccorso). Nella metà inferiore è visibile una freccia direzionale nera orizzontale rivolta verso destra.",
+    "name": "Segnale di pronto soccorso con freccia direzionale",
+    "description": "Segnale di indicazione e servizio utile che indica la direzione o l'accesso da seguire per raggiungere l'ingresso di un posto di pronto soccorso medico."
   },
   "quiz_metadata": {
     "core_concepts": [

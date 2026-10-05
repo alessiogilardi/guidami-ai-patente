@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine dell'area destinata al parcheggio",
   "correct_answer": true,
   "image": "95160ffe03933827ece06c1f0c7547f2.jpeg",
-  "image_description": "Parcheggio con pannello integrativo di direzione destra. Il segnale indica la presenza di un parcheggio e il pannello integrativo indica che il parcheggio si trova alla destra della posizione del segnale.",
+  "image_description": "Segnale di parcheggio con pannello integrativo di fine. Preavvisa o indica il punto in cui termina la zona o l'area autorizzata e riservata alla sosta dei veicoli (parcheggio). Oltre tale segnale non è più consentito fruire delle condizioni o della regolamentazione specifica previste per quell'area di parcheggio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastante un pannello rettangolare bianco con una freccia nera che punta verso destra. Questo è un segnale di indicazione con un pannello integrativo di direzione.",
-    "name": "Parcheggio con pannello integrativo di direzione destra",
-    "description": "Il segnale indica la presenza di un parcheggio e il pannello integrativo indica che il parcheggio si trova alla destra della posizione del segnale."
+    "visual_analysis": "L'immagine mostra un segnale composito costituito dal segnale di 'Parcheggio' (quadrato a fondo blu con la lettera 'P' maiuscola bianca al centro) abbinato inferiormente a un pannello integrativo rettangolare a fondo bianco con bordo nero, recante una freccia orizzontale nera orientata verso destra, indicante la fine della validità o dell'estensione dell'area.",
+    "name": "Segnale di parcheggio con pannello integrativo di fine",
+    "description": "Preavvisa o indica il punto in cui termina la zona o l'area autorizzata e riservata alla sosta dei veicoli (parcheggio). Oltre tale segnale non è più consentito fruire delle condizioni o della regolamentazione specifica previste per quell'area di parcheggio."
   },
   "quiz_metadata": {
     "core_concepts": [

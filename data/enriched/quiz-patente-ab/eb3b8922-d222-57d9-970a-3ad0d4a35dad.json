@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito a veicoli di lunghezza superiore a quella indicata",
   "correct_answer": true,
   "image": "ccc2a316fd9a2a3cb2ed8e5c89134371.jpeg",
-  "image_description": "Divieto di transito per veicoli di lunghezza superiore a 10 metri. Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri.",
+  "image_description": "Transito vietato ai veicoli o complessi di veicoli di lunghezza superiore a 10 metri. Segnale di divieto che prescrive il divieto di transito a tutti i veicoli o complessi di veicoli (inclusi autobus, autosnodati, autotreni e autovetture che trainano rimorchi o caravan) aventi una lunghezza complessiva superiore a quella indicata (10 metri). Consente il transito ai veicoli o complessi di veicoli lunghi fino a 10 metri compresi. Ha validità permanente (giorno e notte) e si applica sia ai veicoli per trasporto di persone che di merci. Non riguarda il distanziamento minimo di sicurezza tra veicoli né riserva aree di sosta.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il profilo di un autocarro in nero. Sotto l'autocarro, una freccia bidirezionale indica la lunghezza di 10 metri. Questo segnale indica un divieto basato sulla lunghezza del veicolo.",
-    "name": "Divieto di transito per veicoli di lunghezza superiore a 10 metri",
-    "description": "Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri."
+    "visual_analysis": "Segnale stradale verticale di forma circolare con bordo rosso e fondo bianco. Al centro presenta la sagoma nera di profilo di un autocarro; al di sotto di esso è riportata l'indicazione numerica '10 m' posta tra due frecce orizzontali nere divergenti rivolte verso l'esterno.",
+    "name": "Transito vietato ai veicoli o complessi di veicoli di lunghezza superiore a 10 metri",
+    "description": "Segnale di divieto che prescrive il divieto di transito a tutti i veicoli o complessi di veicoli (inclusi autobus, autosnodati, autotreni e autovetture che trainano rimorchi o caravan) aventi una lunghezza complessiva superiore a quella indicata (10 metri). Consente il transito ai veicoli o complessi di veicoli lunghi fino a 10 metri compresi. Ha validità permanente (giorno e notte) e si applica sia ai veicoli per trasporto di persone che di merci. Non riguarda il distanziamento minimo di sicurezza tra veicoli né riserva aree di sosta."
   },
   "quiz_metadata": {
     "core_concepts": [

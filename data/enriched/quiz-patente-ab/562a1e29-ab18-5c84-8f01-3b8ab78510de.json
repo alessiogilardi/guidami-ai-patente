@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia la fine del divieto di sosta",
   "correct_answer": false,
   "image": "2d9d175d5a8ebb46c59508905f6a8ae4.jpeg",
-  "image_description": "Segnale di divieto di fermata. Il segnale raffigurato vieta la fermata, sia volontaria che per la salita/discesa di passeggeri, per tutti i veicoli. Il divieto è valido 24 ore su 24, salvo diversa indicazione tramite pannelli integrativi.",
+  "image_description": "Segnale di divieto di fermata. Vieta sia la sosta sia qualsiasi fermata volontaria del veicolo lungo il tratto stradale interessato, anche per la salita o discesa di passeggeri e per qualsiasi categoria di veicolo. In assenza di pannelli integrativi con orari specifici, ha validità permanente 24 ore su 24 (anche nei centri abitati) e comporta automaticamente la rimozione forzata del veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una croce diagonale rossa. Questo è il segnale di divieto di fermata. Non sono presenti pannelli integrativi.",
+    "visual_analysis": "Segnale stradale verticale di prescrizione (divieto), di forma circolare, con bordo perimetrale rosso, sfondo blu scuro e due barre diagonali rosse bordate di bianco che si incrociano al centro a forma di 'X'.",
     "name": "Segnale di divieto di fermata",
-    "description": "Il segnale raffigurato vieta la fermata, sia volontaria che per la salita/discesa di passeggeri, per tutti i veicoli. Il divieto è valido 24 ore su 24, salvo diversa indicazione tramite pannelli integrativi."
+    "description": "Vieta sia la sosta sia qualsiasi fermata volontaria del veicolo lungo il tratto stradale interessato, anche per la salita o discesa di passeggeri e per qualsiasi categoria di veicolo. In assenza di pannelli integrativi con orari specifici, ha validità permanente 24 ore su 24 (anche nei centri abitati) e comporta automaticamente la rimozione forzata del veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

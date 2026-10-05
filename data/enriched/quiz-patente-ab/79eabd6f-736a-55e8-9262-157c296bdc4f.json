@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vige, nei centri abitati, dalle ore 8.00 alle ore 20.00",
   "correct_answer": false,
   "image": "2c1662a4924d2164fcd5f9efc31f87ae.jpeg",
-  "image_description": "Segnale di divieto di transito per veicoli a trazione animale. Il segnale vieta il transito ai veicoli a trazione animale.",
+  "image_description": "Divieto di transito ai veicoli a trazione animale. Vieta la circolazione a tutti i veicoli a trazione animale, siano essi destinati al trasporto di persone (come carrozze) o di merci (come carri), trainati da cavalli, asini, muli o altri animali da tiro, indipendentemente dal tipo di ruote (gommate o cerchiate). Consente invece il transito a tutte le altre categorie di veicoli, inclusi autoveicoli, motocicli, velocipedi e veicoli a braccia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un cavallo che traina una carrozza, con una persona seduta sulla carrozza. Il pittogramma è nero. Questo segnale indica un divieto specifico.",
-    "name": "Segnale di divieto di transito per veicoli a trazione animale",
-    "description": "Il segnale vieta il transito ai veicoli a trazione animale."
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo rosso e fondo bianco. Al centro compare, in colore nero, la sagoma stilizzata di un quadrupede (cavallo/animale da tiro) che traina un carro a due ruote con sopra un conducente seduto.",
+    "name": "Divieto di transito ai veicoli a trazione animale",
+    "description": "Vieta la circolazione a tutti i veicoli a trazione animale, siano essi destinati al trasporto di persone (come carrozze) o di merci (come carri), trainati da cavalli, asini, muli o altri animali da tiro, indipendentemente dal tipo di ruote (gommate o cerchiate). Consente invece il transito a tutte le altre categorie di veicoli, inclusi autoveicoli, motocicli, velocipedi e veicoli a braccia."
   },
   "quiz_metadata": {
     "core_concepts": [

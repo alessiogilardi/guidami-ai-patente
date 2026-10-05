@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato permette la sosta dei ciclomotori",
   "correct_answer": false,
   "image": "d4b28695e6068e452924476599e75981.jpeg",
-  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_description": "Divieto di sosta. Prescrive il divieto di sosta sul lato della strada su cui è installato, a partire dal segnale fino alla prima intersezione successiva (salvo ripetizione o pannelli di fine divieto), ma consente comunque la fermata temporanea. Nei centri abitati ha validità ordinaria dalle ore 8:00 alle ore 20:00 salvo diversa indicazione integrativa, mentre sulle strade extraurbane ha efficacia permanente per l'intera giornata (0-24).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
-    "name": "Segnale di divieto di sosta",
-    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+    "visual_analysis": "Segnale stradale verticale di prescrizione (divieto), di forma circolare. Presenta un fondo blu, una spessa bordatura perimetrale rossa separata da un sottile filetto bianco, e una singola barra diagonale rossa (anch'essa bordata di bianco) che attraversa il disco dall'alto a sinistra verso il basso a destra. Non sono presenti scritte, simboli aggiuntivi né pannelli integrativi.",
+    "name": "Divieto di sosta",
+    "description": "Prescrive il divieto di sosta sul lato della strada su cui è installato, a partire dal segnale fino alla prima intersezione successiva (salvo ripetizione o pannelli di fine divieto), ma consente comunque la fermata temporanea. Nei centri abitati ha validità ordinaria dalle ore 8:00 alle ore 20:00 salvo diversa indicazione integrativa, mentre sulle strade extraurbane ha efficacia permanente per l'intera giornata (0-24)."
   },
   "quiz_metadata": {
     "core_concepts": [

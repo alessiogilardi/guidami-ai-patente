@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato è necessario moderare la velocità",
   "correct_answer": true,
   "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
-  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_description": "Passaggio a livello con barriere o con semibarriere. Preannuncia un passaggio a livello munito di barriere o semibarriere, posto di norma a 150 metri dai binari. Impone di moderare la velocità per essere pronti ad arrestarsi se le barriere sono chiuse o in movimento, se è attivo il segnale acustico oppure se sono in funzione le luci rosse (fissa per le barriere, due lampeggianti per le semibarriere). Vieta la sosta e la fermata in prossimità e in corrispondenza del passaggio a livello, nonché l'impegno dei binari se il traffico impedisce di sgombrarli tempestivamente.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
-    "name": "Segnale di passaggio a livello con barriere o semibarriere",
-    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+    "visual_analysis": "Segnale di pericolo triangolare con vertice rivolto verso l'alto, caratterizzato da bordo perimetrale rosso su fondo bianco. Al centro è rappresentato il pittogramma nero di una cancellata (staccionata con tre elementi verticali a punta e due traversi orizzontali).",
+    "name": "Passaggio a livello con barriere o con semibarriere",
+    "description": "Preannuncia un passaggio a livello munito di barriere o semibarriere, posto di norma a 150 metri dai binari. Impone di moderare la velocità per essere pronti ad arrestarsi se le barriere sono chiuse o in movimento, se è attivo il segnale acustico oppure se sono in funzione le luci rosse (fissa per le barriere, due lampeggianti per le semibarriere). Vieta la sosta e la fermata in prossimità e in corrispondenza del passaggio a livello, nonché l'impegno dei binari se il traffico impedisce di sgombrarli tempestivamente."
   },
   "quiz_metadata": {
     "core_concepts": [

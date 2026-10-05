@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preavvisa una zona di preselezione con due destinazioni",
   "correct_answer": true,
   "image": "99ca3fb32d6f71b7fc248b75bb160140.jpeg",
-  "image_description": "Preselezione di corsia. Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione.",
+  "image_description": "Segnale di preselezione extraurbano. Preavvisa una zona di preselezione su strada extraurbana a due corsie. Indica ai conducenti di incanalarsi per tempo nella corsia corrispondente alla propria destinazione: la corsia di sinistra per svoltare verso Bari, la corsia di destra per proseguire diritto verso Pescara. È posizionato nel tratto in cui le corsie sono ancora separate da striscia discontinua ed è quindi ancora consentito cambiare corsia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di preselezione di corsia di colore blu con scritte bianche e frecce bianche. Il segnale è diviso verticalmente da una linea tratteggiata. A sinistra, una freccia curva indica la direzione sinistra con la scritta \"BARI\". A destra, una freccia dritta indica la direzione dritta con la scritta \"PESCARA\". Il segnale indica le direzioni consentite per ciascuna corsia.",
-    "name": "Preselezione di corsia",
-    "description": "Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione."
+    "visual_analysis": "Segnale di indicazione a forma rettangolare con fondo blu e bordo bianco. Al centro presenta una linea tratteggiata verticale bianca che delimita due corsie di marcia. La corsia di sinistra riporta la scritta bianca 'BARI' e una freccia bianca orientata con svolta a sinistra. La corsia di destra riporta la scritta bianca 'PESCARA' e una freccia bianca rivolta verso l'alto (direzione diritta).",
+    "name": "Segnale di preselezione extraurbano",
+    "description": "Preavvisa una zona di preselezione su strada extraurbana a due corsie. Indica ai conducenti di incanalarsi per tempo nella corsia corrispondente alla propria destinazione: la corsia di sinistra per svoltare verso Bari, la corsia di destra per proseguire diritto verso Pescara. È posizionato nel tratto in cui le corsie sono ancora separate da striscia discontinua ed è quindi ancora consentito cambiare corsia."
   },
   "quiz_metadata": {
     "core_concepts": [

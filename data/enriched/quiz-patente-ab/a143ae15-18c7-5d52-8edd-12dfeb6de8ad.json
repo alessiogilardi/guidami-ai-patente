@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può essere abbinato ad un pannello che indica la distanza dal punto in cui si ha l'aumento di corsia",
   "correct_answer": true,
   "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
-  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_description": "Segnale di variazione corsie disponibili (aumento da una a due corsie). Segnale di indicazione posto su strade extraurbane (a fondo blu) che preavvisa un aumento delle corsie di marcia disponibili nello stesso senso, passando da una a due corsie mediante l'apertura di una nuova corsia sul lato destro. Può essere integrato con un pannello che indica la distanza dal punto in cui si verifica l'aumento.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
-    "name": "Inizio di corsia o deviazione (preavviso)",
-    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+    "visual_analysis": "Cartello quadrato a fondo blu con sottile bordo bianco. Al suo interno sono raffigurate due frecce bianche verticali: la freccia di sinistra prosegue diritta verso l'alto, mentre la freccia di destra si diparte con una curva diagonale dal centro verso destra per poi allinearsi parallelamente verso l'alto, indicando l'apertura di una corsia aggiuntiva sulla destra.",
+    "name": "Segnale di variazione corsie disponibili (aumento da una a due corsie)",
+    "description": "Segnale di indicazione posto su strade extraurbane (a fondo blu) che preavvisa un aumento delle corsie di marcia disponibili nello stesso senso, passando da una a due corsie mediante l'apertura di una nuova corsia sul lato destro. Può essere integrato con un pannello che indica la distanza dal punto in cui si verifica l'aumento."
   },
   "quiz_metadata": {
     "core_concepts": [

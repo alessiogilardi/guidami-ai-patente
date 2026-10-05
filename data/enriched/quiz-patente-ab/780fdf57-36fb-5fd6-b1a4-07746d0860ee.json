@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è un segnale di direzione obbligatoria",
   "correct_answer": true,
   "image": "d68ea45a3261ce3eb86cf26c76df3f6d.jpeg",
-  "image_description": "Obbligo di proseguire diritto o svoltare a destra. Il segnale impone di proseguire diritto o di svoltare a destra.",
+  "image_description": "Direzione obbligatoria a destra. Segnale di prescrizione (obbligo) che impone ai conducenti, in corrispondenza o prima di un'intersezione, l'obbligo di svoltare a destra. Indica l'unica direzione consentita, vietando di proseguire diritto o di svoltare a sinistra.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
-    "name": "Obbligo di proseguire diritto o svoltare a destra",
-    "description": "Il segnale impone di proseguire diritto o di svoltare a destra."
+    "visual_analysis": "Segnale stradale verticale di forma circolare a fondo blu con bordo bianco, contenente al centro una freccia orizzontale bianca orientata verso destra.",
+    "name": "Direzione obbligatoria a destra",
+    "description": "Segnale di prescrizione (obbligo) che impone ai conducenti, in corrispondenza o prima di un'intersezione, l'obbligo di svoltare a destra. Indica l'unica direzione consentita, vietando di proseguire diritto o di svoltare a sinistra."
   },
   "quiz_metadata": {
     "core_concepts": [

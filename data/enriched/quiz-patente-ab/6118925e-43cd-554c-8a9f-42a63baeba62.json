@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine del divieto di sorpasso per veicoli merci di massa a pieno carico superiore a 3,5 tonnellate",
   "correct_answer": true,
   "image": "28ff9501e70957cfba029d212ffefb79.jpeg",
-  "image_description": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture.",
+  "image_description": "Fine del divieto di sorpasso per i veicoli di massa a pieno carico superiore a 3,5 t. Segnale di fine prescrizione che indica la cessazione del divieto di sorpasso precedentemente imposto ai veicoli adibiti al trasporto di merci di massa a pieno carico superiore a 3,5 tonnellate. Dal punto in cui è posto il segnale, tali veicoli (inclusi autocarri, autotreni e autoarticolati di massa superiore a 3,5 t) possono nuovamente effettuare il sorpasso, sempre nel rispetto delle norme generali sulla circolazione e della segnaletica orizzontale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che va dall'angolo in alto a sinistra all'angolo in basso a destra. Alla sinistra della banda nera è raffigurato un autotreno, mentre alla destra è raffigurata un'autovettura. Il segnale è di tipo \"fine prescrizione\".",
-    "name": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati",
-    "description": "Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture."
+    "visual_analysis": "Segnale stradale circolare a fondo bianco bordato di nero, barrato diagonalmente da una fascia nera discendente da destra a sinistra. All'interno del disco sono rappresentate due sagome di veicoli in colore scuro: a sinistra la vista posteriore di un autocarro (veicolo merci) e a destra la vista posteriore di un'autovettura.",
+    "name": "Fine del divieto di sorpasso per i veicoli di massa a pieno carico superiore a 3,5 t",
+    "description": "Segnale di fine prescrizione che indica la cessazione del divieto di sorpasso precedentemente imposto ai veicoli adibiti al trasporto di merci di massa a pieno carico superiore a 3,5 tonnellate. Dal punto in cui è posto il segnale, tali veicoli (inclusi autocarri, autotreni e autoarticolati di massa superiore a 3,5 t) possono nuovamente effettuare il sorpasso, sempre nel rispetto delle norme generali sulla circolazione e della segnaletica orizzontale."
   },
   "quiz_metadata": {
     "core_concepts": [

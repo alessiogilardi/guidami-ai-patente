@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato, all'incrocio, ci dà la precedenza sui veicoli provenienti sia da destra che da sinistra",
   "correct_answer": true,
   "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
-  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_description": "Segnale di intersezione con diritto di precedenza. Preannuncia un incrocio a raso con strade di minore importanza provenienti da destra e da sinistra, rispetto alle quali si ha il diritto di precedenza. Pur conferendo la precedenza, impone di rallentare per verificare che i veicoli convergenti arrestino la marcia o cedano il passo, e perde la sua efficacia in presenza di un agente che regola il traffico.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
-    "name": "Incrocio con strada senza diritto di precedenza",
-    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+    "visual_analysis": "Segnale di pericolo triangolare con vertice verso l'alto, con bordo rosso e fondo bianco. Al centro compare il simbolo nero di una freccia verticale larga e sagomata, intersecata orizzontalmente da una barra nera più sottile che si estende su entrambi i lati a formare una croce.",
+    "name": "Segnale di intersezione con diritto di precedenza",
+    "description": "Preannuncia un incrocio a raso con strade di minore importanza provenienti da destra e da sinistra, rispetto alle quali si ha il diritto di precedenza. Pur conferendo la precedenza, impone di rallentare per verificare che i veicoli convergenti arrestino la marcia o cedano il passo, e perde la sua efficacia in presenza di un agente che regola il traffico."
   },
   "quiz_metadata": {
     "core_concepts": [

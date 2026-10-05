@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato, in autostrada, viene posto a una distanza maggiore di 250 metri",
   "correct_answer": false,
   "image": "1ae0a5f9e3fc82a6a91480e94779a5a7.jpeg",
-  "image_description": "Croce di Sant'Andrea (preavviso di incrocio). Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale.",
+  "image_description": "Segnale di intersezione con precedenza a destra. Preannuncia un incrocio a raso nel quale si applica la regola generale della precedenza a destra. Impone di moderare particolarmente la velocità e di accertarsi che non provengano veicoli dalla propria destra ai quali è obbligatorio dare la precedenza, mentre si ha la precedenza sui veicoli provenienti da sinistra. Non è presente su strade con diritto di precedenza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero a forma di croce a quattro bracci uguali (tipo X), che rappresenta un incrocio. Questo è il segnale di preavviso di incrocio.",
-    "name": "Croce di Sant'Andrea (preavviso di incrocio)",
-    "description": "Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale."
+    "visual_analysis": "Segnale stradale triangolare con vertice verso l'alto, bordato di rosso su sfondo bianco. Al centro è raffigurato un simbolo nero a forma di croce obliqua (X) con bracci di uguale lunghezza e spessore.",
+    "name": "Segnale di intersezione con precedenza a destra",
+    "description": "Preannuncia un incrocio a raso nel quale si applica la regola generale della precedenza a destra. Impone di moderare particolarmente la velocità e di accertarsi che non provengano veicoli dalla propria destra ai quali è obbligatorio dare la precedenza, mentre si ha la precedenza sui veicoli provenienti da sinistra. Non è presente su strade con diritto di precedenza."
   },
   "quiz_metadata": {
     "core_concepts": [

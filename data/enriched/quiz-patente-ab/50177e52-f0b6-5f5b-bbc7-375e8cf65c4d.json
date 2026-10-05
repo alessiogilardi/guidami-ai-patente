@@ -5,11 +5,11 @@
   "text": "La striscia trasversale continua in figura indica il punto dove occorre arrestarsi",
   "correct_answer": true,
   "image": "8255d00faa2a803b831c82bee08a4aeb.jpeg",
-  "image_description": "Strisce di arresto con segnale di STOP. La striscia trasversale continua bianca, denominata strisce di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi nella strada principale. La scritta \"STOP\" sull'asfalto rafforza l'obbligo di arresto. La strada principale presenta una corsia di immissione separata da una linea bianca continua.",
+  "image_description": "Striscia trasversale continua di arresto con iscrizione STOP. Indica l'obbligo per i conducenti di arrestarsi in corrispondenza della striscia trasversale continua prima di immettersi nell'incrocio e di dare la precedenza ai veicoli che transitano sulla strada trasversale. È abbinata al segnale verticale di 'Fermarsi e dare precedenza' (STOP) e la linea non deve essere superata dal veicolo durante la sosta di arresto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una intersezione stradale con segnaletica orizzontale. È presente una striscia trasversale continua bianca sull'asfalto, che delimita una zona di arresto. Sopra questa striscia, è dipinta la scritta \"STOP\" in bianco. La strada che si immette è una strada secondaria che termina su una strada principale, la quale presenta una corsia di immissione separata da una linea bianca continua. Sulla destra della corsia di immissione, si nota un piccolo segnale verticale di pericolo (triangolo con bordo rosso e sfondo bianco, con un simbolo all'interno, non chiaramente visibile).",
-    "name": "Strisce di arresto con segnale di STOP",
-    "description": "La striscia trasversale continua bianca, denominata strisce di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi nella strada principale. La scritta \"STOP\" sull'asfalto rafforza l'obbligo di arresto. La strada principale presenta una corsia di immissione separata da una linea bianca continua."
+    "visual_analysis": "Rappresentazione schematica dall'alto di un'intersezione a T. La carreggiata di provenienza dal basso è divisa in due corsie da una linea longitudinale continua. Sulla corsia di destra, nel senso di marcia verso l'incrocio, compare la scritta orizzontale bianca 'STOP' tracciata sulla pavimentazione stradale, preceduta da una striscia trasversale continua bianca di arresto posta perpendicolarmente alla corsia prima dell'immissione nell'incrocio.",
+    "name": "Striscia trasversale continua di arresto con iscrizione STOP",
+    "description": "Indica l'obbligo per i conducenti di arrestarsi in corrispondenza della striscia trasversale continua prima di immettersi nell'incrocio e di dare la precedenza ai veicoli che transitano sulla strada trasversale. È abbinata al segnale verticale di 'Fermarsi e dare precedenza' (STOP) e la linea non deve essere superata dal veicolo durante la sosta di arresto."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'impossibilità di svoltare a sinistra",
   "correct_answer": true,
   "image": "6b00ed1114aae01dd9a254e2e5ff9432.jpeg",
-  "image_description": "Presegnalazione di direzione obbligatoria (solo diritto o a destra). Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni.",
+  "image_description": "Segnale di direzioni consentite diritto e destra. Segnale di prescrizione (obbligo) che impone ai conducenti, in corrispondenza del prossimo incrocio, di scegliere unicamente tra le due manovre consentite: proseguire diritto oppure svoltare a destra. Vieta tassativamente la svolta a sinistra e l'inversione di marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e una piega verso destra (svoltare a destra). Le frecce indicano le uniche direzioni consentite.",
-    "name": "Presegnalazione di direzione obbligatoria (solo diritto o a destra)",
-    "description": "Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni."
+    "visual_analysis": "Segnale stradale circolare con fondo blu e bordo bianco. All'interno è raffigurato un simbolo bianco costituito da un'asta verticale che si sdoppia in due frecce: una rivolta verticalmente verso l'alto e una curvata verso destra.",
+    "name": "Segnale di direzioni consentite diritto e destra",
+    "description": "Segnale di prescrizione (obbligo) che impone ai conducenti, in corrispondenza del prossimo incrocio, di scegliere unicamente tra le due manovre consentite: proseguire diritto oppure svoltare a destra. Vieta tassativamente la svolta a sinistra e l'inversione di marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

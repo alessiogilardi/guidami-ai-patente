@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo in figura, posto in alto sulla carreggiata insieme ad un segnale indicante una località, segnala la corsia da prendere per raggiungere detta località",
   "correct_answer": true,
   "image": "17ee991baa0dcfceca8168648682d660.jpeg",
-  "image_description": "Indicazione di corsia o corsie di preavviso (pannello integrativo). Il segnale indica che la corsia di pertinenza è solo quella di destra.",
+  "image_description": "Pannello integrativo indicante la corsia. Posto in alto al di sopra della carreggiata (tipicamente su portale o struttura a sbalzo) in abbinamento a un segnale stradale (di pericolo, di prescrizione o di indicazione), specifica che il segnale sovrastante si applica esclusivamente alla corsia sottostante indicata dalla freccia. Se abbinato a un segnale di indicazione di località, segnala la corsia da percorrere o incanalare per raggiungere tale destinazione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli rettangolari affiancati, uno sopra l'altro. Entrambi i pannelli sono di colore bianco con un bordo nero. Al centro di ciascun pannello è presente una freccia nera rivolta verso il basso, leggermente inclinata verso destra. Questi pannelli sono pannelli integrativi che accompagnano un segnale stradale principale, fornendo informazioni aggiuntive. In questo caso specifico, la presenza di due frecce identiche indica che la corsia di pertinenza è quella di destra.",
-    "name": "Indicazione di corsia o corsie di preavviso (pannello integrativo)",
-    "description": "Il segnale indica che la corsia di pertinenza è solo quella di destra."
+    "visual_analysis": "Due pannelli rettangolari identici a sviluppo orizzontale, a fondo bianco con cornice nera, sovrapposti verticalmente. Al centro di ciascun pannello è raffigurata una freccia nera stilizzata rivolta verticalmente verso il basso.",
+    "name": "Pannello integrativo indicante la corsia",
+    "description": "Posto in alto al di sopra della carreggiata (tipicamente su portale o struttura a sbalzo) in abbinamento a un segnale stradale (di pericolo, di prescrizione o di indicazione), specifica che il segnale sovrastante si applica esclusivamente alla corsia sottostante indicata dalla freccia. Se abbinato a un segnale di indicazione di località, segnala la corsia da percorrere o incanalare per raggiungere tale destinazione."
   },
   "quiz_metadata": {
     "core_concepts": [

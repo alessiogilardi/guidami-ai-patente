@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine dell'obbligo di mantenere una distanza di sicurezza di almeno 50 metri",
   "correct_answer": false,
   "image": "b0f757139def7519417e65cf9072bf86.jpeg",
-  "image_description": "Fine del divieto di superare i 50 km/h. Indica la fine del divieto di superare i 50 km/h.",
+  "image_description": "Segnale di fine del limite massimo di velocità. Indica la fine del limite massimo di velocità precedentemente imposto a 50 km/h. Da questo punto in poi è consentito viaggiare anche a velocità superiore a 50 km/h, sempre nel rispetto dei limiti generali di velocità previsti dal Codice della Strada per quel tipo di strada e categoria di veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che divide il numero \"5\" a sinistra dal numero \"0\" a destra. Questo segnale indica la fine di un divieto. In questo caso specifico, indica la fine del divieto di superare i 50 km/h.",
-    "name": "Fine del divieto di superare i 50 km/h",
-    "description": "Indica la fine del divieto di superare i 50 km/h."
+    "visual_analysis": "Segnale stradale verticale di prescrizione (fine divieto), di forma circolare con fondo bianco, sottile bordo scuro e il numero '50' in colore nero/grigio scuro al centro, barrato longitudinalmente da una fascia obliqua nera.",
+    "name": "Segnale di fine del limite massimo di velocità",
+    "description": "Indica la fine del limite massimo di velocità precedentemente imposto a 50 km/h. Da questo punto in poi è consentito viaggiare anche a velocità superiore a 50 km/h, sempre nel rispetto dei limiti generali di velocità previsti dal Codice della Strada per quel tipo di strada e categoria di veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che uscendo dal primo casello autostradale è possibile raggiungere tutte le località indicate",
   "correct_answer": false,
   "image": "ef8cb3a578e39dd9dada579c94e61403.jpeg",
-  "image_description": "Segnale di preavviso di diramazione. Il segnale indica le località raggiungibili e le distanze in chilometri per raggiungerle. Le località sono Firenze (180 km), Bologna (285 km) e Milano (472 km). Il segnale è di colore verde, tipico delle autostrade o delle strade extraurbane principali.",
+  "image_description": "Segnale di conferma autostradale. Segnale di indicazione posto lungo la tratta autostradale (tipicamente dopo gli svincoli o intersezioni principali). Conferma all'utente l'itinerario seguito e indica le distanze chilometriche mancanti per raggiungere le successive località intermedie o di destinazione (nell'esempio: 180 km per Firenze, 285 km per Bologna, 472 km per Milano). Se a fondo blu, è invece installato sulle strade extraurbane.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con scritte bianche. Il segnale riporta tre nomi di città: FIRENZE, BOLOGNA, MILANO, ciascuno affiancato da un numero che indica una distanza in chilometri: 180 per Firenze, 285 per Bologna e 472 per Milano. Il segnale è bordato da una linea bianca sottile e presenta angoli arrotondati. La sua colorazione verde e il contenuto (località e distanze) sono tipici dei segnali di preavviso di diramazione o di indicazione stradale su autostrade o strade extraurbane principali.",
-    "name": "Segnale di preavviso di diramazione",
-    "description": "Il segnale indica le località raggiungibili e le distanze in chilometri per raggiungerle. Le località sono Firenze (180 km), Bologna (285 km) e Milano (472 km). Il segnale è di colore verde, tipico delle autostrade o delle strade extraurbane principali."
+    "visual_analysis": "Cartello rettangolare a fondo verde con bordo bianco. All'interno riporta, disposte su tre righe e in caratteri bianchi, i nomi di tre città seguiti ciascuno da un numero indicante la distanza chilometrica: in alto 'FIRENZE 180', al centro 'BOLOGNA 285', in basso 'MILANO 472'.",
+    "name": "Segnale di conferma autostradale",
+    "description": "Segnale di indicazione posto lungo la tratta autostradale (tipicamente dopo gli svincoli o intersezioni principali). Conferma all'utente l'itinerario seguito e indica le distanze chilometriche mancanti per raggiungere le successive località intermedie o di destinazione (nell'esempio: 180 km per Firenze, 285 km per Bologna, 472 km per Milano). Se a fondo blu, è invece installato sulle strade extraurbane."
   },
   "quiz_metadata": {
     "core_concepts": [

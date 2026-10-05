@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un tratto di strada ove esiste il pericolo di presenza di pietre sulla carreggiata",
   "correct_answer": true,
   "image": "ddcc6610d88743a87ab49dda7f0f69be.jpeg",
-  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione.",
+  "image_description": "Segnale di caduta massi da sinistra. Preavvisa il pericolo di caduta di pietre o massi dalla parete rocciosa sul lato sinistro della strada, con conseguente possibile presenza di detriti sulla carreggiata. Comporta l'obbligo di moderare la velocità, prestare attenzione a eventuali ostacoli o veicoli fermi ed evitare soste prolungate nel tratto interessato dal pericolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta un versante di montagna da cui cadono dei massi. Il pittogramma indica il pericolo di caduta massi.",
-    "name": "Segnale di pericolo di caduta massi",
-    "description": "Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione."
+    "visual_analysis": "Segnale di pericolo di forma triangolare con vertice rivolto verso l'alto, bordo rosso e fondo bianco. Al centro è raffigurata in nero una parete o scarpata rocciosa sul lato sinistro da cui si staccano e cadono frammenti e massi verso una linea orizzontale alla base, che rappresenta il piano stradale.",
+    "name": "Segnale di caduta massi da sinistra",
+    "description": "Preavvisa il pericolo di caduta di pietre o massi dalla parete rocciosa sul lato sinistro della strada, con conseguente possibile presenza di detriti sulla carreggiata. Comporta l'obbligo di moderare la velocità, prestare attenzione a eventuali ostacoli o veicoli fermi ed evitare soste prolungate nel tratto interessato dal pericolo."
   },
   "quiz_metadata": {
     "core_concepts": [

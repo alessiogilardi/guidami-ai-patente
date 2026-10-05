@@ -5,11 +5,11 @@
   "text": "In presenza dell'iscrizione in figura non è consentito il transito di veicoli con massa a pieno carico superiore a 50 quintali",
   "correct_answer": false,
   "image": "235cb5fa6b810a31b0a08d6123a60c43.jpeg",
-  "image_description": "Indicazione di limite di velocità (50 km/h). L'iscrizione indica la velocità massima consentita in quel tratto di strada.",
+  "image_description": "Iscrizione sulla pavimentazione indicante la velocità consigliata. Segnale orizzontale tracciato sulla pavimentazione che indica ai conducenti la velocità (in km/h) consigliata da mantenere lungo quel tratto di strada o corsia, in condizioni normali di traffico e di pavimentazione. Non costituisce un limite massimo o minimo vincolante, né fa riferimento a limiti di massa del veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale rettangolare grigio con il numero \"50\" in bianco al centro. Questo è un segnale di prescrizione che indica un limite di velocità. Non ci sono altri segnali o elementi della scena di guida visibili.",
-    "name": "Indicazione di limite di velocità (50 km/h)",
-    "description": "L'iscrizione indica la velocità massima consentita in quel tratto di strada."
+    "visual_analysis": "L'immagine mostra un'iscrizione orizzontale tracciata sulla pavimentazione stradale (sfondo grigio asfalto). È visibile il numero '50' di colore bianco, disegnato con caratteri allungati longitudinalmente per garantire la corretta leggibilità in prospettiva dal posto di guida.",
+    "name": "Iscrizione sulla pavimentazione indicante la velocità consigliata",
+    "description": "Segnale orizzontale tracciato sulla pavimentazione che indica ai conducenti la velocità (in km/h) consigliata da mantenere lungo quel tratto di strada o corsia, in condizioni normali di traffico e di pavimentazione. Non costituisce un limite massimo o minimo vincolante, né fa riferimento a limiti di massa del veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

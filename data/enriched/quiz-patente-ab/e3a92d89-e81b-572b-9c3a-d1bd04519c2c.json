@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito dalle ore 7.30 alle 19.00",
   "correct_answer": true,
   "image": "399bff49a2b9a2024683aa38ac6bc5cd.jpeg",
-  "image_description": "Divieto di transito con pannello integrativo di orario. Il segnale di divieto di transito è valido solo nella fascia oraria specificata dal pannello integrativo, ovvero dalle 7:30 alle 19:00. Al di fuori di questi orari, il divieto non è attivo.",
+  "image_description": "Segnale di divieto di transito con pannello integrativo di fascia oraria. Vieta la circolazione in entrambi i sensi a tutti i veicoli nella fascia oraria compresa tra le 7:30 e le 19:00; al di fuori di tale intervallo orario il transito è regolarmente consentito.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, rappresentato da un cerchio rosso con una barra orizzontale rossa su sfondo bianco. Sotto questo segnale, è presente un pannello integrativo rettangolare con la dicitura '7,30-19,00' in nero su sfondo bianco. Questo pannello specifica l'orario di validità del segnale sovrastante.",
-    "name": "Divieto di transito con pannello integrativo di orario",
-    "description": "Il segnale di divieto di transito è valido solo nella fascia oraria specificata dal pannello integrativo, ovvero dalle 7:30 alle 19:00. Al di fuori di questi orari, il divieto non è attivo."
+    "visual_analysis": "L'immagine mostra un segnale verticale composito: nella parte superiore è presente un segnale circolare con bordo rosso e fondo bianco privo di simboli interni (divieto di transito); nella parte inferiore è abbinato un pannello integrativo rettangolare a fondo bianco con bordo nero recante la scritta nera '7,30-19,00', indicante una fascia oraria.",
+    "name": "Segnale di divieto di transito con pannello integrativo di fascia oraria",
+    "description": "Vieta la circolazione in entrambi i sensi a tutti i veicoli nella fascia oraria compresa tra le 7:30 e le 19:00; al di fuori di tale intervallo orario il transito è regolarmente consentito."
   },
   "quiz_metadata": {
     "core_concepts": [

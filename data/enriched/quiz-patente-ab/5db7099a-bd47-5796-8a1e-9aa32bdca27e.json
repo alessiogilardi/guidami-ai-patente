@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo rappresentato in figura B indica le fasce orarie durante le quali si circola a targhe alterne",
   "correct_answer": false,
   "image": "eda4d1f7326a3a3837cc27640333d724.jpeg",
-  "image_description": "Pannello integrativo di prescrizione oraria (figura B). Il pannello integrativo B indica le fasce orarie (dalle 7:30 alle 19:00) durante le quali si applica la prescrizione del segnale principale a cui è abbinato.",
+  "image_description": "Pannelli integrativi per fasce orarie (tutti i giorni). I pannelli integrativi, applicati al di sotto di un segnale stradale, ne definiscono l'orario di validità esteso a tutti i giorni dell'anno (sia feriali che festivi), non comparendo simboli specifici. Il pannello A specifica che il segnale ha validità permanente per l'intera giornata (0-24), mentre il pannello B limita l'efficacia del segnale alla sola fascia oraria compresa tra le ore 7:30 e le ore 19:00.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, uno sopra l'altro, con bordi neri e sfondo bianco. Entrambi i pannelli contengono numeri che indicano fasce orarie. Il pannello superiore (etichettato A) mostra '0-24'. Il pannello inferiore (etichettato B) mostra '7,30-19,00'. Questi pannelli sono tipicamente usati per integrare segnali stradali, specificando le fasce orarie in cui la prescrizione del segnale principale è valida. La domanda si concentra sul pannello B.",
-    "name": "Pannello integrativo di prescrizione oraria (figura B)",
-    "description": "Il pannello integrativo B indica le fasce orarie (dalle 7:30 alle 19:00) durante le quali si applica la prescrizione del segnale principale a cui è abbinato."
+    "visual_analysis": "L'immagine mostra due distinti pannelli integrativi rettangolari a fondo bianco con cornice nera, contrassegnati sul lato destro dalle lettere identificative 'A' e 'B'. Il pannello superiore (A) reca al centro l'iscrizione numerica nera '0-24'. Il pannello inferiore (B) reca l'iscrizione numerica nera '7,30-19,00'. In entrambi i pannelli non compaiono simboli aggiuntivi (come martelli incrociati o croci).",
+    "name": "Pannelli integrativi per fasce orarie (tutti i giorni)",
+    "description": "I pannelli integrativi, applicati al di sotto di un segnale stradale, ne definiscono l'orario di validità esteso a tutti i giorni dell'anno (sia feriali che festivi), non comparendo simboli specifici. Il pannello A specifica che il segnale ha validità permanente per l'intera giornata (0-24), mentre il pannello B limita l'efficacia del segnale alla sola fascia oraria compresa tra le ore 7:30 e le ore 19:00."
   },
   "quiz_metadata": {
     "core_concepts": [

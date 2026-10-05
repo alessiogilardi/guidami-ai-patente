@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato individua il luogo ove è riposto l'estintore di bordo",
   "correct_answer": false,
   "image": "7ddd91f6c3fc7ef9f36722f849d5a624.jpeg",
-  "image_description": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi). La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante.",
+  "image_description": "Simbolo della spia di avaria dell'impianto frenante. Contrassegna una spia luminosa di colore rosso sul cruscotto che, se accesa o lampeggiante durante la marcia, segnala un malfunzionamento o un'anomalia dell'impianto frenante (ad esempio un livello insufficiente del liquido dei freni o un'eccessiva usura delle guarnizioni d'attrito). Comporta la necessità di arrestare il veicolo in sicurezza o procedere con estrema cautela provvedendo rapidamente alla manutenzione o riparazione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una spia luminosa con un simbolo al suo interno. Il simbolo è un punto esclamativo (!) posto al centro di un cerchio, a sua volta circondato da due parentesi curve aperte verso l'esterno. Questo simbolo è universalmente riconosciuto come indicatore di un problema al sistema frenante del veicolo. La spia è tipicamente di colore rosso, segnalando un'avaria grave che richiede attenzione immediata.",
-    "name": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi)",
-    "description": "La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante."
+    "visual_analysis": "L'immagine raffigura un pittogramma nero su sfondo bianco, costituito da un cerchio contenente al centro un punto esclamativo, racchiuso lateralmente tra due archi curvi speculari che evocano le ganasce o pastiglie dei freni. Nel cruscotto dei veicoli identifica una spia di colore rosso.",
+    "name": "Simbolo della spia di avaria dell'impianto frenante",
+    "description": "Contrassegna una spia luminosa di colore rosso sul cruscotto che, se accesa o lampeggiante durante la marcia, segnala un malfunzionamento o un'anomalia dell'impianto frenante (ad esempio un livello insufficiente del liquido dei freni o un'eccessiva usura delle guarnizioni d'attrito). Comporta la necessità di arrestare il veicolo in sicurezza o procedere con estrema cautela provvedendo rapidamente alla manutenzione o riparazione."
   },
   "quiz_metadata": {
     "core_concepts": [

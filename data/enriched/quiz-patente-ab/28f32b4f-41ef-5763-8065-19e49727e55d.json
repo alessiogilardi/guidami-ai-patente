@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato evidenzia l'inizio dell'area dove è possibile parcheggiare",
   "correct_answer": true,
   "image": "a604c9c33c10697f0bd241a921570d3b.jpeg",
-  "image_description": "Parcheggio con pannello integrativo di direzione obbligatoria dritta. Il segnale indica che l'area di parcheggio inizia in corrispondenza del segnale e prosegue diritto.",
+  "image_description": "Segnale di parcheggio con pannello integrativo di inizio. Indica il punto di inizio di un'area o di un tratto stradale destinato alla sosta regolamentata dei veicoli, che si estende a partire dal cartello nella direzione di marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastante un pannello integrativo rettangolare bianco con una freccia nera rivolta verso l'alto. Il pannello integrativo indica la direzione in cui si applica il segnale principale.",
-    "name": "Parcheggio con pannello integrativo di direzione obbligatoria dritta",
-    "description": "Il segnale indica che l'area di parcheggio inizia in corrispondenza del segnale e prosegue diritto."
+    "visual_analysis": "L'immagine mostra un segnale composito formato da un cartello principale e un pannello integrativo sottostante. Il segnale principale è di forma quadrata con sfondo blu, bordo bianco e una grande lettera 'P' bianca al centro, indicante un parcheggio. Al di sotto è presente un pannello integrativo rettangolare a sviluppo verticale, con fondo bianco e bordo nero, recante nella metà superiore una freccia nera rivolta verso l'alto, simbolo che indica 'inizio'.",
+    "name": "Segnale di parcheggio con pannello integrativo di inizio",
+    "description": "Indica il punto di inizio di un'area o di un tratto stradale destinato alla sosta regolamentata dei veicoli, che si estende a partire dal cartello nella direzione di marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può essere abbinato ad un pannello che indica la distanza che c'è tra il segnale e la piazzola",
   "correct_answer": true,
   "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
-  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_description": "Segnale di piazzola. Indica la presenza, sul lato destro della carreggiata di una strada extraurbana, di una piazzola per consentire la fermata temporanea dei veicoli. Può essere integrato da un pannello che specifica la distanza residua per raggiungerla.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
-    "name": "Piazzola di sosta",
-    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+    "visual_analysis": "Segnale stradale verticale di forma rettangolare a fondo blu con sottile bordo bianco. Al centro è rappresentata graficamente una carreggiata mediante linee bianche: una linea tratteggiata verticale sulla sinistra e una linea continua sulla destra che si allarga lateralmente verso destra a forma di trapezio, delineando lo spazio di una piazzola laterale prima di riallinearsi alla carreggiata.",
+    "name": "Segnale di piazzola",
+    "description": "Indica la presenza, sul lato destro della carreggiata di una strada extraurbana, di una piazzola per consentire la fermata temporanea dei veicoli. Può essere integrato da un pannello che specifica la distanza residua per raggiungerla."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga gli autocarri a svoltare a destra",
   "correct_answer": false,
   "image": "95f306d30190f8232c642442bc2380bf.jpeg",
-  "image_description": "Indicazione stradale di direzione consigliata per autocarri. Il segnale indica la direzione consigliata per gli autocarri.",
+  "image_description": "Segnale di direzione consigliata per autocarri. Segnale temporaneo di cantiere che indica la direzione consigliata (non obbligatoria) a destra per gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate. È posizionato nel punto della deviazione, in corrispondenza di un incrocio che precede un cantiere stradale, e può essere preceduto da un segnale di preavviso.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore giallo con bordo nero. Nella parte superiore è presente una freccia nera orizzontale che punta verso destra. Sotto la freccia, è raffigurato un autocarro nero. Il segnale è di tipo complementare, con funzione di preavviso o indicazione.",
-    "name": "Indicazione stradale di direzione consigliata per autocarri",
-    "description": "Il segnale indica la direzione consigliata per gli autocarri."
+    "visual_analysis": "Cartello rettangolare verticale a fondo giallo con bordo nero sottile. Nella metà superiore è raffigurata una freccia nera orizzontale orientata verso destra; nella metà inferiore compare la sagoma nera di profilo di un autocarro merci. Il fondo giallo denota la natura temporanea del segnale, tipicamente associata a cantieri stradali.",
+    "name": "Segnale di direzione consigliata per autocarri",
+    "description": "Segnale temporaneo di cantiere che indica la direzione consigliata (non obbligatoria) a destra per gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate. È posizionato nel punto della deviazione, in corrispondenza di un incrocio che precede un cantiere stradale, e può essere preceduto da un segnale di preavviso."
   },
   "quiz_metadata": {
     "core_concepts": [

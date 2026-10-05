@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato è posto su una spia che, se accesa, segnala l'eccessiva temperatura dell'olio di lubrificazione del cambio di velocità",
   "correct_answer": false,
   "image": "14a02317e39ba75bcbf1188df815c4cd.jpeg",
-  "image_description": "Spia di temperatura liquido refrigerante motore. La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso.",
+  "image_description": "Simbolo della spia di eccessiva temperatura del liquido di raffreddamento. Identifica la spia luminosa di colore rosso o l'indicatore sul cruscotto che segnala una temperatura eccessiva del liquido di raffreddamento del motore rispetto ai limiti stabiliti dal costruttore, indicando un surriscaldamento del motore che impone di fermarsi in sicurezza e spegnere il motore per evitare danni.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra il simbolo di una spia luminosa. Il simbolo è composto da un termometro stilizzato immerso in due onde, che rappresentano un liquido. Il termometro ha delle tacche che indicano un aumento di temperatura. Questo simbolo è comunemente associato alla spia che segnala l'eccessiva temperatura del liquido di raffreddamento del motore. Le domande del quiz suggeriscono che la spia sia di colore rosso e che indichi un problema di surriscaldamento del motore.",
-    "name": "Spia di temperatura liquido refrigerante motore",
-    "description": "La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso."
+    "visual_analysis": "Icona nera su fondo bianco raffigurante un termometro graduato posizionato verticalmente, la cui estremità inferiore è immersa in due linee ondulate orizzontali parallele che rappresentano un liquido. Si tratta del pittogramma standard per le spie del quadro strumenti.",
+    "name": "Simbolo della spia di eccessiva temperatura del liquido di raffreddamento",
+    "description": "Identifica la spia luminosa di colore rosso o l'indicatore sul cruscotto che segnala una temperatura eccessiva del liquido di raffreddamento del motore rispetto ai limiti stabiliti dal costruttore, indicando un surriscaldamento del motore che impone di fermarsi in sicurezza e spegnere il motore per evitare danni."
   },
   "quiz_metadata": {
     "core_concepts": [

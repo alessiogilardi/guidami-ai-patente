@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica un tratto di strada coperto di neve",
   "correct_answer": false,
   "image": "9ea7baee038e71d7ed8d2fdd50cc4646.jpeg",
-  "image_description": "Pericolo di allagamento. Il segnale indica un pericolo di allagamento della carreggiata in caso di pioggia o forte mareggiata.",
+  "image_description": "Pannello integrativo per allagamento. Pannello integrativo abbinato solitamente a un segnale di pericolo (come 'Altri pericoli'), che segnala la possibilità che la carreggiata o il tratto di strada si allaghi in caso di forti piogge o mareggiate. Invita a moderare la velocità e a procedere con prudenza per evitare il rischio di aquaplaning o di rimanere bloccati con il veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare, di colore bianco con bordo nero. Al suo interno sono raffigurate tre linee ondulate orizzontali, di colore blu. Questo pannello è un segnale di pericolo che preavvisa una condizione specifica della strada. Le linee ondulate sono comunemente usate per rappresentare l'acqua. Pertanto, il segnale indica un pericolo legato all'acqua. Tra le opzioni fornite, quella che meglio descrive questo scenario è il pericolo di allagamento della carreggiata.",
-    "name": "Pericolo di allagamento",
-    "description": "Il segnale indica un pericolo di allagamento della carreggiata in caso di pioggia o forte mareggiata."
+    "visual_analysis": "L'immagine mostra un singolo cartello stradale isolato, nello specifico un pannello integrativo di forma rettangolare orizzontale a fondo bianco con sottile bordo perimetrale nero. Al centro sono raffigurate tre linee orizzontali ondulate parallele di colore scuro, che simboleggiano la presenza di acqua.",
+    "name": "Pannello integrativo per allagamento",
+    "description": "Pannello integrativo abbinato solitamente a un segnale di pericolo (come 'Altri pericoli'), che segnala la possibilità che la carreggiata o il tratto di strada si allaghi in caso di forti piogge o mareggiate. Invita a moderare la velocità e a procedere con prudenza per evitare il rischio di aquaplaning o di rimanere bloccati con il veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

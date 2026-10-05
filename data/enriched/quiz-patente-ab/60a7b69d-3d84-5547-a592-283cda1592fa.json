@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che la fermata è vietata sia prima che dopo il segnale",
   "correct_answer": true,
   "image": "b1c7c7c5175adac5edf013eea5dd21ef.jpeg",
-  "image_description": "Segnale di divieto di sosta con pannello integrativo di estensione. Il segnale di divieto di sosta, abbinato al pannello integrativo che indica l'estensione del divieto (in questo caso, sia prima che dopo il segnale), vieta la sosta in quel tratto di strada.",
+  "image_description": "Segnale di divieto di fermata con pannello integrativo di continuazione. Vieta temporaneamente o permanentemente qualsiasi arresto volontario del veicolo, sia la sosta che la fermata, lungo il tratto di strada interessato. Il pannello integrativo a due frecce contrapposte indica la continuazione del divieto, specificando che la prescrizione è attiva sia nel tratto che precede sia in quello che segue il segnale. Salvo diversa segnalazione, il divieto ha efficacia permanente (24 ore su 24) e comporta la rimozione forzata del veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu, recante una croce di Sant'Andrea rossa al suo interno. Questo è il segnale di divieto di sosta. Sotto di esso, è presente un pannello integrativo rettangolare di colore bianco con bordo nero, contenente due frecce nere, una rivolta verso l'alto e una verso il basso, poste in verticale. Questo pannello indica l'estensione del divieto di sosta sia prima che dopo il segnale.",
-    "name": "Segnale di divieto di sosta con pannello integrativo di estensione",
-    "description": "Il segnale di divieto di sosta, abbinato al pannello integrativo che indica l'estensione del divieto (in questo caso, sia prima che dopo il segnale), vieta la sosta in quel tratto di strada."
+    "visual_analysis": "L'immagine presenta un segnale stradale composito costituito da un cartello circolare superiore e un pannello integrativo rettangolare verticale inferiore. Il segnale superiore ha bordo rosso, fondo blu e due barre diagonali rosse incrociate a forma di 'X'. Il pannello integrativo sottostante, a fondo bianco con bordo sottile nero, raffigura due frecce nere disposte verticalmente in direzioni opposte: la freccia superiore rivolta verso l'alto e quella inferiore rivolta verso il basso.",
+    "name": "Segnale di divieto di fermata con pannello integrativo di continuazione",
+    "description": "Vieta temporaneamente o permanentemente qualsiasi arresto volontario del veicolo, sia la sosta che la fermata, lungo il tratto di strada interessato. Il pannello integrativo a due frecce contrapposte indica la continuazione del divieto, specificando che la prescrizione è attiva sia nel tratto che precede sia in quello che segue il segnale. Salvo diversa segnalazione, il divieto ha efficacia permanente (24 ore su 24) e comporta la rimozione forzata del veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

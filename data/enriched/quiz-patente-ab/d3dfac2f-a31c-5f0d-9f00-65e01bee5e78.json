@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia una curva a sinistra",
   "correct_answer": false,
   "image": "34d83af03310c64d51078b75499c7efd.jpeg",
-  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_description": "Segnale di curva pericolosa a destra. Preannuncia, di norma a 150 metri, un tratto di strada non rettilineo con una curva pericolosa a destra che limita la visibilità. Impone di regolare la velocità in base al raggio della curva e alle condizioni di aderenza, tenendosi strettamente vicino al margine destro se la carreggiata è a doppio senso di marcia con sole due corsie; in tali condizioni sono vietati il sorpasso, la sosta, la fermata, l'inversione e la retromarcia. Può essere integrato con pannello con la scritta \"TORNANTE\".",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "visual_analysis": "Segnale di pericolo di forma triangolare con vertice rivolto verso l'alto, con bordo perimetrale rosso e fondo bianco. Al centro è rappresentata una fascia curvilinea di colore nero che curva verso destra.",
     "name": "Segnale di curva pericolosa a destra",
-    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+    "description": "Preannuncia, di norma a 150 metri, un tratto di strada non rettilineo con una curva pericolosa a destra che limita la visibilità. Impone di regolare la velocità in base al raggio della curva e alle condizioni di aderenza, tenendosi strettamente vicino al margine destro se la carreggiata è a doppio senso di marcia con sole due corsie; in tali condizioni sono vietati il sorpasso, la sosta, la fermata, l'inversione e la retromarcia. Può essere integrato con pannello con la scritta \"TORNANTE\"."
   },
   "quiz_metadata": {
     "core_concepts": [

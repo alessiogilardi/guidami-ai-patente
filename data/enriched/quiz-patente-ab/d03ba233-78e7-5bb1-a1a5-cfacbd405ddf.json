@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è posto su una carreggiata a doppio senso di circolazione",
   "correct_answer": false,
   "image": "3eca137357d840256e2c019f597a7575.jpeg",
-  "image_description": "Segnale di divieto di transito. Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area.",
+  "image_description": "Segnale di senso vietato. Vieta di entrare nella strada sul cui accesso è posto a tutti i veicoli (a motore e senza motore, inclusi ciclomotori, motocicli, quadricicli e taxi). Si trova su strade a senso unico di circolazione, che risultano accessibili e percorribili provenendo dall'altro senso di marcia. Il divieto è valido ininterrottamente 24 ore su 24, anche nelle ore notturne.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una barra orizzontale bianca. Questo è il segnale di divieto di transito.",
-    "name": "Segnale di divieto di transito",
-    "description": "Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area."
+    "visual_analysis": "Segnale stradale verticale di prescrizione a forma circolare con fondo rosso, bordato da una sottile cornice bianca/metallica, contenente al centro una barra orizzontale rettangolare bianca. Non sono presenti pannelli integrativi né altri elementi.",
+    "name": "Segnale di senso vietato",
+    "description": "Vieta di entrare nella strada sul cui accesso è posto a tutti i veicoli (a motore e senza motore, inclusi ciclomotori, motocicli, quadricicli e taxi). Si trova su strade a senso unico di circolazione, che risultano accessibili e percorribili provenendo dall'altro senso di marcia. Il divieto è valido ininterrottamente 24 ore su 24, anche nelle ore notturne."
   },
   "quiz_metadata": {
     "core_concepts": [

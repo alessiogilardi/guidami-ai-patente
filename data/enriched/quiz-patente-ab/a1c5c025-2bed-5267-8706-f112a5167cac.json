@@ -5,11 +5,11 @@
   "text": "L'elemento in figura è posto su un tratto di strada su cui è vietata la sosta",
   "correct_answer": false,
   "image": "ac5ddd4530b130b2ab0247b0f810e20b.jpeg",
-  "image_description": "Segnale di ostacolo (rallentatore di velocità). L'elemento raffigurato è un segnale di ostacolo, costituito da strisce bianche e nere alternate, posto trasversalmente sulla carreggiata per segnalare la presenza di un ostacolo o di un restringimento pericoloso. In questo caso, si tratta di due elementi identici posti uno di seguito all'altro, che indicano un rallentatore di velocità o un dosso artificiale.",
+  "image_description": "Rallentatore di velocità. Dispositivo stradale ad effetto geometrico (dosso artificiale) installato trasversalmente sulla carreggiata per costringere i conducenti a moderare la velocità dei veicoli. Deve essere opportunamente presegnalato e la sua presenza non comporta di per sé un divieto di sosta.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi stradali posti trasversalmente sulla carreggiata. Ciascun elemento è composto da strisce orizzontali alternate di colore giallo e nero. Questi elementi sono posizionati su un tratto di strada asfaltata, delimitato da strisce bianche laterali. La disposizione e la colorazione indicano che si tratta di segnali di ostacolo, comunemente utilizzati per segnalare dossi artificiali o rallentatori di velocità. La presenza di due elementi consecutivi rafforza l'indicazione di una riduzione della velocità.",
-    "name": "Segnale di ostacolo (rallentatore di velocità)",
-    "description": "L'elemento raffigurato è un segnale di ostacolo, costituito da strisce bianche e nere alternate, posto trasversalmente sulla carreggiata per segnalare la presenza di un ostacolo o di un restringimento pericoloso. In questo caso, si tratta di due elementi identici posti uno di seguito all'altro, che indicano un rallentatore di velocità o un dosso artificiale."
+    "visual_analysis": "L'immagine illustra due elementi grafici rettangolari posti uno sopra l'altro, che rappresentano una porzione di carreggiata con al centro un dosso rialzato dipinto con strisce alternate gialle e nere a sviluppo trasversale/leggermente sagomate.",
+    "name": "Rallentatore di velocità",
+    "description": "Dispositivo stradale ad effetto geometrico (dosso artificiale) installato trasversalmente sulla carreggiata per costringere i conducenti a moderare la velocità dei veicoli. Deve essere opportunamente presegnalato e la sua presenza non comporta di per sé un divieto di sosta."
   },
   "quiz_metadata": {
     "core_concepts": [

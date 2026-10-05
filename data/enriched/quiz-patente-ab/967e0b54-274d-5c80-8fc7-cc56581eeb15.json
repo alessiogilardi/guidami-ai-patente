@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica impianti che consentono, ai veicoli che hanno i servizi igienico-sanitari, lo scarico dei residui organici e delle acque bianche e sporche",
   "correct_answer": true,
   "image": "9c797083d3d0057384d311515773b958.jpeg",
-  "image_description": "Area di scarico per veicoli ricreazionali. Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari.",
+  "image_description": "Segnale di impianto di scarico. Indica la presenza o la vicinanza di un'area attrezzata dotata di impianti igienico-sanitari per lo scarico dei residui organici e delle acque reflue (chiare e scure), a disposizione di autocaravan, caravan o altri veicoli dotati di servizi igienici interni.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un'icona bianca al suo interno. L'icona rappresenta un veicolo ricreazionale (camper o roulotte) con una freccia che punta verso un'area sottostante, raffigurata come una griglia o un tombino. Sotto l'icona principale, vi è uno spazio vuoto, tipico per un pannello integrativo che potrebbe fornire ulteriori dettagli. Il segnale è di tipo \"indicazione\".",
-    "name": "Area di scarico per veicoli ricreazionali",
-    "description": "Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari."
+    "visual_analysis": "Segnale stradale rettangolare a sviluppo verticale con fondo blu e bordo perimetrale bianco. Nella metà superiore è presente un riquadro quadrato a fondo bianco contenente il pittogramma nero di un'autocaravan, sotto la quale una freccia nera rivolta verso il basso punta a una superficie piana con una cavità/pozzetto di scarico. La parte inferiore del cartello presenta uno spazio a fondo blu privo di iscrizioni.",
+    "name": "Segnale di impianto di scarico",
+    "description": "Indica la presenza o la vicinanza di un'area attrezzata dotata di impianti igienico-sanitari per lo scarico dei residui organici e delle acque reflue (chiare e scure), a disposizione di autocaravan, caravan o altri veicoli dotati di servizi igienici interni."
   },
   "quiz_metadata": {
     "core_concepts": [

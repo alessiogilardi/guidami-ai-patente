@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica un tratto di strada deformata lungo 320 metri",
   "correct_answer": false,
   "image": "fcaab86759120527e96bca9226f61cc5.jpeg",
-  "image_description": "Segnale di pericolo - Carreggiata sconnessa con pannello integrativo di distanza. Il segnale indica la presenza di una carreggiata sconnessa o con dossi a 320 metri.",
+  "image_description": "Segnale di strada deformata con pannello integrativo di distanza. Preavvisa un tratto di strada con pavimentazione irregolare, dissestata o in cattivo stato a 320 metri dal cartello. La presenza del pannello di distanza (senza frecce laterali) indica l'inizio del pericolo e non la sua estesa. Comporta l'obbligo di moderare la velocità per evitare danni alle sospensioni e mantenere la stabilità del veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una carreggiata sconnessa. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con la scritta \"320m\" in nero, indicante la distanza.",
-    "name": "Segnale di pericolo - Carreggiata sconnessa con pannello integrativo di distanza",
-    "description": "Il segnale indica la presenza di una carreggiata sconnessa o con dossi a 320 metri."
+    "visual_analysis": "L'immagine presenta un segnale di pericolo triangolare con vertice rivolto verso l'alto, fondo bianco e bordo rosso, contenente la figura nera di un profilo stradale ondulato (due gobbe intervallate da un avvallamento). Al di sotto del segnale è applicato un pannello integrativo rettangolare bianco con cornice nera recante l'indicazione numerica '320 m' priva di frecce laterali.",
+    "name": "Segnale di strada deformata con pannello integrativo di distanza",
+    "description": "Preavvisa un tratto di strada con pavimentazione irregolare, dissestata o in cattivo stato a 320 metri dal cartello. La presenza del pannello di distanza (senza frecce laterali) indica l'inizio del pericolo e non la sua estesa. Comporta l'obbligo di moderare la velocità per evitare danni alle sospensioni e mantenere la stabilità del veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

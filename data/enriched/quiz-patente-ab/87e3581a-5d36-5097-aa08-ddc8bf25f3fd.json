@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato in figura A indica l'altezza di un viadotto",
   "correct_answer": false,
   "image": "581efb5bb17d61ce1f06789924aee4e2.jpeg",
-  "image_description": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km). I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso.",
+  "image_description": "Pannello integrativo di estesa. Indica la lunghezza del tratto stradale (espresso in metri o chilometri) lungo il quale si protrae il pericolo segnalato oppure entro il quale vige la prescrizione (obbligo o divieto) imposta dal segnale principale sotto cui è applicato. La presenza delle due frecce verticali rivolte verso l'alto distingue il pannello di estesa da quello di distanza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, identificati come A e B. Entrambi i pannelli presentano un pittogramma di una freccia verticale rivolta verso l'alto, un numero seguito da un'unità di misura (metri per A, chilometri per B) e un altro pittogramma di freccia verticale verso l'alto. Il pannello A indica \"380m\", mentre il pannello B indica \"2,8 km\". Questi pannelli sono comunemente usati per integrare segnali di pericolo, indicando la lunghezza del tratto di strada interessato dal pericolo.",
-    "name": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km)",
-    "description": "I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso."
+    "visual_analysis": "L'immagine presenta due pannelli integrativi rettangolari a fondo bianco con bordo nero, etichettati lateralmente a destra con le lettere 'A' e 'B'. Il pannello superiore (A) reca l'iscrizione '380 m' racchiusa tra due frecce nere verticali rivolte verso l'alto. Il pannello inferiore (B) reca l'iscrizione '2,8 km', anch'essa racchiusa tra due frecce nere verticali rivolte verso l'alto.",
+    "name": "Pannello integrativo di estesa",
+    "description": "Indica la lunghezza del tratto stradale (espresso in metri o chilometri) lungo il quale si protrae il pericolo segnalato oppure entro il quale vige la prescrizione (obbligo o divieto) imposta dal segnale principale sotto cui è applicato. La presenza delle due frecce verticali rivolte verso l'alto distingue il pannello di estesa da quello di distanza."
   },
   "quiz_metadata": {
     "core_concepts": [

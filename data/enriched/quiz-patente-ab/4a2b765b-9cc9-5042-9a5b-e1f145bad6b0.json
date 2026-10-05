@@ -5,11 +5,11 @@
   "text": "La barriera raffigurata si trova nei caselli autostradali per delimitare le corsie",
   "correct_answer": false,
   "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
-  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_description": "Barriera normale. Segnale temporaneo utilizzato per delimitare la zona occupata da un cantiere stradale o per sbarrare la circolazione in tratti non transitabili. Può essere impiegata anche per chiudere temporaneamente un passaggio a livello in caso di guasto o anomalia delle sbarre. In caso di scarsa visibilità o di notte, deve essere integrata con lanterne a luce rossa fissa.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
-    "name": "Barriera di cantiere",
-    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+    "visual_analysis": "Un pannello rettangolare a sviluppo orizzontale a strisce alternate diagonali bianche e rosse, montato su due sostegni verticali poggiati al suolo.",
+    "name": "Barriera normale",
+    "description": "Segnale temporaneo utilizzato per delimitare la zona occupata da un cantiere stradale o per sbarrare la circolazione in tratti non transitabili. Può essere impiegata anche per chiudere temporaneamente un passaggio a livello in caso di guasto o anomalia delle sbarre. In caso di scarsa visibilità o di notte, deve essere integrata con lanterne a luce rossa fissa."
   },
   "quiz_metadata": {
     "core_concepts": [

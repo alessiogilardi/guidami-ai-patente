@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo in figura può trovarsi da solo",
   "correct_answer": false,
   "image": "fda8b4efac0220fb14dde65da7fdcecc.jpeg",
-  "image_description": "Pannello integrativo - Solo autobus urbani. Il pannello integrativo indica che la prescrizione o il divieto indicato dal segnale a cui è abbinato si applica solo agli autobus urbani.",
+  "image_description": "Pannello integrativo di eccezione (eccetto autobus). Pannello integrativo che esclude gli autobus dal rispetto della prescrizione (divieto o obbligo) imposta dal segnale principale sotto il quale è apposto. Non può essere utilizzato isolatamente, ma solo in abbinamento a un segnale stradale principale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al centro, in alto, è riportata la scritta \"eccetto\" in nero. Sotto la scritta, è raffigurato il profilo stilizzato di un autobus urbano a due porte, anch'esso in nero. Questo pannello è un pannello integrativo di tipo 1, utilizzato per limitare l'applicazione di un segnale principale a una specifica categoria di veicoli. In questo caso, la categoria è \"autobus urbani\".",
-    "name": "Pannello integrativo - Solo autobus urbani",
-    "description": "Il pannello integrativo indica che la prescrizione o il divieto indicato dal segnale a cui è abbinato si applica solo agli autobus urbani."
+    "visual_analysis": "Pannello integrativo rettangolare a fondo bianco con bordo nero, recante nella parte superiore la scritta nera in minuscolo 'eccetto' e, nella parte inferiore, il simbolo nero raffigurante un autobus visto di lato.",
+    "name": "Pannello integrativo di eccezione (eccetto autobus)",
+    "description": "Pannello integrativo che esclude gli autobus dal rispetto della prescrizione (divieto o obbligo) imposta dal segnale principale sotto il quale è apposto. Non può essere utilizzato isolatamente, ma solo in abbinamento a un segnale stradale principale."
   },
   "quiz_metadata": {
     "core_concepts": [

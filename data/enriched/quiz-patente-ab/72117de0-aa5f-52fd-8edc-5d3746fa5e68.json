@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'avvicinarsi di un casello autostradale",
   "correct_answer": false,
   "image": "ccb30857f4fbd40dd9ab759d241453b3.jpeg",
-  "image_description": "Segnale di uso delle corsie (indicazione). Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri.",
+  "image_description": "Segnale temporaneo di uso delle corsie. Segnale temporaneo di indicazione a fondo giallo utilizzato in presenza di cantieri o lavori stradali per disciplinare l'uso delle corsie disponibili. Indica alle diverse categorie di veicoli quali corsie possono percorrere: in particolare, la corsia di sinistra è riservata al transito delle autovetture (e veicoli leggeri), mentre gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate hanno l'obbligo di percorrere esclusivamente la corsia di destra.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Al suo interno sono presenti tre pittogrammi neri su sfondo giallo: due frecce nere verticali che indicano la direzione di marcia, affiancate da due sagome di autovetture, una sotto ciascuna freccia. Sotto la freccia di destra e la corrispondente autovettura, è presente la sagoma di un autocarro. Le frecce indicano che la carreggiata si sta per restringere e che i veicoli dovranno circolare su due corsie affiancate. La presenza dell'autocarro nella corsia di destra indica che tale corsia è riservata agli autocarri.",
-    "name": "Segnale di uso delle corsie (indicazione)",
-    "description": "Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri."
+    "visual_analysis": "Segnale stradale rettangolare a sviluppo verticale con fondo giallo e bordo nero (segnaletica temporanea di cantiere). All'interno sono disegnate due frecce verticali nere rivolte verso l'alto, indicanti due corsie nello stesso senso di marcia. Sulla corsia di sinistra è presente il pittogramma nero della vista posteriore di un'autovettura. Sulla corsia di destra sono presenti in colonna il pittogramma di un'autovettura in alto e, sotto di essa, quello posteriore di un autocarro.",
+    "name": "Segnale temporaneo di uso delle corsie",
+    "description": "Segnale temporaneo di indicazione a fondo giallo utilizzato in presenza di cantieri o lavori stradali per disciplinare l'uso delle corsie disponibili. Indica alle diverse categorie di veicoli quali corsie possono percorrere: in particolare, la corsia di sinistra è riservata al transito delle autovetture (e veicoli leggeri), mentre gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate hanno l'obbligo di percorrere esclusivamente la corsia di destra."
   },
   "quiz_metadata": {
     "core_concepts": [

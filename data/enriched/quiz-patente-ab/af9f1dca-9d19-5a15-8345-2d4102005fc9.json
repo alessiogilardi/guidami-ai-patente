@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che bisogna dare la precedenza ai ciclisti che attraversano sulle strisce",
   "correct_answer": true,
   "image": "2faf7752ddcc6087bffff0ee81a28eaf.jpeg",
-  "image_description": "Pista ciclabile. Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada.",
+  "image_description": "Segnale di attraversamento ciclabile. Segnale di indicazione che localizza un attraversamento ciclabile, posto in corrispondenza delle apposite strisce sulla carreggiata. Impone ai conducenti dei veicoli di usare particolare prudenza, moderare la velocità e dare la precedenza ai ciclisti che attraversano o si accingono ad attraversare.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è raffigurata, in bianco, una figura stilizzata di un ciclista su una bicicletta. Il segnale è di forma quadrata con angoli arrotondati. Questo segnale è un segnale di indicazione.",
-    "name": "Pista ciclabile",
-    "description": "Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada."
+    "visual_analysis": "Segnale stradale di indicazione di forma quadrata con fondo blu e sottile bordo interno bianco. Al centro è raffigurato in bianco il pittogramma di un ciclista in sella a una bicicletta, orientato verso sinistra.",
+    "name": "Segnale di attraversamento ciclabile",
+    "description": "Segnale di indicazione che localizza un attraversamento ciclabile, posto in corrispondenza delle apposite strisce sulla carreggiata. Impone ai conducenti dei veicoli di usare particolare prudenza, moderare la velocità e dare la precedenza ai ciclisti che attraversano o si accingono ad attraversare."
   },
   "quiz_metadata": {
     "core_concepts": [

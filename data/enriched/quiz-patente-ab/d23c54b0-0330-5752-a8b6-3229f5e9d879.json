@@ -5,11 +5,11 @@
   "text": "Il segnale in figura vieta il transito agli autobus",
   "correct_answer": false,
   "image": "b48111d338ed367bc117a752f3c07843.jpeg",
-  "image_description": "Segnale di divieto di transito con pannello integrativo (eccezione per autobus). Il segnale di divieto di transito (cerchio rosso con barra bianca orizzontale) è integrato da un pannello che specifica l'eccezione per gli autobus. Pertanto, il transito è vietato a tutti i veicoli, ad eccezione degli autobus.",
+  "image_description": "Segnale di senso vietato con pannello integrativo di eccezione per autobus. Vieta l'ingresso a tutti i veicoli nella direzione in cui è installato, consentendo l'accesso e la circolazione in deroga esclusivamente agli autobus indicati nel pannello integrativo (ad esempio lungo una corsia preferenziale a loro riservata).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, caratterizzato da un cerchio rosso con una barra bianca orizzontale al centro. Sotto questo segnale principale, è presente un pannello integrativo rettangolare di colore bianco con bordo nero. Sul pannello integrativo è riportata la scritta \"eccetto\" in nero, seguita da un'immagine stilizzata di un autobus, anch'essa in nero. L'insieme dei due elementi costituisce un unico complesso segnaletico.",
-    "name": "Segnale di divieto di transito con pannello integrativo (eccezione per autobus)",
-    "description": "Il segnale di divieto di transito (cerchio rosso con barra bianca orizzontale) è integrato da un pannello che specifica l'eccezione per gli autobus. Pertanto, il transito è vietato a tutti i veicoli, ad eccezione degli autobus."
+    "visual_analysis": "Segnale stradale composto da un cartello circolare a fondo rosso con barra trasversale orizzontale bianca al centro (segnale di senso vietato), abbinato inferiormente a un pannello integrativo rettangolare a fondo bianco contenente la dicitura testuale 'eccetto' sovrastante il pittogramma nero di un autobus.",
+    "name": "Segnale di senso vietato con pannello integrativo di eccezione per autobus",
+    "description": "Vieta l'ingresso a tutti i veicoli nella direzione in cui è installato, consentendo l'accesso e la circolazione in deroga esclusivamente agli autobus indicati nel pannello integrativo (ad esempio lungo una corsia preferenziale a loro riservata)."
   },
   "quiz_metadata": {
     "core_concepts": [

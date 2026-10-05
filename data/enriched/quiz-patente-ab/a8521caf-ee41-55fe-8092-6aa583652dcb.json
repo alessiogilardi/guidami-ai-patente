@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è posto in corrispondenza della fine della pista ciclabile accanto al marciapiede",
   "correct_answer": true,
   "image": "5cdcaa7804e7570e6161fc25649f1b29.jpeg",
-  "image_description": "Fine percorso pedonale e ciclabile. Il segnale indica la fine di un percorso pedonale e di una pista ciclabile. La barra rossa diagonale che attraversa entrambi i percorsi indica la fine della loro validità.",
+  "image_description": "Fine della pista ciclabile adiacente a percorso pedonale. Indica il termine della pista ciclabile affiancata a un marciapiede o a un percorso pedonale riservato. Dal punto in cui è posto il segnale cessano la riserva e la separazione dei percorsi per le rispettive categorie di utenti.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con sfondo blu. Il segnale è diviso verticalmente da una linea bianca. Nella metà sinistra, su sfondo blu, è raffigurata la sagoma stilizzata di un pedone che cammina. Nella metà destra, su sfondo blu, è raffigurata la sagoma stilizzata di una bicicletta. Una barra rossa diagonale attraversa il segnale da in alto a sinistra a in basso a destra, sovrapponendosi sia al pedone che alla bicicletta. Questo tipo di segnale indica la fine di un percorso pedonale e di una pista ciclabile.",
-    "name": "Fine percorso pedonale e ciclabile",
-    "description": "Il segnale indica la fine di un percorso pedonale e di una pista ciclabile. La barra rossa diagonale che attraversa entrambi i percorsi indica la fine della loro validità."
+    "visual_analysis": "Segnale circolare a fondo blu con bordo bianco, diviso a metà da una linea bianca verticale continua. Nella metà sinistra è raffigurato il simbolo di un pedone bianco, mentre nella metà destra è raffigurata una bicicletta bianca. Il segnale è barrato trasversalmente da una striscia diagonale rossa che va da sinistra in basso a destra in alto, indicante la fine della prescrizione.",
+    "name": "Fine della pista ciclabile adiacente a percorso pedonale",
+    "description": "Indica il termine della pista ciclabile affiancata a un marciapiede o a un percorso pedonale riservato. Dal punto in cui è posto il segnale cessano la riserva e la separazione dei percorsi per le rispettive categorie di utenti."
   },
   "quiz_metadata": {
     "core_concepts": [

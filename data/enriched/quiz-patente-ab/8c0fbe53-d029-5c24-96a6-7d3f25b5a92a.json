@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato invita a diminuire la velocità in caso di pioggia, perché la strada diventa sdrucciolevole",
   "correct_answer": true,
   "image": "5e3d380eb55b1ad0a83fbadf71431a7e.jpeg",
-  "image_description": "Pannello integrativo di pericolo per pioggia. Il pannello integrativo indica che il segnale principale a cui è abbinato si applica in caso di pioggia, preavvisando che la strada può diventare sdrucciolevole.",
+  "image_description": "Pannello integrativo: in caso di pioggia. Il pannello integra un segnale di pericolo (come 'Strada sdrucciolevole') o di prescrizione, specificando che la situazione di pericolo o la limitazione indicata dal segnale principale si applica in presenza di pioggia o strada bagnata. Impone ai conducenti di moderare la velocità, aumentare la distanza di sicurezza ed evitare manovre brusche per prevenire sbandamenti dovuti alla ridotta aderenza o alla presenza di fango.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Nella parte sinistra del pannello, delle linee oblique nere rappresentano la pioggia. Nella parte destra, una nuvola nera stilizzata indica la presenza di maltempo. L'insieme suggerisce una condizione di pioggia o maltempo che influisce sulla strada.",
-    "name": "Pannello integrativo di pericolo per pioggia",
-    "description": "Il pannello integrativo indica che il segnale principale a cui è abbinato si applica in caso di pioggia, preavvisando che la strada può diventare sdrucciolevole."
+    "visual_analysis": "Pannello integrativo rettangolare a sviluppo orizzontale, con sfondo bianco e sottile cornice perimetrale nera. All'interno è raffigurato in nero il simbolo di una nuvola stilizzata da cui scendono tratti obliqui paralleli che rappresentano la caduta della pioggia.",
+    "name": "Pannello integrativo: in caso di pioggia",
+    "description": "Il pannello integra un segnale di pericolo (come 'Strada sdrucciolevole') o di prescrizione, specificando che la situazione di pericolo o la limitazione indicata dal segnale principale si applica in presenza di pioggia o strada bagnata. Impone ai conducenti di moderare la velocità, aumentare la distanza di sicurezza ed evitare manovre brusche per prevenire sbandamenti dovuti alla ridotta aderenza o alla presenza di fango."
   },
   "quiz_metadata": {
     "core_concepts": [

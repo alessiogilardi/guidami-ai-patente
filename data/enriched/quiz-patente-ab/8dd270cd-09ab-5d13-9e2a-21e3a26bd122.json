@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato evidenzia il punto d'inizio del viale pedonale",
   "correct_answer": true,
   "image": "bc784ca837ec863fae7360b12eb8e1c6.jpeg",
-  "image_description": "Senso unico pedonale con obbligo di proseguire dritto. Il segnale di prescrizione indica che è consentito il transito ai pedoni e che questi devono procedere diritto.",
+  "image_description": "Segnale di percorso pedonale con pannello integrativo di inizio. Indica l'inizio di un percorso, viale o itinerario riservato alla circolazione esclusiva dei pedoni, con divieto di transito per tutti i veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un segnale di prescrizione (circolare con sfondo blu e bordo bianco) raffigurante una figura stilizzata di pedone in bianco. Il segnale inferiore è un pannello integrativo rettangolare (bianco con bordo nero) con una freccia nera rivolta verso l'alto, indicando la direzione da seguire. L'insieme dei due segnali indica un senso unico pedonale con obbligo di proseguire dritto.",
-    "name": "Senso unico pedonale con obbligo di proseguire dritto",
-    "description": "Il segnale di prescrizione indica che è consentito il transito ai pedoni e che questi devono procedere diritto."
+    "visual_analysis": "L'immagine mostra un segnale di prescrizione (obbligo) circolare con fondo blu, bordo bianco e sagoma di un pedone stilizzato bianco al centro. Al di sotto del segnale è collocato un pannello integrativo rettangolare verticale a fondo bianco con una freccia nera rivolta verso l'alto, indicante l'inizio della prescrizione.",
+    "name": "Segnale di percorso pedonale con pannello integrativo di inizio",
+    "description": "Indica l'inizio di un percorso, viale o itinerario riservato alla circolazione esclusiva dei pedoni, con divieto di transito per tutti i veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

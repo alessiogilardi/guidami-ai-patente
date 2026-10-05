@@ -5,11 +5,11 @@
   "text": "Il delineatore raffigurato è posto ai lati delle gallerie a senso unico",
   "correct_answer": true,
   "image": "828953d4a6ad4ef2943269b0191873fa.jpeg",
-  "image_description": "Delineatore (segnale complementare). Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente.",
+  "image_description": "Delineatore per gallerie a senso unico. Segnale complementare utilizzato per delimitare i margini della carreggiata e rendere visibile l'andamento del tracciato all'interno di gallerie a senso unico di circolazione, dove viene installato su entrambi i lati. Può essere impiegato anche per evidenziare deviazioni o strettoie della carreggiata; non è dotato di luce propria ma è costituito da materiale retroriflettente.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un delineatore stradale di colore giallo, di forma rettangolare verticale. È montato su un palo sottile che a sua volta è fissato a una base a terra, che sembra essere un marciapiede o un cordolo rialzato. Il delineatore è un segnale complementare, utilizzato per segnalare pericoli o variazioni della strada. Non è possibile determinare dalla sola immagine se abbia luce propria o se sia posizionato in una galleria, su una carreggiata o per indicare un ostacolo specifico, ma la sua funzione generale è quella di delimitare e rendere più visibile un tratto di strada o un ostacolo.",
-    "name": "Delineatore (segnale complementare)",
-    "description": "Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente."
+    "visual_analysis": "Pannello rettangolare a sviluppo verticale di colore giallo uniforme, privo di simboli o iscrizioni, montato su un supporto verticale fissato su un cordolo o marciapiede rialzato rispetto al piano stradale.",
+    "name": "Delineatore per gallerie a senso unico",
+    "description": "Segnale complementare utilizzato per delimitare i margini della carreggiata e rendere visibile l'andamento del tracciato all'interno di gallerie a senso unico di circolazione, dove viene installato su entrambi i lati. Può essere impiegato anche per evidenziare deviazioni o strettoie della carreggiata; non è dotato di luce propria ma è costituito da materiale retroriflettente."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "I delineatori raffigurati sono dei segnali complementari",
   "correct_answer": true,
   "image": "d4afb64225dd08c9fdb3cf55c3940bdf.jpeg",
-  "image_description": "Delineatori di margine. I delineatori raffigurati sono segnali complementari posti ai lati della carreggiata per visualizzare meglio l'andamento della strada, specialmente in curva o in presenza di ostacoli. Quello a sinistra indica la presenza di due ostacoli o la vicinanza di un'area pericolosa, mentre quello a destra indica un singolo ostacolo o un pericolo. Non sono visibili solo di notte e non dividono la carreggiata in corsie.",
+  "image_description": "Delineatori normali di margine per strade a senso unico. Segnali complementari posti ai bordi di una carreggiata o strada a senso unico (o a carreggiate separate) per rendere meglio visibile il tracciato stradale, specialmente di notte o in condizioni di scarsa visibilità. Presentano entrambi elementi retroriflettenti di colore giallo (a differenza delle strade a doppio senso dove a destra sono rossi e a sinistra bianchi).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due delineatori di margine, che sono segnali complementari. Il delineatore di sinistra ha una parte superiore nera con due cerchi gialli e una parte inferiore grigia. Il delineatore di destra ha una parte superiore nera con un rettangolo giallo verticale e una parte inferiore grigia. Entrambi sono pali verticali che si estendono dalla base. Questi segnali sono utilizzati per indicare il bordo della carreggiata o la presenza di ostacoli. Il numero e la disposizione dei simboli gialli indicano la natura del pericolo o dell'ostacolo.",
-    "name": "Delineatori di margine",
-    "description": "I delineatori raffigurati sono segnali complementari posti ai lati della carreggiata per visualizzare meglio l'andamento della strada, specialmente in curva o in presenza di ostacoli. Quello a sinistra indica la presenza di due ostacoli o la vicinanza di un'area pericolosa, mentre quello a destra indica un singolo ostacolo o un pericolo. Non sono visibili solo di notte e non dividono la carreggiata in corsie."
+    "visual_analysis": "L'immagine mostra due paletti verticali (delineatori di margine) a sezione cava con estremità superiore tagliata obliquamente e colorata di nero su fusto chiaro. Entrambi montano elementi rifrangenti di colore giallo: il primo (a sinistra) presenta due elementi circolari gialli sovrapposti, mentre il secondo (a destra) presenta un elemento rettangolare verticale giallo.",
+    "name": "Delineatori normali di margine per strade a senso unico",
+    "description": "Segnali complementari posti ai bordi di una carreggiata o strada a senso unico (o a carreggiate separate) per rendere meglio visibile il tracciato stradale, specialmente di notte o in condizioni di scarsa visibilità. Presentano entrambi elementi retroriflettenti di colore giallo (a differenza delle strade a doppio senso dove a destra sono rossi e a sinistra bianchi)."
   },
   "quiz_metadata": {
     "core_concepts": [

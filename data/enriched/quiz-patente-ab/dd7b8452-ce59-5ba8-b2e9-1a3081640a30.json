@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato è consentito il transito agli autobus",
   "correct_answer": true,
   "image": "18e06d9f8487ade1e7d992ff03920d19.jpeg",
-  "image_description": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t. Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate.",
+  "image_description": "Divieto di transito ai veicoli di massa a pieno carico superiore a 6,5 t destinati al trasporto di merci. Vieta il transito ai soli veicoli destinati al trasporto di cose (merci) con massa complessiva a pieno carico, indicata sulla carta di circolazione, superiore a 6,5 tonnellate. Consente il transito di autocarri aventi massa pari o inferiore a tale limite, nonché dei veicoli destinati al trasporto di persone (come autobus e autocaravan), anche se superano le 6,5 tonnellate.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro con la dicitura \"6,5 t\" sovrapposta. Il segnale è isolato e non presenta pannelli integrativi. Si tratta di un segnale di prescrizione (divieto).",
-    "name": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t",
-    "description": "Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate."
+    "visual_analysis": "Segnale di prescrizione (divieto) a forma circolare con bordo rosso e fondo bianco. Al centro compare la sagoma nera di profilo di un autocarro rivolto a sinistra; sul vano di carico è impressa l'iscrizione in cifre bianche '6,5 t'.",
+    "name": "Divieto di transito ai veicoli di massa a pieno carico superiore a 6,5 t destinati al trasporto di merci",
+    "description": "Vieta il transito ai soli veicoli destinati al trasporto di cose (merci) con massa complessiva a pieno carico, indicata sulla carta di circolazione, superiore a 6,5 tonnellate. Consente il transito di autocarri aventi massa pari o inferiore a tale limite, nonché dei veicoli destinati al trasporto di persone (come autobus e autocaravan), anche se superano le 6,5 tonnellate."
   },
   "quiz_metadata": {
     "core_concepts": [

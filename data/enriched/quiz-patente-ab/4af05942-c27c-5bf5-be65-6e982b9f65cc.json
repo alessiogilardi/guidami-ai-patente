@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente il transito dei motocicli la domenica dalle ore 8.00 alle ore 20.00",
   "correct_answer": false,
   "image": "32da26fa8295978bfb4afbda2f15fb67.jpeg",
-  "image_description": "Divieto di transito per motocicli con pannello integrativo di orario. Il segnale di divieto di transito per i motocicli è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Al di fuori di questi orari, i motocicli possono transitare.",
+  "image_description": "Segnale di divieto di transito ai motocicli con pannello integrativo di fascia oraria nei giorni festivi. Vieta la circolazione a tutti i motocicli esclusivamente nei giorni festivi nella fascia oraria compresa tra le ore 8.00 e le ore 20.00. Il transito dei motocicli è invece consentito nei giorni feriali e, nei giorni festivi, al di fuori dell'orario indicato; non impone divieti agli altri veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco, raffigurante la sagoma stilizzata di un motociclista. Questo è un segnale di divieto. Sotto questo segnale, vi è un pannello rettangolare bianco con bordo nero. Il pannello contiene il simbolo di una croce (+) seguito dagli orari \"8,00 - 20,00\". Il segnale principale è un divieto di transito per i motocicli. Il pannello integrativo specifica che il divieto è valido solo durante gli orari indicati.",
-    "name": "Divieto di transito per motocicli con pannello integrativo di orario",
-    "description": "Il segnale di divieto di transito per i motocicli è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Al di fuori di questi orari, i motocicli possono transitare."
+    "visual_analysis": "L'immagine presenta un segnale di divieto composto da due elementi verticalmente abbinati: in alto, un cartello circolare con bordo rosso su fondo bianco che racchiude la sagoma nera di un motociclo con conducente (segnale di divieto di transito ai motocicli); in basso, un pannello integrativo rettangolare con fondo bianco e bordo nero, recante a sinistra il simbolo della croce latina (che indica i giorni festivi) seguito dall'indicazione oraria '8,00 - 20,00'.",
+    "name": "Segnale di divieto di transito ai motocicli con pannello integrativo di fascia oraria nei giorni festivi",
+    "description": "Vieta la circolazione a tutti i motocicli esclusivamente nei giorni festivi nella fascia oraria compresa tra le ore 8.00 e le ore 20.00. Il transito dei motocicli è invece consentito nei giorni feriali e, nei giorni festivi, al di fuori dell'orario indicato; non impone divieti agli altri veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

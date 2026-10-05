@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine del limite di lunghezza massima dei complessi di veicoli",
   "correct_answer": false,
   "image": "9b53ff27b5ae803adc33fb8886e036e0.jpeg",
-  "image_description": "Fine del limite di velocità. Indica la fine del divieto o dell'obbligo precedentemente segnalato. Nel caso specifico, segnala la fine del limite di velocità di 30 km/h.",
+  "image_description": "Fine limite minimo di velocità. Indica il termine del tratto di strada in cui era obbligatorio circolare a una velocità di almeno 30 km/h. Da questo punto in poi non si ha più l'obbligo di mantenere tale andatura minima ed è consentito marciare anche a velocità inferiori o superiori, purché nei limiti massimi di velocità vigenti per quel tipo di strada.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con sfondo blu e un numero '30' bianco al centro. Una barra rossa diagonale attraversa il numero da sinistra a destra. Questo è il segnale di 'Fine del limite di velocità'.",
-    "name": "Fine del limite di velocità",
-    "description": "Indica la fine del divieto o dell'obbligo precedentemente segnalato. Nel caso specifico, segnala la fine del limite di velocità di 30 km/h."
+    "visual_analysis": "Segnale stradale circolare con fondo blu e bordo bianco. Al centro compare il numero 30 in cifre bianche, barrato diagonalmente da una striscia rossa che va dall'alto a destra verso il basso a sinistra.",
+    "name": "Fine limite minimo di velocità",
+    "description": "Indica il termine del tratto di strada in cui era obbligatorio circolare a una velocità di almeno 30 km/h. Da questo punto in poi non si ha più l'obbligo di mantenere tale andatura minima ed è consentito marciare anche a velocità inferiori o superiori, purché nei limiti massimi di velocità vigenti per quel tipo di strada."
   },
   "quiz_metadata": {
     "core_concepts": [

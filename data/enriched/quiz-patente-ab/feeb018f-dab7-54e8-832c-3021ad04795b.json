@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un incrocio in cui il conducente ha l'obbligo di fermarsi e dare precedenza ai veicoli provenienti da destra",
   "correct_answer": false,
   "image": "b90ff4c558b4de38c3dd24fc8d62a327.jpeg",
-  "image_description": "Preavviso di incrocio con immissione laterale da destra. Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità.",
+  "image_description": "Segnale di intersezione con diritto di precedenza da destra. Preannuncia un incrocio con una strada secondaria di minore importanza che si immette da destra, rispetto alla quale il conducente mantiene il diritto di precedenza. Impone comunque di moderare la velocità e usare prudenza nell'approssimarsi all'intersezione. Non vieta la svolta e non va confuso con una corsia di accelerazione o una confluenza autostradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una strada principale con una strada secondaria che si immette da destra. La strada principale è rappresentata da una linea a forma di freccia che indica la direzione di marcia in avanti, mentre la strada secondaria è una linea più corta che si innesta perpendicolarmente sulla destra della strada principale. Questo tipo di segnale preannuncia un incrocio.",
-    "name": "Preavviso di incrocio con immissione laterale da destra",
-    "description": "Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità."
+    "visual_analysis": "Segnale verticale di forma triangolare con vertice verso l'alto, bordo rosso e fondo bianco. All'interno è raffigurata una freccia nera verticale larga e appuntita in alto, dalla quale si dirama ad angolo retto verso destra un tratto nero rettangolare più stretto, a indicare una strada secondaria che confluisce sul lato destro.",
+    "name": "Segnale di intersezione con diritto di precedenza da destra",
+    "description": "Preannuncia un incrocio con una strada secondaria di minore importanza che si immette da destra, rispetto alla quale il conducente mantiene il diritto di precedenza. Impone comunque di moderare la velocità e usare prudenza nell'approssimarsi all'intersezione. Non vieta la svolta e non va confuso con una corsia di accelerazione o una confluenza autostradale."
   },
   "quiz_metadata": {
     "core_concepts": [

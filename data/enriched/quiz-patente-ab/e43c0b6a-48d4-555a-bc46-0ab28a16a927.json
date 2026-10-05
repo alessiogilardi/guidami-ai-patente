@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è integrato dal pannello che indica la lunghezza del tratto di strada interessato",
   "correct_answer": true,
   "image": "4e35a23fa5e62af4861ff27076a91a69.jpeg",
-  "image_description": "Segnale di pericolo di incendio. Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti.",
+  "image_description": "Segnale di pericolo di incendio. Preannuncia l'attraversamento o la vicinanza di un bosco o di aree ad alto rischio d'incendio limitrofe alla carreggiata; è generalmente integrato da un pannello che ne indica l'estesa chilometrica. Richiede di evitare qualsiasi comportamento che possa innescare incendi, vietando rigorosamente di gettare mozziconi di sigaretta accesi, fiammiferi o altri oggetti incandescenti dal finestrino; non impone divieti di transito per veicoli che trasportano sostanze infiammabili o esplosive.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del segnale è raffigurato un pittogramma che rappresenta un albero stilizzato che brucia, con una fiamma alla base e un fiammifero acceso. Questo pittogramma indica un pericolo di incendio. Non sono presenti pannelli integrativi. L'immagine è focalizzata unicamente sul segnale.",
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice rivolto verso l'alto, caratterizzato da un bordo perimetrale rosso e fondo bianco. Al centro è raffigurato il simbolo di un albero stilizzato nero (a forma di pino marittimo), alla cui base compaiono delle fiamme rosse e un fiammifero acceso inclinato.",
     "name": "Segnale di pericolo di incendio",
-    "description": "Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti."
+    "description": "Preannuncia l'attraversamento o la vicinanza di un bosco o di aree ad alto rischio d'incendio limitrofe alla carreggiata; è generalmente integrato da un pannello che ne indica l'estesa chilometrica. Richiede di evitare qualsiasi comportamento che possa innescare incendi, vietando rigorosamente di gettare mozziconi di sigaretta accesi, fiammiferi o altri oggetti incandescenti dal finestrino; non impone divieti di transito per veicoli che trasportano sostanze infiammabili o esplosive."
   },
   "quiz_metadata": {
     "core_concepts": [

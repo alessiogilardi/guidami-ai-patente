@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato vale solo per i veicoli rappresentati",
   "correct_answer": true,
   "image": "9176878fa4d26bd38e490c176920999a.jpeg",
-  "image_description": "Pannello integrativo: veicoli pesanti. Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti.",
+  "image_description": "Pannello integrativo di limitazione per categoria di veicoli: autoarticolati. Pannello integrativo che limita l'efficacia del segnale a cui è abbinato alla sola categoria degli autoarticolati (o autoarticolati/autoarticolati e autosnodati). Se abbinato a un segnale di divieto, di obbligo o di indicazione (come il segnale di parcheggio), rende la prescrizione o l'indicazione valida esclusivamente per i veicoli rappresentati nel simbolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo pesante (camion). Questo pannello è comunemente utilizzato per integrare segnali stradali, specificando che la loro prescrizione o indicazione si applica specificamente ai veicoli pesanti.",
-    "name": "Pannello integrativo: veicoli pesanti",
-    "description": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti."
+    "visual_analysis": "Pannello integrativo rettangolare a fondo bianco con sottile bordo perimetrale nero. Al centro è rappresentato in nero il profilo laterale stilizzato di un veicolo pesante complesso (autoarticolato, composto da trattore stradale e semirimorchio).",
+    "name": "Pannello integrativo di limitazione per categoria di veicoli: autoarticolati",
+    "description": "Pannello integrativo che limita l'efficacia del segnale a cui è abbinato alla sola categoria degli autoarticolati (o autoarticolati/autoarticolati e autosnodati). Se abbinato a un segnale di divieto, di obbligo o di indicazione (come il segnale di parcheggio), rende la prescrizione o l'indicazione valida esclusivamente per i veicoli rappresentati nel simbolo."
   },
   "quiz_metadata": {
     "core_concepts": [

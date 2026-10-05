@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'inizio di un lungo rettilineo",
   "correct_answer": false,
   "image": "7206f36808a5ee18e9b5163635a54363.jpeg",
-  "image_description": "Inversione di marcia consentita con cavalcavia o sottopassaggio. Il segnale indica la possibilità di effettuare un'inversione di marcia tramite un cavalcavia o un sottopassaggio, su strade a carreggiate separate.",
+  "image_description": "Segnale di inversione di marcia. Segnale di indicazione che preavvisa, su strade a carreggiate separate (in questo caso su strada extraurbana per il fondo blu, oppure autostrada se a fondo verde), la presenza di un'infrastruttura a livelli sfalsati (cavalcavia o sottopassaggio) predisposta per effettuare l'inversione del senso di marcia e tornare indietro in sicurezza. Non impone l'obbligo di invertire la marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale sono rappresentate due carreggiate separate da una linea bianca continua. Una freccia bianca parte dalla carreggiata di sinistra, compie un'ansa verso l'alto e poi verso destra, per poi scendere e indicare un'inversione di marcia verso sinistra, suggerendo il passaggio sopra o sotto la carreggiata principale. Questo tipo di segnale è un segnale di indicazione.",
-    "name": "Inversione di marcia consentita con cavalcavia o sottopassaggio",
-    "description": "Il segnale indica la possibilità di effettuare un'inversione di marcia tramite un cavalcavia o un sottopassaggio, su strade a carreggiate separate."
+    "visual_analysis": "Segnale stradale quadrato a fondo blu con cornice bianca sottile. Al centro è raffigurata in bianco e in prospettiva una strada a due carreggiate separate da uno spartitraffico centrale; sovrapposta a essa è presente una freccia bianca sagomata a ponte che parte dal margine destro della carreggiata, scavalca trasversalmente la strada e piega verso il basso a sinistra con una punta rivolta in senso contrario di marcia.",
+    "name": "Segnale di inversione di marcia",
+    "description": "Segnale di indicazione che preavvisa, su strade a carreggiate separate (in questo caso su strada extraurbana per il fondo blu, oppure autostrada se a fondo verde), la presenza di un'infrastruttura a livelli sfalsati (cavalcavia o sottopassaggio) predisposta per effettuare l'inversione del senso di marcia e tornare indietro in sicurezza. Non impone l'obbligo di invertire la marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

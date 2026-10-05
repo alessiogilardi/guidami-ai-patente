@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica corsia di destra chiusa per manutenzione stradale",
   "correct_answer": false,
   "image": "da5d3e67a29eb505cdd61ed330cdea4c.jpeg",
-  "image_description": "Segnale di obbligo, percorso da seguire (freccia verso il basso). Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione.",
+  "image_description": "Pannello per veicoli per lavori stradali. Segnale temporaneo montato sulla parte posteriore di veicoli adibiti a lavori stradali o manutenzione (fermi, in sosta sulla carreggiata o in lento movimento). Indica l'obbligo di superare o sorpassare il veicolo operativo sul lato indicato dalla freccia (in questo caso a destra) e invita i conducenti a rallentare per la presenza del cantiere mobile.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale quadrato con sfondo a bande diagonali alternate rosse e bianche. Al centro, è presente un disco blu con un bordo bianco, contenente una freccia bianca obliqua che punta verso il basso e verso destra. Questo tipo di segnaletica indica un obbligo di percorso.",
-    "name": "Segnale di obbligo, percorso da seguire (freccia verso il basso)",
-    "description": "Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione."
+    "visual_analysis": "Pannello quadrato a sfondo a strisce oblique alternate bianche e rosse a spina di pesce (convergenti verso l'alto), al cui centro è inserito un disco a fondo blu bordato di bianco recante una freccia bianca orientata in basso a destra (segnale di passaggio obbligatorio a destra).",
+    "name": "Pannello per veicoli per lavori stradali",
+    "description": "Segnale temporaneo montato sulla parte posteriore di veicoli adibiti a lavori stradali o manutenzione (fermi, in sosta sulla carreggiata o in lento movimento). Indica l'obbligo di superare o sorpassare il veicolo operativo sul lato indicato dalla freccia (in questo caso a destra) e invita i conducenti a rallentare per la presenza del cantiere mobile."
   },
   "quiz_metadata": {
     "core_concepts": [

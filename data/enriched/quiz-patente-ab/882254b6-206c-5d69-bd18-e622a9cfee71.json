@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente il transito dalle ore 8.00 alle ore 20.00 dei giorni festivi ai soli ciclisti",
   "correct_answer": true,
   "image": "1db0bf882ccbcc2f233d3146a5f5d003.jpeg",
-  "image_description": "Incrocio a raso con precedenza a destra. Il segnale indica una corsia o percorso riservato ai ciclisti, con limitazioni orarie nei giorni festivi. L'orario indicato (8:00-20:00) si riferisce ai giorni festivi, durante i quali la corsia è riservata ai ciclisti. Negli altri orari e nei giorni feriali, la corsia potrebbe essere aperta ad altri veicoli o avere una diversa regolamentazione.",
+  "image_description": "Segnale di pista ciclabile con pannello integrativo di fascia oraria nei giorni festivi. Indica una pista o percorso riservato esclusivamente alla circolazione dei velocipedi (biciclette), limitatamente ai giorni festivi nella fascia oraria compresa tra le ore 8.00 e le 20.00, vietando contemporaneamente il transito agli altri veicoli in tale intervallo di tempo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di prescrizione, rappresentato da un disco blu con bordo bianco, al cui interno è raffigurata una bicicletta bianca. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con bordo nero, che riporta il simbolo di un giorno festivo (una croce) seguito dall'orario '8,00 - 20,00'. Il segnale principale indica una via o corsia riservata ai velocipedi. Il pannello integrativo specifica che tale riservatezza è valida solo nei giorni festivi, nell'intervallo orario dalle 8:00 alle 20:00.",
-    "name": "Incrocio a raso con precedenza a destra",
-    "description": "Il segnale indica una corsia o percorso riservato ai ciclisti, con limitazioni orarie nei giorni festivi. L'orario indicato (8:00-20:00) si riferisce ai giorni festivi, durante i quali la corsia è riservata ai ciclisti. Negli altri orari e nei giorni feriali, la corsia potrebbe essere aperta ad altri veicoli o avere una diversa regolamentazione."
+    "visual_analysis": "L'immagine mostra un segnale di prescrizione composto da due elementi verticalmente sovrapposti: in alto, un segnale circolare a fondo blu con bordo bianco recante il pittogramma bianco di una bicicletta (segnale di pista ciclabile o percorso per velocipedi); in basso, un pannello integrativo rettangolare a fondo bianco con bordo nero contenente il simbolo di una croce latina (indicante i giorni festivi) seguito dalla fascia oraria '8,00 - 20,00'.",
+    "name": "Segnale di pista ciclabile con pannello integrativo di fascia oraria nei giorni festivi",
+    "description": "Indica una pista o percorso riservato esclusivamente alla circolazione dei velocipedi (biciclette), limitatamente ai giorni festivi nella fascia oraria compresa tra le ore 8.00 e le 20.00, vietando contemporaneamente il transito agli altri veicoli in tale intervallo di tempo."
   },
   "quiz_metadata": {
     "core_concepts": [

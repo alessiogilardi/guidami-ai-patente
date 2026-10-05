@@ -5,11 +5,11 @@
   "text": "Le strisce gialle diagonali in figura devono essere lasciate libere per consentire l'entrata e l'uscita dal veicolo delle persone invalide",
   "correct_answer": true,
   "image": "3c4dace65cc36e37309b263ce5ea5b1b.jpeg",
-  "image_description": "Strisce di delimitazione per aree riservate a persone invalide. Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide.",
+  "image_description": "Strisce gialle diagonali di rispetto per stallo riservato a persone invalide. La segnaletica orizzontale delimita uno stallo di sosta riservato a veicoli al servizio di persone con disabilità (invalide). La fascia laterale a strisce gialle diagonali costituisce uno spazio di rispetto e manovra che deve essere costantemente mantenuto libero da qualsiasi veicolo o ostacolo, per consentire l'apertura delle portiere, la salita, la discesa e l'accesso al marciapiede tramite l'apposito raccordo/scivolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una vista aerea di uno spazio di parcheggio con due auto. Sulla sinistra, adiacente a un marciapiede o area pedonale, è presente un'area delimitata da strisce gialle diagonali. Queste strisce sono posizionate in modo da indicare che l'area non deve essere occupata da veicoli. Le due auto sono parcheggiate in spazi adiacenti, uno dei quali è parzialmente coperto dalle strisce gialle. L'area con le strisce gialle è adiacente a un'apertura che potrebbe indicare un accesso o un'uscita.",
-    "name": "Strisce di delimitazione per aree riservate a persone invalide",
-    "description": "Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide."
+    "visual_analysis": "Rappresentazione schematica dall'alto di un'area di sosta perpendicolare al marciapiede. Sono visibili due autovetture parcheggiate. Lo stallo di sinistra, delimitato da linee gialle, è affiancato lateralmente da una fascia rettangolare caratterizzata da zebrature a strisce gialle oblique (diagonali), raccordata frontalmente a un abbassamento del marciapiede per consentire l'accesso. A destra è presente uno stallo di sosta ordinario delimitato da striscia bianca.",
+    "name": "Strisce gialle diagonali di rispetto per stallo riservato a persone invalide",
+    "description": "La segnaletica orizzontale delimita uno stallo di sosta riservato a veicoli al servizio di persone con disabilità (invalide). La fascia laterale a strisce gialle diagonali costituisce uno spazio di rispetto e manovra che deve essere costantemente mantenuto libero da qualsiasi veicolo o ostacolo, per consentire l'apertura delle portiere, la salita, la discesa e l'accesso al marciapiede tramite l'apposito raccordo/scivolo."
   },
   "quiz_metadata": {
     "core_concepts": [

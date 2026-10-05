@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che tutte le località riportate nel cartello sono distanti 500 metri",
   "correct_answer": false,
   "image": "1e71e8d46e4c541e18fe8dc1fe8cfd97.jpeg",
-  "image_description": "Preavviso di uscita obbligatoria. Il segnale indica che la prossima uscita è Frosinone e che questa si trova a 500 metri. Vengono inoltre indicate altre località raggiungibili tramite questa uscita: Ceccano-Priverno, Circeo-Terracina, Ferentino-Alatri, Campocatino-Fiuggi. Le località turistiche sono indicate su fondo marrone.",
+  "image_description": "Segnale di preavviso di svincolo su strada extraurbana principale. Preavvisa uno svincolo di uscita posto a 500 metri lungo una strada extraurbana principale (segnalata dal fondo blu), indicando il nome dello svincolo (Frosinone) e l'elenco delle località raggiungibili abbandonando la carreggiata principale, comprese quelle di interesse turistico evidenziate su fondo marrone.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di preavviso di uscita obbligatoria. Il segnale ha uno sfondo blu scuro e presenta la scritta \"uscita FROSINONE\" in alto. Sotto, sono elencate diverse località: \"CECCANO-PRIVERNO\", \"Circeo-TERRACINA\", \"FERENTINO-ALATRI\", e \"Campocatino-FIUGGI\". Le ultime due località sono scritte su un riquadro marrone, indicando che si tratta di destinazioni turistiche. In basso, è presente un pannello integrativo con la scritta \"500 m\", che indica la distanza dall'uscita.",
-    "name": "Preavviso di uscita obbligatoria",
-    "description": "Il segnale indica che la prossima uscita è Frosinone e che questa si trova a 500 metri. Vengono inoltre indicate altre località raggiungibili tramite questa uscita: Ceccano-Priverno, Circeo-Terracina, Ferentino-Alatri, Campocatino-Fiuggi. Le località turistiche sono indicate su fondo marrone."
+    "visual_analysis": "Segnale stradale rettangolare a sviluppo orizzontale suddiviso verticalmente in tre elementi: in alto un pannello a fondo bianco con iscrizione nera in maiuscolo e minuscolo 'uscita FROSINONE'; al centro un grande pannello a fondo blu con cornice bianca contenente l'elenco delle destinazioni su quattro righe ('CECCANO - PRIVERNO', 'Circeo' su fondo marrone con testo bianco affiancato da '- TERRACINA', 'FERENTINO - ALATRI', 'Campocatino' su fondo marrone affiancato da '- FIUGGI'); in basso un riquadro a fondo bianco con bordo nero indicante la distanza '500 m'.",
+    "name": "Segnale di preavviso di svincolo su strada extraurbana principale",
+    "description": "Preavvisa uno svincolo di uscita posto a 500 metri lungo una strada extraurbana principale (segnalata dal fondo blu), indicando il nome dello svincolo (Frosinone) e l'elenco delle località raggiungibili abbandonando la carreggiata principale, comprese quelle di interesse turistico evidenziate su fondo marrone."
   },
   "quiz_metadata": {
     "core_concepts": [

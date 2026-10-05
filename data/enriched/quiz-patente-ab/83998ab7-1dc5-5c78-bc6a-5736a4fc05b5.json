@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito ai veicoli a motore trainanti un rimorchio",
   "correct_answer": true,
   "image": "a6d36b4c47763e1eb809947d732f7d7d.jpeg",
-  "image_description": "Divieto di transito ai veicoli a motore trainanti un rimorchio. Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni.",
+  "image_description": "Divieto di transito ai veicoli a motore trainanti un rimorchio. Vieta la circolazione a tutti i veicoli a motore che trainano qualsiasi tipo di rimorchio o semirimorchio (come autotreni, autovetture che trainano roulotte o carrelli per imbarcazioni), indipendentemente dal tipo di motrice o dall'uso. Il divieto non si applica agli autosnodati né ai veicoli che trainano un carrello-appendice. Può essere corredato da un pannello integrativo indicante la massa massima del rimorchio consentita al transito.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo a motore trainante un rimorchio. Questo segnale è il segnale di 'Divieto di transito ai veicoli a motore trainanti un rimorchio'. Non sono presenti pannelli integrativi.",
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare, con bordo perimetrale rosso su fondo bianco. Al centro compare la sagoma stilizzata in nero di un veicolo a motore collegato a un rimorchio tramite una barra di traino.",
     "name": "Divieto di transito ai veicoli a motore trainanti un rimorchio",
-    "description": "Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni."
+    "description": "Vieta la circolazione a tutti i veicoli a motore che trainano qualsiasi tipo di rimorchio o semirimorchio (come autotreni, autovetture che trainano roulotte o carrelli per imbarcazioni), indipendentemente dal tipo di motrice o dall'uso. Il divieto non si applica agli autosnodati né ai veicoli che trainano un carrello-appendice. Può essere corredato da un pannello integrativo indicante la massa massima del rimorchio consentita al transito."
   },
   "quiz_metadata": {
     "core_concepts": [

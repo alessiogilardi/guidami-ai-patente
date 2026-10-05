@@ -5,11 +5,11 @@
   "text": "Nella carreggiata a doppio senso di circolazione le strisce di mezzo in figura dividono i sensi di marcia",
   "correct_answer": true,
   "image": "1dd7b76e8b6de65a7490b0a98df0b13f.jpeg",
-  "image_description": "Strisce di delimitazione delle corsie. Le strisce bianche continue delimitano le corsie di marcia. La presenza di più coppie di strisce indica una carreggiata a più corsie.",
+  "image_description": "Striscia longitudinale continua doppia. Segnaletica orizzontale costituita da una striscia longitudinale continua doppia (strisce continue affiancate) che divide la carreggiata in due corsie (o sensi di marcia), affiancata lateralmente dalle strisce di margine continue. Nelle carreggiate a doppio senso di circolazione, le strisce centrali continue separano i due opposti sensi di marcia e non possono essere oltrepassate, valicate o calpestate, vietando manovre di inversione di marcia, svolta a sinistra che le intersechi o sorpassi che comportino l'invasione dell'opposta corsia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una segnaletica orizzontale costituita da strisce bianche continue su fondo grigio, che simulano l'asfalto. Sono presenti due serie di strisce: una più lunga in alto e una più corta in basso. Entrambe le serie sono composte da due coppie di strisce bianche continue parallele, che delimitano delle corsie di marcia. La serie superiore presenta quattro strisce bianche continue, disposte a coppie, che suggeriscono la presenza di due corsie di marcia. La serie inferiore, più corta, presenta anch'essa due coppie di strisce bianche continue, indicando anch'essa una o più corsie. Non sono presenti segnali verticali o altri elementi di contesto stradale. L'immagine si concentra esclusivamente sulla segnaletica orizzontale di delimitazione delle corsie.",
-    "name": "Strisce di delimitazione delle corsie",
-    "description": "Le strisce bianche continue delimitano le corsie di marcia. La presenza di più coppie di strisce indica una carreggiata a più corsie."
+    "visual_analysis": "L'immagine illustra una sezione di carreggiata vista dall'alto con superficie asfaltata grigia e segnaletica orizzontale bianca. Al centro della carreggiata sono presenti due strisce longitudinali continue affiancate (striscia continua doppia), mentre ai lati sono visibili le strisce continue di delimitazione del margine della carreggiata. In basso è visibile una variante o riproduzione in scala ridotta dello schema.",
+    "name": "Striscia longitudinale continua doppia",
+    "description": "Segnaletica orizzontale costituita da una striscia longitudinale continua doppia (strisce continue affiancate) che divide la carreggiata in due corsie (o sensi di marcia), affiancata lateralmente dalle strisce di margine continue. Nelle carreggiate a doppio senso di circolazione, le strisce centrali continue separano i due opposti sensi di marcia e non possono essere oltrepassate, valicate o calpestate, vietando manovre di inversione di marcia, svolta a sinistra che le intersechi o sorpassi che comportino l'invasione dell'opposta corsia."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga ad arrestarsi per il controllo doganale all'ingresso nel territorio di un Paese europeo",
   "correct_answer": false,
   "image": "5a226c55de66377f9dae0a004c51f57f.jpeg",
-  "image_description": "Preavviso di confine UE (Francia). Il segnale raffigura il logo dell'Unione Europea con la scritta \"FRANCE\" al centro, indicando l'ingresso nel territorio francese. Il pannello integrativo sottostante specifica che tale confine si trova a 1 km di distanza.",
+  "image_description": "Segnale di preavviso di confine di Stato con un Paese dell'Unione Europea. Preavvisa la distanza (nel caso specifico 1 km) dal confine di Stato con un Paese appartenente all'Unione Europea (la Francia). Trattandosi del confine tra Paesi membri dell'UE, non vi è obbligo di arrestarsi per il controllo doganale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un cartello quadrato con sfondo blu scuro, circondato da 12 stelle gialle disposte in cerchio, rappresentanti l'Unione Europea. Al centro, in lettere bianche, è riportata la scritta \"FRANCE\". Questo segnale indica l'appartenenza al territorio francese e, implicitamente, l'avvicinamento a un confine di Stato con un paese membro dell'UE. Sotto questo segnale, vi è un pannello rettangolare bianco con la scritta \"1 km\" in nero. Questo pannello integrativo indica la distanza in chilometri dal punto in cui si applica il segnale sovrastante, ovvero il confine. Pertanto, il segnale nel suo complesso preavvisa che il confine con la Francia si trova a 1 km di distanza.",
-    "name": "Preavviso di confine UE (Francia)",
-    "description": "Il segnale raffigura il logo dell'Unione Europea con la scritta \"FRANCE\" al centro, indicando l'ingresso nel territorio francese. Il pannello integrativo sottostante specifica che tale confine si trova a 1 km di distanza."
+    "visual_analysis": "Segnale stradale di indicazione a forma quadrata, con fondo blu e bordo bianco sottile. Al centro presenta un cerchio formato da dodici stelle dorate a cinque punte (simbolo dell'Unione Europea) che racchiudono la scritta in lettere maiuscole bianche \"FRANCE\". Sotto il cartello principale è abbinato un pannello integrativo di distanza rettangolare a fondo bianco, con bordo nero e la scritta nera \"1 km\".",
+    "name": "Segnale di preavviso di confine di Stato con un Paese dell'Unione Europea",
+    "description": "Preavvisa la distanza (nel caso specifico 1 km) dal confine di Stato con un Paese appartenente all'Unione Europea (la Francia). Trattandosi del confine tra Paesi membri dell'UE, non vi è obbligo di arrestarsi per il controllo doganale."
   },
   "quiz_metadata": {
     "core_concepts": [

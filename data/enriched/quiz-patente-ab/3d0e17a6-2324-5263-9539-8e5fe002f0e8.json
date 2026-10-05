@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato conferma la continuazione del divieto di sorpasso",
   "correct_answer": true,
   "image": "434788d9f15303500c6a41c25d1381d9.jpeg",
-  "image_description": "Segnale di divieto di sorpasso con pannello integrativo di limitazione (veicoli pesanti). Il segnale di divieto di sorpasso si applica a tutti i veicoli, eccetto quelli a due ruote senza motore. Il pannello integrativo indica che il divieto si applica ai veicoli pesanti. Pertanto, il divieto di sorpasso è valido per i veicoli pesanti.",
+  "image_description": "Segnale di divieto di sorpasso con pannello integrativo di continuazione. Indica che il divieto di sorpasso, precedentemente istituito, è ancora in vigore e continua nel tratto di strada successivo al segnale. Vieta a tutti gli autoveicoli di sorpassare altri veicoli a motore, consentendo il sorpasso solo di veicoli privi di motore, ciclomotori e motocicli se non si oltrepassa la linea continua.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di sorpasso, rappresentato da un disco rosso con bordo rosso e sfondo bianco, con due automobili stilizzate (una rossa e una nera) al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano la direzione del traffico. Il pannello integrativo, secondo la normativa, specifica che il divieto di sorpasso si applica ai veicoli pesanti.",
-    "name": "Segnale di divieto di sorpasso con pannello integrativo di limitazione (veicoli pesanti)",
-    "description": "Il segnale di divieto di sorpasso si applica a tutti i veicoli, eccetto quelli a due ruote senza motore. Il pannello integrativo indica che il divieto si applica ai veicoli pesanti. Pertanto, il divieto di sorpasso è valido per i veicoli pesanti."
+    "visual_analysis": "L'immagine mostra un segnale composito formato da un segnale principale di prescrizione e da un pannello integrativo sottostante. Il segnale superiore è circolare con bordo rosso e sfondo bianco, raffigurante due autovetture affiancate viste da tergo, quella a sinistra rossa e quella a destra nera (divieto di sorpasso). Il pannello integrativo sottostante è di forma rettangolare a sviluppo verticale, con fondo bianco e bordo nero sottile, contenente due frecce nere allineate verticalmente: la freccia superiore è rivolta verso l'alto e quella inferiore verso il basso (simbolo di continuazione).",
+    "name": "Segnale di divieto di sorpasso con pannello integrativo di continuazione",
+    "description": "Indica che il divieto di sorpasso, precedentemente istituito, è ancora in vigore e continua nel tratto di strada successivo al segnale. Vieta a tutti gli autoveicoli di sorpassare altri veicoli a motore, consentendo il sorpasso solo di veicoli privi di motore, ciclomotori e motocicli se non si oltrepassa la linea continua."
   },
   "quiz_metadata": {
     "core_concepts": [

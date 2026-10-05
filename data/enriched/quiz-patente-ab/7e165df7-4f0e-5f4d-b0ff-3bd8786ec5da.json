@@ -5,11 +5,11 @@
   "text": "Il dispositivo in figura è un dosso artificiale",
   "correct_answer": true,
   "image": "bcc89d4b3f24a5d660787435a5305dae.jpeg",
-  "image_description": "Dosso artificiale. Segnale di pericolo che preannuncia un dosso artificiale. I conducenti devono moderare la velocità.",
+  "image_description": "Dosso artificiale. Dispositivo di rallentamento della velocità (rallentatore di velocità ad effetto ottico o dosso artificiale) installato sulla carreggiata stradale. Ha lo scopo di indurre i conducenti a moderare la velocità in corrispondenza del passaggio, riducendo i pericoli per la circolazione e per i pedoni.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, specificamente un dosso artificiale. Il segnale è di forma quadrata con la punta verso l'alto e presenta un pittogramma nero su sfondo bianco che raffigura un dosso. Il segnale è posizionato su un palo (non visibile nell'immagine) e si trova in corrispondenza di un dosso stradale, segnalato anche dalla segnaletica orizzontale a strisce bianche e nere che attraversa la carreggiata.",
+    "visual_analysis": "L'immagine raffigura un dosso artificiale collocato sulla sede stradale, caratterizzato da una sezione rialzata con strisce alternate di colore giallo e nero disposte trasversalmente rispetto al senso di marcia. Ai lati del dispositivo è visibile la pavimentazione stradale in asfalto grigio.",
     "name": "Dosso artificiale",
-    "description": "Segnale di pericolo che preannuncia un dosso artificiale. I conducenti devono moderare la velocità."
+    "description": "Dispositivo di rallentamento della velocità (rallentatore di velocità ad effetto ottico o dosso artificiale) installato sulla carreggiata stradale. Ha lo scopo di indurre i conducenti a moderare la velocità in corrispondenza del passaggio, riducendo i pericoli per la circolazione e per i pedoni."
   },
   "quiz_metadata": {
     "core_concepts": [

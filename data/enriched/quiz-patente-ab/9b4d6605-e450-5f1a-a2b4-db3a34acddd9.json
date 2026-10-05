@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato indica un dispositivo che si accende automaticamente ad ogni incidente",
   "correct_answer": false,
   "image": "583c22d15e61024219429bcb2225ea77.jpeg",
-  "image_description": "Comando per segnalazione luminosa di pericolo. Il simbolo raffigurato è un triangolo con il bordo doppio, che indica la segnalazione luminosa di pericolo (quattro frecce lampeggianti contemporaneamente). Si tratta di un comando da utilizzare in caso di emergenza o per segnalare un pericolo imminente.",
+  "image_description": "Simbolo del comando della segnalazione luminosa di pericolo. Identifica il pulsante di comando e la relativa spia (generalmente di colore rosso) che attiva l'accensione contemporanea e intermittente di tutti gli indicatori di direzione. Viene utilizzato dal conducente per segnalare situazioni di emergenza, pericolo, veicolo fermo sulla carreggiata o bruschi rallentamenti.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un simbolo grafico costituito da due triangoli concentrici, entrambi con il bordo nero su sfondo bianco. Il triangolo interno è vuoto, mentre quello esterno ha il bordo pieno. Questo simbolo è comunemente associato al comando per attivare la segnalazione luminosa di pericolo, nota anche come \"quattro frecce\" o \"hazard lights\", che consiste nell'accensione simultanea di tutti gli indicatori di direzione del veicolo. Tale dispositivo viene utilizzato in situazioni di emergenza, come in caso di arresto improvviso, incidente, o per segnalare un pericolo temporaneo agli altri utenti della strada.",
-    "name": "Comando per segnalazione luminosa di pericolo",
-    "description": "Il simbolo raffigurato è un triangolo con il bordo doppio, che indica la segnalazione luminosa di pericolo (quattro frecce lampeggianti contemporaneamente). Si tratta di un comando da utilizzare in caso di emergenza o per segnalare un pericolo imminente."
+    "visual_analysis": "L'immagine mostra un pittogramma composto da due triangoli equilateri concentrici con vertice rivolto verso l'alto, delineati da un tratto scuro su fondo chiaro. Il disegno rappresenta la sagoma standard utilizzata nella plancia dei veicoli.",
+    "name": "Simbolo del comando della segnalazione luminosa di pericolo",
+    "description": "Identifica il pulsante di comando e la relativa spia (generalmente di colore rosso) che attiva l'accensione contemporanea e intermittente di tutti gli indicatori di direzione. Viene utilizzato dal conducente per segnalare situazioni di emergenza, pericolo, veicolo fermo sulla carreggiata o bruschi rallentamenti."
   },
   "quiz_metadata": {
     "core_concepts": [

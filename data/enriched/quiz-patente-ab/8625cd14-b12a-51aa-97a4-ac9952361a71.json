@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è riservato ai veicoli per il soccorso stradale",
   "correct_answer": false,
   "image": "29acadb77c667940662516cd04d76da0.jpeg",
-  "image_description": "Parcheggio con orario e simbolo di officina. Il segnale indica un parcheggio a pagamento, attivo dalle ore 8:00 alle 20:00. Il pittogramma della \"P\" indica la sosta, mentre il pannello integrativo specifica l'orario di validità e il simbolo di una chiave inglese (che indica la presenza di un'officina o un servizio correlato) suggerisce che potrebbe essere un parcheggio per clienti o con servizi specifici.",
+  "image_description": "Segnale di parcheggio con pannello integrativo di fascia oraria per i giorni lavorativi. Indica un'area destinata e autorizzata alla sosta a tempo indeterminato o regolamentata limitatamente ai soli giorni lavorativi (feriali), individuati dal simbolo dei due martelli incrociati, nella fascia oraria compresa tra le 8:00 e le 20:00. Fuori da tale orario e nei giorni festivi la sosta è libera (salvo diverse prescrizioni).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due segnali stradali sovrapposti. Il segnale superiore è un segnale di indicazione blu con la lettera \"P\" bianca al centro, che indica un parcheggio. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con bordo nero. Questo pannello contiene un simbolo che assomiglia a una chiave inglese o a un attrezzo da lavoro, seguito dall'indicazione oraria \"8,00 - 20,00\". Il simbolo della chiave inglese, in combinazione con l'orario, suggerisce che il parcheggio è a pagamento o soggetto a restrizioni orarie specifiche, potenzialmente legate a un'attività commerciale o di servizio nelle vicinanze.",
-    "name": "Parcheggio con orario e simbolo di officina",
-    "description": "Il segnale indica un parcheggio a pagamento, attivo dalle ore 8:00 alle 20:00. Il pittogramma della \"P\" indica la sosta, mentre il pannello integrativo specifica l'orario di validità e il simbolo di una chiave inglese (che indica la presenza di un'officina o un servizio correlato) suggerisce che potrebbe essere un parcheggio per clienti o con servizi specifici."
+    "visual_analysis": "L'immagine mostra due elementi verticalmente abbinati: in alto, un segnale rettangolare a sfondo blu con cornice e lettera maiuscola 'P' di colore bianco (segnale di Parcheggio); in basso, un pannello integrativo rettangolare a fondo bianco con cornice nera, contenente a sinistra il simbolo di due martelli incrociati (indicante i giorni lavorativi/feriali) seguito dall'indicazione numerica '8,00 - 20,00'.",
+    "name": "Segnale di parcheggio con pannello integrativo di fascia oraria per i giorni lavorativi",
+    "description": "Indica un'area destinata e autorizzata alla sosta a tempo indeterminato o regolamentata limitatamente ai soli giorni lavorativi (feriali), individuati dal simbolo dei due martelli incrociati, nella fascia oraria compresa tra le 8:00 e le 20:00. Fuori da tale orario e nei giorni festivi la sosta è libera (salvo diverse prescrizioni)."
   },
   "quiz_metadata": {
     "core_concepts": [

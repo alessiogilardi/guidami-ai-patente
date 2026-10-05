@@ -5,11 +5,11 @@
   "text": "L'elemento in figura rappresenta un rallentatore di velocità",
   "correct_answer": true,
   "image": "9db35f612808786bb33946d94ce002fa.jpeg",
-  "image_description": "Segnale di ostacolo o pericolo (strisce). L'elemento in figura, costituito da strisce diagonali gialle e nere alternate, delimita un ostacolo o un pericolo stradale. La sua funzione è quella di segnalare visivamente la presenza di un pericolo, invitando alla massima prudenza.",
+  "image_description": "Rallentatore di velocità. Dispositivo stradale a rilievo (dosso artificiale) posto sulla carreggiata per costringere i conducenti a moderare la velocità. È segnalato preventivamente da apposito cartello di pericolo e richiede di rallentare per evitare danni alle sospensioni del veicolo o sbandamenti.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi identici, ciascuno composto da una superficie grigia affiancata da una serie di strisce diagonali gialle e nere alternate. Questi elementi sono posizionati su quelle che sembrano essere delle barriere o dei muretti. In basso a sinistra, un'ulteriore immagine mostra una vista dall'alto di un'area di parcheggio con due auto, dove una zona è delimitata da strisce gialle e nere oblique, simile a quelle viste sopra, e da una linea gialla continua. Questa zona sembra indicare un'area di pericolo o un ostacolo, come un pilastro o un bordo. Le strisce gialle e nere alternate sono un dispositivo di segnalazione visiva utilizzato per indicare pericoli o ostacoli fissi sulla carreggiata o nelle sue immediate vicinanze.",
-    "name": "Segnale di ostacolo o pericolo (strisce)",
-    "description": "L'elemento in figura, costituito da strisce diagonali gialle e nere alternate, delimita un ostacolo o un pericolo stradale. La sua funzione è quella di segnalare visivamente la presenza di un pericolo, invitando alla massima prudenza."
+    "visual_analysis": "L'immagine mostra, nella parte superiore, una porzione di carreggiata su cui è installato un dosso artificiale (rallentatore di velocità a profilo convesso) dipinto con fasce alternate gialle e nere con orientamento a cuspide/angolato, delimitato lateralmente dai bordi della carreggiata. Nella parte inferiore sinistra è visibile anche uno schema di stallo di sosta per disabili con fascia zebrata gialla, ma il soggetto focale del quesito è la struttura a rilievo a strisce gialle e nere.",
+    "name": "Rallentatore di velocità",
+    "description": "Dispositivo stradale a rilievo (dosso artificiale) posto sulla carreggiata per costringere i conducenti a moderare la velocità. È segnalato preventivamente da apposito cartello di pericolo e richiede di rallentare per evitare danni alle sospensioni del veicolo o sbandamenti."
   },
   "quiz_metadata": {
     "core_concepts": [

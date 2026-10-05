@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato è consentito il traino di veicoli che trasportano prodotti facilmente infiammabili",
   "correct_answer": false,
   "image": "c8854dae262609ddc652757e5fa50bf2.jpeg",
-  "image_description": "Divieto di transito per veicoli che trasportano esplosivi. Il segnale vieta il transito ai veicoli che trasportano esplosivi.",
+  "image_description": "Segnale di transito vietato ai veicoli che trasportano esplosivi o prodotti facilmente infiammabili. Vieta il transito a tutti i veicoli che trasportano materiali esplosivi o prodotti facilmente infiammabili. Il divieto riguarda il carico trasportato e non si applica al carburante contenuto nei normali serbatoi di alimentazione dei veicoli né ai veicoli alimentati a metano o GPL.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un'autovettura stilizzata con sopra un'esplosione simboleggiata da fiamme gialle e arancioni. Questo è il segnale di \"Divieto di transito per veicoli che trasportano esplosivi\".",
-    "name": "Divieto di transito per veicoli che trasportano esplosivi",
-    "description": "Il segnale vieta il transito ai veicoli che trasportano esplosivi."
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo perimetrale rosso e fondo bianco. Al centro compare la sagoma stilizzata in nero della vista posteriore o anteriore di un autoveicolo, sopra il quale è raffigurata un'esplosione con fiamme di colore arancione e giallo.",
+    "name": "Segnale di transito vietato ai veicoli che trasportano esplosivi o prodotti facilmente infiammabili",
+    "description": "Vieta il transito a tutti i veicoli che trasportano materiali esplosivi o prodotti facilmente infiammabili. Il divieto riguarda il carico trasportato e non si applica al carburante contenuto nei normali serbatoi di alimentazione dei veicoli né ai veicoli alimentati a metano o GPL."
   },
   "quiz_metadata": {
     "core_concepts": [

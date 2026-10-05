@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato fa parte dei segnali di obbligo",
   "correct_answer": false,
   "image": "fa19a50da37f716b072eca8b6ecdf6e5.jpeg",
-  "image_description": "Preavviso di direzione e percorso - Località turistica e passaggio a livello. Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra.",
+  "image_description": "Preavviso di intersezione extraurbana. Preavvisa un incrocio su strada extraurbana e indica le direzioni da seguire: proseguire dritto per Porto Torres, svoltare a sinistra per raggiungere una località di interesse storico-turistico (nuraghe Speranza) e svoltare a destra per S. Giovanni, segnalando la presenza di un passaggio a livello su quest'ultimo ramo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale blu rettangolare con indicazioni di direzione. In alto, la freccia indica dritto per \"PORTO TORRES\". A destra, una freccia indica la svolta a destra per \"S. GIOVANNI\", accompagnata da un segnale di pericolo triangolare con bordo rosso e pittogramma di un passaggio a livello senza barriere. A sinistra, una freccia indica la svolta a sinistra, con un pannello marrone integrato che riporta la scritta \"nuraghe Speranza\".",
-    "name": "Preavviso di direzione e percorso - Località turistica e passaggio a livello",
-    "description": "Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra."
+    "visual_analysis": "Pannello rettangolare a fondo blu con cornice bianca, tipico della segnaletica extraurbana. Al centro è rappresentato lo schema geometrico dell'incrocio tramite frecce bianche: la freccia dritta punta verso la destinazione 'PORTO TORRES' (in caratteri bianchi in alto); il braccio a sinistra conduce a un inserto rettangolare a fondo marrone con iscrizione bianca 'nuraghe Speranza'; il braccio a destra piega in obliquo verso la scritta 'S. GIOVANNI', intersecato da un segnale triangolare di pericolo miniaturizzato raffigurante un passaggio a livello senza barriere (locomotiva).",
+    "name": "Preavviso di intersezione extraurbana",
+    "description": "Preavvisa un incrocio su strada extraurbana e indica le direzioni da seguire: proseguire dritto per Porto Torres, svoltare a sinistra per raggiungere una località di interesse storico-turistico (nuraghe Speranza) e svoltare a destra per S. Giovanni, segnalando la presenza di un passaggio a livello su quest'ultimo ramo."
   },
   "quiz_metadata": {
     "core_concepts": [

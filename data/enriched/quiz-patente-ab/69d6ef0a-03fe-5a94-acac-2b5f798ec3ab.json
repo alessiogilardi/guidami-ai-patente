@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la distanza dall'incrocio in cui dobbiamo dare precedenza",
   "correct_answer": true,
   "image": "1a690d53490cc07a880e1a228dd9681b.jpeg",
-  "image_description": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza. Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione.",
+  "image_description": "Preavviso di dare precedenza. Preavvisa, su strade generalmente extraurbane prive del diritto di precedenza, che a una distanza indicata dal pannello integrativo (in questo caso 320 metri) si troverà un incrocio regolato dal segnale di \"Dare precedenza\". Impone al conducente di rallentare per potersi eventualmente arrestare se sopraggiungono veicoli ai quali spetta la precedenza (provenienti sia da destra sia da sinistra), senza obbligo di arresto incondizionato come per lo STOP.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di DARE PRECEDENZA, riconoscibile dalla sua forma triangolare con il vertice verso il basso e il bordo rosso su sfondo bianco. Sopra questo segnale, è presente un pannello integrativo rettangolare di colore bianco con la scritta \"320 m\" in nero, che indica una distanza in metri. Questo pannello specifica la distanza dall'incrocio o dal punto in cui si applica la prescrizione del segnale di DARE PRECEDENZA.",
-    "name": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza",
-    "description": "Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione."
+    "visual_analysis": "L'immagine raffigura un segnale triangolare con vertice rivolto verso il basso, caratterizzato da fondo bianco e bordo rosso (segnale di DARE PRECEDENZA), sormontato da un pannello integrativo rettangolare a fondo bianco con bordo nero recante l'iscrizione '320 m' (pannello integrativo di distanza).",
+    "name": "Preavviso di dare precedenza",
+    "description": "Preavvisa, su strade generalmente extraurbane prive del diritto di precedenza, che a una distanza indicata dal pannello integrativo (in questo caso 320 metri) si troverà un incrocio regolato dal segnale di \"Dare precedenza\". Impone al conducente di rallentare per potersi eventualmente arrestare se sopraggiungono veicoli ai quali spetta la precedenza (provenienti sia da destra sia da sinistra), senza obbligo di arresto incondizionato come per lo STOP."
   },
   "quiz_metadata": {
     "core_concepts": [

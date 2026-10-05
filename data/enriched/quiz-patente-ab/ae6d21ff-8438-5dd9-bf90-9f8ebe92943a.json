@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è un segnale di prescrizione",
   "correct_answer": true,
   "image": "cae815558b9cac8a475d91fb6e32c36e.jpeg",
-  "image_description": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto. Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli.",
+  "image_description": "Segnale di dare precedenza nei sensi unici alternati. Prescrive, in una strettoia a senso unico alternato che consente il transito di una sola fila di veicoli per volta, di dare la precedenza ai veicoli provenienti dal senso contrario. Si applica di norma in assenza di semaforo, oppure quando il semaforo è spento o a luce gialla lampeggiante; perde efficacia se il semaforo è funzionante a tre luci o in presenza di un agente del traffico che regoli diversamente il passaggio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro sono presenti due frecce, una rossa rivolta verso l'alto e una nera rivolta verso il basso. La freccia rossa è più spessa e posizionata leggermente più avanti rispetto alla freccia nera. Questo è il segnale di \"dare precedenza ai veicoli provenienti dal senso opposto\".",
-    "name": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto",
-    "description": "Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli."
+    "visual_analysis": "Segnale stradale verticale di forma circolare con bordo rosso e fondo bianco. Al centro sono raffigurate due frecce verticali affiancate in direzioni opposte: una freccia nera a sinistra diretta verso il basso e una freccia rossa a destra diretta verso l'alto.",
+    "name": "Segnale di dare precedenza nei sensi unici alternati",
+    "description": "Prescrive, in una strettoia a senso unico alternato che consente il transito di una sola fila di veicoli per volta, di dare la precedenza ai veicoli provenienti dal senso contrario. Si applica di norma in assenza di semaforo, oppure quando il semaforo è spento o a luce gialla lampeggiante; perde efficacia se il semaforo è funzionante a tre luci o in presenza di un agente del traffico che regoli diversamente il passaggio."
   },
   "quiz_metadata": {
     "core_concepts": [

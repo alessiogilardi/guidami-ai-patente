@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consiglia di procedere con particolare prudenza e attenzione",
   "correct_answer": true,
   "image": "185a3c1d7ae6a5c7a4ddc4aa235f085d.jpeg",
-  "image_description": "Segnale di indicazione turistica con informazioni aggiuntive. Il segnale indica che il passo dello Stelvio è chiuso e che Trafoi è raggiungibile fino a un certo punto, con l'indicazione di pneumatici invernali o catene obbligatori.",
+  "image_description": "Segnale di transitabilità. Indica la transitabilità di un passo montano, informando che il valico (Passo dello Stelvio) è chiuso al transito, ma è possibile proseguire fino alla località intermedia indicata (Trafoi). Nel tratto aperto raccomanda di procedere con prudenza e consiglia l'uso di catene da neve o pneumatici invernali (non essendovi il segnale di prescrizione a disco blu, non sussiste un obbligo tassativo).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con bordi arrotondati e sfondo blu. Nella parte superiore, in un riquadro rosso, è scritto \"STELVIO\" in bianco. Sotto, in un riquadro rosso più piccolo, si legge \"chiuso ferme closed geschlossen\". Al centro, in un riquadro bianco, sono raffigurati due pneumatici, uno con catene e uno senza, a simboleggiare l'obbligo di catene o pneumatici invernali. Nella parte inferiore, in un riquadro bianco, è indicato \"fino a Jusqu'a' as far as bis nach TRAFOI\", indicando la destinazione raggiungibile.",
-    "name": "Segnale di indicazione turistica con informazioni aggiuntive",
-    "description": "Il segnale indica che il passo dello Stelvio è chiuso e che Trafoi è raggiungibile fino a un certo punto, con l'indicazione di pneumatici invernali o catene obbligatori."
+    "visual_analysis": "Segnale verticale di indicazione a forma rettangolare, con fondo blu e bordo bianco. Nella parte superiore reca la scritta bianca in caratteri maiuscoli \"STELVIO\". Al di sotto è presente un primo pannello rettangolare a fondo rosso con la scritta \"chiuso\" ripetuta in quattro lingue (chiuso, fermé, closed, geschlossen). Al centro vi è un pannello rettangolare a fondo bianco contenente il pittogramma di due ruote munite di catene/profilo invernale, non inserite in un cartello circolare di prescrizione. Nella parte inferiore è collocato un ulteriore pannello rettangolare a fondo bianco con la dicitura multilingue \"fino a / jusqu'à / as far as / bis nach\" sovrastante il nome della località \"TRAFOI\".",
+    "name": "Segnale di transitabilità",
+    "description": "Indica la transitabilità di un passo montano, informando che il valico (Passo dello Stelvio) è chiuso al transito, ma è possibile proseguire fino alla località intermedia indicata (Trafoi). Nel tratto aperto raccomanda di procedere con prudenza e consiglia l'uso di catene da neve o pneumatici invernali (non essendovi il segnale di prescrizione a disco blu, non sussiste un obbligo tassativo)."
   },
   "quiz_metadata": {
     "core_concepts": [

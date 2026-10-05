@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato non è necessario rallentare in caso di scarsa visibilità",
   "correct_answer": false,
   "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
-  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_description": "Segnale di strada deformata. Preannuncia, di norma a 150 metri, un tratto di strada con fondo dissestato, irregolare o in cattivo stato di manutenzione. Impone di moderare la velocità in relazione alle condizioni del manto stradale per evitare danni alle sospensioni o sbandamenti del veicolo, tenere saldamente il volante e prevedere possibili sbandamenti dei veicoli provenienti dal senso opposto. Se a fondo giallo, è utilizzato in presenza di cantieri di lavoro stradali.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
-    "name": "Segnale di pericolo - Serie di dossi",
-    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice rivolto verso l'alto, avente bordo rosso e fondo bianco. Al centro è presente un simbolo nero raffigurante un profilo stradale ondulato con due rilievi convessi separati da un avvallamento concavo, a indicare una superficie stradale irregolare.",
+    "name": "Segnale di strada deformata",
+    "description": "Preannuncia, di norma a 150 metri, un tratto di strada con fondo dissestato, irregolare o in cattivo stato di manutenzione. Impone di moderare la velocità in relazione alle condizioni del manto stradale per evitare danni alle sospensioni o sbandamenti del veicolo, tenere saldamente il volante e prevedere possibili sbandamenti dei veicoli provenienti dal senso opposto. Se a fondo giallo, è utilizzato in presenza di cantieri di lavoro stradali."
   },
   "quiz_metadata": {
     "core_concepts": [

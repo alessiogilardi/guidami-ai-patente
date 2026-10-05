@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica un'area di sosta ad uso esclusivo dei taxi in servizio",
   "correct_answer": true,
   "image": "7db243423fe983741f896d4c4439ad3c.jpeg",
-  "image_description": "Parcheggio per taxi. Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio.",
+  "image_description": "Segnale TAXI. Indica un'area di parcheggio o sosta riservata esclusivamente allo stazionamento dei taxi in servizio. La sosta è vietata a tutti gli altri veicoli. Sulla pavimentazione stradale lo spazio riservato è generalmente delimitato da strisce gialle e contrassegnato dalla scritta TAXI.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore arancione con bordo nero. Al centro del segnale, in lettere nere maiuscole, è scritta la parola \"TAXI\". Non sono presenti altri elementi visivi o segnali. Si tratta di un segnale di indicazione.",
-    "name": "Parcheggio per taxi",
-    "description": "Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio."
+    "visual_analysis": "Segnale di indicazione verticale di forma rettangolare a fondo arancione, con sottile bordo nero e recante al centro l'iscrizione a caratteri cubitali neri 'TAXI'.",
+    "name": "Segnale TAXI",
+    "description": "Indica un'area di parcheggio o sosta riservata esclusivamente allo stazionamento dei taxi in servizio. La sosta è vietata a tutti gli altri veicoli. Sulla pavimentazione stradale lo spazio riservato è generalmente delimitato da strisce gialle e contrassegnato dalla scritta TAXI."
   },
   "quiz_metadata": {
     "core_concepts": [

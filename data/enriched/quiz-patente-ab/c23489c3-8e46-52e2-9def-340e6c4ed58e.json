@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica una zona dove nevica spesso",
   "correct_answer": false,
   "image": "898befc05a5da69814999a6d3fa9fd5a.jpeg",
-  "image_description": "Pannello integrativo di pericolo ghiaccio. Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati.",
+  "image_description": "Pannello integrativo per ghiaccio. Pannello integrativo abbinato a un segnale di pericolo (come 'Strada sdrucciolevole' o 'Altri pericoli') che segnala la possibilità di formazione di ghiaccio sulla carreggiata, specialmente a basse temperature o su tratti coperti di neve, invitando a moderare la velocità ed evitare manovre brusche.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore blu scuro con bordo bianco. Al suo interno sono presenti due pittogrammi bianchi a forma di fiocco di neve, disposti orizzontalmente. Questo pannello è un pannello integrativo di pericolo ghiaccio.",
-    "name": "Pannello integrativo di pericolo ghiaccio",
-    "description": "Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati."
+    "visual_analysis": "Pannello integrativo rettangolare orizzontale a fondo scuro (blu/nero) con bordo bianco sottile, contenente due pittogrammi bianchi raffiguranti cristalli di neve o ghiaccio affiancati.",
+    "name": "Pannello integrativo per ghiaccio",
+    "description": "Pannello integrativo abbinato a un segnale di pericolo (come 'Strada sdrucciolevole' o 'Altri pericoli') che segnala la possibilità di formazione di ghiaccio sulla carreggiata, specialmente a basse temperature o su tratti coperti di neve, invitando a moderare la velocità ed evitare manovre brusche."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può preannunciare un passaggio a livello con semibarriere",
   "correct_answer": false,
   "image": "d8e896832ed7d2a8dc221808fd0ed0c1.jpeg",
-  "image_description": "Segnale di pericolo: semaforo. Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario.",
+  "image_description": "Segnale di preavviso di semaforo verticale. Preannuncia un impianto semaforico con disposizione verticale delle lanterne luminose. È un segnale di pericolo obbligatorio sulle strade extraurbane (mentre nei centri abitati è facoltativo, installato solo se il semaforo non è sufficientemente visibile). Impone di moderare la velocità per potersi all'occorrenza arrestare se il semaforo proietta luce rossa. Il disco giallo centrale può essere sostituito da una luce gialla lampeggiante e, in caso di cantiere stradale, il fondo del segnale è giallo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un semaforo stilizzato con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
-    "name": "Segnale di pericolo: semaforo",
-    "description": "Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario."
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice verso l'alto, dotato di bordo rosso su fondo bianco. All'interno è raffigurato un pittogramma composto da tre cerchi disposti in colonna verticale, colorati rispettivamente dall'alto in basso di rosso, giallo e verde scuro, a simulare una lanterna semaforica.",
+    "name": "Segnale di preavviso di semaforo verticale",
+    "description": "Preannuncia un impianto semaforico con disposizione verticale delle lanterne luminose. È un segnale di pericolo obbligatorio sulle strade extraurbane (mentre nei centri abitati è facoltativo, installato solo se il semaforo non è sufficientemente visibile). Impone di moderare la velocità per potersi all'occorrenza arrestare se il semaforo proietta luce rossa. Il disco giallo centrale può essere sostituito da una luce gialla lampeggiante e, in caso di cantiere stradale, il fondo del segnale è giallo."
   },
   "quiz_metadata": {
     "core_concepts": [

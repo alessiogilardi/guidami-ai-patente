@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato si può percorrere la strettoia accertandosi di aver avuto la precedenza dai veicoli provenienti di fronte",
   "correct_answer": true,
   "image": "1d54595537d45c8248194c62b91d2222.jpeg",
-  "image_description": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto. Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta.",
+  "image_description": "Diritto di precedenza nei sensi unici alternati. Indica il diritto di precedenza rispetto ai veicoli provenienti in senso contrario in una strettoia o passaggio a senso unico alternato. Il conducente ha la precedenza ma deve procedere con cautela, accertandosi che i veicoli di fronte abbiano effettivamente concesso il passaggio. In presenza di semaforo o agente del traffico, le loro segnalazioni prevalgono sul cartello.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco su sfondo blu scuro. All'interno del segnale sono presenti due frecce: una freccia rossa rivolta verso il basso e una freccia bianca rivolta verso l'alto. La freccia rossa indica la direzione da cui provengono i veicoli che devono dare la precedenza, mentre la freccia bianca indica la direzione da cui provengono i veicoli che hanno la precedenza. Questo segnale è comunemente noto come segnale di \"dare precedenza ai veicoli provenienti dal senso di marcia opposto\" o \"strettoia con doppio senso di circolazione\".",
-    "name": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto",
-    "description": "Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta."
+    "visual_analysis": "Segnale stradale a forma quadrata con fondo blu e sottile bordo bianco. All'interno sono raffigurate due frecce verticali: a sinistra una freccia rossa rivolta verso il basso, a destra una freccia bianca rivolta verso l'alto.",
+    "name": "Diritto di precedenza nei sensi unici alternati",
+    "description": "Indica il diritto di precedenza rispetto ai veicoli provenienti in senso contrario in una strettoia o passaggio a senso unico alternato. Il conducente ha la precedenza ma deve procedere con cautela, accertandosi che i veicoli di fronte abbiano effettivamente concesso il passaggio. In presenza di semaforo o agente del traffico, le loro segnalazioni prevalgono sul cartello."
   },
   "quiz_metadata": {
     "core_concepts": [

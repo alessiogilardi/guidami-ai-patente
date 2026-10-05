@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga il veicolo che precede a distanziare quello che lo segue di almeno 70 metri",
   "correct_answer": false,
   "image": "1be58ec74bcd0d03bb415339bccad9e3.jpeg",
-  "image_description": "Distanza minima tra veicoli. Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede.",
+  "image_description": "Segnale di distanziamento minimo obbligatorio. Vieta a tutti i veicoli di circolare a una distanza inferiore a quella indicata (70 metri) dal veicolo che precede. L'obbligo vale per tutte le categorie di veicoli, compresi i motocicli, e deve essere rispettato anche quando si viaggia a velocità ridotta. È quindi consentito viaggiare a distanze pari o superiori a 70 metri.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro sono raffigurati due veicoli stilizzati (presumibilmente autovetture) visti di lato, uno dietro l'altro, con una freccia che indica la distanza tra di essi. Sopra i veicoli, in un riquadro bianco, è indicato il valore \"70 m\". Il segnale è un segnale di prescrizione che impone una distanza minima.",
-    "name": "Distanza minima tra veicoli",
-    "description": "Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede."
+    "visual_analysis": "Segnale stradale verticale circolare con bordo rosso e fondo bianco. Al centro sono raffigurate in nero le sagome stilizzate di due autoveicoli posti uno dietro l'altro, sovrastate dalla scritta '70 m'.",
+    "name": "Segnale di distanziamento minimo obbligatorio",
+    "description": "Vieta a tutti i veicoli di circolare a una distanza inferiore a quella indicata (70 metri) dal veicolo che precede. L'obbligo vale per tutte le categorie di veicoli, compresi i motocicli, e deve essere rispettato anche quando si viaggia a velocità ridotta. È quindi consentito viaggiare a distanze pari o superiori a 70 metri."
   },
   "quiz_metadata": {
     "core_concepts": [

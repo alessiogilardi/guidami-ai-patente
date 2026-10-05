@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato richiede di rallentare o di arrestarsi se gli animali sulla strada non si spostano",
   "correct_answer": true,
   "image": "2aca17bfb73a3edfb26066f1e3c34f9d.jpeg",
-  "image_description": "Segnale di pericolo - Attraversamento di animali domestici. Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_description": "Segnale di animali domestici vaganti. Preannuncia un tratto di strada con probabile presenza o attraversamento di animali domestici vaganti. Impone al conducente di moderare la velocità e di arrestarsi se gli animali occupano la carreggiata, non si spostano o danno segni di spavento, evitando l'uso rumoroso o ripetuto del segnalatore acustico per non innervosirli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata la sagoma nera di una mucca. Questo segnale indica la potenziale presenza di animali domestici sulla strada.",
-    "name": "Segnale di pericolo - Attraversamento di animali domestici",
-    "description": "Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+    "visual_analysis": "Segnale di pericolo a forma triangolare con vertice rivolto verso l'alto, caratterizzato da un bordo perimetrale rosso su fondo bianco. Al centro è rappresentata la sagoma nera di profilo di un bovino (animale domestico) orientato verso sinistra. Non sono presenti pannelli integrativi né altri elementi nella scena.",
+    "name": "Segnale di animali domestici vaganti",
+    "description": "Preannuncia un tratto di strada con probabile presenza o attraversamento di animali domestici vaganti. Impone al conducente di moderare la velocità e di arrestarsi se gli animali occupano la carreggiata, non si spostano o danno segni di spavento, evitando l'uso rumoroso o ripetuto del segnalatore acustico per non innervosirli."
   },
   "quiz_metadata": {
     "core_concepts": [

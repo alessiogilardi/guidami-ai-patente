@@ -5,11 +5,11 @@
   "text": "Il simbolo raffigurato è posto su una spia a luce verde",
   "correct_answer": true,
   "image": "7933bbf13cf37ce45fa8d0d5361fce93.jpeg",
-  "image_description": "Spia fendinebbia anteriori. Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo.",
+  "image_description": "Simbolo dei proiettori anabbaglianti. Contrassegna il comando di accensione dei proiettori anabbaglianti ed è abbinato a una spia luminosa di colore verde sul cruscotto, la quale segnala che le luci anabbaglianti sono accese. Non va confuso con il simbolo dei proiettori abbaglianti (luce blu con raggi orizzontali) né con quello dei fendinebbia o retronebbia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un simbolo stilizzato che rappresenta un fascio di luce diretto verso sinistra, con quattro linee orizzontali che indicano la direzione del fascio. Accanto a questo, vi è un contorno a forma di semicerchio aperto verso destra, che simboleggia un proiettore. L'insieme del simbolo è comunemente utilizzato per indicare la spia di accensione dei fendinebbia anteriori su un veicolo. Non ci sono elementi stradali o altri segnali visibili.",
-    "name": "Spia fendinebbia anteriori",
-    "description": "Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo."
+    "visual_analysis": "L'immagine mostra un simbolo automobilistico nero su sfondo bianco costituito dal profilo stilizzato di un faro orientato a destra, dal quale partono verso sinistra cinque linee parallele inclinate verso il basso, rappresentanti il fascio luminoso orientato verso il piano stradale.",
+    "name": "Simbolo dei proiettori anabbaglianti",
+    "description": "Contrassegna il comando di accensione dei proiettori anabbaglianti ed è abbinato a una spia luminosa di colore verde sul cruscotto, la quale segnala che le luci anabbaglianti sono accese. Non va confuso con il simbolo dei proiettori abbaglianti (luce blu con raggi orizzontali) né con quello dei fendinebbia o retronebbia."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica che possono sostare i veicoli per il soccorso stradale",
   "correct_answer": false,
   "image": "53f94e0cb22dad42d625b1ea9596dd83.jpeg",
-  "image_description": "Pannello integrativo - Rimozione forzata. Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi).",
+  "image_description": "Pannello integrativo di rimozione coatta. Pannello integrativo che, applicato al segnale di divieto di sosta, indica che la violazione del divieto comporta la rimozione forzata del veicolo tramite carro attrezzi (e il suo trasferimento presso la depositeria autorizzata) oppure il blocco delle ruote con apposito attrezzo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al suo interno, in nero, è raffigurato un carro attrezzi che solleva la parte posteriore di un'automobile. Questo pittogramma è comunemente associato al divieto di sosta con rimozione forzata del veicolo.",
-    "name": "Pannello integrativo - Rimozione forzata",
-    "description": "Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi)."
+    "visual_analysis": "Pannello integrativo rettangolare a fondo bianco con bordo nero. All'interno è raffigurato in nero un carro attrezzi stilizzato che aggancia e solleva la parte anteriore di un'autovettura per trainarla.",
+    "name": "Pannello integrativo di rimozione coatta",
+    "description": "Pannello integrativo che, applicato al segnale di divieto di sosta, indica che la violazione del divieto comporta la rimozione forzata del veicolo tramite carro attrezzi (e il suo trasferimento presso la depositeria autorizzata) oppure il blocco delle ruote con apposito attrezzo."
   },
   "quiz_metadata": {
     "core_concepts": [

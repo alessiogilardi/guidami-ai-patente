@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica il punto dove termina il divieto di fermata",
   "correct_answer": true,
   "image": "5df83d6b6dbcb0276f61047f40c26f78.jpeg",
-  "image_description": "Segnale di divieto di sosta con pannello integrativo di direzione. Il segnale di divieto di sosta con il pannello integrativo indica che il divieto di sosta vige nel tratto di strada successivo, indicato dalla freccia verso destra.",
+  "image_description": "Divieto di fermata con pannello integrativo di fine. Indica il punto in cui cessa il divieto di fermata (e di sosta), per cui oltre il segnale è consentito fermarsi e sostare, sempre nel rispetto delle norme generali del Codice della Strada.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta, rappresentato da un cerchio rosso con una croce blu all'interno, sormontato da un pannello rettangolare bianco con una freccia nera rivolta verso destra. Il segnale principale è il segnale di divieto di sosta (divieto di fermata e di sosta). Il pannello integrativo indica la direzione in cui si applica il divieto. In questo caso, la freccia indica che il divieto di sosta si applica nel tratto di strada successivo, alla destra del segnale.",
-    "name": "Segnale di divieto di sosta con pannello integrativo di direzione",
-    "description": "Il segnale di divieto di sosta con il pannello integrativo indica che il divieto di sosta vige nel tratto di strada successivo, indicato dalla freccia verso destra."
+    "visual_analysis": "L'immagine mostra un segnale composito formato da un cartello circolare principale e un pannello integrativo inferiore. Il segnale superiore ha bordo rosso, fondo blu e due barre rosse incrociate a forma di X. Il pannello integrativo sottostante è rettangolare, a fondo bianco con bordo nero, e presenta una freccia orizzontale nera rivolta verso destra.",
+    "name": "Divieto di fermata con pannello integrativo di fine",
+    "description": "Indica il punto in cui cessa il divieto di fermata (e di sosta), per cui oltre il segnale è consentito fermarsi e sostare, sempre nel rispetto delle norme generali del Codice della Strada."
   },
   "quiz_metadata": {
     "core_concepts": [

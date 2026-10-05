@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato non impone un particolare limite di velocità",
   "correct_answer": true,
   "image": "cfd537fd007a42c41805523666d78953.jpeg",
-  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_description": "Fine del divieto di sorpasso. Segnale di fine prescrizione che indica il punto in cui cessa il divieto di sorpasso precedentemente imposto a tutti gli autoveicoli. Da questo punto in poi è consentito eseguire manovre di sorpasso nel rispetto delle norme generali di circolazione e della segnaletica orizzontale (ad esempio, non oltrepassando un'eventuale striscia longitudinale continua). È valido 24 ore su 24 e può essere posizionato sia su strade urbane sia extraurbane; non impone specifici limiti di velocità.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
-    "name": "Fine divieto di sorpasso",
-    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+    "visual_analysis": "Segnale stradale verticale di forma circolare a fondo bianco con sottile bordo nero. Al centro sono raffigurate le sagome posteriori di due autovetture affiancate di colore grigio scuro, sormontate e separate da una larga banda diagonale nera che attraversa il disco dall'alto a destra verso il basso a sinistra.",
+    "name": "Fine del divieto di sorpasso",
+    "description": "Segnale di fine prescrizione che indica il punto in cui cessa il divieto di sorpasso precedentemente imposto a tutti gli autoveicoli. Da questo punto in poi è consentito eseguire manovre di sorpasso nel rispetto delle norme generali di circolazione e della segnaletica orizzontale (ad esempio, non oltrepassando un'eventuale striscia longitudinale continua). È valido 24 ore su 24 e può essere posizionato sia su strade urbane sia extraurbane; non impone specifici limiti di velocità."
   },
   "quiz_metadata": {
     "core_concepts": [

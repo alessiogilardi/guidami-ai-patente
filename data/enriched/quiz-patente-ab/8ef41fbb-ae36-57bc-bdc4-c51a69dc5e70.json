@@ -5,11 +5,11 @@
   "text": "Rispetto al veicolo che procede nel senso della freccia, la striscia discontinua in figura si trova prima di una curva",
   "correct_answer": false,
   "image": "baa788372c1b5dbe02e3d6585a546e14.jpeg",
-  "image_description": "Striscia di delimitazione di corsia (continua e discontinua). La striscia discontinua, detta anche \"linea di corsia\", delimita le corsie di marcia su strade a carreggiata multipla. La sua presenza indica che è consentito il sorpasso, a meno che non sia vietato da altri segnali. La freccia indica la direzione di marcia del veicolo.",
+  "image_description": "Strisce longitudinali continue e discontinue affiancate. Indicano che i veicoli devono rispettare la striscia più vicina al proprio senso di marcia. Il veicolo che marcia con la striscia discontinua dal proprio lato (nella direzione della freccia) può oltrepassare entrambe le strisce per effettuare manovre consentite, come il sorpasso, e può trovarsi tipicamente subito dopo una curva, dopo un passaggio a livello o nel tratto in discesa di un dosso. I veicoli che procedono nel senso opposto, trovando la striscia continua dal loro lato, non possono invece oltrepassarla.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie di marcia, separate da una striscia bianca continua al centro e da una striscia bianca discontinua sul lato destro della corsia di sinistra. Un'automobile nera sta percorrendo la corsia di sinistra, seguendo la direzione indicata dalla freccia. La striscia discontinua indica che è possibile superare.",
-    "name": "Striscia di delimitazione di corsia (continua e discontinua)",
-    "description": "La striscia discontinua, detta anche \"linea di corsia\", delimita le corsie di marcia su strade a carreggiata multipla. La sua presenza indica che è consentito il sorpasso, a meno che non sia vietato da altri segnali. La freccia indica la direzione di marcia del veicolo."
+    "visual_analysis": "Rappresentazione schematica dall'alto di una strada a due corsie e doppio senso di circolazione, delimitata da strisce di margine continue. La linea di mezzeria è costituita da una doppia striscia longitudinale: una continua (sul lato superiore) e una discontinua (sul lato inferiore). Nella corsia inferiore è raffigurato un veicolo nero che procede da sinistra verso destra, con la direzione indicata da una freccia orizzontale tratteggiata; dal suo lato di marcia la striscia più vicina è quella discontinua.",
+    "name": "Strisce longitudinali continue e discontinue affiancate",
+    "description": "Indicano che i veicoli devono rispettare la striscia più vicina al proprio senso di marcia. Il veicolo che marcia con la striscia discontinua dal proprio lato (nella direzione della freccia) può oltrepassare entrambe le strisce per effettuare manovre consentite, come il sorpasso, e può trovarsi tipicamente subito dopo una curva, dopo un passaggio a livello o nel tratto in discesa di un dosso. I veicoli che procedono nel senso opposto, trovando la striscia continua dal loro lato, non possono invece oltrepassarla."
   },
   "quiz_metadata": {
     "core_concepts": [

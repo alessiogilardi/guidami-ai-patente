@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente il transito delle biciclette",
   "correct_answer": true,
   "image": "e373a1d22f51974f4916ca4beb315b52.jpeg",
-  "image_description": "Divieto di transito ai veicoli a braccia. Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili.",
+  "image_description": "Segnale di divieto di transito ai veicoli a braccia. Vieta la circolazione su quella strada a tutti i veicoli a braccia, come i carretti a mano. Non vieta il transito di tutti gli altri tipi di veicoli, inclusi biciclette, ciclomotori, motocicli (anche se condotti a mano) e autoveicoli, compresi quelli che trainano un carrello-appendice.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurata una figura stilizzata di una persona che spinge un carretto a mano. Questo è un segnale di divieto specifico.",
-    "name": "Divieto di transito ai veicoli a braccia",
-    "description": "Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili."
+    "visual_analysis": "Si osserva un segnale stradale verticale di prescrizione a forma circolare, con bordo rosso e sfondo bianco. Al centro è raffigurata in nero la sagoma stilizzata di una figura umana che conduce/spinge un carretto a due ruote (veicolo a braccia). Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di transito ai veicoli a braccia",
+    "description": "Vieta la circolazione su quella strada a tutti i veicoli a braccia, come i carretti a mano. Non vieta il transito di tutti gli altri tipi di veicoli, inclusi biciclette, ciclomotori, motocicli (anche se condotti a mano) e autoveicoli, compresi quelli che trainano un carrello-appendice."
   },
   "quiz_metadata": {
     "core_concepts": [

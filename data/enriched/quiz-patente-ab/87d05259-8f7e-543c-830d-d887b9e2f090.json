@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica un passaggio a livello con due binari",
   "correct_answer": false,
   "image": "88aca3d15be8173f5220bcce38e88d5e.jpeg",
-  "image_description": "Pannello integrativo - Numero di binari. Il pannello integrativo indica la presenza di un passaggio a livello con due binari.",
+  "image_description": "Pannello integrativo per binari di manovra. Pannello integrativo abbinato al segnale di pericolo 'ALTRI PERICOLI'. Segnala la possibilità di incontrare binari di manovra o raccordi ferroviari, spesso nei pressi di scali merci o stabilimenti industriali, che possono attraversare o costeggiare la strada. Impone di moderare la velocità e prestare particolare attenzione per il possibile passaggio o sosta di rotabili ferroviari e carrelli in manovra.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno sono raffigurati due segnali identici di locomotiva a vapore, uno accanto all'altro. Questo pannello è utilizzato per integrare segnali di pericolo, come il segnale di passaggio a livello, indicando il numero di binari presenti. In questo caso, la presenza di due locomotive suggerisce due binari.",
-    "name": "Pannello integrativo - Numero di binari",
-    "description": "Il pannello integrativo indica la presenza di un passaggio a livello con due binari."
+    "visual_analysis": "Pannello integrativo rettangolare a sviluppo orizzontale, con sfondo bianco e sottile cornice nera. Al suo interno sono raffigurate due locomotive a vapore stilizzate di colore nero, poste in sequenza orizzontale e orientate verso destra, con sbuffi di fumo sopra il fumaiolo.",
+    "name": "Pannello integrativo per binari di manovra",
+    "description": "Pannello integrativo abbinato al segnale di pericolo 'ALTRI PERICOLI'. Segnala la possibilità di incontrare binari di manovra o raccordi ferroviari, spesso nei pressi di scali merci o stabilimenti industriali, che possono attraversare o costeggiare la strada. Impone di moderare la velocità e prestare particolare attenzione per il possibile passaggio o sosta di rotabili ferroviari e carrelli in manovra."
   },
   "quiz_metadata": {
     "core_concepts": [

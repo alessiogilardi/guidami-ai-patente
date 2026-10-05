@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può essere munito di pannello integrativo con un diverso valore della massa ammessa al transito",
   "correct_answer": true,
   "image": "772cef27599e5536c2638e76e38a056d.jpeg",
-  "image_description": "Divieto di transito ai veicoli di massa superiore a 3,5 t. Il segnale vieta il transito ai veicoli di massa superiore a 3,5 tonnellate.",
+  "image_description": "Divieto di transito ai veicoli di massa a pieno carico superiore a 3,5 tonnellate destinati al trasporto di cose. Vieta la circolazione ai veicoli destinati al trasporto di cose (autocarri, autotreni, autoarticolati) aventi massa a pieno carico superiore a 3,5 tonnellate, salvo diverso valore indicato da un eventuale pannello integrativo. Non si applica ai veicoli destinati al trasporto di persone (come autobus e autocaravan/camper), a prescindere dal loro peso, né agli autocarri di massa a pieno carico pari o inferiore a 3,5 tonnellate.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di transito. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro di colore nero. Sotto il pittogramma dell'autocarro, è presente una indicazione di massa pari a 3,5 t. Non sono presenti pannelli integrativi.",
-    "name": "Divieto di transito ai veicoli di massa superiore a 3,5 t",
-    "description": "Il segnale vieta il transito ai veicoli di massa superiore a 3,5 tonnellate."
+    "visual_analysis": "Segnale stradale verticale circolare con bordo rosso e fondo bianco, tipico dei segnali di divieto. Al centro della zona bianca è presente la sagoma nera stilizzata, vista di profilo rivolta verso sinistra, di un autocarro con cassone chiuso/furgone, privo di indicazioni numeriche sulla sagoma.",
+    "name": "Divieto di transito ai veicoli di massa a pieno carico superiore a 3,5 tonnellate destinati al trasporto di cose",
+    "description": "Vieta la circolazione ai veicoli destinati al trasporto di cose (autocarri, autotreni, autoarticolati) aventi massa a pieno carico superiore a 3,5 tonnellate, salvo diverso valore indicato da un eventuale pannello integrativo. Non si applica ai veicoli destinati al trasporto di persone (come autobus e autocaravan/camper), a prescindere dal loro peso, né agli autocarri di massa a pieno carico pari o inferiore a 3,5 tonnellate."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica la possibilità di trovare traffico intenso, con formazione di colonne di veicoli",
   "correct_answer": true,
   "image": "c551786937207f3de637cc305d83e6ab.jpeg",
-  "image_description": "Traffico intenso. Il segnale indica la possibilità di trovare traffico intenso, con formazione di colonne di veicoli.",
+  "image_description": "Pannello integrativo per intasamento del traffico. Segnala la possibilità di incontrare traffico intenso, veicoli fermi o in lento movimento incolonnati per ingorgo stradale. Posto in genere in abbinamento al segnale di pericolo generico (o a messaggi variabili), invita a moderare la velocità ed esercitare massima prudenza per evitare tamponamenti; sulle autostrade o prima degli svincoli, può suggerire itinerari alternativi o uscite per non rimanere bloccati nella congestione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha una forma quadrata con bordo nero e sfondo bianco. Al centro del segnale è raffigurata una fila di automobili stilizzate, disposte su due corsie, che procedono in colonna. Le automobili sono di colore nero con luci rosse accese, suggerendo una frenata o una marcia a bassa velocità. La disposizione delle auto indica un rallentamento o un blocco del traffico. Non ci sono altri elementi visivi o segnali presenti nell'immagine.",
-    "name": "Traffico intenso",
-    "description": "Il segnale indica la possibilità di trovare traffico intenso, con formazione di colonne di veicoli."
+    "visual_analysis": "Pannello integrativo di forma rettangolare con angoli arrotondati, a fondo bianco e sottile bordo perimetrale nero. Al centro è raffigurata una doppia fila di autovetture nere disposte in colonna e viste da tergo, con i fari di posizione/arresto posteriori evidenziati in rosso, a simboleggiare una situazione di traffico congestionato o coda.",
+    "name": "Pannello integrativo per intasamento del traffico",
+    "description": "Segnala la possibilità di incontrare traffico intenso, veicoli fermi o in lento movimento incolonnati per ingorgo stradale. Posto in genere in abbinamento al segnale di pericolo generico (o a messaggi variabili), invita a moderare la velocità ed esercitare massima prudenza per evitare tamponamenti; sulle autostrade o prima degli svincoli, può suggerire itinerari alternativi o uscite per non rimanere bloccati nella congestione."
   },
   "quiz_metadata": {
     "core_concepts": [

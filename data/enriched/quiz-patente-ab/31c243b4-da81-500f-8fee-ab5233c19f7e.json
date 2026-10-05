@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la possibilità di parcheggiare l'autovettura e di prendere l'autobus",
   "correct_answer": true,
   "image": "da13b151d500f0dc7c2b8d13eeeaf14f.jpeg",
-  "image_description": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso. Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso.",
+  "image_description": "Segnale di parcheggio di scambio con autobus. Indica un'area di parcheggio di scambio dove è possibile sostare con il proprio veicolo e proseguire il viaggio utilizzando il servizio di trasporto pubblico su gomma, segnalando nello specifico le linee di autobus urbani (numeri 8 e 45) che effettuano fermata nelle immediate vicinanze.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale verticale di colore bianco con bordo nero. Nella parte superiore, a sinistra, è presente un'area blu con la lettera \"P\" bianca, indicante un parcheggio. A destra della \"P\", vi è un simbolo di una croce nera su sfondo bianco, che solitamente indica un pronto soccorso o un ospedale. Nella parte inferiore del segnale, a sinistra, è presente un riquadro bianco con il pittogramma di un autobus, che indica una fermata di autobus. A destra del pittogramma dell'autobus, ci sono due cerchi rossi contenenti, rispettivamente, il numero \"8\" e il numero \"45\". Questi numeri indicano le linee di autobus che servono la fermata.",
-    "name": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso",
-    "description": "Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso."
+    "visual_analysis": "Cartello rettangolare verticale a fondo bianco con bordo nero. Nella metà superiore compare il simbolo di parcheggio (lettera 'P' maiuscola bianca su riquadro blu ad angoli arrotondati) seguito a destra da un segno più ('+') nero. Nella metà inferiore è presente un riquadro con il profilo stilizzato di un autobus/autosnodato urbano, affiancato a destra da due dischi circolari rossi contenenti i numeri bianchi '8' e '45'.",
+    "name": "Segnale di parcheggio di scambio con autobus",
+    "description": "Indica un'area di parcheggio di scambio dove è possibile sostare con il proprio veicolo e proseguire il viaggio utilizzando il servizio di trasporto pubblico su gomma, segnalando nello specifico le linee di autobus urbani (numeri 8 e 45) che effettuano fermata nelle immediate vicinanze."
   },
   "quiz_metadata": {
     "core_concepts": [

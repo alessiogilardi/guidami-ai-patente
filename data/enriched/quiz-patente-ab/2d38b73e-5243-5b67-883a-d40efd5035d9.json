@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta la sosta ai veicoli indicati",
   "correct_answer": true,
   "image": "b9680da84cee76bf297978d3353758da.jpeg",
-  "image_description": "Divieto di sosta con pannello integrativo (autocarri). Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica ai veicoli di massa a pieno carico superiore a 3,5 t.",
+  "image_description": "Segnale di divieto di fermata con pannello integrativo di categoria veicoli (autoarticolati). Il segnale vieta sia la fermata sia la sosta sul lato della strada in cui è posto, ma esclusivamente agli autoarticolati (o autotreni) raffigurati nel pannello sottostante, consentendo invece la fermata e la sosta a tutte le altre categorie di veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di sosta, caratterizzato da un disco rosso con una croce blu all'interno. Sotto questo segnale, è presente un pannello integrativo rettangolare bianco con un bordo nero. Il pannello raffigura la sagoma nera di un autocarro con tre assi.",
-    "name": "Divieto di sosta con pannello integrativo (autocarri)",
-    "description": "Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica ai veicoli di massa a pieno carico superiore a 3,5 t."
+    "visual_analysis": "L'immagine mostra un cartello composito formato da un segnale principale e da un pannello integrativo sottostante. Il segnale superiore è di forma circolare con bordo rosso, sfondo blu e due barre diagonali rosse incrociate a 'X' (divieto di fermata). Il pannello integrativo rettangolare a fondo bianco reca la sagoma nera stilizzata di un autoarticolato visto lateralmente.",
+    "name": "Segnale di divieto di fermata con pannello integrativo di categoria veicoli (autoarticolati)",
+    "description": "Il segnale vieta sia la fermata sia la sosta sul lato della strada in cui è posto, ma esclusivamente agli autoarticolati (o autotreni) raffigurati nel pannello sottostante, consentendo invece la fermata e la sosta a tutte le altre categorie di veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

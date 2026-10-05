@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un restringimento sulla destra della carreggiata",
   "correct_answer": false,
   "image": "6a22104defc75f1e908cb883a771b8bc.jpeg",
-  "image_description": "Segnale di pericolo - Restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata sul lato sinistro.",
+  "image_description": "Segnale di strettoia asimmetrica a sinistra. Preannuncia un restringimento pericoloso della carreggiata sul lato sinistro, con conseguente possibile difficoltà di incrocio con i veicoli provenienti dal senso opposto; impone di moderare la velocità e, se necessario, arrestarsi. In presenza di fondo giallo indica un restringimento temporaneo dovuto a un cantiere stradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un pittogramma nero che rappresenta un restringimento della carreggiata sul lato sinistro. Le due linee verticali nere, che simboleggiano i margini della strada, sono di lunghezza uguale all'inizio, ma quella di sinistra si interrompe e si avvicina a quella di destra, indicando una riduzione della larghezza della strada da quel lato.",
-    "name": "Segnale di pericolo - Restringimento carreggiata",
-    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato sinistro."
+    "visual_analysis": "Segnale di pericolo triangolare con vertice rivolto verso l'alto, dotato di bordo perimetrale rosso e fondo bianco. Al centro compare il pittogramma nero di una carreggiata che si restringe sul lato sinistro: la linea verticale destra prosegue dritta, mentre quella sinistra devia verso l'interno.",
+    "name": "Segnale di strettoia asimmetrica a sinistra",
+    "description": "Preannuncia un restringimento pericoloso della carreggiata sul lato sinistro, con conseguente possibile difficoltà di incrocio con i veicoli provenienti dal senso opposto; impone di moderare la velocità e, se necessario, arrestarsi. In presenza di fondo giallo indica un restringimento temporaneo dovuto a un cantiere stradale."
   },
   "quiz_metadata": {
     "core_concepts": [

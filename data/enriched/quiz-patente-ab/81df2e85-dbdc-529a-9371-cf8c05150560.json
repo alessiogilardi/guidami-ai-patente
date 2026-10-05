@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia che, poco oltre, si potranno incontrare veicoli che marciano in senso opposto",
   "correct_answer": true,
   "image": "d74486cedaf64b4708047a7c8d23f672.jpeg",
-  "image_description": "Segnale di pericolo - doppio senso di circolazione. Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza.",
+  "image_description": "Segnale di doppio senso di circolazione. Segnale di pericolo che preavvisa la fine del senso unico di circolazione e il ripristino del doppio senso di marcia sulla stessa carreggiata. Comporta l'obbligo di usare maggiore prudenza, mantenere la destra e prestare particolare attenzione ai veicoli provenienti in senso contrario, specialmente durante l'eventuale manovra di sorpasso. Se a fondo giallo, è impiegato in presenza di cantieri stradali.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano un doppio senso di circolazione.",
-    "name": "Segnale di pericolo - doppio senso di circolazione",
-    "description": "Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza."
+    "visual_analysis": "Segnale stradale verticale di pericolo di forma triangolare con vertice rivolto verso l'alto, bordo perimetrale rosso e fondo bianco. All'interno sono raffigurate due frecce nere verticali parallele e contrapposte: la freccia di sinistra è rivolta verso il basso, mentre quella di destra è rivolta verso l'alto.",
+    "name": "Segnale di doppio senso di circolazione",
+    "description": "Segnale di pericolo che preavvisa la fine del senso unico di circolazione e il ripristino del doppio senso di marcia sulla stessa carreggiata. Comporta l'obbligo di usare maggiore prudenza, mantenere la destra e prestare particolare attenzione ai veicoli provenienti in senso contrario, specialmente durante l'eventuale manovra di sorpasso. Se a fondo giallo, è impiegato in presenza di cantieri stradali."
   },
   "quiz_metadata": {
     "core_concepts": [

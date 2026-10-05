@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo in figura, posto sotto il segnale DIVIETO DI SOSTA, indica che non possono sostare i veicoli rappresentati",
   "correct_answer": false,
   "image": "0dd8fa7010618380bfb0908223d8f2ba.jpeg",
-  "image_description": "Pannello integrativo: orario e giorni di pulizia stradale. Il pannello integrativo indica che le limitazioni o i divieti a cui è abbinato sono validi nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per operazioni di pulizia stradale con autospazzatrici.",
+  "image_description": "Pannello integrativo per pulizia meccanica della strada. Pannello integrativo che, posto sotto il segnale di DIVIETO DI SOSTA, specifica che il divieto vige esclusivamente nei giorni feriali dal lunedì al venerdì e nella fascia oraria compresa tra le 21:00 e le 04:00 del mattino successivo, per consentire le operazioni di pulizia meccanica della carreggiata mediante autospazzatrice. Negli altri giorni e orari la sosta è consentita.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. In alto, sono indicati i giorni \"lun - ven\". Sotto, sono indicate le ore \"21,00 - 4,00\". Nella parte inferiore del pannello è raffigurato un autospazzatrice. Questo pannello è tipicamente posto sotto un segnale di divieto o obbligo per specificarne le modalità di applicazione temporale e/o per indicare il motivo della limitazione. In questo caso specifico, l'icona dell'autospazzatrice suggerisce che le restrizioni si applicano durante le operazioni di pulizia stradale.",
-    "name": "Pannello integrativo: orario e giorni di pulizia stradale",
-    "description": "Il pannello integrativo indica che le limitazioni o i divieti a cui è abbinato sono validi nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per operazioni di pulizia stradale con autospazzatrici."
+    "visual_analysis": "Pannello integrativo rettangolare a fondo bianco e bordo nero. Nella parte superiore reca la dicitura 'lun - ven' e, al di sotto, la fascia oraria '21.00 - 4.00'. Nella parte inferiore è raffigurato in nero il profilo di un'autospazzatrice dotata di spazzole pulitrici e lampeggiante.",
+    "name": "Pannello integrativo per pulizia meccanica della strada",
+    "description": "Pannello integrativo che, posto sotto il segnale di DIVIETO DI SOSTA, specifica che il divieto vige esclusivamente nei giorni feriali dal lunedì al venerdì e nella fascia oraria compresa tra le 21:00 e le 04:00 del mattino successivo, per consentire le operazioni di pulizia meccanica della carreggiata mediante autospazzatrice. Negli altri giorni e orari la sosta è consentita."
   },
   "quiz_metadata": {
     "core_concepts": [

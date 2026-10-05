@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica di disporsi su due file",
   "correct_answer": false,
   "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg",
-  "image_description": "Segnale di pericolo - Restringimento carreggiata lato destro. Il segnale preannuncia un restringimento della carreggiata sul lato destro.",
+  "image_description": "Strettoia asimmetrica a destra. Preannuncia un restringimento pericoloso della carreggiata sul lato destro, dovuto a ostacoli fissi (come muretti o guard-rail) oppure a cantieri stradali (in versione a fondo giallo). Può essere installato sia su strade a senso unico sia a doppio senso di circolazione, e richiede di moderare la velocità per coordinarsi con i veicoli provenienti dal senso opposto o che procedono nella stessa direzione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta due linee verticali parallele, di cui quella di destra si interrompe e si sposta verso sinistra, indicando un restringimento della carreggiata su quel lato.",
-    "name": "Segnale di pericolo - Restringimento carreggiata lato destro",
-    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato destro."
+    "visual_analysis": "Segnale stradale di pericolo di forma triangolare con vertice verso l'alto, caratterizzato da bordo perimetrale rosso e fondo bianco. Al centro compare un simbolo nero formato da due bande verticali: la banda di sinistra corre parallela e rettilinea, mentre quella di destra si restringe verso l'interno nella metà superiore, evidenziando una riduzione della larghezza della carreggiata sul lato destro.",
+    "name": "Strettoia asimmetrica a destra",
+    "description": "Preannuncia un restringimento pericoloso della carreggiata sul lato destro, dovuto a ostacoli fissi (come muretti o guard-rail) oppure a cantieri stradali (in versione a fondo giallo). Può essere installato sia su strade a senso unico sia a doppio senso di circolazione, e richiede di moderare la velocità per coordinarsi con i veicoli provenienti dal senso opposto o che procedono nella stessa direzione."
   },
   "quiz_metadata": {
     "core_concepts": [

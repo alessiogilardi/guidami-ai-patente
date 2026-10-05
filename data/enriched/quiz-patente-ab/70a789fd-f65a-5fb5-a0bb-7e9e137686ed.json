@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che il divieto di sosta ha inizio in quel punto",
   "correct_answer": true,
   "image": "7e264425ad71a77b6128cc604e2ed3eb.jpeg",
-  "image_description": "Segnale di divieto di sosta con pannello integrativo di inizio validità (freccia verso l'alto). Il segnale di divieto di sosta, abbinato a un pannello integrativo con una freccia rivolta verso l'alto, indica che il divieto di sosta inizia dal punto in cui è posizionato il segnale e si estende per il tratto di strada indicato dalla freccia (in questo caso, proseguendo diritto).",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di inizio. Indica l'inizio del divieto di sosta a partire dal punto in cui il segnale è collocato e per il tratto successivo. Non ha effetto sul tratto di strada precedente al cartello e non vieta la semplice fermata del veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra rossa diagonale. Sotto questo segnale, è presente un pannello integrativo rettangolare bianco con un'unica freccia nera rivolta verso l'alto. Questo pannello indica l'inizio della validità del divieto di sosta nel punto in cui il segnale è installato e la sua estensione nel senso indicato dalla freccia.",
-    "name": "Segnale di divieto di sosta con pannello integrativo di inizio validità (freccia verso l'alto)",
-    "description": "Il segnale di divieto di sosta, abbinato a un pannello integrativo con una freccia rivolta verso l'alto, indica che il divieto di sosta inizia dal punto in cui è posizionato il segnale e si estende per il tratto di strada indicato dalla freccia (in questo caso, proseguendo diritto)."
+    "visual_analysis": "Il segnale è composto da un cartello circolare superiore e da un pannello integrativo rettangolare inferiore. Il cartello superiore presenta bordo rosso, fondo blu e una barra diagonale rossa discendente verso destra, caratteristico del segnale di divieto di sosta. Il pannello integrativo rettangolare sottostante, orientato verticalmente e con fondo bianco, reca una freccia nera rivolta verso l'alto.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di inizio",
+    "description": "Indica l'inizio del divieto di sosta a partire dal punto in cui il segnale è collocato e per il tratto successivo. Non ha effetto sul tratto di strada precedente al cartello e non vieta la semplice fermata del veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

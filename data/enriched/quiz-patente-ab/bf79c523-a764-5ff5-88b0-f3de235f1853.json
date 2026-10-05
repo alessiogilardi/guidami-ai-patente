@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta la sosta dalle ore 17.00 alle 20.00",
   "correct_answer": true,
   "image": "000b9ec4803628ffc83403efb710b16e.jpeg",
-  "image_description": "Segnale di divieto di sosta con orario e parcheggio con orario. Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo.",
+  "image_description": "Segnale di regolazione della sosta. Regola la sosta dei veicoli nell'arco delle 24 ore: ne impone il divieto nelle fasce orarie comprese tra le 7:00 e le 9:00 e tra le 17:00 e le 20:00, mentre la consente liberamente nelle fasce tra le 9:00 e le 17:00 e tra le 20:00 e le 7:00. Non vieta la fermata temporanea e non comporta la rimozione forzata né l'obbligo di disco orario.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte superiore contiene un segnale di divieto di sosta (cerchio rosso con barra diagonale rossa su sfondo blu) accompagnato da due fasce orarie: 7.00-9.00 e 17.00-20.00. La parte inferiore mostra un segnale di parcheggio (P blu su sfondo bianco) anch'esso accompagnato da due fasce orarie: 9.00-17.00 e 20.00-7.00. L'insieme dei due pannelli indica una regolamentazione della sosta e del parcheggio basata sugli orari specificati.",
-    "name": "Segnale di divieto di sosta con orario e parcheggio con orario",
-    "description": "Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo."
+    "visual_analysis": "Pannello rettangolare a fondo bianco e bordo nero, suddiviso in due sezioni orizzontali. Nella parte superiore è presente il simbolo del divieto di sosta (disco blu con bordo e barra obliqua rossa) affiancato sulla destra dalle indicazioni orarie '7,00 - 9,00' e '17,00 - 20,00'. Nella parte inferiore è raffigurato il simbolo di parcheggio (quadrato blu con lettera 'P' maiuscola bianca) affiancato a destra dalle indicazioni orarie '9,00 - 17,00' e '20,00 - 7,00'.",
+    "name": "Segnale di regolazione della sosta",
+    "description": "Regola la sosta dei veicoli nell'arco delle 24 ore: ne impone il divieto nelle fasce orarie comprese tra le 7:00 e le 9:00 e tra le 17:00 e le 20:00, mentre la consente liberamente nelle fasce tra le 9:00 e le 17:00 e tra le 20:00 e le 7:00. Non vieta la fermata temporanea e non comporta la rimozione forzata né l'obbligo di disco orario."
   },
   "quiz_metadata": {
     "core_concepts": [

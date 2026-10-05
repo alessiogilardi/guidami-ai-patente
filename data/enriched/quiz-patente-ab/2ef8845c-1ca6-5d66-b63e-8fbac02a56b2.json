@@ -5,11 +5,11 @@
   "text": "La figura rappresenta un segnale di pericolo",
   "correct_answer": true,
   "image": "dfaf4fe7c7231e7f821a2cecea6f1ecb.jpeg",
-  "image_description": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere). Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno.",
+  "image_description": "Croce di Sant'Andrea. Segnale di pericolo posizionato nelle immediate vicinanze di un passaggio a livello senza barriere o semibarriere, che segnala l'attraversamento di una linea ferroviaria con un solo binario. Può essere orientato sia orizzontalmente sia verticalmente ed è situato dopo il segnale di preavviso triangolare di passaggio a livello senza barriere e i relativi pannelli distanziometrici. Impone la massima prudenza e l'obbligo di arrestarsi prima dei binari in presenza del segnale di STOP o quando sono in funzione le due luci rosse lampeggianti o il segnale acustico.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una Croce di Sant'Andrea, un segnale stradale di pericolo. È di forma a X, con i bracci bordati di rosso e una striscia bianca al centro. Questo segnale preannuncia un passaggio a livello senza barriere.",
-    "name": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere)",
-    "description": "Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno."
+    "visual_analysis": "L'immagine mostra un segnale a forma di croce di Sant'Andrea (una singola 'X') con bracci sagomati e terminazioni a punta di freccia. I bracci presentano una bordatura rossa esterna e una parte interna bianca. Non sono presenti bracci aggiuntivi inferiori, indicando una singola croce.",
+    "name": "Croce di Sant'Andrea",
+    "description": "Segnale di pericolo posizionato nelle immediate vicinanze di un passaggio a livello senza barriere o semibarriere, che segnala l'attraversamento di una linea ferroviaria con un solo binario. Può essere orientato sia orizzontalmente sia verticalmente ed è situato dopo il segnale di preavviso triangolare di passaggio a livello senza barriere e i relativi pannelli distanziometrici. Impone la massima prudenza e l'obbligo di arrestarsi prima dei binari in presenza del segnale di STOP o quando sono in funzione le due luci rosse lampeggianti o il segnale acustico."
   },
   "quiz_metadata": {
     "core_concepts": [

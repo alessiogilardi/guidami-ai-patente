@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la velocità massima da tenere su quella strada",
   "correct_answer": false,
   "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
-  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_description": "Segnale di identificazione itinerario internazionale. Indica che la strada percorsa fa parte della rete degli itinerari europei di importanza internazionale ed è contraddistinta dal numero identificativo riportato sul cartello. Può essere installato da solo oppure inserito come simbolo all'interno di altri segnali di indicazione (ad esempio di preavviso o bivio).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
-    "name": "Segnale di itinerario internazionale",
-    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+    "visual_analysis": "L'immagine mostra un segnale di forma rettangolare a fondo verde, con cornice perimetrale bianca. Al centro compare la sigla alfanumerica bianca 'E 55', composta dalla lettera maiuscola 'E' seguita dal numero '55'.",
+    "name": "Segnale di identificazione itinerario internazionale",
+    "description": "Indica che la strada percorsa fa parte della rete degli itinerari europei di importanza internazionale ed è contraddistinta dal numero identificativo riportato sul cartello. Può essere installato da solo oppure inserito come simbolo all'interno di altri segnali di indicazione (ad esempio di preavviso o bivio)."
   },
   "quiz_metadata": {
     "core_concepts": [

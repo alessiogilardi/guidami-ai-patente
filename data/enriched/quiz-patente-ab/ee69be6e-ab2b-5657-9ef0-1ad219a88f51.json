@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato è consentito il transito di autotreni larghi 2,30 metri",
   "correct_answer": true,
   "image": "fc210680f70df08dec3a4c059858f5fe.jpeg",
-  "image_description": "Segnale di larghezza massima. Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri.",
+  "image_description": "Transito vietato ai veicoli aventi larghezza superiore a 2,30 metri. Vieta il transito su quel tratto stradale a tutti i veicoli, sia a motore che sprovvisti di motore (compresi autobus, autotreni e veicoli a trazione animale), la cui larghezza massima compreso il carico sia superiore a 2,30 metri. Il transito è invece consentito ai veicoli aventi larghezza uguale o inferiore a tale misura. Il segnale può essere installato sia su strade urbane che extraurbane, tipicamente prima di una strettoia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la cifra '2' seguita da ',30' e dalla lettera 'm' in apice, con due frecce nere rivolte verso l'interno, una sopra il '2' e una sotto il ',30'. Questo è il segnale di larghezza massima consentita.",
-    "name": "Segnale di larghezza massima",
-    "description": "Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri."
+    "visual_analysis": "Segnale stradale verticale di prescrizione (divieto), di forma circolare con bordo rosso e fondo bianco. All'interno sono presenti, in colore nero, l'indicazione numerica «2,30» con l'unità di misura «m» in apice, affiancata a sinistra e a destra da due punte di freccia triangolari contrapposte rivolte verso l'interno, indicanti la dimensione di larghezza.",
+    "name": "Transito vietato ai veicoli aventi larghezza superiore a 2,30 metri",
+    "description": "Vieta il transito su quel tratto stradale a tutti i veicoli, sia a motore che sprovvisti di motore (compresi autobus, autotreni e veicoli a trazione animale), la cui larghezza massima compreso il carico sia superiore a 2,30 metri. Il transito è invece consentito ai veicoli aventi larghezza uguale o inferiore a tale misura. Il segnale può essere installato sia su strade urbane che extraurbane, tipicamente prima di una strettoia."
   },
   "quiz_metadata": {
     "core_concepts": [

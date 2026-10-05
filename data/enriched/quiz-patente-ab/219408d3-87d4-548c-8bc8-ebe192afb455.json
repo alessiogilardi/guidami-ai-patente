@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente il transito ai motocicli nelle sole ore indicate",
   "correct_answer": false,
   "image": "45783f41bee064304c769ef6cebaec60.jpeg",
-  "image_description": "Divieto di transito ai motocicli con pannello integrativo di orario. Il segnale vieta il transito ai motocicli dalle ore 7:30 alle 19:00. Al di fuori di questa fascia oraria, il transito è consentito.",
+  "image_description": "Segnale di divieto di transito ai motocicli con pannello integrativo di fascia oraria. Vieta la circolazione a tutti i tipi di motocicli esclusivamente all'interno della fascia oraria indicata nel pannello integrativo (dalle ore 7:30 alle ore 19:00). Nelle restanti ore della giornata il transito dei motocicli è invece consentito. Non si applica ad altre categorie di veicoli, come ciclomotori o autovetture.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito per motocicli, rappresentato da un cerchio rosso con bordo rosso e sfondo bianco, con la silhouette di un motociclista al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare con sfondo bianco e bordo nero, riportante l'indicazione oraria '7,30-19,00'. Questo pannello specifica l'orario in cui vige il divieto imposto dal segnale sovrastante.",
-    "name": "Divieto di transito ai motocicli con pannello integrativo di orario",
-    "description": "Il segnale vieta il transito ai motocicli dalle ore 7:30 alle 19:00. Al di fuori di questa fascia oraria, il transito è consentito."
+    "visual_analysis": "L'immagine presenta un cartello composto da due elementi verticalmente sovrapposti: in alto, un segnale di divieto di forma circolare con bordo rosso, fondo bianco e sagoma nera stilizzata di un motociclo con guidatore; in basso, un pannello integrativo rettangolare a fondo bianco con bordo nero recante l'indicazione oraria in caratteri neri \"7,30-19,00\" senza simboli di giorni feriali o festivi.",
+    "name": "Segnale di divieto di transito ai motocicli con pannello integrativo di fascia oraria",
+    "description": "Vieta la circolazione a tutti i tipi di motocicli esclusivamente all'interno della fascia oraria indicata nel pannello integrativo (dalle ore 7:30 alle ore 19:00). Nelle restanti ore della giornata il transito dei motocicli è invece consentito. Non si applica ad altre categorie di veicoli, come ciclomotori o autovetture."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Gli addetti a servizi di polizia stradale vengono riconosciuti dal segnale distintivo",
   "correct_answer": true,
   "image": "b0971c790847c0127280b6aa2f1fe29f.jpeg",
-  "image_description": "Pannelli integrativi di distanza. I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza.",
+  "image_description": "Pannello integrativo di distanza. Indica la distanza espressa in metri o chilometri tra il segnale sotto cui è applicato e il punto di inizio del pericolo, l'inizio della prescrizione (obbligo o divieto) oppure la distanza mancante per raggiungere il luogo o servizio segnalato. Non deve essere confuso con il pannello di estesa, che presenta invece due frecce nere verticali ai lati.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli rettangolari, uno sopra l'altro, entrambi di colore bianco con bordo nero. Il pannello superiore (etichettato A) riporta la dicitura \"320 m\" in nero. Il pannello inferiore (etichettato B) riporta la dicitura \"3,8 km\" in nero. Entrambi sono pannelli integrativi che specificano una distanza.",
-    "name": "Pannelli integrativi di distanza",
-    "description": "I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza."
+    "visual_analysis": "L'immagine presenta due pannelli integrativi rettangolari a fondo bianco con sottile bordo nero, etichettati rispettivamente con le lettere 'A' e 'B' sulla destra. Il pannello A riporta l'iscrizione numerica nera '320 m' priva di frecce laterali. Il pannello B riporta l'iscrizione numerica nera '3,8 km', anch'essa priva di frecce laterali.",
+    "name": "Pannello integrativo di distanza",
+    "description": "Indica la distanza espressa in metri o chilometri tra il segnale sotto cui è applicato e il punto di inizio del pericolo, l'inizio della prescrizione (obbligo o divieto) oppure la distanza mancante per raggiungere il luogo o servizio segnalato. Non deve essere confuso con il pannello di estesa, che presenta invece due frecce nere verticali ai lati."
   },
   "quiz_metadata": {
     "core_concepts": [

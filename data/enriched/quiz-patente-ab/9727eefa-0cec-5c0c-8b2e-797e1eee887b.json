@@ -5,11 +5,11 @@
   "text": "Il segnale con il pannello in figura preannuncia un tratto di strada lungo 3,8 km con una serie di curve pericolose",
   "correct_answer": false,
   "image": "b0f214454b4f04746f9160175f696999.jpeg",
-  "image_description": "Preavviso di pericolo - Serie di curve (secondo e primo tornante). Il segnale preannuncia una serie di curve pericolose che si estendono per una lunghezza di 3,8 km.",
+  "image_description": "Segnale di doppia curva, la prima a destra con pannello integrativo di distanza. Preannuncia, alla distanza indicata di 3,8 km dal punto di installazione del segnale, un tratto di strada con una doppia curva o una serie di curve pericolose, di cui la prima a destra. L'assenza di frecce verticali ai lati del pannello integrativo specifica che il valore indica la distanza di inizio del pericolo e non l'estesa del tratto stradale pericoloso.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di curve, specificamente il secondo tornante seguito dal primo tornante. Sotto il segnale di pericolo è presente un pannello integrativo rettangolare di colore bianco con la dicitura '3,8 km' in nero. Questo pannello indica la lunghezza del tratto di strada interessato dal pericolo segnalato.",
-    "name": "Preavviso di pericolo - Serie di curve (secondo e primo tornante)",
-    "description": "Il segnale preannuncia una serie di curve pericolose che si estendono per una lunghezza di 3,8 km."
+    "visual_analysis": "L'immagine mostra un segnale verticale di pericolo composto da due elementi sovrapposti: in alto, un cartello triangolare con vertice verso l'alto, bordo rosso e fondo bianco, raffigurante il pittogramma nero di una doppia curva la cui prima svolta è verso destra; in basso, un pannello integrativo rettangolare a sfondo bianco con bordo nero, recante al centro l'iscrizione numerica e di unità di misura '3,8 km' priva di frecce laterali.",
+    "name": "Segnale di doppia curva, la prima a destra con pannello integrativo di distanza",
+    "description": "Preannuncia, alla distanza indicata di 3,8 km dal punto di installazione del segnale, un tratto di strada con una doppia curva o una serie di curve pericolose, di cui la prima a destra. L'assenza di frecce verticali ai lati del pannello integrativo specifica che il valore indica la distanza di inizio del pericolo e non l'estesa del tratto stradale pericoloso."
   },
   "quiz_metadata": {
     "core_concepts": [

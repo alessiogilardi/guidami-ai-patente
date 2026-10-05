@@ -5,11 +5,11 @@
   "text": "Il segnale (A), integrato con il pannello (B), consente la sosta agli autobus",
   "correct_answer": true,
   "image": "9a5b0958c6c44f82610ce3d20ac0f41d.jpeg",
-  "image_description": "Segnale di divieto di sosta con pannello integrativo eccezione autobus. Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B indica un'eccezione per gli autobus. Pertanto, la sosta è vietata a tutti i veicoli, eccetto gli autobus.",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di eccezione per autobus. Il segnale vieta la sosta sul lato della strada in cui è posizionato, consentendola tuttavia agli autobus grazie al pannello integrativo di eccezione. La fermata resta comunque consentita per tutti i tipi di veicolo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra diagonale rossa. Il pannello B è rettangolare, bianco, con la scritta \"eccetto\" in alto e un'immagine stilizzata di un autobus snodato in basso. I due elementi sono presentati in modo tale da suggerire che il pannello B sia un'integrazione al segnale A.",
-    "name": "Segnale di divieto di sosta con pannello integrativo eccezione autobus",
-    "description": "Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B indica un'eccezione per gli autobus. Pertanto, la sosta è vietata a tutti i veicoli, eccetto gli autobus."
+    "visual_analysis": "L'immagine presenta due elementi sovrapposti contrassegnati da lettere: in alto la lettera (A) indica un segnale circolare a fondo blu con bordo rosso e una barra diagonale rossa, che identifica il divieto di sosta; in basso la lettera (B) indica un pannello integrativo rettangolare a fondo bianco, con la scritta nera 'eccetto' e la sagoma stilizzata di un autobus urbano.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di eccezione per autobus",
+    "description": "Il segnale vieta la sosta sul lato della strada in cui è posizionato, consentendola tuttavia agli autobus grazie al pannello integrativo di eccezione. La fermata resta comunque consentita per tutti i tipi di veicolo."
   },
   "quiz_metadata": {
     "core_concepts": [

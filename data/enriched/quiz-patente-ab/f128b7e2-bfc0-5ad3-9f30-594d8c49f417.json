@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato preavvisa l'inizio di un tratto di strada a senso unico",
   "correct_answer": false,
   "image": "16e3a6f5e999c723e882a57b9dde5584.jpeg",
-  "image_description": "Pannello integrativo - Lavori in corso (pulizia strada). Il segnale raffigura una scopa che spazza una superficie, indicando la presenza di lavori in corso per la pulizia o la manutenzione della strada, o la rimozione di detriti. Questo pannello integrativo viene solitamente posto sotto il segnale di 'Altri Pericoli' (triangolo con bordo rosso e sfondo bianco, con un simbolo di pericolo al centro) per specificare la natura del pericolo.",
+  "image_description": "Pannello integrativo per segnaletica orizzontale in rifacimento. Pannello integrativo da apporre al di sotto del segnale di pericolo 'Altri pericoli'. Preavvisa che su quel tratto di strada la segnaletica orizzontale è temporaneamente assente o in corso di rifacimento, invitando i conducenti a prestare maggiore attenzione nel mantenere la corretta posizione sulla carreggiata e nel rispettare le corsie di marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo di forma quadrata con bordo nero e sfondo grigio scuro. Al centro è raffigurato, in bianco, un simbolo che rappresenta una scopa con manico, in procinto di spazzare una superficie. La scopa è inclinata verso destra e la sua azione di spazzare è evidenziata da un'area bianca che simula la polvere o i detriti rimossi. Questo pannello è un pannello integrativo che solitamente accompagna altri segnali, come quello di 'Altri Pericoli', per fornire informazioni aggiuntive sulla natura del pericolo o della situazione stradale.",
-    "name": "Pannello integrativo - Lavori in corso (pulizia strada)",
-    "description": "Il segnale raffigura una scopa che spazza una superficie, indicando la presenza di lavori in corso per la pulizia o la manutenzione della strada, o la rimozione di detriti. Questo pannello integrativo viene solitamente posto sotto il segnale di 'Altri Pericoli' (triangolo con bordo rosso e sfondo bianco, con un simbolo di pericolo al centro) per specificare la natura del pericolo."
+    "visual_analysis": "Pannello integrativo quadrangolare con angoli arrotondati e bordo perimetrale. Al suo interno è raffigurata una pennellessa (o pennello da imbianchino/verniciatore) stilizzata nell'atto di tracciare o verniciare una striscia continua, a simboleggiare l'applicazione di vernice stradale.",
+    "name": "Pannello integrativo per segnaletica orizzontale in rifacimento",
+    "description": "Pannello integrativo da apporre al di sotto del segnale di pericolo 'Altri pericoli'. Preavvisa che su quel tratto di strada la segnaletica orizzontale è temporaneamente assente o in corso di rifacimento, invitando i conducenti a prestare maggiore attenzione nel mantenere la corretta posizione sulla carreggiata e nel rispettare le corsie di marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

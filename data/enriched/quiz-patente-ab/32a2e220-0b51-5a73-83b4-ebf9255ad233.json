@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato (A), posto sotto un segnale di pericolo, ne indica la continuazione",
   "correct_answer": true,
   "image": "ad3b1bf6ded9b192f1c739df850f6eba.jpeg",
-  "image_description": "Pannello integrativo di direzione (A e B). Il pannello integrativo A indica che il senso di marcia è consentito in entrambe le direzioni. Il pannello integrativo B indica che il senso di marcia è consentito in entrambe le direzioni.",
+  "image_description": "Pannelli integrativi di continuazione. Il pannello A, posto sotto un segnale di pericolo o di prescrizione (ad esempio divieto di sosta o fermata), indica la continuazione della situazione di pericolo o del divieto segnalato precedentemente. Non va confuso con segnali di direzione, senso unico alternato o doppio senso di circolazione. Il pannello B indica la continuazione o l'estensione della prescrizione/pericolo su entrambi i lati (a destra e a sinistra).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, etichettati A e B. Il pannello A presenta due frecce nere su sfondo bianco: una freccia rivolta verso l'alto e una freccia rivolta verso il basso, entrambe puntate al centro. Il pannello B presenta due frecce nere su sfondo bianco: una freccia rivolta verso sinistra e una freccia rivolta verso destra, entrambe puntate al centro. Entrambi i pannelli sono pannelli integrativi di direzione.",
-    "name": "Pannello integrativo di direzione (A e B)",
-    "description": "Il pannello integrativo A indica che il senso di marcia è consentito in entrambe le direzioni. Il pannello integrativo B indica che il senso di marcia è consentito in entrambe le direzioni."
+    "visual_analysis": "L'immagine presenta due pannelli integrativi rettangolari a fondo bianco con bordo e simboli neri, contrassegnati dalle lettere A e B. Il pannello A, orientato verticalmente, raffigura due frecce verticali contrapposte (una diretta verso l'alto e una verso il basso). Il pannello B, orientato orizzontalmente, raffigura due frecce orizzontali contrapposte (una diretta a sinistra e una a destra).",
+    "name": "Pannelli integrativi di continuazione",
+    "description": "Il pannello A, posto sotto un segnale di pericolo o di prescrizione (ad esempio divieto di sosta o fermata), indica la continuazione della situazione di pericolo o del divieto segnalato precedentemente. Non va confuso con segnali di direzione, senso unico alternato o doppio senso di circolazione. Il pannello B indica la continuazione o l'estensione della prescrizione/pericolo su entrambi i lati (a destra e a sinistra)."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che si ha la precedenza fino all'uscita del centro abitato",
   "correct_answer": false,
   "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
-  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_description": "Diritto di precedenza. Indica l'inizio o la prosecuzione di una strada i cui utenti hanno diritto di precedenza rispetto a coloro che provengono da strade intersecanti (sulle quali sono posti i segnali 'Dare precedenza' o 'Fermarsi e dare precedenza - STOP'). Pur conferendo la precedenza, impone di moderare la velocità in prossimità delle intersezioni, accertarsi che i veicoli laterali concedano il passaggio e dare comunque la precedenza ai veicoli in servizio di emergenza con lampeggianti blu e sirena accesi. Può essere ripetuto in formato ridotto lungo l'itinerario.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
-    "name": "Segnale di Diritto di Precedenza",
-    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+    "visual_analysis": "Segnale stradale a forma di rombo (quadrato ruotato su un vertice), composto da una spessa cornice esterna bianca bordata di nero e da un rombo centrale pieno di colore giallo-arancione, anch'esso contornato da un sottile filetto nero.",
+    "name": "Diritto di precedenza",
+    "description": "Indica l'inizio o la prosecuzione di una strada i cui utenti hanno diritto di precedenza rispetto a coloro che provengono da strade intersecanti (sulle quali sono posti i segnali 'Dare precedenza' o 'Fermarsi e dare precedenza - STOP'). Pur conferendo la precedenza, impone di moderare la velocità in prossimità delle intersezioni, accertarsi che i veicoli laterali concedano il passaggio e dare comunque la precedenza ai veicoli in servizio di emergenza con lampeggianti blu e sirena accesi. Può essere ripetuto in formato ridotto lungo l'itinerario."
   },
   "quiz_metadata": {
     "core_concepts": [

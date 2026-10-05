@@ -5,11 +5,11 @@
   "text": "La doppia striscia continua in figura indica che si può viaggiare per file parallele",
   "correct_answer": false,
   "image": "a1afc98a9b894c5e8f176c3e8844cfc9.jpeg",
-  "image_description": "Doppia striscia continua (segnaletica orizzontale). La doppia striscia continua, in questo contesto, delimita le corsie di marcia e indica la separazione tra i sensi di marcia su una carreggiata a doppio senso di circolazione. Non è consentito il superamento né l'invasione della corsia opposta.",
+  "image_description": "Striscia longitudinale continua doppia. Segnaletica orizzontale costituita da due linee continue parallele che delimita e divide i sensi di marcia su carreggiate a doppio senso di circolazione. La doppia striscia è invalicabile: non può essere oltrepassata né calpestata, rendendo vietati l'inversione di marcia, la svolta a sinistra con attraversamento delle strisce e il sorpasso che comporti l'invasione dell'opposta semicarreggiata. Il sorpasso è ammesso unicamente senza oltrepassare la linea, rimanendo all'interno della propria corsia. Non viene utilizzata per delimitare i margini della carreggiata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una porzione di carreggiata con segnaletica orizzontale. Sono presenti due doppie strisce continue bianche, parallele tra loro e separate da uno spazio. Queste strisce sono disposte in modo da delimitare idealmente delle corsie di marcia. Non sono presenti altri segnali stradali o elementi del contesto di guida. La configurazione suggerisce una strada a doppio senso di circolazione dove le doppie strisce continue separano i due sensi di marcia.",
-    "name": "Doppia striscia continua (segnaletica orizzontale)",
-    "description": "La doppia striscia continua, in questo contesto, delimita le corsie di marcia e indica la separazione tra i sensi di marcia su una carreggiata a doppio senso di circolazione. Non è consentito il superamento né l'invasione della corsia opposta."
+    "visual_analysis": "Rappresentazione grafica stilizzata di un tratto stradale visto dall'alto, composto da una superficie grigia (asfalto) delimitata da strisce bianche. Al centro della sezione è chiaramente visibile una coppia di strisce bianche continue, rettilinee e parallele, affiancate a breve distanza (doppia striscia continua), con ulteriori linee bianche continue che delimitano le estremità. La figura presenta un pattern grafico ripetuto verticalmente.",
+    "name": "Striscia longitudinale continua doppia",
+    "description": "Segnaletica orizzontale costituita da due linee continue parallele che delimita e divide i sensi di marcia su carreggiate a doppio senso di circolazione. La doppia striscia è invalicabile: non può essere oltrepassata né calpestata, rendendo vietati l'inversione di marcia, la svolta a sinistra con attraversamento delle strisce e il sorpasso che comporti l'invasione dell'opposta semicarreggiata. Il sorpasso è ammesso unicamente senza oltrepassare la linea, rimanendo all'interno della propria corsia. Non viene utilizzata per delimitare i margini della carreggiata."
   },
   "quiz_metadata": {
     "core_concepts": [

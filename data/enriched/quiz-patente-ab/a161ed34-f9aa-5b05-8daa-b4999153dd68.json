@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica un'area da campeggio con tende e sosta per caravan ed autocaravan",
   "correct_answer": true,
   "image": "6bf2f66e80435e1fde57046fdd066280.jpeg",
-  "image_description": "Area per campeggio. Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan.",
+  "image_description": "Segnale di campeggio e sosta caravan. Segnale di indicazione con sfondo marrone (turistico-territoriale) che preavvisa o segnala la vicinanza o la presenza di una struttura o area attrezzata destinata sia al campeggio (tende) sia alla sosta di caravan (roulotte) e autocaravan.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore marrone con un riquadro bianco al centro. All'interno del riquadro bianco sono presenti due pittogrammi: nella parte superiore, una tenda stilizzata; nella parte inferiore, una roulotte (caravan) con un'auto collegata. Sotto il riquadro bianco, vi è un pannello integrativo di colore marrone, vuoto. Il segnale è di tipo \"indicazione\" e si riferisce a un'area attrezzata per il campeggio.",
-    "name": "Area per campeggio",
-    "description": "Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan."
+    "visual_analysis": "Cartello rettangolare verticale con fondo marrone. Nella parte superiore contiene un riquadro a fondo bianco che racchiude due pittogrammi neri sovrapposti: in alto una tenda da campo stilizzata e in basso una caravan (roulotte). La parte inferiore del pannello è vuota a fondo marrone.",
+    "name": "Segnale di campeggio e sosta caravan",
+    "description": "Segnale di indicazione con sfondo marrone (turistico-territoriale) che preavvisa o segnala la vicinanza o la presenza di una struttura o area attrezzata destinata sia al campeggio (tende) sia alla sosta di caravan (roulotte) e autocaravan."
   },
   "quiz_metadata": {
     "core_concepts": [

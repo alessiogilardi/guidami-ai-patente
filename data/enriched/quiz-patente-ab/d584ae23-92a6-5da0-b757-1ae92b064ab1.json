@@ -5,11 +5,11 @@
   "text": "Il segnale (A), integrato con il pannello (B), preannuncia la possibile presenza di macchine sgombraneve al lavoro sulla strada",
   "correct_answer": true,
   "image": "c4353e11dd208717c3442642cdd8fe2b.jpeg",
-  "image_description": "Segnale di pericolo generico con pannello integrativo di macchine sgombraneve al lavoro. Il segnale A è un segnale di pericolo generico (punto esclamativo). Il pannello integrativo B, posto sotto il segnale A, raffigura un fiocco di neve e un mezzo sgombraneve. Indica la possibile presenza di macchine sgombraneve al lavoro.",
+  "image_description": "Segnale di altri pericoli con pannello integrativo macchine sgombraneve al lavoro. Presegnala la presenza di macchine sgombraneve o spargisale in azione sulla strada. Comporta l'obbligo di moderare la velocità, mantenere una distanza di sicurezza di almeno 20 metri dai mezzi operativi e prestare particolare attenzione per la possibile presenza di neve o ghiaccio sul fondo stradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco, al cui interno è presente un punto esclamativo nero. L'elemento B è un pannello rettangolare integrativo, posto sotto il segnale A. Il pannello B contiene due pittogrammi: a sinistra un fiocco di neve stilizzato, a destra la sagoma di un mezzo sgombraneve con una lama anteriore e un lampeggiante blu sul tetto della cabina. L'insieme dei due elementi indica un pericolo generico preannunciato dal segnale A, specificato dal pannello B come la possibile presenza di macchine sgombraneve al lavoro.",
-    "name": "Segnale di pericolo generico con pannello integrativo di macchine sgombraneve al lavoro",
-    "description": "Il segnale A è un segnale di pericolo generico (punto esclamativo). Il pannello integrativo B, posto sotto il segnale A, raffigura un fiocco di neve e un mezzo sgombraneve. Indica la possibile presenza di macchine sgombraneve al lavoro."
+    "visual_analysis": "L'immagine presenta due elementi verticalmente allineati, identificati dalle lettere A e B. L'elemento A è un segnale di pericolo di forma triangolare con vertice verso l'alto, bordo rosso, fondo bianco e punto esclamativo nero al centro. L'elemento B, sottostante, è un pannello integrativo rettangolare a fondo bianco con bordo nero, recante il simbolo stilizzato in nero di un cristallo di neve a sinistra e un mezzo sgombraneve con vomere e lampeggiante a destra.",
+    "name": "Segnale di altri pericoli con pannello integrativo macchine sgombraneve al lavoro",
+    "description": "Presegnala la presenza di macchine sgombraneve o spargisale in azione sulla strada. Comporta l'obbligo di moderare la velocità, mantenere una distanza di sicurezza di almeno 20 metri dai mezzi operativi e prestare particolare attenzione per la possibile presenza di neve o ghiaccio sul fondo stradale."
   },
   "quiz_metadata": {
     "core_concepts": [

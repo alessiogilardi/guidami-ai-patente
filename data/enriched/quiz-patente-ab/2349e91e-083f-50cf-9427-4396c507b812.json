@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato se barrato da una striscia rossa indica la fine della sua validità",
   "correct_answer": true,
   "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
-  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_description": "Strada riservata ai veicoli a motore. Segnale di indicazione posto all'inizio di una strada accessibile esclusivamente ai veicoli a motore (autovetture, motocicli, autobus, autocarri, ecc.). Vieta la circolazione a tutti i veicoli sprovvisti di motore, come biciclette, veicoli a braccia o a trazione animale, e ai pedoni. Se barrato da una linea diagonale rossa, indica la fine della strada riservata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
-    "name": "Parcheggio per autovetture",
-    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+    "visual_analysis": "Segnale stradale di forma quadrata con fondo blu e sottile bordo perimetrale bianco. Al centro compare, in bianco, la sagoma stilizzata della parte anteriore di un'autovettura (vista frontale).",
+    "name": "Strada riservata ai veicoli a motore",
+    "description": "Segnale di indicazione posto all'inizio di una strada accessibile esclusivamente ai veicoli a motore (autovetture, motocicli, autobus, autocarri, ecc.). Vieta la circolazione a tutti i veicoli sprovvisti di motore, come biciclette, veicoli a braccia o a trazione animale, e ai pedoni. Se barrato da una linea diagonale rossa, indica la fine della strada riservata."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale in figura vieta l'accesso agli autobus",
   "correct_answer": false,
   "image": "8f0111b381f8e798ce53a72e1cce2741.jpeg",
-  "image_description": "Divieto di transito con pannello integrativo (eccetto autobus). Il segnale principale è un segnale di divieto di transito, che vieta a tutti i veicoli l'accesso. Il pannello integrativo specifica che il divieto non si applica agli autobus.",
+  "image_description": "Segnale di senso vietato con pannello integrativo di eccezione per autobus. Vieta l'ingresso a tutti i veicoli nella direzione indicata, eccetto gli autobus, ai quali è invece consentito l'accesso (ad esempio per l'immissione in una corsia o strada a loro riservata).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito (cerchio rosso con barra orizzontale bianca) sovrastante un pannello integrativo rettangolare. Il pannello integrativo ha sfondo bianco e riporta la scritta \"eccetto\" in alto, seguita dal pittogramma di un autobus stilizzato. L'insieme dei due elementi indica una prescrizione specifica relativa al divieto di transito.",
-    "name": "Divieto di transito con pannello integrativo (eccetto autobus)",
-    "description": "Il segnale principale è un segnale di divieto di transito, che vieta a tutti i veicoli l'accesso. Il pannello integrativo specifica che il divieto non si applica agli autobus."
+    "visual_analysis": "L'immagine mostra un segnale stradale composito costituito da un cartello principale e un pannello integrativo posto al di sotto. Il segnale superiore è circolare a fondo rosso con una barra orizzontale bianca al centro (segnale di senso vietato). Il pannello integrativo sottostante è rettangolare a fondo bianco con bordo nero e presenta la scritta in lettere minuscole 'eccetto' sovrastante la sagoma nera stilizzata di un autobus.",
+    "name": "Segnale di senso vietato con pannello integrativo di eccezione per autobus",
+    "description": "Vieta l'ingresso a tutti i veicoli nella direzione indicata, eccetto gli autobus, ai quali è invece consentito l'accesso (ad esempio per l'immissione in una corsia o strada a loro riservata)."
   },
   "quiz_metadata": {
     "core_concepts": [

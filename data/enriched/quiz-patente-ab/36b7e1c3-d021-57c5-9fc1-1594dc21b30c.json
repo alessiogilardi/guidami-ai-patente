@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che il clacson può essere usato dalle ore 7.30 alle ore 19.00",
   "correct_answer": false,
   "image": "f4628956579aaaef2b161b3c6f237a5e.jpeg",
-  "image_description": "Divieto di segnalazione acustica con pannello integrativo di orario. Il segnale vieta l'uso del clacson dalle ore 7:30 alle ore 19:00.",
+  "image_description": "Segnale di divieto di segnalazioni acustiche con pannello integrativo di fascia oraria. Il segnale vieta l'uso di avvisatori acustici (clacson o trombe) limitatamente alla fascia oraria indicata nel pannello integrativo (dalle ore 7.30 alle ore 19.00), salvo situazioni di effettivo e immediato pericolo o trasporto di feriti o ammalati gravi.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di segnalazione acustica (un clacson barrato da una croce rossa su sfondo bianco) posto sopra un pannello integrativo rettangolare che indica un orario: 7,30-19,00. Il segnale principale è il divieto di usare il clacson, mentre il pannello integrativo specifica l'orario in cui tale divieto è valido.",
-    "name": "Divieto di segnalazione acustica con pannello integrativo di orario",
-    "description": "Il segnale vieta l'uso del clacson dalle ore 7:30 alle ore 19:00."
+    "visual_analysis": "L'immagine raffigura un segnale verticale composto da due elementi sovrapposti. In alto è presente un segnale di divieto circolare a fondo bianco, con bordo rosso e barra diagonale rossa che sbarra la sagoma nera di una tromba (avvisatore acustico). In basso è presente un pannello integrativo rettangolare a fondo bianco con bordo nero, recante l'iscrizione oraria '7,30-19,00'.",
+    "name": "Segnale di divieto di segnalazioni acustiche con pannello integrativo di fascia oraria",
+    "description": "Il segnale vieta l'uso di avvisatori acustici (clacson o trombe) limitatamente alla fascia oraria indicata nel pannello integrativo (dalle ore 7.30 alle ore 19.00), salvo situazioni di effettivo e immediato pericolo o trasporto di feriti o ammalati gravi."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia un tratto di strada da percorrere con il pedale della frizione abbassato",
   "correct_answer": false,
   "image": "e00977c30f7df673be7ffea068667309.jpeg",
-  "image_description": "Segnale di pericolo di salita con pendenza specificata. Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo.",
+  "image_description": "Segnale di salita ripida. Preannuncia un tratto di strada con forte pendenza in salita (specificata in percentuale), da percorrere con prudenza e innestando una marcia adeguatamente bassa per sfruttare la potenza del motore e prevenire l'arresto del veicolo o l'eccessivo sforzo della frizione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa inclinata di colore nero, che simboleggia una salita. Sulla rampa è indicato il valore \"10%\" con un numero nero, che rappresenta la pendenza.",
-    "name": "Segnale di pericolo di salita con pendenza specificata",
-    "description": "Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo."
+    "visual_analysis": "Segnale di pericolo triangolare con vertice rivolto verso l'alto, caratterizzato da bordo rosso e fondo bianco. All'interno è raffigurato un piano inclinato nero a forma di triangolo rettangolo che sale da sinistra verso destra, sormontato dall'indicazione percentuale '10%'.",
+    "name": "Segnale di salita ripida",
+    "description": "Preannuncia un tratto di strada con forte pendenza in salita (specificata in percentuale), da percorrere con prudenza e innestando una marcia adeguatamente bassa per sfruttare la potenza del motore e prevenire l'arresto del veicolo o l'eccessivo sforzo della frizione."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia una direzione obbligatoria a sinistra",
   "correct_answer": false,
   "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
-  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_description": "Segnale di circolazione rotatoria. Segnale di obbligo (prescrizione) posto prima dello sbocco su un'area o piazza regolata a circolazione rotatoria. Obbliga tutti i conducenti a immettersi nell'incrocio e circolare esclusivamente secondo il verso indicato dalle frecce (in senso antiorario).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "visual_analysis": "Segnale stradale verticale di forma circolare con fondo blu e sottile bordo perimetrale bianco. Al centro sono raffigurate tre frecce bianche ricurve che si susseguono a formare un cerchio in senso antiorario.",
     "name": "Segnale di circolazione rotatoria",
-    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+    "description": "Segnale di obbligo (prescrizione) posto prima dello sbocco su un'area o piazza regolata a circolazione rotatoria. Obbliga tutti i conducenti a immettersi nell'incrocio e circolare esclusivamente secondo il verso indicato dalle frecce (in senso antiorario)."
   },
   "quiz_metadata": {
     "core_concepts": [

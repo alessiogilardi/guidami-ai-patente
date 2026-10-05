@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta la sosta nella fascia oraria indicata dei giorni lavorativi",
   "correct_answer": true,
   "image": "a0704cd2aaf24253d6c503a483ead9cf.jpeg",
-  "image_description": "Divieto di sosta con indicazione degli orari e dei giorni di validità. Il segnale vieta la sosta, ma solo nella fascia oraria dalle 8:00 alle 20:00 e solo nei giorni lavorativi, come indicato dal simbolo di un piccone e di una pala incrociati.",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di fascia oraria nei giorni lavorativi. Vieta la sosta sul lato della strada in cui è collocato esclusivamente nei giorni lavorativi (feriali) nella fascia oraria compresa tra le 8:00 e le 20:00. Nei giorni festivi e al di fuori di tale orario la sosta è consentita, mentre la fermata temporanea è sempre permessa.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta, rappresentato da un disco rosso con bordo rosso, sfondo blu e una barra rossa diagonale. Sotto questo segnale, è presente un pannello integrativo rettangolare. Questo pannello contiene un simbolo che raffigura un piccone e una pala incrociati, seguito dall'indicazione oraria '8.00 - 20.00'. Il simbolo del piccone e della pala indica i giorni lavorativi.",
-    "name": "Divieto di sosta con indicazione degli orari e dei giorni di validità",
-    "description": "Il segnale vieta la sosta, ma solo nella fascia oraria dalle 8:00 alle 20:00 e solo nei giorni lavorativi, come indicato dal simbolo di un piccone e di una pala incrociati."
+    "visual_analysis": "L'immagine mostra un cartello composito costituito superiormente da un segnale di prescrizione circolare con sfondo blu, bordo rosso e una barra diagonale rossa (divieto di sosta). Al di sotto è presente un pannello integrativo rettangolare a fondo bianco con cornice nera, che riporta il simbolo di due martelli incrociati (indicante i giorni lavorativi o feriali) affiancato dalla fascia oraria '8,00 - 20,00'.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di fascia oraria nei giorni lavorativi",
+    "description": "Vieta la sosta sul lato della strada in cui è collocato esclusivamente nei giorni lavorativi (feriali) nella fascia oraria compresa tra le 8:00 e le 20:00. Nei giorni festivi e al di fuori di tale orario la sosta è consentita, mentre la fermata temporanea è sempre permessa."
   },
   "quiz_metadata": {
     "core_concepts": [

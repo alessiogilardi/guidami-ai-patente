@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato si trova solo se l'incidente è avvenuto in autostrada",
   "correct_answer": false,
   "image": "e11f357a1c1fed89487195de187be943.jpeg",
-  "image_description": "Pericolo di incidente stradale. Il segnale raffigura due veicoli in fase di collisione, con delle linee che indicano il movimento o l'impatto. Si tratta di un segnale di pericolo che preavvisa la presenza di un incidente stradale.",
+  "image_description": "Pannello integrativo per incidente. Posto di norma sotto il segnale di \"Altri pericoli\", preavvisa la presenza di un incidente stradale e di veicoli incidentati che potrebbero occupare la carreggiata. Comporta l'obbligo di moderare la velocità e prestare particolare attenzione per evitare tamponamenti o ulteriori pericoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma quadrata con bordo rosso e sfondo bianco, contenente un pittogramma. Il pittogramma raffigura due automobili stilizzate di colore bianco, una delle quali sembra tamponare l'altra. Delle linee bianche, simili a raggi, partono dai punti di impatto o dalle parti anteriori dei veicoli, suggerendo un movimento o un urto. Il segnale è di colore rosso, tipico dei segnali di pericolo.",
-    "name": "Pericolo di incidente stradale",
-    "description": "Il segnale raffigura due veicoli in fase di collisione, con delle linee che indicano il movimento o l'impatto. Si tratta di un segnale di pericolo che preavvisa la presenza di un incidente stradale."
+    "visual_analysis": "Pannello integrativo di forma quadrangolare con angoli arrotondati, fondo rosso e bordo perimetrale bianco. Al centro sono raffigurate due sagome bianche di autovetture viste dall'alto, riprodotte nell'atto di una collisione con tratti bianchi divergenti che indicano i punti d'impatto.",
+    "name": "Pannello integrativo per incidente",
+    "description": "Posto di norma sotto il segnale di \"Altri pericoli\", preavvisa la presenza di un incidente stradale e di veicoli incidentati che potrebbero occupare la carreggiata. Comporta l'obbligo di moderare la velocità e prestare particolare attenzione per evitare tamponamenti o ulteriori pericoli."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che da lì in poi i pedoni non circolano più su un percorso riservato",
   "correct_answer": true,
   "image": "125d99c6c74db6e107a78ba4749257ab.jpeg",
-  "image_description": "Fine percorso pedonale. Indica la fine di un percorso pedonale.",
+  "image_description": "Segnale di fine del percorso pedonale. Indica il termine di un viale, pista o corsia riservata esclusivamente al transito dei pedoni. Da questo punto in poi cessa l'esclusività del percorso, pertanto i pedoni non circolano più su una corsia a loro riservata, senza che ciò costituisca un divieto di transito o di attraversamento per gli stessi.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco. Il fondo del segnale è blu scuro. Al centro è presente la figura stilizzata di un pedone di colore bianco, in movimento da sinistra verso destra. Una barra rossa diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra, attraversa la figura del pedone, indicando la fine di un obbligo o di un divieto. In questo caso specifico, il pittogramma del pedone indica che si tratta della fine di un percorso pedonale.",
-    "name": "Fine percorso pedonale",
-    "description": "Indica la fine di un percorso pedonale."
+    "visual_analysis": "Segnale stradale circolare con sfondo blu, bordo perimetrale bianco, al cui interno è raffigurata in bianco la sagoma stilizzata di un pedone in cammino, barrata trasversalmente da una striscia diagonale rossa.",
+    "name": "Segnale di fine del percorso pedonale",
+    "description": "Indica il termine di un viale, pista o corsia riservata esclusivamente al transito dei pedoni. Da questo punto in poi cessa l'esclusività del percorso, pertanto i pedoni non circolano più su una corsia a loro riservata, senza che ciò costituisca un divieto di transito o di attraversamento per gli stessi."
   },
   "quiz_metadata": {
     "core_concepts": [

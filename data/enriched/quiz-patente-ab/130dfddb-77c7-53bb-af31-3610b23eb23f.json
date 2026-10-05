@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo (A), posto sotto il segnale (B), vieta il transito ai pedoni nelle sole ore indicate",
   "correct_answer": true,
   "image": "260d1ab9fde17a642f7d3d4e1ccc964e.jpeg",
-  "image_description": "Segnale di divieto di transito ai pedoni con pannello integrativo di orario. Il segnale B è un segnale di divieto di transito ai pedoni. Il pannello integrativo A, posto sotto il segnale B, specifica gli orari in cui vige il divieto: dalle 7:30 alle 19:00. Pertanto, il transito ai pedoni è vietato solo durante queste fasce orarie.",
+  "image_description": "Pannello integrativo di fascia oraria e segnale di transito vietato ai pedoni. Il pannello integrativo (A) indica la fascia oraria di validità del segnale al quale viene abbinato; applicato sotto il segnale di divieto di transito ai pedoni (B), rende operante la prescrizione esclusivamente nell'intervallo compreso tra le 7:30 e le 19:00 di tutti i giorni, consentendo il transito pedonale al di fuori di tali orari.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (B) e un pannello integrativo (A). Il segnale B è un segnale di divieto, rappresentato da un cerchio rosso con bordo rosso e sfondo bianco, barrato da una linea orizzontale rossa. Al centro del segnale è raffigurata la sagoma stilizzata di un pedone in nero. Il pannello integrativo A è un rettangolo bianco con bordi neri, contenente la dicitura '7,30-19,00' in nero. Il pannello A è posizionato sopra il segnale B. La domanda del quiz fa riferimento a entrambi gli elementi, indicando che il pannello (A) è posto sotto il segnale (B) e che vieta il transito ai pedoni nelle ore indicate. L'analisi visiva deve descrivere la conformazione dei due elementi e la loro relazione spaziale, come indicato dall'etichetta A e B nell'immagine.",
-    "name": "Segnale di divieto di transito ai pedoni con pannello integrativo di orario",
-    "description": "Il segnale B è un segnale di divieto di transito ai pedoni. Il pannello integrativo A, posto sotto il segnale B, specifica gli orari in cui vige il divieto: dalle 7:30 alle 19:00. Pertanto, il transito ai pedoni è vietato solo durante queste fasce orarie."
+    "visual_analysis": "L'immagine mostra due elementi segnaletici distinti contrassegnati da lettere: in alto la lettera (A) affianca un pannello integrativo rettangolare a fondo bianco con bordo nero recante l'iscrizione oraria '7,30-19,00'; in basso la lettera (B) affianca un segnale verticale di prescrizione (divieto) circolare a fondo bianco con bordo rosso e sagoma nera stilizzata di un pedone al centro.",
+    "name": "Pannello integrativo di fascia oraria e segnale di transito vietato ai pedoni",
+    "description": "Il pannello integrativo (A) indica la fascia oraria di validità del segnale al quale viene abbinato; applicato sotto il segnale di divieto di transito ai pedoni (B), rende operante la prescrizione esclusivamente nell'intervallo compreso tra le 7:30 e le 19:00 di tutti i giorni, consentendo il transito pedonale al di fuori di tali orari."
   },
   "quiz_metadata": {
     "core_concepts": [

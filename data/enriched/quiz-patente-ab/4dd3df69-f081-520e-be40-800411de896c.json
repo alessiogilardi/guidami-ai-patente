@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica una piazzola per la fermata degli autobus",
   "correct_answer": false,
   "image": "49403f634e5caa3742f951ca3f76507c.jpeg",
-  "image_description": "Preavviso di restringimento di carreggiata. Il segnale preannuncia un restringimento della carreggiata, con la corsia di destra che termina. I veicoli in entrambe le corsie devono confluire nella corsia di sinistra.",
+  "image_description": "Segnale temporaneo di chiusura della corsia di destra per lavori in corso. Preannuncia, nell'ambito di un cantiere stradale, la riduzione del numero di corsie disponibili da due a una per la chiusura della corsia di destra. Impone ai conducenti che percorrono la corsia di destra di rallentare e confluire con prudenza sulla corsia di sinistra. Può essere integrato da un pannello che indica la distanza dal punto effettivo di chiusura della corsia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo di forma rettangolare con sfondo giallo e bordo nero. Il segnale raffigura due frecce nere su sfondo giallo, una che indica la direzione rettilinea e un'altra che parte da sinistra e si dirige verso l'alto e verso destra, terminando in una linea rossa obliqua che indica la fine della corsia di destra. Le frecce nere rappresentano le corsie di marcia disponibili. La freccia più lunga e a sinistra indica la corsia che prosegue dritta, mentre la freccia più corta e a destra indica una corsia che termina. La linea rossa evidenzia il punto in cui la corsia di destra si interrompe.",
-    "name": "Preavviso di restringimento di carreggiata",
-    "description": "Il segnale preannuncia un restringimento della carreggiata, con la corsia di destra che termina. I veicoli in entrambe le corsie devono confluire nella corsia di sinistra."
+    "visual_analysis": "Cartello rettangolare verticale a fondo giallo con bordo nero (segnaletica temporanea di cantiere). All'interno sono tracciate due frecce nere orientate verso l'alto: quella di sinistra prosegue diritta su tutta la lunghezza del segnale, mentre quella di destra è più corta e si inclina verso sinistra. Sul lato destro, una fascia diagonale rossa segnala il restringimento e la chiusura della corsia di marcia destra.",
+    "name": "Segnale temporaneo di chiusura della corsia di destra per lavori in corso",
+    "description": "Preannuncia, nell'ambito di un cantiere stradale, la riduzione del numero di corsie disponibili da due a una per la chiusura della corsia di destra. Impone ai conducenti che percorrono la corsia di destra di rallentare e confluire con prudenza sulla corsia di sinistra. Può essere integrato da un pannello che indica la distanza dal punto effettivo di chiusura della corsia."
   },
   "quiz_metadata": {
     "core_concepts": [

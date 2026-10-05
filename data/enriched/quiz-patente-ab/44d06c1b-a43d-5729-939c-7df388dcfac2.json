@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica una diminuzione del numero di corsie disponibili",
   "correct_answer": true,
   "image": "e6b9eb6127f2b9813aff7b5e3ea59026.jpeg",
-  "image_description": "Preavviso di corsie di preselezione. Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili.",
+  "image_description": "Segnale di variazione corsie disponibili (riduzione da tre a due corsie in autostrada). Preavvisa, su autostrada, una diminuzione del numero di corsie disponibili da tre a due, per via della chiusura della corsia di destra che confluisce in quella centrale. Invita i conducenti a rallentare, ad agevolare l'immissione dei veicoli provenienti dalla corsia in chiusura e può essere integrato da un pannello che ne indica la distanza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di preavviso di corsie di preselezione. Il segnale è di colore verde con bordo bianco e presenta tre frecce bianche. Le due frecce a sinistra sono dritte e puntano verso l'alto, indicando che le corsie corrispondenti proseguono dritte. La freccia a destra è curva e indica una svolta a sinistra, suggerendo che la corsia corrispondente consente solo la svolta a sinistra. Il segnale è di forma rettangolare.",
-    "name": "Preavviso di corsie di preselezione",
-    "description": "Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili."
+    "visual_analysis": "Segnale di indicazione rettangolare a fondo verde bordato di bianco. Al suo interno sono raffigurate tre frecce bianche: due frecce verticali dritte (a sinistra e al centro) che proseguono la marcia e una terza freccia sulla destra che curva verso l'alto e a sinistra, indicando la confluenza e la chiusura della corsia di marcia più a destra.",
+    "name": "Segnale di variazione corsie disponibili (riduzione da tre a due corsie in autostrada)",
+    "description": "Preavvisa, su autostrada, una diminuzione del numero di corsie disponibili da tre a due, per via della chiusura della corsia di destra che confluisce in quella centrale. Invita i conducenti a rallentare, ad agevolare l'immissione dei veicoli provenienti dalla corsia in chiusura e può essere integrato da un pannello che ne indica la distanza."
   },
   "quiz_metadata": {
     "core_concepts": [

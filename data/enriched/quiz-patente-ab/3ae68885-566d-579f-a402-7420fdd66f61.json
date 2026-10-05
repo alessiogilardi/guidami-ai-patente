@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la distanza di sicurezza da tenere dal veicolo che precede",
   "correct_answer": false,
   "image": "016a0bbce288af6879bd8c8e41bea0bf.jpeg",
-  "image_description": "Segnale di altezza massima. Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale.",
+  "image_description": "Segnale di transito vietato ai veicoli aventi altezza superiore a 3,50 metri. Vieta il transito a tutti i veicoli la cui altezza complessiva (compreso l'eventuale carico, misurata dal piano stradale) superi la misura indicata (3,50 metri). Consente invece il transito ai veicoli con altezza uguale o inferiore a 3,50 metri. È valido 24 ore su 24, sia nei centri abitati che fuori, e si trova tipicamente prima di passaggi con limitazione di sagoma verticale (come ponti bassi, sottopassi, gallerie o linee aeree).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un numero \"3\" grande, seguito da \",50\" in apice, e due frecce nere verticali, una rivolta verso l'alto e una verso il basso, che delimitano il numero. Questo è il segnale di \"altezza massima\".",
-    "name": "Segnale di altezza massima",
-    "description": "Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale."
+    "visual_analysis": "Segnale di divieto circolare con bordo rosso e fondo bianco. Al centro presenta l'iscrizione numerica nera '3,50' sormontata dalla lettera 'm', racchiusa verticalmente tra due punte di freccia triangolari nere: una in alto rivolta verso il basso e una in basso rivolta verso l'alto, ad indicare la dimensione verticale.",
+    "name": "Segnale di transito vietato ai veicoli aventi altezza superiore a 3,50 metri",
+    "description": "Vieta il transito a tutti i veicoli la cui altezza complessiva (compreso l'eventuale carico, misurata dal piano stradale) superi la misura indicata (3,50 metri). Consente invece il transito ai veicoli con altezza uguale o inferiore a 3,50 metri. È valido 24 ore su 24, sia nei centri abitati che fuori, e si trova tipicamente prima di passaggi con limitazione di sagoma verticale (come ponti bassi, sottopassi, gallerie o linee aeree)."
   },
   "quiz_metadata": {
     "core_concepts": [

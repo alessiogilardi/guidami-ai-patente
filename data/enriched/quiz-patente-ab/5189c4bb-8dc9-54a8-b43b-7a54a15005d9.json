@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica la fascia oraria di apertura delle officine di soccorso stradale",
   "correct_answer": false,
   "image": "7f5b44078b4cf0428cc7a86d41145a29.jpeg",
-  "image_description": "Pannello integrativo - Giorni lavorativi e orario. Il pannello integrativo indica che la prescrizione del segnale a cui è abbinato è valida nei giorni lavorativi, dalle ore 8:00 alle ore 20:00.",
+  "image_description": "Pannello integrativo per fascia oraria dei giorni lavorativi. Posto sotto un segnale stradale (di prescrizione, pericolo o indicazione), ne limita la validità esclusivamente ai giorni lavorativi (feriali) e all'interno della fascia oraria specificata, ovvero dalle ore 8.00 alle ore 20.00. Il segnale a cui è abbinato non ha efficacia nei giorni festivi né nelle ore al di fuori dell'intervallo indicato.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Sulla sinistra è presente il pittogramma di due martelli incrociati, che simboleggia le officine o i giorni lavorativi. Sulla destra, è indicata una fascia oraria: dalle 8:00 alle 20:00. Questo pannello è tipicamente posto sotto un altro segnale stradale per limitarne l'applicazione.",
-    "name": "Pannello integrativo - Giorni lavorativi e orario",
-    "description": "Il pannello integrativo indica che la prescrizione del segnale a cui è abbinato è valida nei giorni lavorativi, dalle ore 8:00 alle ore 20:00."
+    "visual_analysis": "Pannello integrativo rettangolare a fondo bianco con sottile bordo nero. Sulla parte sinistra è presente il simbolo nero di due martelli incrociati, mentre sulla destra compare l'indicazione oraria '8,00 - 20,00' in caratteri neri.",
+    "name": "Pannello integrativo per fascia oraria dei giorni lavorativi",
+    "description": "Posto sotto un segnale stradale (di prescrizione, pericolo o indicazione), ne limita la validità esclusivamente ai giorni lavorativi (feriali) e all'interno della fascia oraria specificata, ovvero dalle ore 8.00 alle ore 20.00. Il segnale a cui è abbinato non ha efficacia nei giorni festivi né nelle ore al di fuori dell'intervallo indicato."
   },
   "quiz_metadata": {
     "core_concepts": [

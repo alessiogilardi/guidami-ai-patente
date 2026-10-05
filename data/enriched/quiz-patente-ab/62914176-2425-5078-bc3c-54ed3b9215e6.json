@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si trova su strade che, in particolari condizioni, sono innevate o ghiacciate",
   "correct_answer": true,
   "image": "a985afd3ac1c765e157fe601c5667c56.jpeg",
-  "image_description": "Obbligo di catene da neve. Obbligo di circolare con catene da neve o pneumatici invernali.",
+  "image_description": "Catene per la neve obbligatorie. Prescrive l'obbligo di circolare, dal punto di impianto del segnale, con catene da neve montate o con pneumatici invernali (termici). Vieta il transito ai veicoli sprovvisti di tali dotazioni e si trova tipicamente su tratti stradali soggetti a innevamento o formazione di ghiaccio, imponendo di procedere con particolare prudenza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è raffigurato un pneumatico con catene da neve montate. Il pittogramma è bianco su sfondo blu. Si tratta di un segnale di obbligo.",
-    "name": "Obbligo di catene da neve",
-    "description": "Obbligo di circolare con catene da neve o pneumatici invernali."
+    "visual_analysis": "Segnale stradale verticale di prescrizione (obbligo), di forma circolare con fondo blu e sottile bordo bianco. Al centro compare, in bianco e nero, il pittogramma raffigurante uno pneumatico montato con catene da neve.",
+    "name": "Catene per la neve obbligatorie",
+    "description": "Prescrive l'obbligo di circolare, dal punto di impianto del segnale, con catene da neve montate o con pneumatici invernali (termici). Vieta il transito ai veicoli sprovvisti di tali dotazioni e si trova tipicamente su tratti stradali soggetti a innevamento o formazione di ghiaccio, imponendo di procedere con particolare prudenza."
   },
   "quiz_metadata": {
     "core_concepts": [

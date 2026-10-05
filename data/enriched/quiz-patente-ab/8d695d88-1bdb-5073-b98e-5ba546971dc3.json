@@ -5,11 +5,11 @@
   "text": "Il segnale (A) può essere abbinato al segnale (B)",
   "correct_answer": true,
   "image": "71d81d8235f817af32013250464acc0b.jpeg",
-  "image_description": "Segnale di passaggio a livello con due o più binari (A) e segnale di STOP (B). Il segnale A è un segnale di pericolo che indica un passaggio a livello con due o più binari. Il segnale B è un segnale diSTOP, che impone l'obbligo di arrestarsi prima di impegnare l'incrocio. Non è possibile abbinare i due segnali in quanto hanno significati e prescrizioni differenti.",
+  "image_description": "Doppia croce di Sant'Andrea (A) e Fermarsi e dare precedenza (B). Il segnale (A) è posto nelle immediate vicinanze di un passaggio a livello senza barriere con due o più binari ferrati. Può essere abbinato al segnale (B), che impone ai conducenti l'obbligo di fermarsi in corrispondenza dell'apposita striscia trasversale di arresto e di dare la precedenza ai treni prima di attraversare la ferrovia, tipicamente installato in presenza di scarsa visibilità.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due segnali stradali distinti, etichettati come A e B. Il segnale A è un segnale di pericolo a forma di croce di Sant'Andrea con un rombo al centro, su sfondo bianco e bordi rossi, che indica un passaggio a livello con più binari. Il segnale B è un segnale diSTOP, di forma ottagonale, con sfondo rosso e la scritta \"STOP\" in bianco. I due segnali sono presentati separatamente, uno sopra l'altro, con le rispettive etichette.",
-    "name": "Segnale di passaggio a livello con due o più binari (A) e segnale di STOP (B)",
-    "description": "Il segnale A è un segnale di pericolo che indica un passaggio a livello con due o più binari. Il segnale B è un segnale diSTOP, che impone l'obbligo di arrestarsi prima di impegnare l'incrocio. Non è possibile abbinare i due segnali in quanto hanno significati e prescrizioni differenti."
+    "visual_analysis": "L'immagine mostra due distinti segnali stradali contrassegnati da lettere: in alto è presente il segnale (A), costituito da una doppia croce di Sant'Andrea formata da due croci a X sovrapposte con bracci bianchi bordati di rosso; in basso è presente il segnale (B), costituito da un cartello ottagonale a fondo rosso con bordo bianco e scritta centrale 'STOP' in bianco.",
+    "name": "Doppia croce di Sant'Andrea (A) e Fermarsi e dare precedenza (B)",
+    "description": "Il segnale (A) è posto nelle immediate vicinanze di un passaggio a livello senza barriere con due o più binari ferrati. Può essere abbinato al segnale (B), che impone ai conducenti l'obbligo di fermarsi in corrispondenza dell'apposita striscia trasversale di arresto e di dare la precedenza ai treni prima di attraversare la ferrovia, tipicamente installato in presenza di scarsa visibilità."
   },
   "quiz_metadata": {
     "core_concepts": [

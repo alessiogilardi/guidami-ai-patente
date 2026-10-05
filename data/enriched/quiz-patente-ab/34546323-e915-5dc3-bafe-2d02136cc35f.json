@@ -5,11 +5,11 @@
   "text": "La striscia bianca laterale discontinua segnala l'inizio di una banchina",
   "correct_answer": false,
   "image": "5a7b8a62df93005bdc8043e5b480dc80.jpeg",
-  "image_description": "Strisce di guida. Le strisce bianche discontinue, che si trovano sull'incrocio, sono strisce di guida. Queste strisce indicano il percorso da seguire per immettersi o attraversare l'incrocio, ma non hanno un valore di precedenza intrinseco. La loro funzione è quella di guidare il flusso dei veicoli, specialmente in incroci complessi o con corsie deviate. Non vietano né consentono esplicitamente la svolta, ma delineano il tracciato consentito.",
+  "image_description": "Strisce di guida negli incroci. Segnaletica orizzontale costituita da strisce tratteggiate bianche curve o inclinate tracciate all'interno di un'intersezione. Hanno lo scopo di guidare le traiettorie dei veicoli, canalizzando correttamente i flussi di traffico durante l'attraversamento o la svolta; possono essere valicate per consentire le manovre ammesse.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. Sono presenti segnaletica orizzontale, nello specifico strisce bianche discontinue che formano delle guide per la circolazione dei veicoli. Queste strisce sono posizionate in modo da indicare i percorsi da seguire per attraversare l'incrocio o per immettersi nelle strade laterali. Non sono presenti segnali verticali né altri veicoli. L'incrocio è a raso e presenta quattro bracci. Le corsie sono delimitate da strisce bianche continue e discontinue. Le strisce di guida sono formate da segmenti bianchi discontinui che si curvano per dirigere il traffico.",
-    "name": "Strisce di guida",
-    "description": "Le strisce bianche discontinue, che si trovano sull'incrocio, sono strisce di guida. Queste strisce indicano il percorso da seguire per immettersi o attraversare l'incrocio, ma non hanno un valore di precedenza intrinseco. La loro funzione è quella di guidare il flusso dei veicoli, specialmente in incroci complessi o con corsie deviate. Non vietano né consentono esplicitamente la svolta, ma delineano il tracciato consentito."
+    "visual_analysis": "Vista dall'alto di un'intersezione a raso tra due strade. Sulla carreggiata principale orizzontale a doppio senso di circolazione, all'interno dell'area di incrocio, sono tracciate delle strisce bianche discontinue che collegano in modo continuo e guidato le corsie da un lato all'altro dell'intersezione, raccordando una leggera deviazione dell'asse stradale.",
+    "name": "Strisce di guida negli incroci",
+    "description": "Segnaletica orizzontale costituita da strisce tratteggiate bianche curve o inclinate tracciate all'interno di un'intersezione. Hanno lo scopo di guidare le traiettorie dei veicoli, canalizzando correttamente i flussi di traffico durante l'attraversamento o la svolta; possono essere valicate per consentire le manovre ammesse."
   },
   "quiz_metadata": {
     "core_concepts": [

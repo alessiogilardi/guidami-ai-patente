@@ -5,11 +5,11 @@
   "text": "La striscia bianca laterale discontinua in figura significa che la sosta non è possibile",
   "correct_answer": false,
   "image": "fd1997a1ea96e882b2e719adfaff646a.jpeg",
-  "image_description": "Dossi artificiali (ripetuti). La segnaletica orizzontale raffigura due dossi artificiali consecutivi, segnalati da strisce bianche discontinue che delimitano la carreggiata e strisce bianche continue che delimitano il dosso stesso. Questi dossi sono progettati per ridurre la velocità dei veicoli.",
+  "image_description": "Striscia bianca discontinua di margine della carreggiata. La striscia bianca discontinua (tratteggiata) delimita il margine della carreggiata principale separandola da una piazzola di sosta, da una zona di fermata o da un allargamento della strada. Può essere oltrepassata dai veicoli per accedere alla piazzola o per uscirne, consentendo l'effettuazione della sosta o della fermata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due dossi artificiali consecutivi sulla carreggiata. Ogni dosso è delimitato da strisce bianche continue sui lati e da strisce bianche discontinue che separano le corsie di marcia. La forma dei dossi è trapezoidale, con una pendenza in salita e una in discesa. La segnaletica orizzontale indica la presenza di ostacoli o variazioni del piano stradale che impongono una riduzione della velocità.",
-    "name": "Dossi artificiali (ripetuti)",
-    "description": "La segnaletica orizzontale raffigura due dossi artificiali consecutivi, segnalati da strisce bianche discontinue che delimitano la carreggiata e strisce bianche continue che delimitano il dosso stesso. Questi dossi sono progettati per ridurre la velocità dei veicoli."
+    "visual_analysis": "L'immagine, mostrata due volte specularmente su due livelli, raffigura una vista dall'alto di un tratto di strada a doppio senso o a due corsie. Al centro è presente una linea tratteggiata di mezzeria. Il margine inferiore è delimitato da una striscia bianca continua. Sul margine superiore, la striscia bianca continua viene sostituita da una striscia bianca discontinua (tratteggiata) in corrispondenza di una piazzola di sosta a pianta trapezoidale adiacente alla carreggiata.",
+    "name": "Striscia bianca discontinua di margine della carreggiata",
+    "description": "La striscia bianca discontinua (tratteggiata) delimita il margine della carreggiata principale separandola da una piazzola di sosta, da una zona di fermata o da un allargamento della strada. Può essere oltrepassata dai veicoli per accedere alla piazzola o per uscirne, consentendo l'effettuazione della sosta o della fermata."
   },
   "quiz_metadata": {
     "core_concepts": [

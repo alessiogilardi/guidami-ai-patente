@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine della zona destinata al parcheggio",
   "correct_answer": false,
   "image": "feec73a518738f6cbdf7869b0c52e6cc.jpeg",
-  "image_description": "Parcheggio con estensione laterale. Il segnale indica la presenza di un parcheggio e il pannello integrativo specifica che il parcheggio si estende in entrambe le direzioni.",
+  "image_description": "Segnale di parcheggio con pannello integrativo di continuazione. Indica che l'area o la zona destinata al parcheggio continua sia a destra sia a sinistra rispetto al segnale, lungo il lato della strada su cui è posto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastato da un pannello integrativo rettangolare bianco con bordi neri. Il pannello integrativo contiene due frecce nere, una rivolta a sinistra e una a destra, che indicano un'estensione in entrambe le direzioni.",
-    "name": "Parcheggio con estensione laterale",
-    "description": "Il segnale indica la presenza di un parcheggio e il pannello integrativo specifica che il parcheggio si estende in entrambe le direzioni."
+    "visual_analysis": "Segnale composto verticale. In alto è presente il segnale di 'Parcheggio', costituito da un rettangolo a fondo blu con lettera 'P' maiuscola di colore bianco. Al di sotto è applicato un pannello integrativo rettangolare a fondo bianco con due frecce orizzontali nere contrapposte (una diretta a sinistra e una a destra), che indicano la continuazione della validità del segnale in entrambe le direzioni.",
+    "name": "Segnale di parcheggio con pannello integrativo di continuazione",
+    "description": "Indica che l'area o la zona destinata al parcheggio continua sia a destra sia a sinistra rispetto al segnale, lungo il lato della strada su cui è posto."
   },
   "quiz_metadata": {
     "core_concepts": [

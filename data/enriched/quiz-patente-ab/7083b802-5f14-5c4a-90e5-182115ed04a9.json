@@ -5,11 +5,11 @@
   "text": "La spia rossa contraddistinta dal simbolo in figura, se accesa durante la marcia, è in genere abbinata ad un segnale acustico in funzione",
   "correct_answer": true,
   "image": "44cc0960ffd04ad122e74bb2362c2915.jpeg",
-  "image_description": "Spia cinture di sicurezza. Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate.",
+  "image_description": "Spia di mancato allacciamento delle cinture di sicurezza. Indica il mancato allacciamento delle cinture di sicurezza da parte del conducente o di un passeggero. È impresso su una spia luminosa di colore rosso posta sul cruscotto che, se rimane accesa durante la marcia del veicolo, è solitamente associata all'attivazione di un segnale acustico continuo o intermittente. Non è disattivabile tramite appositi comandi.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pittogramma stilizzato di una persona seduta, con una cintura di sicurezza che le attraversa il busto e il bacino. Il pittogramma è nero su sfondo bianco. Questo simbolo è comunemente utilizzato come spia luminosa sui cruscotti dei veicoli per indicare l'obbligo di allacciare le cinture di sicurezza o per segnalare che non sono state allacciate. Non si tratta di un segnale stradale verticale, ma di un simbolo di avvertimento o informazione all'interno del veicolo.",
-    "name": "Spia cinture di sicurezza",
-    "description": "Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate."
+    "visual_analysis": "L'immagine presenta un pittogramma nero su fondo bianco raffigurante la sagoma stilizzata di un individuo seduto, frontale, trattenuto da una cintura di sicurezza a tre punti (con fascia diagonale sul torace e fascia orizzontale sul bacino). Il simbolo identifica la spia delle cinture di sicurezza presente sul cruscotto dei veicoli.",
+    "name": "Spia di mancato allacciamento delle cinture di sicurezza",
+    "description": "Indica il mancato allacciamento delle cinture di sicurezza da parte del conducente o di un passeggero. È impresso su una spia luminosa di colore rosso posta sul cruscotto che, se rimane accesa durante la marcia del veicolo, è solitamente associata all'attivazione di un segnale acustico continuo o intermittente. Non è disattivabile tramite appositi comandi."
   },
   "quiz_metadata": {
     "core_concepts": [

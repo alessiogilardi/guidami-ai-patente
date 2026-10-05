@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato invita a diminuire la velocità",
   "correct_answer": true,
   "image": "7b73407a471f375d27973395898cd5d7.jpeg",
-  "image_description": "Pericolo di attraversamento di binari di manovra con due binari. Il segnale di pericolo preavvisa un attraversamento di binari di manovra. Il pannello integrativo indica la presenza di due binari.",
+  "image_description": "Segnale di altri pericoli con pannello integrativo per binari di manovra. Preavvisa la presenza di binari di manovra o raccordi ferroviari (ad esempio in prossimità di scali merci, zone industriali o portuali) dove possono transitare convogli ferroviari a velocità ridotta. Comporta l'obbligo di moderare la velocità e fare attenzione all'eventuale transito di treni in manovra, arrestandosi se necessario.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e fondo bianco, al cui interno è presente un punto esclamativo nero. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con due pittogrammi neri raffiguranti un treno a vapore, uno accanto all'altro. Questo indica la presenza di due binari.",
-    "name": "Pericolo di attraversamento di binari di manovra con due binari",
-    "description": "Il segnale di pericolo preavvisa un attraversamento di binari di manovra. Il pannello integrativo indica la presenza di due binari."
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso, sfondo bianco e punto esclamativo nero al centro (segnale di 'Altri pericoli'). Al di sotto è presente un pannello integrativo rettangolare a sfondo bianco con bordo nero, contenente il disegno di due locomotive a vapore affiancate in nero, indicanti la presenza di binari di raccordo o manovra.",
+    "name": "Segnale di altri pericoli con pannello integrativo per binari di manovra",
+    "description": "Preavvisa la presenza di binari di manovra o raccordi ferroviari (ad esempio in prossimità di scali merci, zone industriali o portuali) dove possono transitare convogli ferroviari a velocità ridotta. Comporta l'obbligo di moderare la velocità e fare attenzione all'eventuale transito di treni in manovra, arrestandosi se necessario."
   },
   "quiz_metadata": {
     "core_concepts": [

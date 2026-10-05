@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'inizio di una strada a senso unico",
   "correct_answer": true,
   "image": "0130e542b3c053fd7dab618a819d645c.jpeg",
-  "image_description": "Senso unico frontale. Il segnale indica che la circolazione è consentita solo in direzione rettilinea.",
+  "image_description": "Segnale di senso unico frontale. Segnale di indicazione che segnala l'inizio di una strada o carreggiata a senso unico di circolazione nella direzione della freccia. Sul tratto di strada successivo al segnale non è consentita l'inversione del senso di marcia, mentre restano consentite le svolte a destra o a sinistra agli incroci, salvo diversa segnalazione. Non impone l'obbligo di proseguire diritto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso l'alto, indicando la direzione rettilinea. Questo segnale appartiene alla categoria dei segnali di obbligo o indicazione.",
-    "name": "Senso unico frontale",
-    "description": "Il segnale indica che la circolazione è consentita solo in direzione rettilinea."
+    "visual_analysis": "Segnale quadrato a fondo blu con sottile bordo bianco interno. Al centro è raffigurata una freccia bianca dritta orientata verticalmente verso l'alto.",
+    "name": "Segnale di senso unico frontale",
+    "description": "Segnale di indicazione che segnala l'inizio di una strada o carreggiata a senso unico di circolazione nella direzione della freccia. Sul tratto di strada successivo al segnale non è consentita l'inversione del senso di marcia, mentre restano consentite le svolte a destra o a sinistra agli incroci, salvo diversa segnalazione. Non impone l'obbligo di proseguire diritto."
   },
   "quiz_metadata": {
     "core_concepts": [

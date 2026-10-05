@@ -5,11 +5,11 @@
   "text": "Le strisce lungo il centro della carreggiata possono essere bianche o azzurre",
   "correct_answer": false,
   "image": "269c723abe13bc35127d78a20870bcfa.jpeg",
-  "image_description": "Segnaletica orizzontale: strisce di corsia. Le strisce bianche continue delimitano le corsie di marcia e indicano la loro separazione. Le strisce bianche tratteggiate indicano la possibilità di superamento e di cambio di corsia.",
+  "image_description": "Strisce longitudinali continue e discontinue. La segnaletica orizzontale longitudinale raffigurata separa le corsie o i sensi di marcia ed è di colore bianco. La doppia striscia continua centrale non può essere valicata né oltrepassata in alcun caso, vietando l'inversione di marcia, la svolta a sinistra e il sorpasso con invasione della corsia opposta. La striscia discontinua (tratteggiata) può invece essere oltrepassata per il cambio di corsia, la svolta o il sorpasso, purché effettuati in condizioni di sicurezza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due esempi di segnaletica orizzontale su un manto stradale grigio. La parte superiore presenta una carreggiata con due strisce bianche continue per ogni lato, che delimitano le corsie di marcia. La parte inferiore mostra un tratto di strada con una singola striscia bianca tratteggiata al centro, che separa le due direzioni di marcia.",
-    "name": "Segnaletica orizzontale: strisce di corsia",
-    "description": "Le strisce bianche continue delimitano le corsie di marcia e indicano la loro separazione. Le strisce bianche tratteggiate indicano la possibilità di superamento e di cambio di corsia."
+    "visual_analysis": "L'immagine presenta due rappresentazioni schematiche di tratti stradali visti dall'alto con segnaletica orizzontale bianca su asfalto grigio. Nel riquadro superiore, più grande, è raffigurata una carreggiata delimitata ai margini da strisce continue bianche e divisa al centro da una doppia striscia longitudinale continua bianca. Nel riquadro inferiore a sinistra, più piccolo, la carreggiata è delimitata ai margini da strisce continue bianche ed è separata al centro da una striscia longitudinale discontinua (tratteggiata) bianca.",
+    "name": "Strisce longitudinali continue e discontinue",
+    "description": "La segnaletica orizzontale longitudinale raffigurata separa le corsie o i sensi di marcia ed è di colore bianco. La doppia striscia continua centrale non può essere valicata né oltrepassata in alcun caso, vietando l'inversione di marcia, la svolta a sinistra e il sorpasso con invasione della corsia opposta. La striscia discontinua (tratteggiata) può invece essere oltrepassata per il cambio di corsia, la svolta o il sorpasso, purché effettuati in condizioni di sicurezza."
   },
   "quiz_metadata": {
     "core_concepts": [

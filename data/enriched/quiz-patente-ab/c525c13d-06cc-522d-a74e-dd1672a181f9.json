@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito alle cisterne vuote",
   "correct_answer": false,
   "image": "3cd3237239447d165e9ae7dc3bb8b97a.jpeg",
-  "image_description": "Divieto di transito ai veicoli che trasportano merci pericolose per l'acqua. Il segnale vieta il transito ai veicoli che trasportano merci pericolose per l'acqua.",
+  "image_description": "Transito vietato ai veicoli che trasportano sostanze suscettibili di contaminare l'acqua. Vieta la circolazione a tutti i veicoli (compresi rimorchi) che trasportano sostanze suscettibili di inquinare o contaminare l'acqua. Non vieta il transito di autocisterne vuote, innaffiatrici stradali o veicoli che trasportano acqua o altre sostanze non inquinanti per le risorse idriche.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un camion cisterna stilizzato, con la cisterna di colore arancione e la parte inferiore del camion che si estende su delle onde blu, a simboleggiare l'acqua. Il pittogramma indica un veicolo che trasporta sostanze che possono contaminare l'acqua.",
-    "name": "Divieto di transito ai veicoli che trasportano merci pericolose per l'acqua",
-    "description": "Il segnale vieta il transito ai veicoli che trasportano merci pericolose per l'acqua."
+    "visual_analysis": "Segnale di prescrizione (divieto) di forma circolare con bordo rosso e fondo bianco. Al centro è rappresentata la parte posteriore stilizzata di un autoveicolo con sagoma di cisterna (contenuto evidenziato in colore arancione/giallo) posizionato al di sopra di due linee ondulate azzurre che rappresentano corsi o specchi d'acqua.",
+    "name": "Transito vietato ai veicoli che trasportano sostanze suscettibili di contaminare l'acqua",
+    "description": "Vieta la circolazione a tutti i veicoli (compresi rimorchi) che trasportano sostanze suscettibili di inquinare o contaminare l'acqua. Non vieta il transito di autocisterne vuote, innaffiatrici stradali o veicoli che trasportano acqua o altre sostanze non inquinanti per le risorse idriche."
   },
   "quiz_metadata": {
     "core_concepts": [

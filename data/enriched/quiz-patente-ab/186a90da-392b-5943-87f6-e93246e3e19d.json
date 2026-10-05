@@ -5,11 +5,11 @@
   "text": "il segnale raffigurato evidenzia il punto d'inizio del divieto di fermata",
   "correct_answer": true,
   "image": "1915bff092d45578bf9662328b438921.jpeg",
-  "image_description": "Divieto di sosta con pannello integrativo di direzione (dritto). Il segnale di divieto di sosta, integrato dal pannello che indica la direzione \"dritto\", prescrive il divieto di sosta nel tratto di strada che prosegue dritto.",
+  "image_description": "Segnale di divieto di fermata con pannello integrativo di inizio. Indica il punto da cui decorre il divieto di fermata (e conseguentemente anche di sosta) per tutti i veicoli. Il divieto vale lungo il tratto di strada che segue il segnale, 24 ore su 24, sia all'interno che all'esterno dei centri abitati, vietando qualsiasi temporanea sospensione della marcia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due segnali stradali posti in verticale. Il segnale superiore è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una croce di Sant'Andrea rossa al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare di colore bianco con bordo nero, contenente una freccia nera rivolta verso l'alto, indicante la direzione \"dritto\".",
-    "name": "Divieto di sosta con pannello integrativo di direzione (dritto)",
-    "description": "Il segnale di divieto di sosta, integrato dal pannello che indica la direzione \"dritto\", prescrive il divieto di sosta nel tratto di strada che prosegue dritto."
+    "visual_analysis": "L'immagine mostra un segnale composito verticale costituito da due elementi: in alto un segnale circolare di prescrizione con bordo rosso, fondo blu e due bande rosse oblique incrociate a X (divieto di fermata); in basso un pannello integrativo rettangolare verticale a fondo bianco con bordo nero sottile, contenente nella metà superiore una freccia nera orientata verso l'alto (pannello integrativo modello II.6/m1 di 'inizio').",
+    "name": "Segnale di divieto di fermata con pannello integrativo di inizio",
+    "description": "Indica il punto da cui decorre il divieto di fermata (e conseguentemente anche di sosta) per tutti i veicoli. Il divieto vale lungo il tratto di strada che segue il segnale, 24 ore su 24, sia all'interno che all'esterno dei centri abitati, vietando qualsiasi temporanea sospensione della marcia."
   },
   "quiz_metadata": {
     "core_concepts": [

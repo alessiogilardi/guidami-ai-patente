@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si trova soltanto sulla rete stradale delle aziende agricole",
   "correct_answer": false,
   "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
-  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_description": "Divieto di transito alle macchine agricole. Vieta il transito sulla strada a tutte le macchine agricole, sia gommate che cingolate (comprese le trattrici agricole e i rimorchi agricoli). Consente invece la circolazione di tutti gli altri tipi di veicoli, inclusi i motocicli, i trattori stradali per semirimorchi e le macchine operatrici (come quelle per la manutenzione stradale o sgombraneve). Salvo diversa indicazione tramite pannello integrativo, il divieto ha efficacia permanente (sia di giorno che di notte).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo rosso su fondo bianco. All'interno del cerchio è raffigurata la sagoma nera, vista di profilo rivolta verso sinistra, di un trattore agricolo condotto da un guidatore. Non sono presenti pannelli integrativi.",
     "name": "Divieto di transito alle macchine agricole",
-    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+    "description": "Vieta il transito sulla strada a tutte le macchine agricole, sia gommate che cingolate (comprese le trattrici agricole e i rimorchi agricoli). Consente invece la circolazione di tutti gli altri tipi di veicoli, inclusi i motocicli, i trattori stradali per semirimorchi e le macchine operatrici (come quelle per la manutenzione stradale o sgombraneve). Salvo diversa indicazione tramite pannello integrativo, il divieto ha efficacia permanente (sia di giorno che di notte)."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che il divieto di sosta continua",
   "correct_answer": true,
   "image": "698658a443349ca88c8ebf53bb0d9c1a.jpeg",
-  "image_description": "Segnale di divieto di sosta con pannello integrativo di estesa in entrambe le direzioni. Il segnale di divieto di sosta è integrato da un pannello che indica che il divieto si applica in entrambe le direzioni lungo la strada.",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di continuazione. Indica la continuazione del divieto di sosta lungo il tratto di strada, sia prima sia dopo il punto in cui è collocato il cartello. La sosta è vietata (normalmente dalle 8.00 alle 20.00 nei centri abitati, salvo diversa segnalazione, e 24 ore su 24 sulle strade extraurbane), mentre la fermata temporanea resta consentita.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di sosta, rappresentato da un disco rosso con bordo rosso, sfondo blu e una barra rossa diagonale. Sotto questo segnale, vi è un pannello rettangolare bianco con due frecce nere, una rivolta verso l'alto e l'altra verso il basso, disposte verticalmente. Questo pannello integrativo indica l'estensione del divieto di sosta.",
-    "name": "Segnale di divieto di sosta con pannello integrativo di estesa in entrambe le direzioni",
-    "description": "Il segnale di divieto di sosta è integrato da un pannello che indica che il divieto si applica in entrambe le direzioni lungo la strada."
+    "visual_analysis": "L'immagine mostra un segnale composito verticale. Nella parte superiore è presente un segnale circolare di prescrizione con fondo blu, bordo perimetrale rosso e una barra diagonale rossa discendente da sinistra verso destra. Nella parte inferiore è collocato un pannello integrativo rettangolare a sviluppo verticale, con fondo bianco e bordo nero, raffigurante due frecce nere contrapposte poste lungo lo stesso asse verticale: una rivolta verso l'alto e una verso il basso.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di continuazione",
+    "description": "Indica la continuazione del divieto di sosta lungo il tratto di strada, sia prima sia dopo il punto in cui è collocato il cartello. La sosta è vietata (normalmente dalle 8.00 alle 20.00 nei centri abitati, salvo diversa segnalazione, e 24 ore su 24 sulle strade extraurbane), mentre la fermata temporanea resta consentita."
   },
   "quiz_metadata": {
     "core_concepts": [

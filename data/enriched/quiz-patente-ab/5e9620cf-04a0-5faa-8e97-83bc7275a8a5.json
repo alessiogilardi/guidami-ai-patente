@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vale solo nelle ore notturne",
   "correct_answer": false,
   "image": "ad2b98705bca9ce6b8bd0d6a5cc6a2c1.jpeg",
-  "image_description": "Preavviso di rotatoria con direzioni multiple. Il segnale preavvisa una rotatoria e indica le direzioni per le località raggiungibili: tangenziale/autostrade (A1, A3) in alto, quartiere Mazzini/Bologna/centro a sinistra, S. Lazzaro/Forlì a destra. La freccia centrale indica la direzione della rotatoria.",
+  "image_description": "Preavviso di intersezione urbana con circolazione rotatoria. Preavvisa un'intersezione a circolazione rotatoria su strada urbana. Indica ai conducenti la configurazione delle uscite dell'anello rotatorio e le rispettive destinazioni: la prima uscita a destra conduce a San Lazzaro e Forlì (strada extraurbana, riquadro blu); la seconda uscita (proseguendo dritto) immette verso la tangenziale e le autostrade (riquadro verde); la terza uscita a sinistra porta verso il quartiere Mazzini e Bologna centro.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di preavviso di rotatoria. Al centro è presente il simbolo di una rotatoria con quattro frecce che indicano le direzioni. In alto, su sfondo verde, è indicata la direzione \"tangenziale autostrade A1 A3\". A sinistra, su sfondo bianco, sono indicati \"quartiere Mazzini\", \"BOLOGNA\" e \"centro\". A destra, su sfondo blu, sono indicati \"S.LAZZARO\" e \"FORLI'\". Il segnale è di colore bianco con riquadri colorati per le diverse destinazioni.",
-    "name": "Preavviso di rotatoria con direzioni multiple",
-    "description": "Il segnale preavvisa una rotatoria e indica le direzioni per le località raggiungibili: tangenziale/autostrade (A1, A3) in alto, quartiere Mazzini/Bologna/centro a sinistra, S. Lazzaro/Forlì a destra. La freccia centrale indica la direzione della rotatoria."
+    "visual_analysis": "Cartello rettangolare a fondo bianco (segnale urbano di indicazione) contenente al centro uno schema grafico nero raffigurante un anello a circolazione rotatoria con tre rami di uscita. L'uscita a destra riporta un inserto rettangolare a fondo blu con le scritte bianche 'S. LAZZARO' e 'FORLI'' affiancate al simbolo della SS 9. L'uscita frontale (dritto) è sormontata da un inserto rettangolare a fondo verde con scritte bianche 'tangenziale' e 'autostrade' seguite dai simboli autostradali A1 e A14. L'uscita a sinistra riporta iscrizioni nere su fondo bianco: 'quartiere Mazzini' e 'BOLOGNA centro' con il simbolo del centro cittadino.",
+    "name": "Preavviso di intersezione urbana con circolazione rotatoria",
+    "description": "Preavvisa un'intersezione a circolazione rotatoria su strada urbana. Indica ai conducenti la configurazione delle uscite dell'anello rotatorio e le rispettive destinazioni: la prima uscita a destra conduce a San Lazzaro e Forlì (strada extraurbana, riquadro blu); la seconda uscita (proseguendo dritto) immette verso la tangenziale e le autostrade (riquadro verde); la terza uscita a sinistra porta verso il quartiere Mazzini e Bologna centro."
   },
   "quiz_metadata": {
     "core_concepts": [

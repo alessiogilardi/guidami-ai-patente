@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine della strada deformata",
   "correct_answer": true,
   "image": "f8fb0b9bccaefbad36bb9654b9997d85.jpeg",
-  "image_description": "Segnale di pericolo: strada deformata con pannello integrativo di direzione dritta. Il segnale indica la presenza di una strada deformata (avvallamenti) e il pannello integrativo indica che tale deformazione si trova in corrispondenza del segnale, in direzione dritta.",
+  "image_description": "Segnale di strada deformata con pannello integrativo di fine. Indica il punto in cui termina il tratto di strada deformata o in cattivo stato precedentemente segnalato, segnalando la fine del pericolo e delle limitazioni ad esso associate.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero raffigurante una serie di avvallamenti (strada deformata). Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con un bordo nero. All'interno del pannello integrativo è raffigurata una freccia nera rivolta verso il basso, indicando la direzione dritta.",
-    "name": "Segnale di pericolo: strada deformata con pannello integrativo di direzione dritta",
-    "description": "Il segnale indica la presenza di una strada deformata (avvallamenti) e il pannello integrativo indica che tale deformazione si trova in corrispondenza del segnale, in direzione dritta."
+    "visual_analysis": "L'immagine presenta un segnale di pericolo triangolare con vertice rivolto verso l'alto, bordo rosso e sfondo bianco, recante al centro il simbolo nero di un profilo stradale ondulato e irregolare (strada deformata). Al di sotto del cartello è applicato un pannello integrativo rettangolare verticale a fondo bianco, con una freccia nera puntata verso il basso posizionata nella parte inferiore del pannello.",
+    "name": "Segnale di strada deformata con pannello integrativo di fine",
+    "description": "Indica il punto in cui termina il tratto di strada deformata o in cattivo stato precedentemente segnalato, segnalando la fine del pericolo e delle limitazioni ad esso associate."
   },
   "quiz_metadata": {
     "core_concepts": [

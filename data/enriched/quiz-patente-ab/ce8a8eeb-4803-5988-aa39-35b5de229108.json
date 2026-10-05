@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato un'autovettura può sorpassare un autotreno",
   "correct_answer": true,
   "image": "eaaecf86824ebcf4fd1a7c67061c5dad.jpeg",
-  "image_description": "Divieto di sorpasso per autocarri. Il segnale vieta il sorpasso a tutti i veicoli a motore, ad eccezione di quelli che non devono superare i 3,5 tonnellate di massa a pieno carico, di veicoli a motore diversi dagli autoveicoli, motoveicoli e ciclomotori. In sintesi, vieta il sorpasso agli autocarri con massa a pieno carico superiore a 3,5 tonnellate.",
+  "image_description": "Divieto di sorpasso per i veicoli di massa a pieno carico superiore a 3,5 t. Vieta ai veicoli adibiti al trasporto di cose di massa complessiva a pieno carico superiore a 3,5 tonnellate (non destinati al trasporto di persone) di sorpassare veicoli a motore. Non si applica agli autocarri di massa pari o inferiore a 3,5 t, né ai veicoli destinati al trasporto di persone (come autobus o autocaravan), qualunque sia la loro massa, né alle autovetture.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono raffigurati due veicoli: un camion (autocarro) di colore rosso sulla sinistra e un'automobile (autovettura) di colore nero sulla destra. Il camion è posizionato leggermente più avanti dell'automobile, suggerendo un divieto di sorpasso specifico per questo tipo di veicolo. Il segnale è il segnale di divieto di sorpasso per autocarri.",
-    "name": "Divieto di sorpasso per autocarri",
-    "description": "Il segnale vieta il sorpasso a tutti i veicoli a motore, ad eccezione di quelli che non devono superare i 3,5 tonnellate di massa a pieno carico, di veicoli a motore diversi dagli autoveicoli, motoveicoli e ciclomotori. In sintesi, vieta il sorpasso agli autocarri con massa a pieno carico superiore a 3,5 tonnellate."
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo rosso e fondo bianco. All'interno sono raffigurati due veicoli visti da tergo: a sinistra la sagoma rossa di un autocarro/veicolo pesante da trasporto merci, a destra la sagoma nera di un'autovettura.",
+    "name": "Divieto di sorpasso per i veicoli di massa a pieno carico superiore a 3,5 t",
+    "description": "Vieta ai veicoli adibiti al trasporto di cose di massa complessiva a pieno carico superiore a 3,5 tonnellate (non destinati al trasporto di persone) di sorpassare veicoli a motore. Non si applica agli autocarri di massa pari o inferiore a 3,5 t, né ai veicoli destinati al trasporto di persone (come autobus o autocaravan), qualunque sia la loro massa, né alle autovetture."
   },
   "quiz_metadata": {
     "core_concepts": [

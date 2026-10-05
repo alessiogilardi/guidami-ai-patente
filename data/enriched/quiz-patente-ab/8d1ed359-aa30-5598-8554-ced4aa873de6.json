@@ -5,11 +5,11 @@
   "text": "La striscia bianca discontinua in figura si trova solo nelle strade a senso unico",
   "correct_answer": false,
   "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
-  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_description": "Striscia bianca longitudinale discontinua. Segnaletica orizzontale che divide la carreggiata in due corsie: separa i sensi opposti di marcia nelle strade a doppio senso di circolazione, oppure delimita le corsie nello stesso senso in quelle a senso unico. Può essere valicata (ad esempio per effettuare un sorpasso o una svolta a sinistra, ove consentiti dalle norme), ma non è consentito circolare a cavallo di essa.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
-    "name": "Striscia bianca discontinua",
-    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+    "visual_analysis": "Rappresentazione schematica dall'alto di un tratto rettilineo di carreggiata asfaltata a due corsie, delimitata ai bordi esterni da strisce bianche continue di margine e divisa al centro da una striscia bianca longitudinale discontinua (tratteggiata) a tratti regolari. Non sono presenti veicoli né frecce direzionali.",
+    "name": "Striscia bianca longitudinale discontinua",
+    "description": "Segnaletica orizzontale che divide la carreggiata in due corsie: separa i sensi opposti di marcia nelle strade a doppio senso di circolazione, oppure delimita le corsie nello stesso senso in quelle a senso unico. Può essere valicata (ad esempio per effettuare un sorpasso o una svolta a sinistra, ove consentiti dalle norme), ma non è consentito circolare a cavallo di essa."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente, sulle strade extraurbane, di viaggiare a 70 km/h",
   "correct_answer": true,
   "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
-  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_description": "Segnale di velocità consigliata. Indica la velocità, espressa in chilometri orari (60 km/h), che si consiglia di mantenere o di non superare in condizioni ottimali di traffico e di strada. Non costituisce né un limite massimo obbligatorio né un limite minimo, pertanto è consentito viaggiare sia a velocità inferiori che superiori, nel rispetto dei limiti generali di velocità previsti per il tipo di strada. Può essere integrato con un pannello di estensione e perde validità in presenza dello stesso segnale barrato diagonalmente da una barra rossa.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
-    "name": "Segnale di limite minimo di velocità",
-    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+    "visual_analysis": "Segnale stradale di indicazione a forma quadrata con fondo blu e sottile bordo perimetrale bianco. Al centro reca l'iscrizione numerica \"60\" in colore bianco.",
+    "name": "Segnale di velocità consigliata",
+    "description": "Indica la velocità, espressa in chilometri orari (60 km/h), che si consiglia di mantenere o di non superare in condizioni ottimali di traffico e di strada. Non costituisce né un limite massimo obbligatorio né un limite minimo, pertanto è consentito viaggiare sia a velocità inferiori che superiori, nel rispetto dei limiti generali di velocità previsti per il tipo di strada. Può essere integrato con un pannello di estensione e perde validità in presenza dello stesso segnale barrato diagonalmente da una barra rossa."
   },
   "quiz_metadata": {
     "core_concepts": [

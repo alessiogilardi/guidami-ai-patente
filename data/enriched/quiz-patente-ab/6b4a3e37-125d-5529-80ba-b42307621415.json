@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si può trovare all'interno di un segnale di preavviso di svincolo autostradale",
   "correct_answer": true,
   "image": "4407c6de338d7872782c9fce7ad59812.jpeg",
-  "image_description": "Segnale di numero di autostrada. Il segnale indica il numero dell'autostrada.",
+  "image_description": "Segnale di identificazione autostrada. Identifica la classificazione e la numerazione specifica di un'autostrada (in questo caso l'autostrada A25). Può essere collocato lungo il percorso autostradale, inserito all'interno di segnali di preavviso di svincolo o di direzione, oppure essere abbinato a una freccia per indicare la direzione per accedere al relativo casello autostradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale con sfondo verde e bordo bianco. Al centro del segnale, in bianco, è riportata la sigla \"A 25\". Questo tipo di segnale viene utilizzato per identificare il numero di un'autostrada.",
-    "name": "Segnale di numero di autostrada",
-    "description": "Il segnale indica il numero dell'autostrada."
+    "visual_analysis": "L'immagine mostra un segnale a forma ottagonale/sagomata a fondo verde, bordato da una linea bianca continua interna. All'interno del riquadro verde campeggia la scritta bianca composta dalla lettera maiuscola 'A' seguita dal numero '25'.",
+    "name": "Segnale di identificazione autostrada",
+    "description": "Identifica la classificazione e la numerazione specifica di un'autostrada (in questo caso l'autostrada A25). Può essere collocato lungo il percorso autostradale, inserito all'interno di segnali di preavviso di svincolo o di direzione, oppure essere abbinato a una freccia per indicare la direzione per accedere al relativo casello autostradale."
   },
   "quiz_metadata": {
     "core_concepts": [

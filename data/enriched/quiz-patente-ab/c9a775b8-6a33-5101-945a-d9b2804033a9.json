@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è posto in vicinanza di un cantiere stradale",
   "correct_answer": true,
   "image": "630cebb8d08ae99d4eecba26193b0e23.jpeg",
-  "image_description": "Direzione obbligatoria per autotreni e autoarticolati. Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati.",
+  "image_description": "Preavviso di direzione obbligatoria per autotreni ed autoarticolati. Segnale temporaneo posto in vicinanza di cantieri o lavori stradali che preavvisa la direzione obbligatoria diritto unicamente per le categorie illustrate, ossia autotreni ed autoarticolati, per la durata dei lavori. Non impone obblighi di direzione a tutti gli altri veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Nella parte superiore, un disco blu con bordo bianco contiene una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria \"diritto\". Sotto questo disco, sono raffigurati due tipi di veicoli pesanti: un autotreno (motrice con rimorchio) e un autoarticolato (motrice con semirimorchio). Entrambi i veicoli sono rappresentati in nero. Il segnale è un segnale di prescrizione, specificamente una direzione obbligatoria, con un'indicazione aggiuntiva per determinate categorie di veicoli.",
-    "name": "Direzione obbligatoria per autotreni e autoarticolati",
-    "description": "Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati."
+    "visual_analysis": "Pannello verticale di forma rettangolare a fondo giallo bordato di nero (segnaletica temporanea per cantieri). Nella porzione superiore presenta un segnale circolare a fondo blu con freccia bianca orientata verso l'alto. Nella porzione inferiore sono rappresentate in nero le sagome stilizzate di un autotreno (autocarro con rimorchio) e di un autoarticolato (trattore con semirimorchio).",
+    "name": "Preavviso di direzione obbligatoria per autotreni ed autoarticolati",
+    "description": "Segnale temporaneo posto in vicinanza di cantieri o lavori stradali che preavvisa la direzione obbligatoria diritto unicamente per le categorie illustrate, ossia autotreni ed autoarticolati, per la durata dei lavori. Non impone obblighi di direzione a tutti gli altri veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

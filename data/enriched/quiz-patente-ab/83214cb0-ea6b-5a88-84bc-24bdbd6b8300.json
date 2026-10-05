@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato indica l'orario d'ingresso nel cimitero",
   "correct_answer": false,
   "image": "0f24c014d528bea16102a306adcdc3f0.jpeg",
-  "image_description": "Pannello integrativo - Giorni festivi e orario. Il pannello integrativo indica che il segnale a cui è abbinato è valido nei giorni festivi e nella fascia oraria dalle 8:00 alle 20:00.",
+  "image_description": "Pannello integrativo di validità per giorni festivi e fascia oraria. Posto sotto un segnale stradale (generalmente di prescrizione), ne limita l'efficacia e la validità esclusivamente ai giorni festivi (simboleggiati dalla croce) e all'interno della fascia oraria specificata (dalle ore 8:00 alle 20:00). Nelle altre ore dei giorni festivi e in tutti i giorni lavorativi la prescrizione non si applica.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno, a sinistra, è presente il simbolo di una croce (simbolo religioso). A destra della croce, è indicata una fascia oraria: 8,00 - 20,00. Questo pannello è tipicamente posto sotto un segnale di prescrizione per limitarne la validità temporale e/o a specifici giorni. In questo caso, la croce suggerisce che la limitazione si applica ai giorni festivi.",
-    "name": "Pannello integrativo - Giorni festivi e orario",
-    "description": "Il pannello integrativo indica che il segnale a cui è abbinato è valido nei giorni festivi e nella fascia oraria dalle 8:00 alle 20:00."
+    "visual_analysis": "Pannello integrativo rettangolare con orientamento orizzontale, a fondo bianco e sottile bordo perimetrale nero. All'interno riporta a sinistra il simbolo nero di una croce latina (simbolo convenzionale dei giorni festivi) seguito dalla dicitura numerica nera '8,00 - 20,00', che indica un intervallo orario.",
+    "name": "Pannello integrativo di validità per giorni festivi e fascia oraria",
+    "description": "Posto sotto un segnale stradale (generalmente di prescrizione), ne limita l'efficacia e la validità esclusivamente ai giorni festivi (simboleggiati dalla croce) e all'interno della fascia oraria specificata (dalle ore 8:00 alle 20:00). Nelle altre ore dei giorni festivi e in tutti i giorni lavorativi la prescrizione non si applica."
   },
   "quiz_metadata": {
     "core_concepts": [

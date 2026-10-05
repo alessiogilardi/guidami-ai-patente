@@ -5,11 +5,11 @@
   "text": "Le strisce lungo il centro della carreggiata possono essere superate se discontinue (tratteggiate)",
   "correct_answer": true,
   "image": "b43758bb9d85546a58f1d0a67f5b3b45.jpeg",
-  "image_description": "Striscia bianca continua di delimitazione carreggiata. La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua.",
+  "image_description": "Striscia longitudinale continua. La striscia longitudinale continua divide la carreggiata in due corsie e, sulle strade a doppio senso di circolazione, separa i sensi di marcia. È vietato oltrepassarla, marciarvi a cavallo ed effettuare l'inversione del senso di marcia. La manovra di sorpasso è consentita esclusivamente se può essere completata senza oltrepassare né calpestare la striscia continua, rimanendo interamente entro la propria corsia. Si può trovare in tratti a visibilità ridotta, come in salita sui dossi, o in prossimità di curve, passaggi a livello e attraversamenti pedonali.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una rappresentazione di segnaletica orizzontale. Si tratta di due strisce bianche continue parallele, separate da uno spazio più ampio, che delimitano una carreggiata. Non sono presenti altri elementi visivi o segnali stradali. La striscia bianca continua, secondo il Codice della Strada, indica la separazione dei sensi di marcia o delle corsie e non può essere superata.",
-    "name": "Striscia bianca continua di delimitazione carreggiata",
-    "description": "La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua."
+    "visual_analysis": "L'immagine mostra la sezione di una carreggiata stradale delimitata ai bordi esterni da strisce continue bianche di margine. Al centro corre una singola striscia longitudinale continua di colore bianco, che suddivide la carreggiata in due corsie parallele.",
+    "name": "Striscia longitudinale continua",
+    "description": "La striscia longitudinale continua divide la carreggiata in due corsie e, sulle strade a doppio senso di circolazione, separa i sensi di marcia. È vietato oltrepassarla, marciarvi a cavallo ed effettuare l'inversione del senso di marcia. La manovra di sorpasso è consentita esclusivamente se può essere completata senza oltrepassare né calpestare la striscia continua, rimanendo interamente entro la propria corsia. Si può trovare in tratti a visibilità ridotta, come in salita sui dossi, o in prossimità di curve, passaggi a livello e attraversamenti pedonali."
   },
   "quiz_metadata": {
     "core_concepts": [

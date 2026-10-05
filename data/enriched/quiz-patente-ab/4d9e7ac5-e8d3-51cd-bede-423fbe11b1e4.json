@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo in figura è posto per indicare la fermata degli autobus",
   "correct_answer": false,
   "image": "ff24131c9b9b8ee22f0d639eec2db1e9.jpeg",
-  "image_description": "Pannello integrativo di corsia con frecce verso il basso. Il pannello integrativo indica che il segnale sovrastante si riferisce alla corsia di destra. La presenza di tre frecce indica che il segnale si applica alle tre corsie di marcia, con la freccia che punta verso il basso per ciascuna corsia.",
+  "image_description": "Pannello integrativo per indicazione di corsia. Abbinato a un segnale stradale e collocato al di sopra della carreggiata (ad esempio su portali o strutture a ponte), specifica che la prescrizione, l'obbligo, il divieto o il pericolo segnalato si riferisce esclusivamente alla corsia verso cui punta la freccia.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra tre pannelli rettangolari bianchi, disposti verticalmente uno sopra l'altro. Ciascun pannello contiene un'unica freccia nera rivolta verso il basso. I pannelli sono separati da una linea nera orizzontale. Questo tipo di pannello è un pannello integrativo che, in abbinamento con un segnale stradale (non visibile nell'immagine), ne specifica l'ambito di applicazione a una o più corsie di marcia. In questo caso, le tre frecce verso il basso indicano che il segnale sovrastante si applica a tutte e tre le corsie di marcia.",
-    "name": "Pannello integrativo di corsia con frecce verso il basso",
-    "description": "Il pannello integrativo indica che il segnale sovrastante si riferisce alla corsia di destra. La presenza di tre frecce indica che il segnale si applica alle tre corsie di marcia, con la freccia che punta verso il basso per ciascuna corsia."
+    "visual_analysis": "L'immagine mostra tre pannelli rettangolari a sviluppo orizzontale, con sfondo bianco e bordo nero, disposti verticalmente uno sopra l'altro. All'interno di ciascun pannello è raffigurata al centro una freccia nera spessa, orientata verticalmente verso il basso.",
+    "name": "Pannello integrativo per indicazione di corsia",
+    "description": "Abbinato a un segnale stradale e collocato al di sopra della carreggiata (ad esempio su portali o strutture a ponte), specifica che la prescrizione, l'obbligo, il divieto o il pericolo segnalato si riferisce esclusivamente alla corsia verso cui punta la freccia."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato è abbinato al segnale ALTRI PERICOLI",
   "correct_answer": true,
   "image": "4bd336fcec7a7555807a6b1c56963183.jpeg",
-  "image_description": "Pannello integrativo - Macchine sgombraneve. Il pannello integrativo indica la presenza di macchine sgombraneve in funzione sulla strada, in particolare in condizioni di innevamento. Invita quindi a prestare attenzione e, implicitamente, a moderare la velocità e aumentare la distanza di sicurezza.",
+  "image_description": "Pannello integrativo: Macchine sgombraneve in azione. Abbinato al segnale di pericolo ALTRI PERICOLI, preavvisa la presenza di macchine sgombraneve al lavoro o in movimento sulla carreggiata. Comporta l'obbligo di moderare la velocità, prestare la massima attenzione e mantenere una distanza di sicurezza di almeno 20 metri dai mezzi operativi in funzione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Sulla sinistra è presente il pittogramma di un fiocco di neve, simbolo di condizioni invernali o innevamento. Sulla destra è raffigurato un mezzo sgombraneve in funzione, con la lama anteriore abbassata e un lampeggiante blu sul tetto della cabina. Il pannello è posto sotto un segnale di pericolo generico (altri pericoli), come suggerito dai contesti del quiz.",
-    "name": "Pannello integrativo - Macchine sgombraneve",
-    "description": "Il pannello integrativo indica la presenza di macchine sgombraneve in funzione sulla strada, in particolare in condizioni di innevamento. Invita quindi a prestare attenzione e, implicitamente, a moderare la velocità e aumentare la distanza di sicurezza."
+    "visual_analysis": "Pannello integrativo di forma rettangolare a sviluppo orizzontale, con fondo bianco e sottile cornice perimetrale nera. Al suo interno sono raffigurati due pittogrammi neri: sul lato sinistro un cristallo/fiocco di neve stilizzato, sul lato destro un autocarro sgombraneve con lama frontale e dispositivo lampeggiante sulla cabina, orientato verso sinistra.",
+    "name": "Pannello integrativo: Macchine sgombraneve in azione",
+    "description": "Abbinato al segnale di pericolo ALTRI PERICOLI, preavvisa la presenza di macchine sgombraneve al lavoro o in movimento sulla carreggiata. Comporta l'obbligo di moderare la velocità, prestare la massima attenzione e mantenere una distanza di sicurezza di almeno 20 metri dai mezzi operativi in funzione."
   },
   "quiz_metadata": {
     "core_concepts": [

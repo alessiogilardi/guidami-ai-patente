@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito agli autocarri telonati",
   "correct_answer": false,
   "image": "ae9d3c1c3182ac8d92642820f51ecbfe.jpeg",
-  "image_description": "Divieto di transito agli autocarri. Il segnale vieta il transito a tutti gli autocarri.",
+  "image_description": "Divieto di transito ai veicoli che trasportano merci pericolose. Vieta la circolazione a tutti i veicoli che trasportano merci pericolose (esplosivi, infiammabili, tossici, ecc.), comprese le autocisterne cariche di carburanti quali benzina o gasolio. Non si applica ai veicoli per il trasporto di merci ordinarie o deperibili, né alle autovetture alimentate a GPL.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato il pittogramma di un autocarro, con la parte posteriore (cassone) di colore arancione e la parte inferiore (telaio e ruote) di colore nero. Il segnale è isolato, senza altri elementi di contesto stradale o pannelli integrativi.",
-    "name": "Divieto di transito agli autocarri",
-    "description": "Il segnale vieta il transito a tutti gli autocarri."
+    "visual_analysis": "Segnale stradale verticale di divieto, di forma circolare con bordo rosso e fondo bianco. Al centro compare la parte posteriore stilizzata in nero di un autocarro a due assi con ruote gemellate, recante sul cassone un rettangolo arancione che richiama il pannello di pericolo per il trasporto merci (ADR).",
+    "name": "Divieto di transito ai veicoli che trasportano merci pericolose",
+    "description": "Vieta la circolazione a tutti i veicoli che trasportano merci pericolose (esplosivi, infiammabili, tossici, ecc.), comprese le autocisterne cariche di carburanti quali benzina o gasolio. Non si applica ai veicoli per il trasporto di merci ordinarie o deperibili, né alle autovetture alimentate a GPL."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia una svolta a sinistra obbligatoria",
   "correct_answer": false,
   "image": "2b12fe96d3f0c9af53ce60483de34e8b.jpeg",
-  "image_description": "Segnale di pericolo: intersezione con circolazione a rotatoria. Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza.",
+  "image_description": "Segnale di circolazione rotatoria. Preannuncia, di norma a 150 metri, un incrocio regolato con circolazione rotatoria secondo il verso indicato dalle frecce (antiorario). È obbligatorio su strade extraurbane e può essere installato anche nei centri abitati qualora ritenuto necessario per motivi di visibilità o sicurezza; impone di moderare la velocità e prestare attenzione nell'immettersi nell'anello rotatorio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero composto da tre frecce curve che indicano un movimento circolare in senso antiorario, tipico di una rotatoria. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
-    "name": "Segnale di pericolo: intersezione con circolazione a rotatoria",
-    "description": "Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza."
+    "visual_analysis": "Segnale stradale di pericolo a forma triangolare con vertice rivolto verso l'alto, caratterizzato da bordo perimetrale rosso e fondo bianco. Al centro è raffigurato un simbolo nero composto da tre frecce curve disposte a cerchio che indicano un movimento rotatorio in senso antiorario.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Preannuncia, di norma a 150 metri, un incrocio regolato con circolazione rotatoria secondo il verso indicato dalle frecce (antiorario). È obbligatorio su strade extraurbane e può essere installato anche nei centri abitati qualora ritenuto necessario per motivi di visibilità o sicurezza; impone di moderare la velocità e prestare attenzione nell'immettersi nell'anello rotatorio."
   },
   "quiz_metadata": {
     "core_concepts": [

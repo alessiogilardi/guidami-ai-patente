@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato preannuncia sulla sinistra una strada senza uscita",
   "correct_answer": false,
   "image": "5c17bf965a93fa39910d1868d73061a2.jpeg",
-  "image_description": "Preavviso di confluenza a destra. Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza.",
+  "image_description": "Segnale di intersezione a T con diritto di precedenza da sinistra. Preannuncia, di norma a 150 metri, un'intersezione a T con una strada secondaria che si innesta da sinistra priva di precedenza. Chi viaggia sulla strada principale mantiene il diritto di precedenza rispetto ai veicoli provenienti da sinistra (i quali troveranno il segnale 'Fermarsi e dare precedenza' o 'Dare precedenza'), ma è comunque tenuto a moderare la velocità e procedere con prudenza nell'approssimarsi all'incrocio.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un pittogramma nero che rappresenta una strada principale che prosegue dritta e una strada secondaria che si immette da destra. La forma del pittogramma indica una confluenza, con la strada principale più spessa e la strada secondaria più sottile che si unisce ad essa. La freccia nera più grande indica la direzione principale, mentre la freccia più piccola a sinistra indica la strada che si immette.",
-    "name": "Preavviso di confluenza a destra",
-    "description": "Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza."
+    "visual_analysis": "Segnale triangolare con vertice rivolto verso l'alto, bordo perimetrale rosso e fondo bianco. Al centro compare una figura nera composta da una freccia larga e marcata rivolta verso l'alto (asse principale), dalla quale si diparte perpendicolarmente a sinistra un braccio orizzontale di spessore nettamente inferiore (asse secondario).",
+    "name": "Segnale di intersezione a T con diritto di precedenza da sinistra",
+    "description": "Preannuncia, di norma a 150 metri, un'intersezione a T con una strada secondaria che si innesta da sinistra priva di precedenza. Chi viaggia sulla strada principale mantiene il diritto di precedenza rispetto ai veicoli provenienti da sinistra (i quali troveranno il segnale 'Fermarsi e dare precedenza' o 'Dare precedenza'), ma è comunque tenuto a moderare la velocità e procedere con prudenza nell'approssimarsi all'incrocio."
   },
   "quiz_metadata": {
     "core_concepts": [

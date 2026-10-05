@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente la svolta a destra al prossimo incrocio",
   "correct_answer": false,
   "image": "c3fbf607467f1dbb78f137f6e2ff37f8.jpeg",
-  "image_description": "Preavviso di confluenza (immissione) da destra. Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico.",
+  "image_description": "Segnale di confluenza a destra. Preannuncia, su carreggiate a senso unico (come autostrade o strade extraurbane principali), una confluenza sul lato destro con immissione di veicoli tramite corsia di accelerazione. Indica che i veicoli che circolano sulla carreggiata principale godono del diritto di precedenza su quelli che si immettono dalla rampa di raccordo (dove è presente il segnale DARE PRECEDENZA), invitando comunque a usare la massima prudenza e ad agevolare l'immissione se possibile.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta una strada principale (linea più spessa e diritta) e una strada secondaria che si immette da destra (linea più sottile che si congiunge alla principale con un'angolazione). La linea della strada secondaria si divide in due rami, uno dei quali si immette sulla principale da destra, mentre l'altro prosegue parallelamente. Questo indica una confluenza o immissione da destra.",
-    "name": "Preavviso di confluenza (immissione) da destra",
-    "description": "Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico."
+    "visual_analysis": "Segnale stradale verticale triangolare con vertice rivolto verso l'alto, con bordo perimetrale rosso e fondo bianco. Al centro presenta una figura geometrica nera stilizzata: un'asta verticale principale più spessa con punta a freccia orientata verso l'alto, affiancata e intersecata sulla destra da una corsia obliqua convergente, che rappresenta una rampa di immissione.",
+    "name": "Segnale di confluenza a destra",
+    "description": "Preannuncia, su carreggiate a senso unico (come autostrade o strade extraurbane principali), una confluenza sul lato destro con immissione di veicoli tramite corsia di accelerazione. Indica che i veicoli che circolano sulla carreggiata principale godono del diritto di precedenza su quelli che si immettono dalla rampa di raccordo (dove è presente il segnale DARE PRECEDENZA), invitando comunque a usare la massima prudenza e ad agevolare l'immissione se possibile."
   },
   "quiz_metadata": {
     "core_concepts": [

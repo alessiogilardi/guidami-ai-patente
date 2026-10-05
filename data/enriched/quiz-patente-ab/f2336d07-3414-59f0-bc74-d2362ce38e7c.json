@@ -5,11 +5,11 @@
   "text": "La segnaletica rappresentata in figura serve ad avvertire i conducenti che si è vicini ad un passaggio a livello con barriere",
   "correct_answer": true,
   "image": "fc0562d273c757ef1a5227f0960f40b7.jpeg",
-  "image_description": "Segnaletica di ostacolo (striscia bianca e rossa). La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata.",
+  "image_description": "Segnaletica orizzontale in vicinanza di un passaggio a livello. Preavvisa la presenza e la vicinanza di un passaggio a livello, che può essere sia con barriere o semibarriere, sia senza barriere. Impone ai conducenti di moderare la velocità, prestare la massima attenzione all'eventuale sopraggiungere di treni e non oltrepassare la striscia longitudinale continua di mezzeria (vietando l'invasione della corsia opposta). In caso di barriere chiuse o semaforo rosso/segnali acustici attivi, impone di arrestarsi prima della striscia trasversale d'arresto.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una porzione di carreggiata con segnaletica orizzontale. È presente una striscia di arresto e, più avanti, una segnaletica di ostacolo costituita da una figura a forma di X racchiusa in un quadrato, con due frecce che indicano di aggirare l'ostacolo ai lati. La segnaletica è posta sulla destra della carreggiata, in prossimità di una deviazione o di un ostacolo fisso.",
-    "name": "Segnaletica di ostacolo (striscia bianca e rossa)",
-    "description": "La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata."
+    "visual_analysis": "Rappresentazione dall'alto di un tratto di strada a doppio senso di marcia. Sulla corsia di destra è tracciata sull'asfalto una segnaletica orizzontale bianca composta da una grande croce di Sant'Andrea posta tra le lettere 'P' (a sinistra) e 'L' (a destra). Procedendo verso l'alto lungo la corsia, la linea di mezzeria tratteggiata diventa continua e si conclude con una striscia trasversale continua di arresto. Entrambi i bordi della carreggiata sono delimitati da strisce continue bianche di margine.",
+    "name": "Segnaletica orizzontale in vicinanza di un passaggio a livello",
+    "description": "Preavvisa la presenza e la vicinanza di un passaggio a livello, che può essere sia con barriere o semibarriere, sia senza barriere. Impone ai conducenti di moderare la velocità, prestare la massima attenzione all'eventuale sopraggiungere di treni e non oltrepassare la striscia longitudinale continua di mezzeria (vietando l'invasione della corsia opposta). In caso di barriere chiuse o semaforo rosso/segnali acustici attivi, impone di arrestarsi prima della striscia trasversale d'arresto."
   },
   "quiz_metadata": {
     "core_concepts": [

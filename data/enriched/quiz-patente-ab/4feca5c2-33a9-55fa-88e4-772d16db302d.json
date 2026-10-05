@@ -5,11 +5,11 @@
   "text": "Il semaforo in figura, con luce gialla fissa accesa, impone ai conducenti di biciclette di liberare velocemente l'incrocio se lo hanno già impegnato",
   "correct_answer": true,
   "image": "c3c957780ed480a75899918470e54d50.jpeg",
-  "image_description": "Semaforo per biciclette. Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette.",
+  "image_description": "Lanterna semaforica per corsie ciclabili. Regola l'avanzamento dei soli velocipedi (biciclette) lungo una pista o corsia ciclabile in corrispondenza di un incrocio o attraversamento: la luce rossa impone l'arresto prima della striscia trasversale; la luce gialla fissa impone di sgomberare sollecitamente l'incrocio se già impegnato, oppure di fermarsi in condizioni di sicurezza prima dell'arresto; la luce verde consente esclusivamente ai ciclisti di procedere nell'attraversamento. Non si applica agli altri utenti o veicoli della strada.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. Le luci sono disposte una sopra l'altra. La luce superiore è rossa e contiene il simbolo di una bicicletta. La luce centrale è gialla e contiene anch'essa il simbolo di una bicicletta. La luce inferiore è verde e contiene il simbolo di una bicicletta. Il segnale è chiaramente destinato a regolare il traffico ciclistico.",
-    "name": "Semaforo per biciclette",
-    "description": "Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette."
+    "visual_analysis": "L'immagine mostra una lanterna semaforica a tre luci circolari disposte verticalmente su fondo nero rettangolare. Ciascuna lente presenta al suo interno la sagoma (sagometta) stilizzata di una bicicletta: dall'alto verso il basso, una sagoma rossa, una sagoma gialla e una sagoma verde su sfondo scuro.",
+    "name": "Lanterna semaforica per corsie ciclabili",
+    "description": "Regola l'avanzamento dei soli velocipedi (biciclette) lungo una pista o corsia ciclabile in corrispondenza di un incrocio o attraversamento: la luce rossa impone l'arresto prima della striscia trasversale; la luce gialla fissa impone di sgomberare sollecitamente l'incrocio se già impegnato, oppure di fermarsi in condizioni di sicurezza prima dell'arresto; la luce verde consente esclusivamente ai ciclisti di procedere nell'attraversamento. Non si applica agli altri utenti o veicoli della strada."
   },
   "quiz_metadata": {
     "core_concepts": [

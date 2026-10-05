@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato consente la sosta agli autoarticolati",
   "correct_answer": false,
   "image": "9847053029583ecf4a4b213c0a6311b6.jpeg",
-  "image_description": "Divieto di sosta con pannello integrativo per autoarticolati. Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica agli autoarticolati.",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo per autoarticolati. Il segnale vieta la sosta sul lato della strada in cui è posto esclusivamente alla categoria di veicoli indicata nel pannello integrativo, ovvero gli autoarticolati, consentendola invece alle altre categorie di veicoli (salvo diverse prescrizioni). La fermata resta comunque consentita anche per gli autoarticolati.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu, barrato da una linea diagonale rossa. Sotto questo segnale, vi è un pannello rettangolare bianco con l'immagine stilizzata di un autoarticolato (camion con rimorchio). Il segnale principale è un segnale di divieto. Il pannello integrativo specifica il tipo di veicolo a cui si applica il divieto.",
-    "name": "Divieto di sosta con pannello integrativo per autoarticolati",
-    "description": "Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica agli autoarticolati."
+    "visual_analysis": "L'immagine mostra un segnale composto da un cartello principale superiore e da un pannello integrativo inferiore. Il cartello superiore è circolare con fondo blu, bordo rosso spesso e una barra diagonale rossa che scende da sinistra a destra (segnale di divieto di sosta). Il pannello integrativo inferiore è rettangolare, a fondo bianco con bordo nero sottile, e reca al centro la sagoma nera di profilo di un autoarticolato (trattore stradale con semirimorchio).",
+    "name": "Segnale di divieto di sosta con pannello integrativo per autoarticolati",
+    "description": "Il segnale vieta la sosta sul lato della strada in cui è posto esclusivamente alla categoria di veicoli indicata nel pannello integrativo, ovvero gli autoarticolati, consentendola invece alle altre categorie di veicoli (salvo diverse prescrizioni). La fermata resta comunque consentita anche per gli autoarticolati."
   },
   "quiz_metadata": {
     "core_concepts": [

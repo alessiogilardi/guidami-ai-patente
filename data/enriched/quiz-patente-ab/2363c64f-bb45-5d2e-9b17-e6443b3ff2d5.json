@@ -5,11 +5,11 @@
   "text": "Il pannello integrativo raffigurato si trova prima di un ponte, per vietare il transito alle macchine operatrici",
   "correct_answer": false,
   "image": "42349cc7d2b70fecebc00008b2c4441e.jpeg",
-  "image_description": "Pannello integrativo di pericolo - Macchine operatrici. Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata.",
+  "image_description": "Pannello integrativo per macchine operatrici al lavoro. Pannello integrativo che, generalmente abbinato al segnale di pericolo 'LAVORI IN CORSO', segnala la possibile presenza sulla carreggiata o nelle sue immediate vicinanze di macchine operatrici (come pale meccaniche o escavatori) in movimento o al lavoro all'interno di un cantiere stradale, richiedendo ai conducenti di moderare la velocità e procedere con particolare prudenza.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore bianco con bordo nero. Al suo interno è raffigurato, in nero, il pittogramma di una macchina operatrice cingolata, simile a un escavatore o una pala meccanica, con un conducente seduto al posto di guida e la benna estesa. Questo pannello è un'integrazione a segnali di pericolo o prescrizione, e in questo caso specifico informa sulla potenziale presenza di tali mezzi in movimento sulla strada.",
-    "name": "Pannello integrativo di pericolo - Macchine operatrici",
-    "description": "Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata."
+    "visual_analysis": "Pannello integrativo rettangolare a sviluppo orizzontale, con sfondo bianco e sottile bordo nero. Al centro è raffigurata la sagoma nera stilizzata di una macchina operatrice cingolata (pala meccanica o escavatore) con un operatore alla guida e una benna anteriore sollevata verso sinistra.",
+    "name": "Pannello integrativo per macchine operatrici al lavoro",
+    "description": "Pannello integrativo che, generalmente abbinato al segnale di pericolo 'LAVORI IN CORSO', segnala la possibile presenza sulla carreggiata o nelle sue immediate vicinanze di macchine operatrici (come pale meccaniche o escavatori) in movimento o al lavoro all'interno di un cantiere stradale, richiedendo ai conducenti di moderare la velocità e procedere con particolare prudenza."
   },
   "quiz_metadata": {
     "core_concepts": [

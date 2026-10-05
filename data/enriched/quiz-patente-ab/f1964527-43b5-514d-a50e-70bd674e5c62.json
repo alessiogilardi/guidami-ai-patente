@@ -5,11 +5,11 @@
   "text": "La figura rappresenta un segnale di pericolo",
   "correct_answer": true,
   "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
-  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_description": "Segnale di passaggio a livello senza barriere. Preannuncia un passaggio a livello privo di barriere o semibarriere, posto di norma a 150 metri dalla linea ferroviaria e integrato con il primo pannello distanziometrico a tre barre rosse oblique. Impone di moderare la velocità in funzione della visibilità per potersi eventualmente arrestare prima dei binari e impone di verificare con la massima prudenza l'eventuale arrivo di treni sia da destra che da sinistra prima di impegnare l'attraversamento. È seguito, in prossimità dei binari, dal segnale Croce di Sant'Andrea (se a un solo binario) o Doppia croce di Sant'Andrea (se a più binari); vieta la sosta, la fermata e il sorpasso con invasione della corsia opposta.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
-    "name": "Segnale di passaggio a livello con barriere",
-    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+    "visual_analysis": "Segnale stradale di pericolo di forma triangolare con vertice rivolto verso l'alto. Presenta un bordo perimetrale rosso e fondo bianco, al cui interno è raffigurata in nero la silhouette di una locomotiva a vapore con fumo stilizzato rivolta verso sinistra.",
+    "name": "Segnale di passaggio a livello senza barriere",
+    "description": "Preannuncia un passaggio a livello privo di barriere o semibarriere, posto di norma a 150 metri dalla linea ferroviaria e integrato con il primo pannello distanziometrico a tre barre rosse oblique. Impone di moderare la velocità in funzione della visibilità per potersi eventualmente arrestare prima dei binari e impone di verificare con la massima prudenza l'eventuale arrivo di treni sia da destra che da sinistra prima di impegnare l'attraversamento. È seguito, in prossimità dei binari, dal segnale Croce di Sant'Andrea (se a un solo binario) o Doppia croce di Sant'Andrea (se a più binari); vieta la sosta, la fermata e il sorpasso con invasione della corsia opposta."
   },
   "quiz_metadata": {
     "core_concepts": [

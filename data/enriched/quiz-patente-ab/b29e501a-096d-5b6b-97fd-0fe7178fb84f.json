@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la possibilità, a breve distanza, di poter telefonare da un telefono pubblico",
   "correct_answer": true,
   "image": "7c465c7946a16a29d37008033e2616f0.jpeg",
-  "image_description": "Preavviso di telefono pubblico. Il segnale indica la presenza di un telefono pubblico nelle vicinanze.",
+  "image_description": "Segnale di telefono pubblico. Segnale di indicazione (servizi utili) che preavvisa o indica la presenza, nelle vicinanze o a breve distanza, di un apparecchio o posto di telefono pubblico lungo la viabilità (in particolare extraurbana con fondo blu). Non riguarda la telefonia mobile o cellulare, né postazioni di pronto soccorso.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di tipo integrativo, di colore blu con bordo bianco. Al centro, su sfondo bianco, è raffigurato il pittogramma stilizzato di una cornetta telefonica in nero. Sotto il pittogramma, vi è un pannello rettangolare blu, anch'esso con bordo bianco, che solitamente serve per indicare la distanza o altre informazioni aggiuntive, ma in questo caso è vuoto. Il segnale nel suo complesso preannuncia la presenza di un telefono pubblico.",
-    "name": "Preavviso di telefono pubblico",
-    "description": "Il segnale indica la presenza di un telefono pubblico nelle vicinanze."
+    "visual_analysis": "Segnale stradale verticale rettangolare con fondo blu e sottile bordo bianco. Nella metà superiore è inserito un riquadro quadrato a sfondo bianco contenente il simbolo stilizzato in nero di una cornetta telefonica; la metà inferiore del pannello è vuota a fondo blu.",
+    "name": "Segnale di telefono pubblico",
+    "description": "Segnale di indicazione (servizi utili) che preavvisa o indica la presenza, nelle vicinanze o a breve distanza, di un apparecchio o posto di telefono pubblico lungo la viabilità (in particolare extraurbana con fondo blu). Non riguarda la telefonia mobile o cellulare, né postazioni di pronto soccorso."
   },
   "quiz_metadata": {
     "core_concepts": [

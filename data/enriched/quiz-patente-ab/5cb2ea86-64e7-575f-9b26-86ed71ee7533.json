@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica un divieto di transito agli autobus",
   "correct_answer": false,
   "image": "6a522dfdeecbf56ec4b02389fb3b040e.jpeg",
-  "image_description": "Fermata di autobus. Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza.",
+  "image_description": "Segnale di fermata autobus extraurbani. Indica una fermata riservata agli autobus delle linee di trasporto pubblico extraurbano e individua il punto dove attendere il veicolo o effettuare la salita e discesa dei passeggeri. Può riportare o essere abbinato a pannelli con gli orari delle corse. Nello spazio riservato alla fermata, delimitato dalle apposite strisce gialle a terra o compreso tra 15 metri prima e 15 metri dopo il cartello, vige il divieto di sosta per gli altri veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu e sfondo bianco all'interno di un riquadro centrale. Al centro del riquadro bianco è presente il pittogramma stilizzato di un autobus. Sotto il riquadro bianco, la parte inferiore del segnale è di colore blu uniforme. Si tratta di un segnale di indicazione.",
-    "name": "Fermata di autobus",
-    "description": "Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza."
+    "visual_analysis": "Segnale stradale verticale rettangolare con fondo blu e sottile bordo perimetrale bianco. Nella metà superiore è inserito un riquadro quadrato a fondo bianco che racchiude la sagoma nera, vista lateralmente da profilo, di un autobus. La metà inferiore del cartello presenta uno spazio a fondo blu privo di iscrizioni, predisposto per l'indicazione di orari o linee.",
+    "name": "Segnale di fermata autobus extraurbani",
+    "description": "Indica una fermata riservata agli autobus delle linee di trasporto pubblico extraurbano e individua il punto dove attendere il veicolo o effettuare la salita e discesa dei passeggeri. Può riportare o essere abbinato a pannelli con gli orari delle corse. Nello spazio riservato alla fermata, delimitato dalle apposite strisce gialle a terra o compreso tra 15 metri prima e 15 metri dopo il cartello, vige il divieto di sosta per gli altri veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

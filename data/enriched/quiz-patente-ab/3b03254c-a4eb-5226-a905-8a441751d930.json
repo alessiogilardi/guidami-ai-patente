@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è un segnale di pericolo",
   "correct_answer": false,
   "image": "92d98106f0ae129dab0667c17a9e6a61.jpeg",
-  "image_description": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto). Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra.",
+  "image_description": "Direzioni consentite diritto e sinistra. Segnale di prescrizione (obbligo) che impone ai conducenti di scegliere unicamente fra le due direzioni indicate, ossia proseguire diritto oppure svoltare a sinistra all'incrocio prossimo, vietando categoricamente la svolta a destra. Si può trovare sia all'interno che all'esterno dei centri abitati.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e l'altra piega verso sinistra (svoltare a sinistra). Le frecce indicano le direzioni consentite.",
-    "name": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto)",
-    "description": "Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra."
+    "visual_analysis": "Segnale stradale circolare con fondo blu e bordo bianco. Al centro presenta una figura bianca stilizzata composta da un'asta verticale che termina con una freccia rivolta verso l'alto (proseguire diritto) e una diramazione che curva verso sinistra terminando con una freccia orientata a sinistra (svolta a sinistra). Non sono presenti pannelli integrativi.",
+    "name": "Direzioni consentite diritto e sinistra",
+    "description": "Segnale di prescrizione (obbligo) che impone ai conducenti di scegliere unicamente fra le due direzioni indicate, ossia proseguire diritto oppure svoltare a sinistra all'incrocio prossimo, vietando categoricamente la svolta a destra. Si può trovare sia all'interno che all'esterno dei centri abitati."
   },
   "quiz_metadata": {
     "core_concepts": [

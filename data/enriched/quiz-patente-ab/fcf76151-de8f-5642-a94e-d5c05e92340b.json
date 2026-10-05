@@ -5,11 +5,11 @@
   "text": "Se il vigile ha un braccio alzato come in figura è consentito soltanto svoltare a destra",
   "correct_answer": false,
   "image": "125f03bc48cba25667c0be2257dd80e3.jpeg",
-  "image_description": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo. La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso.",
+  "image_description": "Segnalazione dell'agente del traffico con un braccio alzato verticalmente. Indica attenzione e arresto per tutti gli utenti della strada che si approssimano all'incrocio, imponendo di fermarsi prima dell'area di intersezione se ciò può avvenire in condizioni di sicurezza senza creare pericolo. Chi ha già impegnato l'incrocio deve invece liberarlo e sgombrarlo rapidamente. Dal punto di vista normativo, equivale alla luce gialla fissa della lanterna semaforica veicolare normale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra la silhouette di un vigile in uniforme, in piedi al centro di un incrocio stilizzato. Il vigile ha il braccio destro sollevato verticalmente con la mano aperta, mentre il braccio sinistro è lungo il corpo. La testa è rivolta verso lo spettatore. Ai quattro angoli dell'incrocio sono disegnate delle linee che rappresentano le direzioni di marcia, suggerendo un incrocio a raso. Non sono presenti altri segnali stradali o veicoli. La scena rappresenta una segnalazione da parte di un agente del traffico.",
-    "name": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo",
-    "description": "La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso."
+    "visual_analysis": "Illustrazione a sfondo bianco che raffigura la sagoma nera di un agente del traffico posizionato al centro di un'intersezione stradale schematizzata da quattro spigoli d'angolo. L'agente è visto frontalmente con il braccio destro sollevato verticalmente verso l'alto e il braccio sinistro disteso lungo il fianco.",
+    "name": "Segnalazione dell'agente del traffico con un braccio alzato verticalmente",
+    "description": "Indica attenzione e arresto per tutti gli utenti della strada che si approssimano all'incrocio, imponendo di fermarsi prima dell'area di intersezione se ciò può avvenire in condizioni di sicurezza senza creare pericolo. Chi ha già impegnato l'incrocio deve invece liberarlo e sgombrarlo rapidamente. Dal punto di vista normativo, equivale alla luce gialla fissa della lanterna semaforica veicolare normale."
   },
   "quiz_metadata": {
     "core_concepts": [

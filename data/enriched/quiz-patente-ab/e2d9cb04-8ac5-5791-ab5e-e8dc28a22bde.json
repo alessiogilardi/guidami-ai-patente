@@ -5,11 +5,11 @@
   "text": "In presenza del segnale raffigurato è necessario regolare la velocità in relazione alla visibilità e al raggio delle curve",
   "correct_answer": true,
   "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
-  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_description": "Doppia curva pericolosa, la prima a destra. Preannuncia, di norma a 150 metri, un tratto di strada caratterizzato da due curve pericolose consecutive, di cui la prima a destra, che limitano la visibilità. Richiede di moderare la velocità in funzione della visibilità, del raggio delle curve e delle condizioni del carico o del manto stradale. Se la carreggiata è a doppio senso di circolazione con due sole corsie, è obbligatorio viaggiare il più vicino possibile al margine destro ed è vietato il sorpasso; sono altresì vietate la sosta, la fermata, l'inversione di marcia e la retromarcia. Può essere integrato da pannelli indicanti 'tornanti' o la lunghezza del tratto stradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
-    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
-    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+    "visual_analysis": "Segnale di pericolo costituito da un cartello triangolare con vertice rivolto verso l'alto, bordo perimetrale rosso e fondo bianco. Al centro è raffigurato un simbolo nero a forma di nastro sinuoso che piega prima verso destra e poi successivamente verso sinistra, terminando in alto con una sagoma a punta. Non sono presenti pannelli integrativi.",
+    "name": "Doppia curva pericolosa, la prima a destra",
+    "description": "Preannuncia, di norma a 150 metri, un tratto di strada caratterizzato da due curve pericolose consecutive, di cui la prima a destra, che limitano la visibilità. Richiede di moderare la velocità in funzione della visibilità, del raggio delle curve e delle condizioni del carico o del manto stradale. Se la carreggiata è a doppio senso di circolazione con due sole corsie, è obbligatorio viaggiare il più vicino possibile al margine destro ed è vietato il sorpasso; sono altresì vietate la sosta, la fermata, l'inversione di marcia e la retromarcia. Può essere integrato da pannelli indicanti 'tornanti' o la lunghezza del tratto stradale."
   },
   "quiz_metadata": {
     "core_concepts": [

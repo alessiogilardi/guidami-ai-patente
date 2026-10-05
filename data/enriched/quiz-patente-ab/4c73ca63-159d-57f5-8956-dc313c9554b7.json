@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito dalle ore 8.00 alle ore 20.00 dei giorni festivi",
   "correct_answer": true,
   "image": "87078b9138df6b52168bc5170c531079.jpeg",
-  "image_description": "Divieto di transito con pannello integrativo di orario e giorni festivi. Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Il simbolo della croce indica i giorni festivi. Pertanto, il transito è vietato nei giorni festivi dalle 8:00 alle 20:00.",
+  "image_description": "Divieto di transito con pannello integrativo di fascia oraria nei giorni festivi. Vieta la circolazione su quella strada a tutti i veicoli, in entrambi i sensi di marcia, limitatamente ai giorni festivi nella fascia oraria compresa tra le 8:00 e le 20:00. Nei giorni feriali e al di fuori di tale orario il transito è regolarmente consentito.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, rappresentato da un cerchio rosso con sfondo bianco e una barra trasversale rossa. Sotto questo segnale, vi è un pannello integrativo rettangolare di colore bianco con scritte nere. Il pannello contiene il simbolo di una croce (+) seguito dagli orari \"8,00 - 20,00\". La croce, in combinazione con gli orari, indica che il divieto di transito è in vigore nei giorni festivi, dalle 8:00 alle 20:00.",
-    "name": "Divieto di transito con pannello integrativo di orario e giorni festivi",
-    "description": "Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Il simbolo della croce indica i giorni festivi. Pertanto, il transito è vietato nei giorni festivi dalle 8:00 alle 20:00."
+    "visual_analysis": "L'immagine mostra un cartello composito costituito da un segnale principale e da un pannello integrativo sottostante. Il segnale superiore è di forma circolare, con bordo rosso e fondo bianco neutro (segnale di divieto di transito). Il pannello inferiore è rettangolare a fondo bianco con bordo nero, e presenta a sinistra il simbolo di una croce latina nera (indicante i giorni festivi) seguito dalla fascia oraria '8,00 - 20,00'.",
+    "name": "Divieto di transito con pannello integrativo di fascia oraria nei giorni festivi",
+    "description": "Vieta la circolazione su quella strada a tutti i veicoli, in entrambi i sensi di marcia, limitatamente ai giorni festivi nella fascia oraria compresa tra le 8:00 e le 20:00. Nei giorni feriali e al di fuori di tale orario il transito è regolarmente consentito."
   },
   "quiz_metadata": {
     "core_concepts": [

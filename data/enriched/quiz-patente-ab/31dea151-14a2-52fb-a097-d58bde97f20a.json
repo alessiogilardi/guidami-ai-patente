@@ -5,11 +5,11 @@
   "text": "Il pannello raffigurato indica i chilometri da fare per poter tornare indietro",
   "correct_answer": false,
   "image": "bacab78176dc95f719635f109766d036.jpeg",
-  "image_description": "Cartello indicatore del numero progressivo di un tornante. Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie.",
+  "image_description": "Pannello integrativo per tornante. Pannello integrativo che segnala l'avvicinarsi del primo tornante (curva a raggio particolarmente ridotto) di una serie, indicandone la numerazione progressiva e richiamando a una guida prudente con adeguata riduzione della velocità.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo nero e sfondo bianco. Al centro, in alto, è presente il numero '1' con un piccolo cerchio in apice (indicante 'primo'). Sotto il numero, in lettere maiuscole, è scritta la parola 'tornante'. Il segnale è un pannello integrativo che fornisce informazioni aggiuntive su un segnale preesistente (non visibile nell'immagine).",
-    "name": "Cartello indicatore del numero progressivo di un tornante",
-    "description": "Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie."
+    "visual_analysis": "Pannello a forma quadrata con fondo bianco e bordo perimetrale nero. Al centro è presente l'indicazione numerica ordinale '1°' e, subito sotto, la scritta 'tornante' in caratteri neri minuscoli.",
+    "name": "Pannello integrativo per tornante",
+    "description": "Pannello integrativo che segnala l'avvicinarsi del primo tornante (curva a raggio particolarmente ridotto) di una serie, indicandone la numerazione progressiva e richiamando a una guida prudente con adeguata riduzione della velocità."
   },
   "quiz_metadata": {
     "core_concepts": [

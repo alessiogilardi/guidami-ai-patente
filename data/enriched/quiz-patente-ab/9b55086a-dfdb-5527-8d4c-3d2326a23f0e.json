@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica strada sdrucciolevole per ghiaccio, in caso di bassa temperatura",
   "correct_answer": true,
   "image": "23a95ffef271c8d6321e665c24380b3a.jpeg",
-  "image_description": "Segnale di pericolo - Strada sdrucciolevole con pannello integrativo (ghiaccio). Il segnale indica che la carreggiata può essere sdrucciolevole a causa della presenza di ghiaccio. Il pannello integrativo specifica che il pericolo è legato alla formazione di ghiaccio, tipicamente in condizioni di bassa temperatura.",
+  "image_description": "Segnale di strada sdrucciolevole con pannello integrativo per ghiaccio. Presegnala un tratto di strada che può diventare particolarmente insidioso e sdrucciolevole a causa della presenza o della formazione di ghiaccio, specialmente a basse temperature o durante l'inverno. Comporta l'obbligo di moderare la velocità, aumentare la distanza di sicurezza ed evitare brusche frenate, accelerazioni o sterzate.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata un'automobile in fase di sbandata su una strada sinuosa. Sotto il segnale principale è presente un pannello integrativo rettangolare di colore blu con due simboli di fiocco di neve stilizzati, uno per lato. Il segnale principale indica genericamente una strada sdrucciolevole, mentre il pannello integrativo specifica che la causa della sdrucciolevolezza è il ghiaccio.",
-    "name": "Segnale di pericolo - Strada sdrucciolevole con pannello integrativo (ghiaccio)",
-    "description": "Il segnale indica che la carreggiata può essere sdrucciolevole a causa della presenza di ghiaccio. Il pannello integrativo specifica che il pericolo è legato alla formazione di ghiaccio, tipicamente in condizioni di bassa temperatura."
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con vertice verso l'alto, bordo rosso e fondo bianco, raffigurante un'autovettura che sbanda lasciando due tracce ondulate (segnale di strada sdrucciolevole). Al di sotto è presente un pannello integrativo rettangolare a fondo blu scuro con bordo bianco, contenente due pittogrammi bianchi a forma di cristallo di neve (pannello di pericolo ghiaccio).",
+    "name": "Segnale di strada sdrucciolevole con pannello integrativo per ghiaccio",
+    "description": "Presegnala un tratto di strada che può diventare particolarmente insidioso e sdrucciolevole a causa della presenza o della formazione di ghiaccio, specialmente a basse temperature o durante l'inverno. Comporta l'obbligo di moderare la velocità, aumentare la distanza di sicurezza ed evitare brusche frenate, accelerazioni o sterzate."
   },
   "quiz_metadata": {
     "core_concepts": [

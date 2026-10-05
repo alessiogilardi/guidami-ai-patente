@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato si trova all'inizio di una strada di campagna",
   "correct_answer": false,
   "image": "8898484eae51d3fddd775bd2ae9e2572.jpeg",
-  "image_description": "Segnale di numero di strada comunale. Il segnale indica che ci si trova lungo la strada comunale numero 19.",
+  "image_description": "Segnale di identificazione di strada comunale. Segnale di indicazione che identifica una strada comunale (in questo caso la n. 19). Può essere posizionato all'inizio o lungo l'itinerario della strada comunale indicata, oppure essere inserito a completamento all'interno di segnali di direzione o di preavviso.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordo nero su sfondo bianco. Al centro del segnale sono presenti le lettere \"SC\" seguite dal numero \"19\", anch'essi in nero. Il segnale è un segnale di indicazione che specifica il numero di una strada comunale.",
-    "name": "Segnale di numero di strada comunale",
-    "description": "Il segnale indica che ci si trova lungo la strada comunale numero 19."
+    "visual_analysis": "Pannello rettangolare a fondo bianco con cornice perimetrale nera, contenente al centro l'iscrizione in caratteri neri 'SC 19'.",
+    "name": "Segnale di identificazione di strada comunale",
+    "description": "Segnale di indicazione che identifica una strada comunale (in questo caso la n. 19). Può essere posizionato all'inizio o lungo l'itinerario della strada comunale indicata, oppure essere inserito a completamento all'interno di segnali di direzione o di preavviso."
   },
   "quiz_metadata": {
     "core_concepts": [

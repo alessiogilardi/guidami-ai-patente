@@ -5,11 +5,11 @@
   "text": "La presenza di uno dei due pannelli integrativi in figura indica l'incrocio con una strada dalla quale si immettono autocarri provenienti da una discarica",
   "correct_answer": false,
   "image": "2093c48d10e144197dd00ef236af2368.jpeg",
-  "image_description": "Pannello integrativo di pericolo (tornanti). Il pannello integrativo A indica la presenza di uno o più tornanti. Il pannello integrativo B indica la presenza di 3 tornanti. Entrambi sono pannelli integrativi che specificano la natura del pericolo segnalato dal segnale principale a cui sono abbinati.",
+  "image_description": "Pannelli integrativi indicanti tornante o serie di tornanti. Pannelli integrativi che, posti sotto i segnali di pericolo di 'Curva pericolosa' o 'Doppia curva pericolosa', precisano la presenza di una o più curve particolarmente strette a raggio ridotto (tornanti). Il pannello (A) segnala la presenza di un singolo tornante, mentre il pannello (B) indica il numero esatto di tornanti successivi da affrontare (in questo caso tre). Impongono al conducente di moderare particolarmente la velocità e prestare la massima attenzione alla traiettoria e alla visibilità limitata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, etichettati A e B. Il pannello A contiene la scritta \"tornante\" in nero su sfondo bianco. Il pannello B contiene la scritta \"3 tornanti\" in nero su sfondo bianco. Entrambi i pannelli sono bordati di nero. Questi pannelli sono comunemente usati per integrare segnali di pericolo, specificando la natura del pericolo stesso. In questo caso, indicano la presenza di tornanti. Il pannello A indica genericamente la presenza di tornanti, mentre il pannello B specifica che ce ne sono tre.",
-    "name": "Pannello integrativo di pericolo (tornanti)",
-    "description": "Il pannello integrativo A indica la presenza di uno o più tornanti. Il pannello integrativo B indica la presenza di 3 tornanti. Entrambi sono pannelli integrativi che specificano la natura del pericolo segnalato dal segnale principale a cui sono abbinati."
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari a fondo bianco con bordo nero, disposti verticalmente e contrassegnati a destra dalle lettere maiuscole 'A' e 'B'. Il pannello superiore (A) reca al centro la scritta nera 'tornante'. Il pannello inferiore (B) reca al centro la scritta nera '3 tornanti'.",
+    "name": "Pannelli integrativi indicanti tornante o serie di tornanti",
+    "description": "Pannelli integrativi che, posti sotto i segnali di pericolo di 'Curva pericolosa' o 'Doppia curva pericolosa', precisano la presenza di una o più curve particolarmente strette a raggio ridotto (tornanti). Il pannello (A) segnala la presenza di un singolo tornante, mentre il pannello (B) indica il numero esatto di tornanti successivi da affrontare (in questo caso tre). Impongono al conducente di moderare particolarmente la velocità e prestare la massima attenzione alla traiettoria e alla visibilità limitata."
   },
   "quiz_metadata": {
     "core_concepts": [

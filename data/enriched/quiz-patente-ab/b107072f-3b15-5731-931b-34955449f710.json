@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica l'orario di apertura di una zona a traffico limitato",
   "correct_answer": false,
   "image": "114c9931e895cc500d8176d5c9541ebc.jpeg",
-  "image_description": "Preavviso di percorso pedonale con pannello integrativo di orario. Il segnale indica un percorso pedonale riservato ai pedoni, con l'aggiunta di un pannello integrativo che specifica gli orari in cui tale riserva è valida: dalle 8:00 alle 20:00. Al di fuori di questi orari, il percorso non è esclusivamente pedonale.",
+  "image_description": "Segnale di percorso pedonale con pannello integrativo di fascia oraria per giorni festivi. Indica l'inizio di un percorso riservato esclusivamente al transito dei pedoni, con validità limitata ai giorni festivi nella fascia oraria compresa tra le 8.00 e le 20.00; nei giorni e nelle ore indicate la circolazione è vietata a tutti i veicoli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di prescrizione circolare blu con bordo bianco, raffigurante la figura stilizzata di un pedone in bianco. Sotto questo segnale, è presente un pannello integrativo rettangolare bianco con bordo nero. Il pannello contiene un simbolo di croce (+) seguito dagli orari \"8,00 - 20,00\". Il segnale principale indica un percorso pedonale. Il pannello integrativo specifica che la prescrizione è valida solo negli orari indicati.",
-    "name": "Preavviso di percorso pedonale con pannello integrativo di orario",
-    "description": "Il segnale indica un percorso pedonale riservato ai pedoni, con l'aggiunta di un pannello integrativo che specifica gli orari in cui tale riserva è valida: dalle 8:00 alle 20:00. Al di fuori di questi orari, il percorso non è esclusivamente pedonale."
+    "visual_analysis": "L'immagine presenta un segnale di prescrizione (obbligo) circolare a fondo blu con bordo bianco, contenente la figura stilizzata di un pedone in bianco. Al di sotto è presente un pannello integrativo rettangolare a fondo bianco con bordo nero, recante a sinistra il simbolo di una croce latina (indicante i giorni festivi) seguito dall'indicazione oraria '8,00 - 20,00'.",
+    "name": "Segnale di percorso pedonale con pannello integrativo di fascia oraria per giorni festivi",
+    "description": "Indica l'inizio di un percorso riservato esclusivamente al transito dei pedoni, con validità limitata ai giorni festivi nella fascia oraria compresa tra le 8.00 e le 20.00; nei giorni e nelle ore indicate la circolazione è vietata a tutti i veicoli."
   },
   "quiz_metadata": {
     "core_concepts": [

@@ -5,11 +5,11 @@
   "text": "In una carreggiata a doppio senso di circolazione la striscia di mezzo, se discontinua (tratteggiata), può essere superata durante un sorpasso",
   "correct_answer": true,
   "image": "9452b305a54d3ce933cf84b3ec81361b.jpeg",
-  "image_description": "Striscia bianca continua. La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla.",
+  "image_description": "Striscia longitudinale continua doppia. Segnaletica orizzontale costituita da una doppia striscia longitudinale continua che separa i sensi di marcia su carreggiate a doppio senso di circolazione. Non può essere in alcun caso oltrepassata o sormontata, né è consentito marciare a cavallo di essa. Vieta l'inversione di marcia e la svolta a sinistra che ne comporti l'attraversamento, mentre consente la manovra di sorpasso a condizione di rimanere interamente all'interno della propria semicarreggiata.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una porzione di carreggiata con due strisce bianche continue parallele, che delimitano una o più corsie di marcia. Non sono presenti altri segnali o elementi di contesto. Le strisce sono di colore bianco e appaiono continue, senza interruzioni. La loro presenza indica la separazione delle corsie e il divieto di superamento o attraversamento.",
-    "name": "Striscia bianca continua",
-    "description": "La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla."
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con fondo grigio asfalto suddivisa in due corsie. Al centro è presente una segnaletica orizzontale composta da due strisce bianche continue parallele e ravvicinate (doppia striscia continua di mezzeria). Ai bordi superiore e inferiore della carreggiata sono visibili le strisce bianche longitudinali continue di margine.",
+    "name": "Striscia longitudinale continua doppia",
+    "description": "Segnaletica orizzontale costituita da una doppia striscia longitudinale continua che separa i sensi di marcia su carreggiate a doppio senso di circolazione. Non può essere in alcun caso oltrepassata o sormontata, né è consentito marciare a cavallo di essa. Vieta l'inversione di marcia e la svolta a sinistra che ne comporti l'attraversamento, mentre consente la manovra di sorpasso a condizione di rimanere interamente all'interno della propria semicarreggiata."
   },
   "quiz_metadata": {
     "core_concepts": [

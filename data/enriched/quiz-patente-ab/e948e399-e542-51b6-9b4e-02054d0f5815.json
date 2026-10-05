@@ -5,11 +5,11 @@
   "text": "Il semaforo in figura segnala la presenza di una scuola elementare, per cui bisogna rallentare",
   "correct_answer": false,
   "image": "2129f648b286c6c53769eb3846a537af.jpeg",
-  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_description": "Lanterna semaforica per pedoni. Lanterna semaforica che regola il transito dei pedoni negli attraversamenti pedonali, solitamente in corrispondenza di incroci. La luce rossa impone di non impegnare l'attraversamento; la luce verde consente ai pedoni di impegnare la carreggiata per attraversarla; la luce gialla fissa impone a chi ha già iniziato l'attraversamento di liberare rapidamente la carreggiata e a chi è ancora sul marciapiede di non iniziare l'attraversamento.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
-    "name": "Semaforo pedonale",
-    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+    "visual_analysis": "Disposizione verticale di tre luci circolari su fondo scuro all'interno di una custodia rettangolare. Dall'alto verso il basso: in alto una sagoma di figura umana stilizzata ferma di colore rosso; al centro una sagoma analoga di colore giallo; in basso una sagoma di figura umana stilizzata in movimento (in marcia) di colore verde.",
+    "name": "Lanterna semaforica per pedoni",
+    "description": "Lanterna semaforica che regola il transito dei pedoni negli attraversamenti pedonali, solitamente in corrispondenza di incroci. La luce rossa impone di non impegnare l'attraversamento; la luce verde consente ai pedoni di impegnare la carreggiata per attraversarla; la luce gialla fissa impone a chi ha già iniziato l'attraversamento di liberare rapidamente la carreggiata e a chi è ancora sul marciapiede di non iniziare l'attraversamento."
   },
   "quiz_metadata": {
     "core_concepts": [

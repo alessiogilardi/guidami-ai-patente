@@ -5,11 +5,11 @@
   "text": "Il segnale (A) può essere ripetuto dopo ogni incrocio con pannello integrativo (B)",
   "correct_answer": true,
   "image": "3f226c27c67abb8abdee66edcfdc0a20.jpeg",
-  "image_description": "Segnale di divieto di sorpasso con pannello integrativo (B). Il segnale A è un segnale di divieto di sorpasso per tutti i veicoli, tranne quelli a due ruote senza motore e i quadricicli non leggeri. Il segnale B è un pannello integrativo che indica che il divieto si applica a tutti i veicoli a motore.",
+  "image_description": "Segnale di divieto di sorpasso con pannello integrativo di continuazione. Il segnale (A) vieta a tutti i veicoli a motore di sorpassare altri veicoli a motore (tranne ciclomotori e motocicli, e purché la manovra non comporti l'invasione della corsia opposta). Il pannello integrativo (B) indica la continuazione del divieto precedentemente imposto, e può essere impiegato per ripetere la prescrizione dopo ogni incrocio qualora il divieto debba proseguire.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra due elementi, etichettati A e B. L'elemento A è un segnale stradale circolare con bordo rosso e sfondo bianco, raffigurante due automobili, una rossa e una nera, una accanto all'altra, con la rossa leggermente avanti. Questo è un segnale di divieto di sorpasso. L'elemento B è un pannello rettangolare bianco con bordo nero, contenente due frecce nere, una rivolta verso l'alto e una verso il basso, disposte verticalmente. Questo pannello integrativo specifica il tipo di veicoli a cui si applica il divieto indicato dal segnale A. In questo caso, le frecce che indicano direzioni opposte suggeriscono che il divieto si applica a tutti i veicoli a motore.",
-    "name": "Segnale di divieto di sorpasso con pannello integrativo (B)",
-    "description": "Il segnale A è un segnale di divieto di sorpasso per tutti i veicoli, tranne quelli a due ruote senza motore e i quadricicli non leggeri. Il segnale B è un pannello integrativo che indica che il divieto si applica a tutti i veicoli a motore."
+    "visual_analysis": "L'immagine mostra due elementi distinti contrassegnati da lettere. In alto, indicato dalla lettera 'A', vi è un segnale di prescrizione circolare con bordo rosso e fondo bianco, raffigurante due autovetture affiancate (quella di sinistra di colore rosso e quella di destra di colore nero). In basso, contrassegnato dalla lettera 'B', vi è un pannello integrativo rettangolare verticale a fondo bianco con due frecce nere disposte lungo lo stesso asse verticale ma orientate in direzioni opposte (una verso l'alto e una verso il basso).",
+    "name": "Segnale di divieto di sorpasso con pannello integrativo di continuazione",
+    "description": "Il segnale (A) vieta a tutti i veicoli a motore di sorpassare altri veicoli a motore (tranne ciclomotori e motocicli, e purché la manovra non comporti l'invasione della corsia opposta). Il pannello integrativo (B) indica la continuazione del divieto precedentemente imposto, e può essere impiegato per ripetere la prescrizione dopo ogni incrocio qualora il divieto debba proseguire."
   },
   "quiz_metadata": {
     "core_concepts": [

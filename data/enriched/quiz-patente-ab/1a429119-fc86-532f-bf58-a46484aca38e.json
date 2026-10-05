@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato richiede di rallentare e all'occorrenza di arrestarsi se gli animali attraversano improvvisamente la strada",
   "correct_answer": true,
   "image": "36afb52a10944b6e19c4dc97b73653d4.jpeg",
-  "image_description": "Segnale di pericolo - Attraversamento animali selvatici. Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_description": "Segnale di animali selvatici vaganti. Preannuncia un tratto di strada con probabile e improvviso attraversamento o presenza di animali selvatici vaganti sulla carreggiata. Comporta l'obbligo di rallentare la velocità per evitare collisioni, mantenere un'andatura prudente e arrestarsi all'occorrenza qualora gli animali attraversino la strada o diano segni di spavento, evitando l'uso immotivato del segnalatore acustico che potrebbe disorientarli.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato, in nero, il pittogramma di un cervo in movimento, che simboleggia la possibile presenza o attraversamento di animali selvatici sulla carreggiata. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
-    "name": "Segnale di pericolo - Attraversamento animali selvatici",
-    "description": "Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+    "visual_analysis": "Segnale di pericolo di forma triangolare con vertice rivolto verso l'alto, bordo rosso e fondo bianco. Al centro è raffigurata la sagoma nera di un animale selvatico ungulato (cervo o capriolo) in atto di saltare verso sinistra.",
+    "name": "Segnale di animali selvatici vaganti",
+    "description": "Preannuncia un tratto di strada con probabile e improvviso attraversamento o presenza di animali selvatici vaganti sulla carreggiata. Comporta l'obbligo di rallentare la velocità per evitare collisioni, mantenere un'andatura prudente e arrestarsi all'occorrenza qualora gli animali attraversino la strada o diano segni di spavento, evitando l'uso immotivato del segnalatore acustico che potrebbe disorientarli."
   },
   "quiz_metadata": {
     "core_concepts": [

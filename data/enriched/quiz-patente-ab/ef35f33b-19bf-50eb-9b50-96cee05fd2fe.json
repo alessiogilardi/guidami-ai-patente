@@ -5,11 +5,11 @@
   "text": "Quando il vigile si dispone con le braccia aperte verso la nostra direzione come in figura bisogna suonare il clacson, ma con moderazione, per richiamare l'attenzione del vigile",
   "correct_answer": false,
   "image": "5dec4c1e652c85a82f5e3182e817c4f4.jpeg",
-  "image_description": "Segnale del vigile con braccia aperte verso la nostra direzione. La posizione del vigile con le braccia aperte verso la nostra direzione indica che è vietato il passaggio. Questa posizione è equivalente al segnale di rosso del semaforo.",
+  "image_description": "Agente del traffico con le braccia aperte verso la nostra direzione. La segnalazione dell'agente del traffico con le braccia aperte rivolte verso la direzione di provenienza equivale alla luce rossa del semaforo. Impone l'arresto prima della striscia trasversale di arresto e vieta categoricamente il passaggio, impedendo di proseguire diritto, svoltare a destra o svoltare a sinistra.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra la figura stilizzata di un vigile urbano in piedi al centro di un incrocio. Il vigile ha le braccia completamente aperte, perpendicolari al corpo, e il volto rivolto verso l'osservatore (e quindi verso la nostra direzione di marcia). Ai lati dell'incrocio sono visibili delle linee che rappresentano le corsie o i bordi della strada, con delle angolazioni che suggeriscono la presenza di un incrocio. Non sono presenti altri segnali stradali o veicoli. La posizione del vigile con le braccia aperte verso la nostra direzione è un segnale degli agenti del traffico che indica un divieto di passaggio.",
-    "name": "Segnale del vigile con braccia aperte verso la nostra direzione",
-    "description": "La posizione del vigile con le braccia aperte verso la nostra direzione indica che è vietato il passaggio. Questa posizione è equivalente al segnale di rosso del semaforo."
+    "visual_analysis": "Illustrazione a sfondo bianco e cornice nera raffigurante un incrocio a quattro bracci delineato da tratti d'angolo stilizzati. Al centro dell'intersezione si trova la sagoma frontale di un agente del traffico (vigile) rivolto verso l'osservatore, con entrambe le braccia distese orizzontalmente all'altezza delle spalle, perpendicolari alla traiettoria di chi guarda.",
+    "name": "Agente del traffico con le braccia aperte verso la nostra direzione",
+    "description": "La segnalazione dell'agente del traffico con le braccia aperte rivolte verso la direzione di provenienza equivale alla luce rossa del semaforo. Impone l'arresto prima della striscia trasversale di arresto e vieta categoricamente il passaggio, impedendo di proseguire diritto, svoltare a destra o svoltare a sinistra."
   },
   "quiz_metadata": {
     "core_concepts": [

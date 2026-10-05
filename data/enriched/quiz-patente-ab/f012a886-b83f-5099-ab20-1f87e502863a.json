@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato può essere integrato con il pannello in figura",
   "correct_answer": true,
   "image": "ac2593bb518516fed410c668f6aaa58d.jpeg",
-  "image_description": "Doppio pericolo (curva sinistra poi destra) con pannello di estesa. Il segnale indica una sequenza di due curve, la prima a sinistra e la seconda a destra. Il pannello integrativo specifica che tale sequenza di curve si estende per una lunghezza di 2,8 km.",
+  "image_description": "Segnale di doppia curva, la prima a destra con pannello integrativo di estesa. Presegnala una serie di curve pericolose, la prima delle quali svolta a destra, che si susseguono per un tratto lungo 2,8 km a partire dal segnale. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve, vieta la sosta, la fermata, l'inversione del senso di marcia e, su carreggiate a doppio senso con due sole corsie, la manovra di sorpasso.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo bianco. Al centro è presente un pittogramma nero raffigurante una doppia curva, la prima verso sinistra e la seconda verso destra. Sotto il segnale di pericolo, è presente un pannello rettangolare bianco con bordo nero. Su questo pannello sono raffigurate due frecce verticali rivolte verso l'alto, ai lati di un'indicazione numerica \"2,8 km\". Questo pannello integrativo indica l'estesa del pericolo segnalato dal segnale principale.",
-    "name": "Doppio pericolo (curva sinistra poi destra) con pannello di estesa",
-    "description": "Il segnale indica una sequenza di due curve, la prima a sinistra e la seconda a destra. Il pannello integrativo specifica che tale sequenza di curve si estende per una lunghezza di 2,8 km."
+    "visual_analysis": "L'immagine presenta un segnale di pericolo triangolare con vertice verso l'alto, bordo rosso e fondo bianco, contenente il simbolo nero di una doppia curva la cui prima svolta è verso destra. Al di sotto è presente un pannello integrativo rettangolare bianco con bordo nero, recante al centro la scritta '2,8 km' affiancata da due frecce nere verticali rivolte verso l'alto (pannello di estesa).",
+    "name": "Segnale di doppia curva, la prima a destra con pannello integrativo di estesa",
+    "description": "Presegnala una serie di curve pericolose, la prima delle quali svolta a destra, che si susseguono per un tratto lungo 2,8 km a partire dal segnale. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve, vieta la sosta, la fermata, l'inversione del senso di marcia e, su carreggiate a doppio senso con due sole corsie, la manovra di sorpasso."
   },
   "quiz_metadata": {
     "core_concepts": [

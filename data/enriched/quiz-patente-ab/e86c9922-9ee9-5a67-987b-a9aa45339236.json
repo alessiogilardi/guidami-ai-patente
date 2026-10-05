@@ -5,11 +5,11 @@
   "text": "Il delineatore raffigurato indica gli ostacoli sporgenti sulla carreggiata",
   "correct_answer": false,
   "image": "5107aff1b4409bb9b04911c612214719.jpeg",
-  "image_description": "Delineatore di ostacolo o deviazione. Il delineatore raffigurato, con le sue chevron bianche e nere alternate su sfondo nero, indica la presenza di un ostacolo o di una deviazione sulla carreggiata, invitando il conducente a prestare attenzione e a moderare la velocità. Viene comunemente utilizzato per segnalare curve pericolose, restringimenti o cantieri stradali.",
+  "image_description": "Delineatore per curve strette o di raccordo a sinistra. Segnale complementare posto all'esterno del raggio di curvatura, particolarmente utile di notte o con scarsa visibilità, per evidenziare l'andamento e la pericolosità di una curva stretta a sinistra. Segue di norma il segnale di pericolo di curva a sinistra e richiede di moderare la velocità e procedere con particolare prudenza. Se a bande bianche e rosse, segnala una curva provvisoria in presenza di un cantiere stradale.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un delineatore di ostacolo o deviazione. È composto da una traversa orizzontale rettangolare, divisa in sezioni alternate di colore nero e bianco a forma di V (chevron), che puntano nella direzione della deviazione o dell'ostacolo. La traversa è sostenuta da due montanti verticali, posizionati su una linea orizzontale che rappresenta il suolo. Il delineatore è posizionato centralmente rispetto alla linea del suolo. Le chevron bianche sono disposte in modo da indicare una direzione, in questo caso, verso sinistra e poi verso destra, suggerendo una curva o una deviazione.",
-    "name": "Delineatore di ostacolo o deviazione",
-    "description": "Il delineatore raffigurato, con le sue chevron bianche e nere alternate su sfondo nero, indica la presenza di un ostacolo o di una deviazione sulla carreggiata, invitando il conducente a prestare attenzione e a moderare la velocità. Viene comunemente utilizzato per segnalare curve pericolose, restringimenti o cantieri stradali."
+    "visual_analysis": "Pannello rettangolare disposto orizzontalmente e supportato da due montanti verticali. All'interno del pannello sono disegnate frecce/cuspidi (chevron) alternate bianche e nere orientate verso sinistra (<).",
+    "name": "Delineatore per curve strette o di raccordo a sinistra",
+    "description": "Segnale complementare posto all'esterno del raggio di curvatura, particolarmente utile di notte o con scarsa visibilità, per evidenziare l'andamento e la pericolosità di una curva stretta a sinistra. Segue di norma il segnale di pericolo di curva a sinistra e richiede di moderare la velocità e procedere con particolare prudenza. Se a bande bianche e rosse, segnala una curva provvisoria in presenza di un cantiere stradale."
   },
   "quiz_metadata": {
     "core_concepts": [

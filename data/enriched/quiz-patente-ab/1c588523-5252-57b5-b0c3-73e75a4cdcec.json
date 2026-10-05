@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato è un segnale di obbligo",
   "correct_answer": false,
   "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
-  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_description": "Segnale di dosso. Preannuncia una variazione altimetrica della carreggiata (una salita seguita da una discesa) con conseguente limitazione della visibilità. Impone di moderare la velocità; vieta la sosta, la fermata, l'inversione di marcia e il sorpasso sul tratto ascendente se la carreggiata è a doppio senso di marcia con due sole corsie.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "visual_analysis": "Segnale stradale di pericolo di forma triangolare con vertice verso l'alto, bordo perimetrale rosso e fondo bianco. Al centro è raffigurata una sagoma nera stilizzata che rappresenta un rilievo convesso della sede stradale (profilo a schiena d'asino).",
     "name": "Segnale di dosso",
-    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+    "description": "Preannuncia una variazione altimetrica della carreggiata (una salita seguita da una discesa) con conseguente limitazione della visibilità. Impone di moderare la velocità; vieta la sosta, la fermata, l'inversione di marcia e il sorpasso sul tratto ascendente se la carreggiata è a doppio senso di marcia con due sole corsie."
   },
   "quiz_metadata": {
     "core_concepts": [

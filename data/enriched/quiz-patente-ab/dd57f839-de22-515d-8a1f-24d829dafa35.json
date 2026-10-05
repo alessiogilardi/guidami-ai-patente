@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che si può svoltare soltanto a sinistra",
   "correct_answer": true,
   "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
-  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_description": "Segnale di direzione obbligatoria a sinistra. Segnale di prescrizione (obbligo) che impone ai conducenti l'obbligo di svoltare a sinistra all'incrocio prima del quale è collocato, indicando l'unica direzione consentita e vietando di proseguire diritto o di svoltare a destra.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
-    "name": "Segnale di direzione obbligatoria sinistra",
-    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+    "visual_analysis": "Segnale stradale verticale di forma circolare con fondo blu, bordo bianco sottile e al centro una freccia orizzontale bianca rivolta verso sinistra.",
+    "name": "Segnale di direzione obbligatoria a sinistra",
+    "description": "Segnale di prescrizione (obbligo) che impone ai conducenti l'obbligo di svoltare a sinistra all'incrocio prima del quale è collocato, indicando l'unica direzione consentita e vietando di proseguire diritto o di svoltare a destra."
   },
   "quiz_metadata": {
     "core_concepts": [

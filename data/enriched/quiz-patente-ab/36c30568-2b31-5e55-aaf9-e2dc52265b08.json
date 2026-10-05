@@ -5,11 +5,11 @@
   "text": "La striscia trasversale continua in figura indica il punto in cui bisogna arrestarsi ad un incrocio, se regolato da semaforo a luce rossa",
   "correct_answer": true,
   "image": "af4cddba8bbf3ea3411e0c054b6f313f.jpeg",
-  "image_description": "Striscia trasversale di arresto. La striscia bianca trasversale continua indica il punto in cui i conducenti devono arrestarsi in presenza di un segnale di STOP o di un semaforo rosso. Non indica un attraversamento pedonale o ciclabile, né l'inizio di un divieto di sosta. Non può essere superata se non dopo essersi fermati e aver dato la precedenza.",
+  "image_description": "Striscia trasversale di arresto. Indica la linea prima della quale il conducente deve obbligatoriamente fermarsi quando vi sia l'obbligo di arresto imposto dal segnale 'Fermarsi e dare precedenza' (STOP), da un semaforo a luce rossa o dalla segnalazione dell'agente del traffico. Può essere completata dall'iscrizione 'STOP' tracciata sulla pavimentazione stradale. Non va confusa con la striscia trasversale di dare precedenza (che è discontinua/tratteggiata a triangoli).",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra una striscia bianca trasversale continua sulla pavimentazione stradale, che attraversa una carreggiata. La striscia è posta in prossimità di un incrocio a raso, dove una strada secondaria si immette in una strada principale. La striscia bianca trasversale continua è un elemento della segnaletica orizzontale.",
+    "visual_analysis": "L'immagine illustra dall'alto una strada asfaltata che si innesta ortogonalmente a un'altra via formando un'intersezione. La carreggiata di provenienza è delimitata da bordi stradali e marciapiedi; la linea longitudinale di mezzeria passa da tratteggiata a continua in prossimità dell'incrocio. Nella semicarreggiata inferiore (corsia di approccio all'incrocio) è tracciata perpendicolarmente al senso di marcia una striscia bianca continua di notevole spessore, che si estende dal margine destro fino alla linea di mezzeria continua.",
     "name": "Striscia trasversale di arresto",
-    "description": "La striscia bianca trasversale continua indica il punto in cui i conducenti devono arrestarsi in presenza di un segnale di STOP o di un semaforo rosso. Non indica un attraversamento pedonale o ciclabile, né l'inizio di un divieto di sosta. Non può essere superata se non dopo essersi fermati e aver dato la precedenza."
+    "description": "Indica la linea prima della quale il conducente deve obbligatoriamente fermarsi quando vi sia l'obbligo di arresto imposto dal segnale 'Fermarsi e dare precedenza' (STOP), da un semaforo a luce rossa o dalla segnalazione dell'agente del traffico. Può essere completata dall'iscrizione 'STOP' tracciata sulla pavimentazione stradale. Non va confusa con la striscia trasversale di dare precedenza (che è discontinua/tratteggiata a triangoli)."
   },
   "quiz_metadata": {
     "core_concepts": [

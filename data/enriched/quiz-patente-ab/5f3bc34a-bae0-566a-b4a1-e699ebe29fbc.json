@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica che lungo la strada, a breve distanza, vi è un distributore di carburante",
   "correct_answer": true,
   "image": "448eabbee847432f1274ed56814a5934.jpeg",
-  "image_description": "Distributore di carburante. Il segnale indica la presenza di un distributore di carburante nelle vicinanze.",
+  "image_description": "Segnale di rifornimento. Segnale di indicazione (servizi utili) che preavvisa o segnala la presenza di un impianto di distribuzione di carburante lungo l'itinerario o nelle immediate vicinanze, offrendo agli utenti la possibilità di rifornire il veicolo. Può essere completato nella parte inferiore da un pannello o da iscrizioni indicanti la distanza o la denominazione della stazione.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale, all'interno di un riquadro bianco, è presente il pittogramma di una pompa di benzina stilizzata. Sotto il pittogramma, vi è uno spazio vuoto di colore blu, tipico dei segnali di servizio che indicano la presenza di un servizio lungo la strada. Il segnale è di forma rettangolare verticale.",
-    "name": "Distributore di carburante",
-    "description": "Il segnale indica la presenza di un distributore di carburante nelle vicinanze."
+    "visual_analysis": "Segnale stradale rettangolare a sviluppo verticale con fondo blu e bordo bianco. Nella metà superiore è presente un riquadro bianco a fondo chiaro contenente il pittogramma nero stilizzato di una pompa erogatrice di carburante completa di pistola e tubo. La parte inferiore del cartello è lasciata a fondo blu uniforme per consentire l'eventuale indicazione di distanze o marchi.",
+    "name": "Segnale di rifornimento",
+    "description": "Segnale di indicazione (servizi utili) che preavvisa o segnala la presenza di un impianto di distribuzione di carburante lungo l'itinerario o nelle immediate vicinanze, offrendo agli utenti la possibilità di rifornire il veicolo. Può essere completato nella parte inferiore da un pannello o da iscrizioni indicanti la distanza o la denominazione della stazione."
   },
   "quiz_metadata": {
     "core_concepts": [

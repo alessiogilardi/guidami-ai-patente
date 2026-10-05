@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito ai bambini non accompagnati",
   "correct_answer": false,
   "image": "ad3996df5149158644a0a874afd15c93.jpeg",
-  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici.",
+  "image_description": "Segnale di scuolabus. Segnale di indicazione che, se apposto all'esterno di un autobus, segnala che il veicolo effettua trasporto di scolari, mentre se collocato sul bordo della carreggiata o del marciapiede indica la fermata di uno scuolabus. Invita i conducenti a prestare particolare attenzione e a moderare la velocità per la possibile presenza di bambini scesi dal mezzo che potrebbero attraversare improvvisamente la strada.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo di forma quadrata con angoli arrotondati e sfondo arancione. Al centro del segnale è raffigurato un pittogramma nero stilizzato di due figure umane, un adulto e un bambino, che corrono tenendosi per mano e portano entrambi delle cartelle. Questo pittogramma è tipico dei segnali di pericolo che preannunciano la possibile presenza di bambini sulla carreggiata. Il contesto del quiz suggerisce che si tratti di un segnale di pericolo relativo ai bambini.",
-    "name": "Segnale di pericolo - Attraversamento di bambini",
-    "description": "Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici."
+    "visual_analysis": "Segnale quadrato con fondo arancione e sottile bordo nero. Al centro sono raffigurate in nero le sagome stilizzate di due bambini (un maschio e una femmina con cartella) che corrono tenendosi per mano.",
+    "name": "Segnale di scuolabus",
+    "description": "Segnale di indicazione che, se apposto all'esterno di un autobus, segnala che il veicolo effettua trasporto di scolari, mentre se collocato sul bordo della carreggiata o del marciapiede indica la fermata di uno scuolabus. Invita i conducenti a prestare particolare attenzione e a moderare la velocità per la possibile presenza di bambini scesi dal mezzo che potrebbero attraversare improvvisamente la strada."
   },
   "quiz_metadata": {
     "core_concepts": [

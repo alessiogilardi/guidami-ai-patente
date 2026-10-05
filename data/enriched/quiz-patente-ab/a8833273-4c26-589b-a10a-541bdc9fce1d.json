@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato segnala che nelle ore indicate vige il DIVIETO DI SOSTA per i veicoli rappresentati in figura",
   "correct_answer": false,
   "image": "289fc7de638eec152da2ea0755f83fd9.jpeg",
-  "image_description": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade). Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia.",
+  "image_description": "Segnale di divieto di sosta temporaneo per pulizia meccanica della strada. Vieta la sosta a tutti i veicoli limitatamente ai giorni e agli orari indicati nel pannello integrativo (nella fattispecie dal lunedì al venerdì dalle ore 21:00 alle ore 4:00), al fine di consentire le operazioni di pulizia meccanica della strada. In tali orari la sosta è vietata e i veicoli lasciati in sosta possono essere rimossi forzatamente; al di fuori di tali intervalli la sosta è consentita.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con bordo nero. Nella parte superiore è presente un segnale di divieto di sosta (cerchio rosso con barra trasversale rossa su fondo blu). Sotto questo segnale, vi è un pannello integrativo che indica i giorni \"Lun - ven\" e gli orari \"21.00 - 4.00\". Ancora più in basso, un pittogramma raffigura un mezzo per la pulizia stradale con spazzole. L'insieme dei simboli indica un divieto di sosta temporaneo, legato a specifiche fasce orarie e giorni, e motivato da esigenze di pulizia della strada.",
-    "name": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade)",
-    "description": "Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia."
+    "visual_analysis": "L'immagine mostra un cartello rettangolare verticale a fondo bianco con bordo nero. Nella parte superiore è raffigurato il segnale di 'Divieto di sosta' (disco a fondo blu con bordo e barra diagonale rossi). Al di sotto sono presenti iscrizioni alfanumeriche che indicano i giorni e le fasce orarie di validità ('lun - ven' e '21.00 - 4.00') e, nella parte inferiore, il simbolo grafico di una macchina operatrice spazzatrice (automezzo per la pulizia meccanica della carreggiata con spazzola anteriore).",
+    "name": "Segnale di divieto di sosta temporaneo per pulizia meccanica della strada",
+    "description": "Vieta la sosta a tutti i veicoli limitatamente ai giorni e agli orari indicati nel pannello integrativo (nella fattispecie dal lunedì al venerdì dalle ore 21:00 alle ore 4:00), al fine di consentire le operazioni di pulizia meccanica della strada. In tali orari la sosta è vietata e i veicoli lasciati in sosta possono essere rimossi forzatamente; al di fuori di tali intervalli la sosta è consentita."
   },
   "quiz_metadata": {
     "core_concepts": [

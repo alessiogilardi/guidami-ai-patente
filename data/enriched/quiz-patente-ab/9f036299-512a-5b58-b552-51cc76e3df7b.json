@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato vieta il transito a tutti i veicoli",
   "correct_answer": true,
   "image": "fbde6a78154edc681ee7715bad203441.jpeg",
-  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_description": "Segnale di divieto di transito. Vieta la circolazione in entrambi i sensi a tutti i veicoli, sia a motore che privi di motore (comprese biciclette, ciclomotori, motoveicoli e autoveicoli). È posto su entrambi gli accessi della strada interessata dal divieto. Il transito resta invece consentito ai pedoni. Può avere validità limitata nel tempo, indicata mediante apposito pannello integrativo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "visual_analysis": "Segnale stradale di prescrizione di forma circolare, caratterizzato da un bordo perimetrale rosso e fondo interno bianco completamente vuoto, privo di simboli, sagome o scritte.",
     "name": "Segnale di divieto di transito",
-    "description": "Il segnale vieta il transito a tutti i veicoli."
+    "description": "Vieta la circolazione in entrambi i sensi a tutti i veicoli, sia a motore che privi di motore (comprese biciclette, ciclomotori, motoveicoli e autoveicoli). È posto su entrambi gli accessi della strada interessata dal divieto. Il transito resta invece consentito ai pedoni. Può avere validità limitata nel tempo, indicata mediante apposito pannello integrativo."
   },
   "quiz_metadata": {
     "core_concepts": [

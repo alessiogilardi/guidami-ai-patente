@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato obbliga ad andare diritto o svoltare a destra",
   "correct_answer": false,
   "image": "f11adbce174cb84be85861f037d85fb6.jpeg",
-  "image_description": "Obbligo di svolta a destra. Il segnale impone di svoltare obbligatoriamente a destra.",
+  "image_description": "Segnale di preavviso di direzione obbligatoria a destra. Segnale di prescrizione (obbligo) posto prima di un incrocio per preannunciare l'obbligo di svoltare a destra, indicando l'unica direzione consentita al prossimo incrocio; vieta pertanto di proseguire diritto o di svoltare a sinistra. Precede il segnale di direzione obbligatoria a destra e può essere integrato con un pannello che indica la distanza dal punto in cui vige l'obbligo.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che parte dal basso a sinistra, curva verso destra e punta verso l'alto a destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
-    "name": "Obbligo di svolta a destra",
-    "description": "Il segnale impone di svoltare obbligatoriamente a destra."
+    "visual_analysis": "Segnale stradale verticale di forma circolare a fondo blu con sottile bordo bianco. Al centro è raffigurata una freccia bianca che parte dal basso con orientamento verticale e curva verso destra.",
+    "name": "Segnale di preavviso di direzione obbligatoria a destra",
+    "description": "Segnale di prescrizione (obbligo) posto prima di un incrocio per preannunciare l'obbligo di svoltare a destra, indicando l'unica direzione consentita al prossimo incrocio; vieta pertanto di proseguire diritto o di svoltare a sinistra. Precede il segnale di direzione obbligatoria a destra e può essere integrato con un pannello che indica la distanza dal punto in cui vige l'obbligo."
   },
   "quiz_metadata": {
     "core_concepts": [

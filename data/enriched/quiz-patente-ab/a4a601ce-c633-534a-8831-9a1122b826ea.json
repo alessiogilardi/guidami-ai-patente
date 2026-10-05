@@ -5,11 +5,11 @@
   "text": "Il segnale raffigurato indica la fine del pericolo precedentemente segnalato",
   "correct_answer": false,
   "image": "d8dce2d1c8f09a52c75de4be9144dd48.jpeg",
-  "image_description": "Segnale di fine divieti o prescrizioni. Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata.",
+  "image_description": "Segnale di fine di tutte le prescrizioni. Indica il punto a partire dal quale cessano di avere efficacia tutti i divieti e le prescrizioni precedentemente imposti sul tratto stradale (come divieto di sorpasso o limiti di velocità), ripristinando le regole generali di circolazione previste per quel tipo di strada.",
   "image_analysis": {
-    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro è presente una banda nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di fine divieti o prescrizioni.",
-    "name": "Segnale di fine divieti o prescrizioni",
-    "description": "Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata."
+    "visual_analysis": "Segnale stradale verticale di forma circolare a fondo bianco, delimitato da un sottile bordo nero e attraversato diagonalmente da una banda nera obliqua. Non sono presenti altri simboli o iscrizioni.",
+    "name": "Segnale di fine di tutte le prescrizioni",
+    "description": "Indica il punto a partire dal quale cessano di avere efficacia tutti i divieti e le prescrizioni precedentemente imposti sul tratto stradale (come divieto di sorpasso o limiti di velocità), ripristinando le regole generali di circolazione previste per quel tipo di strada."
   },
   "quiz_metadata": {
     "core_concepts": [
