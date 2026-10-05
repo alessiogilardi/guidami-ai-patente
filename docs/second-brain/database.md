@@ -317,6 +317,13 @@ for an existing row is a `NULL` column — hence the table-level `CHECK` rather 
 a per-column `NOT NULL`. Adding a representation costs an ingest run; adding a
 model costs one `ADD COLUMN` plus widening that `CHECK`.
 
+`configs/ingestor_config.yaml`'s `quiz_embedding_variants` now lists only `topic_text`
+(the labeling `candidate_variant`), so `ingest index quiz` embeds and upserts that one
+variant. The store has no `delete_missing` for this table, so rows of the other five
+variants written by earlier runs stay in place and go stale once a question's
+`image_description` changes; `evaluation.quiz_embedding_variant` still names
+`search_queries` as its baseline arm.
+
 `quiz_images` is keyed by filename because a description belongs to an image, not
 to a question: 4147 questions reference 427 distinct images
 (`docs/second-brain/adr/0003-group-road-sign-description-by-image.md`).
@@ -645,3 +652,5 @@ new field on the read side; `ExplanationService._deduplicated_hints` is the only
 preferring it over verbatim `definition` and falling back when `NULL` — no change to
 `CitedGlossaryTerm`/`CitedGlossaryTermResponse`. See
 `docs/second-brain/architecture.md`'s `glossary/` row for the full pipeline.*
+
+*Last updated: 2026-10-05 — verified against commit `1caea919`; `quiz_embedding_variants` narrowed to `topic_text` (stale rows of other variants are not reconciled away).*
