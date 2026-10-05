@@ -141,7 +141,7 @@ row counts of `article_commas` and `labeling_runs` checked before and after.
 
 `GlossaryReadRepository` reads `labeling_config.embedding_spec.column` instead of
 `AppConfig.glossary.embedding_column`, which is removed (`GlossaryRetrievalConfig`,
-`configs/app_config.yaml`). The dense arm compares a quiz vector (the `text` variant, see
+`configs/app_config.yaml`). The dense arm compares a quiz vector (the epoch's `candidate_variant`, `topic_text`, see
 Open Questions) with `glossary_entries.<column>`; both must always be the same model.
 
 ### FR-9: No behaviour change
@@ -302,11 +302,13 @@ TDD for production code:
 
 ## Open Questions
 
-- [ ] **non-blocking (step 2)** — The glossary dense arm uses the quiz **`text`** variant
-  (`find_question_vocabulary_context`, `e.variant = 'text'`), not `topic_text`. Quiz
-  retrieval for labeling uses only `topic_text` (`candidate_variant`), but the vocabulary
-  stage still needs a `text` vector. Step 2 must either embed `text` with the new model too
-  or move the glossary probe to `topic_text`.
+- [x] **resolved 2026-10-05** — The glossary dense arm used the quiz **`text`** variant
+  (`find_question_vocabulary_context`, `e.variant = 'text'`) while labeling retrieval uses
+  only `topic_text` (`candidate_variant`). Decision: the glossary probe moves to the epoch's
+  `candidate_variant` (`find_question_vocabulary_context(number, variant)`), and
+  `quiz_embedding_variants` is narrowed to `[topic_text]` — no `text` vector is embedded
+  with the new model. Trade-off: the probe vector now also encodes topic and image
+  description, not the bare question text.
 - [ ] **non-blocking** — Spec 0025 (LLM provider decoupling, D6) also adds a field to the same
   epoch and unique index. Whichever lands second extends the other's migration; the
   migrations must be numbered and ordered accordingly.
