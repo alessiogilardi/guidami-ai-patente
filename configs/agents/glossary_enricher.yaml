@@ -1,5 +1,5 @@
 name: glossary-enricher
-model_name: openrouter/google/gemini-2.5-flash
+model_name: openrouter/google/gemini-3.8-flash
 temperature: 0.2
 max_tokens: 500
 system: |
