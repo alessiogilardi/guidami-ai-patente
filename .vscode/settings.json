@@ -19,5 +19,6 @@
     // Configurazione Pylance (Minimale per evitare conflitti)
     "python.languageServer": "Pylance",
     "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "python.terminal.useEnvFile": true
 }
