@@ -3,7 +3,9 @@ from psycopg import sql
 from commons.clients import PostgresClient
 from domain.models.retrieval import QuizEvaluationRow
 
-_MODEL_COLUMN_PATTERN = "embedding\\_%"  # noqa: matches literal "embedding_" prefix (AD-6); ESCAPE '\' below stops the underscore acting as a single-char wildcard
+# Matches the literal "embedding_" prefix (AD-6); ESCAPE '\' below stops the underscore
+# acting as a single-char wildcard.
+_MODEL_COLUMN_PATTERN = "embedding\\_%"
 
 
 class QuizReadRepository:
