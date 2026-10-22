@@ -1,9 +1,12 @@
 import logging
-from typing import Any
+from typing import TYPE_CHECKING, Any, cast
 
 from commons.ai.embedding.configs import EmbeddingClientConfig
 
 from .embedding_client import EmbeddingClient
+
+if TYPE_CHECKING:
+    from litellm.types.utils import EmbeddingResponse
 
 
 class LiteLLMEmbeddingClient(EmbeddingClient):
@@ -38,7 +41,9 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
         logging.getLogger("httpx").setLevel(logging.NOTSET)
 
         kwargs = self._build_embed_args(inputs)
-        response = litellm.embedding(**kwargs)
+        # litellm types the return as a union with a coroutine (the async path, selected by
+        # `aembedding=True`); this synchronous call never yields one.
+        response = cast("EmbeddingResponse", litellm.embedding(**kwargs))
         ordered = sorted(response.data, key=lambda item: item["index"])
         return [[float(v) for v in item["embedding"]] for item in ordered]
 
