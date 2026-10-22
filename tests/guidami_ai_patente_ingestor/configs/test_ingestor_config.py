@@ -76,16 +76,9 @@ def test_default_table_names() -> None:
 
 
 def test_default_quiz_embedding_variants() -> None:
-    """FR-2/AD-7 (T-4): the six starting variants, in FR-2's listing order."""
+    """The shipped config indexes only the topic_text variant (dbd742a1)."""
     config = _build_config()
-    assert config.quiz_embedding_variants == [
-        "text",
-        "topic_text",
-        "search_queries",
-        "combined",
-        "combined_description",
-        "image_description",
-    ]
+    assert config.quiz_embedding_variants == ["topic_text"]
 
 
 def test_default_rca_ranges() -> None:
