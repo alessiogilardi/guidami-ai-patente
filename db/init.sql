@@ -224,7 +224,7 @@ CREATE TABLE IF NOT EXISTS quiz_answers (
     answer_datetime  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS idx_quiz_answers_user_id ON quiz_answers (user_id);
+CREATE INDEX IF NOT EXISTS idx_quiz_answers_user_id_id ON quiz_answers (user_id, id);
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_quiz_id ON quiz_answers (quiz_id);
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_session_id ON quiz_answers (session_id);
 
