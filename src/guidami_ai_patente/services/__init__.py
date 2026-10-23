@@ -9,6 +9,7 @@ from .explanation_translation_service import ExplanationTranslationService
 from .health_check_service import HealthCheckService
 from .judge_coherence_checker import JudgeCoherenceChecker
 from .labeling_service import LabelingService
+from .mastery_calculator import MasteryCalculator
 from .quiz_answer_checker import QuizAnswerChecker
 from .quiz_image_service import QuizImageService
 from .quiz_proposal_service import QuizProposalService
@@ -23,6 +24,7 @@ __all__ = [
     "HealthCheckService",
     "JudgeCoherenceChecker",
     "LabelingService",
+    "MasteryCalculator",
     "QuizAnswerChecker",
     "QuizImageService",
     "QuizProposalService",
