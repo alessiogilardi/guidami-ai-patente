@@ -44,6 +44,7 @@ UNAUTHORIZED_MESSAGE = "Non sei ancora abilitato a usare questo bot."
 EMPTY_SUMMARY_MESSAGE = "Nessuna domanda risposta in questa sessione."
 NO_REVIEW_MESSAGE = "Nessun errore da ripassare 🎉"
 REVIEW_COMPLETED_MESSAGE = "✅ Ripasso completato: non hai più errori da ripassare."
+TOPIC_CHOICE_MESSAGE = "Scegli un argomento:"
 TOPIC_COMPLETED_MESSAGE = "✅ Hai finito le domande di questo argomento."
 
 _PROGRESS_BAR_CELLS = 10
@@ -158,6 +159,14 @@ def statistics_message(stats: UserStatistics, label_max_chars: int) -> str:
             f"🔁 {_counted(stats.in_review, 'domanda', 'domande')} da ripassare: usa /ripasso"
         )
     return "\n\n".join(sections)
+
+
+def topic_button_label(topic: TopicMastery, label_max_chars: int) -> str:
+    """Renders a `/argomento` button label: short topic name plus mastery % or seen/total."""
+    label = topic_label(topic.topic, label_max_chars)
+    if topic.insufficient_data:
+        return f"{label}: {topic.seen}/{topic.total}"
+    return f"{label}: {_percent(topic.mastered, topic.seen)}%"
 
 
 def _ranked_line(topic: TopicMastery, label_max_chars: int) -> str:

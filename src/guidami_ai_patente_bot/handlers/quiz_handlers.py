@@ -1,7 +1,8 @@
 """Telegram update handlers: thin controllers over QuizFlowService (AD-5, spec 0016 AD-11)."""
 
+import secrets
 from io import BytesIO
-from typing import cast
+from typing import Any, cast
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Message, Update
 from telegram.ext import ContextTypes
@@ -21,6 +22,7 @@ ANSWER_CALLBACK_PREFIX = "quiz:answer:"
 EXPLAIN_CALLBACK_PREFIX = "quiz:explain:"
 TRANSLATE_CALLBACK_PREFIX = "quiz:translate:"
 NEXT_CALLBACK_DATA = "quiz:next"
+TOPIC_CALLBACK_PREFIX = "topic:"
 
 # Telegram's cap on a photo's caption. A question's own caption sits far below it, so only
 # the explanation appended to it can overflow (see `handle_explain_callback`).
@@ -277,6 +279,75 @@ async def ripasso_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     except SessionCompletedError:
         context.user_data.pop("session", None)
         await context.bot.send_message(chat_id=chat_id, text=messages.NO_REVIEW_MESSAGE)
+        return
+    context.user_data["session"] = session
+    await _deliver_question(chat_id, user_id, question, service, context)
+
+
+async def argomento_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handles `/argomento`: shows one button per topic, in statistics order (FR-8).
+
+    Callback data carries only an 8-hex token and the topic's index (Telegram caps it at
+    64 bytes); the full ordered names live in `user_data`. A newer keyboard overwrites
+    the token, so older keyboards go stale (AD-8).
+    """
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    assert context.user_data is not None
+    service = container.resolve(context, QuizFlowService)
+    config = container.resolve(context, BotConfig)
+    stats = await service.get_statistics(update.effective_user.id)
+    token = secrets.token_hex(4)
+    context.user_data["topic_choices"] = [t.topic for t in stats.topics]
+    context.user_data["topic_token"] = token
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    messages.topic_button_label(topic, config.topic_label_max_chars),
+                    callback_data=f"{TOPIC_CALLBACK_PREFIX}{token}:{index}",
+                )
+            ]
+            for index, topic in enumerate(stats.topics)
+        ]
+    )
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id, text=messages.TOPIC_CHOICE_MESSAGE, reply_markup=keyboard
+    )
+
+
+def _chosen_topic(data: str, user_data: dict[str, Any]) -> str | None:
+    """Resolves `topic:<token>:<i>` to a topic name, or None when stale or malformed."""
+    token, _, raw_index = data.removeprefix(TOPIC_CALLBACK_PREFIX).partition(":")
+    choices: list[str] | None = user_data.get("topic_choices")
+    if choices is None or token != user_data.get("topic_token") or not raw_index.isdecimal():
+        return None
+    index = int(raw_index)
+    return choices[index] if index < len(choices) else None
+
+
+async def handle_topic_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Starts a TOPIC session from a tapped topic button, replacing any in progress (FR-9)."""
+    query = update.callback_query
+    assert query is not None
+    assert query.data is not None
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    assert context.user_data is not None
+    topic = _chosen_topic(query.data, context.user_data)
+    if topic is None:
+        await query.answer(messages.STALE_NOTICE)
+        return
+
+    await query.answer()
+    service = container.resolve(context, QuizFlowService)
+    chat_id = update.effective_chat.id
+    user_id = update.effective_user.id
+    try:
+        question, session = await service.start_session(SessionMode.TOPIC, topic, user_id)
+    except SessionCompletedError:
+        context.user_data.pop("session", None)
+        await context.bot.send_message(chat_id=chat_id, text=messages.TOPIC_COMPLETED_MESSAGE)
         return
     context.user_data["session"] = session
     await _deliver_question(chat_id, user_id, question, service, context)

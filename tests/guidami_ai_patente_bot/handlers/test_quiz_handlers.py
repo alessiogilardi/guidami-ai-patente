@@ -17,11 +17,14 @@ from guidami_ai_patente_bot.exceptions import (
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
+    TOPIC_CALLBACK_PREFIX,
     TRANSLATE_CALLBACK_PREFIX,
     _glossary_block,
+    argomento_command,
     handle_answer_callback,
     handle_explain_callback,
     handle_next_callback,
+    handle_topic_callback,
     handle_translate_callback,
     quiz_command,
     ripasso_command,
@@ -75,6 +78,7 @@ class _FlowServiceDouble:
     summary_calls: list[tuple[int, str]] = field(default_factory=list)
     review_empty: bool = False
     complete_on_propose: bool = False
+    propose_error: bool = False
     statistics: UserStatistics = field(
         default_factory=lambda: UserStatistics(
             answered=0, seen=0, bank_total=0, mastered=0, in_review=0, topics=[]
@@ -104,6 +108,8 @@ class _FlowServiceDouble:
         self, session: QuizSession | None, telegram_user_id: int
     ) -> tuple[QuizQuestion, QuizSession]:
         self.propose_calls.append(telegram_user_id)
+        if self.propose_error:
+            raise QuizApiError("boom")
         if self.complete_on_propose:
             raise SessionCompletedError()
         index = session.index + 1 if session is not None else 0
@@ -1141,3 +1147,177 @@ async def test_stop_and_a_second_ripasso_work_cleanly_after_completion() -> None
 
     await ripasso_command(_update(), context)
     assert context.user_data["session"].mode is SessionMode.REVIEW
+
+
+def _topic_stats(*topics: TopicMastery) -> UserStatistics:
+    return UserStatistics(
+        answered=5, seen=4, bank_total=10, mastered=2, in_review=0, topics=list(topics)
+    )
+
+
+def _keyboard_buttons(sent: dict) -> list:
+    return [button for row in sent["reply_markup"].inline_keyboard for button in row]
+
+
+_RANKED = TopicMastery(
+    topic="Segnali; dettagli", seen=4, mastered=2, total=9, insufficient_data=False
+)
+_EXPLORE = TopicMastery(topic="Precedenza", seen=1, mastered=0, total=7, insufficient_data=True)
+
+
+@pytest.mark.asyncio
+async def test_argomento_callback_data_never_carries_the_topic_name() -> None:
+    long_topic = "Segnali di pericolo " + "x" * 325
+    assert len(long_topic.encode()) == 345
+    stats = _topic_stats(
+        TopicMastery(topic=long_topic, seen=4, mastered=2, total=9, insufficient_data=False)
+    )
+    context = _context(_FlowServiceDouble(question=_question(), statistics=stats))
+
+    await argomento_command(_update(), context)
+
+    buttons = _keyboard_buttons(context.bot.send_message.call_args.kwargs)
+    data = buttons[0].callback_data
+    assert len(data.encode()) <= 64
+    assert "Segnali" not in data
+    assert data.startswith(TOPIC_CALLBACK_PREFIX)
+    assert context.user_data["topic_choices"] == [long_topic]
+    assert data == f"topic:{context.user_data['topic_token']}:0"
+
+
+@pytest.mark.asyncio
+async def test_argomento_buttons_use_short_labels_with_percent_or_seen_total_in_order() -> None:
+    stats = _topic_stats(_RANKED, _EXPLORE)
+    context = _context(_FlowServiceDouble(question=_question(), statistics=stats))
+
+    await argomento_command(_update(), context)
+
+    buttons = _keyboard_buttons(context.bot.send_message.call_args.kwargs)
+    assert [b.text for b in buttons] == ["Segnali: 50%", "Precedenza: 1/7"]
+    assert context.user_data["topic_choices"] == ["Segnali; dettagli", "Precedenza"]
+
+
+@pytest.mark.asyncio
+async def test_a_newer_keyboard_overwrites_the_token() -> None:
+    context = _context(_FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED)))
+    await argomento_command(_update(), context)
+    first = context.user_data["topic_token"]
+    await argomento_command(_update(), context)
+    assert context.user_data["topic_token"] != first
+    assert len(context.user_data["topic_token"]) == 8
+
+
+@pytest.mark.asyncio
+async def test_tapping_an_old_keyboard_is_stale_and_starts_nothing() -> None:
+    double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED))
+    context = _context(double)
+    await argomento_command(_update(), context)
+    old_data = _keyboard_buttons(context.bot.send_message.call_args.kwargs)[0].callback_data
+    await argomento_command(_update(), context)
+    existing = QuizSession(seed="old", index=2, current_question_number="0009")
+    context.user_data["session"] = existing
+    context.bot.send_message.reset_mock()
+    update, query = _callback_update(old_data)
+
+    await handle_topic_callback(update, context)
+
+    query.answer.assert_awaited_once_with(messages.STALE_NOTICE)
+    assert double.start_calls == []
+    assert context.user_data["session"] is existing
+    context.bot.send_message.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_a_valid_tap_starts_a_topic_session_and_replaces_a_random_one() -> None:
+    double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED, _EXPLORE))
+    context = _context(double)
+    await argomento_command(_update(), context)
+    data = _keyboard_buttons(context.bot.send_message.call_args.kwargs)[1].callback_data
+    context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
+    update, query = _callback_update(data)
+
+    await handle_topic_callback(update, context)
+
+    query.answer.assert_awaited_once_with()
+    assert double.start_calls == [(SessionMode.TOPIC, "Precedenza", _TELEGRAM_USER_ID)]
+    session = context.user_data["session"]
+    assert session.mode is SessionMode.TOPIC
+    assert session.topic == "Precedenza"
+    assert session.seed != "old"
+    assert context.bot.send_message.call_args.kwargs["text"] == "Domanda?"
+
+
+@pytest.mark.asyncio
+async def test_a_tap_with_missing_choices_is_stale() -> None:
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    update, query = _callback_update("topic:abcd1234:0")
+
+    await handle_topic_callback(update, context)
+
+    query.answer.assert_awaited_once_with(messages.STALE_NOTICE)
+    assert double.start_calls == []
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("index", ["5", "-1", "x"])
+async def test_a_tap_with_a_bad_index_is_stale(index: str) -> None:
+    double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED))
+    context = _context(double)
+    await argomento_command(_update(), context)
+    token = context.user_data["topic_token"]
+    update, query = _callback_update(f"topic:{token}:{index}")
+
+    await handle_topic_callback(update, context)
+
+    query.answer.assert_awaited_once_with(messages.STALE_NOTICE)
+    assert double.start_calls == []
+
+
+@pytest.mark.asyncio
+async def test_a_tap_on_an_empty_topic_clears_the_session_and_announces_completion() -> None:
+    double = _FlowServiceDouble(
+        question=_question(), statistics=_topic_stats(_RANKED), review_empty=True
+    )
+    context = _context(double)
+    await argomento_command(_update(), context)
+    data = _keyboard_buttons(context.bot.send_message.call_args.kwargs)[0].callback_data
+    context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
+    update, _ = _callback_update(data)
+
+    await handle_topic_callback(update, context)
+
+    assert "session" not in context.user_data
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.TOPIC_COMPLETED_MESSAGE
+
+
+@pytest.mark.asyncio
+async def test_next_on_an_exhausted_topic_completes_summarizes_and_clears() -> None:
+    summary = SessionSummary(answered=2, correct=1, by_topic=[], wrong_questions=[])
+    double = _FlowServiceDouble(question=_question(), complete_on_propose=True, summary=summary)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="top", index=1, current_question_number="0001", mode=SessionMode.TOPIC, topic="X"
+    )
+    update, _ = _callback_update("quiz:next")
+
+    await handle_next_callback(update, context)
+
+    texts = [call.kwargs["text"] for call in context.bot.send_message.call_args_list]
+    assert texts == [messages.TOPIC_COMPLETED_MESSAGE, messages.summary_message(summary)]
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+async def test_random_mode_api_failures_still_propagate_without_a_completion_message() -> None:
+    double = _FlowServiceDouble(question=_question(), propose_error=True)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="r", index=1, current_question_number="0001")
+    update, _ = _callback_update("quiz:next")
+
+    with pytest.raises(QuizApiError):
+        await handle_next_callback(update, context)
+
+    context.bot.send_message.assert_not_called()
+    assert "session" in context.user_data

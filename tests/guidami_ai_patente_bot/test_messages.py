@@ -219,3 +219,10 @@ def test_topic_label_falls_back_to_the_full_name_when_the_first_segment_is_empty
 
 def test_topic_label_returns_the_whole_name_without_a_semicolon() -> None:
     assert messages.topic_label("Precedenza", 40) == "Precedenza"
+
+
+def test_topic_button_label_shows_percent_for_ranked_and_seen_total_otherwise() -> None:
+    ranked = TopicMastery(topic="Segnali; x", seen=4, mastered=2, total=9, insufficient_data=False)
+    explore = TopicMastery(topic="Precedenza", seen=1, mastered=0, total=7, insufficient_data=True)
+    assert messages.topic_button_label(ranked, 40) == "Segnali: 50%"
+    assert messages.topic_button_label(explore, 40) == "Precedenza: 1/7"

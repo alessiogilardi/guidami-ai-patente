@@ -16,10 +16,13 @@ from .handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
     NEXT_CALLBACK_DATA,
+    TOPIC_CALLBACK_PREFIX,
     TRANSLATE_CALLBACK_PREFIX,
+    argomento_command,
     handle_answer_callback,
     handle_explain_callback,
     handle_next_callback,
+    handle_topic_callback,
     handle_translate_callback,
     quiz_command,
     ripasso_command,
@@ -68,6 +71,10 @@ async def _run() -> None:
     application.add_handler(CommandHandler("stop", stop_command))
     application.add_handler(CommandHandler("statistiche", statistiche_command))
     application.add_handler(CommandHandler("ripasso", ripasso_command))
+    application.add_handler(CommandHandler("argomento", argomento_command))
+    application.add_handler(
+        CallbackQueryHandler(handle_topic_callback, pattern=f"^{TOPIC_CALLBACK_PREFIX}")
+    )
     application.add_handler(
         CallbackQueryHandler(handle_answer_callback, pattern=f"^{ANSWER_CALLBACK_PREFIX}")
     )
