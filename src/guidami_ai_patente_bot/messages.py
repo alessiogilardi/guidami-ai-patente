@@ -27,6 +27,9 @@ COMMANDS_LIST = (
     "Comandi disponibili:\n"
     "/quiz — inizia o riprendi il quiz\n"
     "/stop — termina la sessione e mostra il riepilogo\n"
+    "/statistiche — i tuoi progressi\n"
+    "/ripasso — ripassa gli errori\n"
+    "/argomento — quiz su un argomento\n"
     "/start — mostra questo messaggio"
 )
 WELCOME_MESSAGE = f"Benvenuto! 👋\n\n{COMMANDS_LIST}"
@@ -45,6 +48,7 @@ EMPTY_SUMMARY_MESSAGE = "Nessuna domanda risposta in questa sessione."
 NO_REVIEW_MESSAGE = "Nessun errore da ripassare 🎉"
 REVIEW_COMPLETED_MESSAGE = "✅ Ripasso completato: non hai più errori da ripassare."
 TOPIC_CHOICE_MESSAGE = "Scegli un argomento:"
+NO_TOPICS_MESSAGE = "Nessun argomento disponibile al momento."
 TOPIC_COMPLETED_MESSAGE = "✅ Hai finito le domande di questo argomento."
 
 _PROGRESS_BAR_CELLS = 10

@@ -253,8 +253,8 @@ async def test_start_lists_the_available_commands_when_registered() -> None:
     await start_command(_update(), context)
 
     text = context.bot.send_message.call_args.kwargs["text"]
-    assert "/quiz" in text
-    assert "/stop" in text
+    for command in ("/quiz", "/stop", "/start", "/statistiche", "/ripasso", "/argomento"):
+        assert command in text
 
 
 @pytest.mark.asyncio
@@ -1248,6 +1248,37 @@ async def test_a_valid_tap_starts_a_topic_session_and_replaces_a_random_one() ->
     assert session.topic == "Segnali; dettagli"
     assert session.seed != "old"
     assert context.bot.send_message.call_args.kwargs["text"] == "Domanda?"
+
+
+@pytest.mark.asyncio
+async def test_a_second_tap_of_the_same_keyboard_is_stale_and_keeps_the_session() -> None:
+    double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED))
+    context = _context(double)
+    await argomento_command(_update(), context)
+    data = _keyboard_buttons(context.bot.send_message.call_args.kwargs)[0].callback_data
+    first_update, _ = _callback_update(data)
+    await handle_topic_callback(first_update, context)
+    started = context.user_data["session"]
+    context.bot.send_message.reset_mock()
+    second_update, second_query = _callback_update(data)
+
+    await handle_topic_callback(second_update, context)
+
+    second_query.answer.assert_awaited_once_with(messages.STALE_NOTICE)
+    assert len(double.start_calls) == 1
+    assert context.user_data["session"] is started
+    context.bot.send_message.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_argomento_with_no_topics_replies_with_plain_text_and_no_keyboard() -> None:
+    context = _context(_FlowServiceDouble(question=_question(), statistics=_topic_stats()))
+
+    await argomento_command(_update(), context)
+
+    sent = context.bot.send_message.call_args.kwargs
+    assert sent["text"] == messages.NO_TOPICS_MESSAGE
+    assert "reply_markup" not in sent
 
 
 @pytest.mark.asyncio

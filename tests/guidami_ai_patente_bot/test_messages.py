@@ -165,7 +165,7 @@ def test_statistics_show_the_totals_line_with_seen_and_mastered_percentage() -> 
     assert "Padroneggiate: 8 (80%)" in text
 
 
-def test_statistics_with_an_empty_bank_do_not_divide_by_zero() -> None:
+def test_statistics_totals_line_with_an_empty_bank_reports_zero_total() -> None:
     text = messages.statistics_message(_stats(bank_total=0), 40)
 
     assert "Domande viste: 10/0" in text

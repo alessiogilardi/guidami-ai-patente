@@ -1,5 +1,6 @@
 """Telegram update handlers: thin controllers over QuizFlowService (AD-5, spec 0016 AD-11)."""
 
+import logging
 import secrets
 from io import BytesIO
 from typing import Any, cast
@@ -17,6 +18,8 @@ from guidami_ai_patente_bot.exceptions import (
 )
 from guidami_ai_patente_bot.models import CitedGlossaryTerm, QuizQuestion, QuizSession
 from guidami_ai_patente_bot.services import QuizFlowService
+
+logger = logging.getLogger(__name__)
 
 ANSWER_CALLBACK_PREFIX = "quiz:answer:"
 EXPLAIN_CALLBACK_PREFIX = "quiz:explain:"
@@ -192,6 +195,9 @@ async def _send_question(
         question, session = await service.propose_question(session, telegram_user_id)
     except SessionCompletedError:
         assert session is not None
+        logger.info(
+            "Session completed (mode=%s, telegram_user_id=%s)", session.mode, telegram_user_id
+        )
         text = (
             messages.REVIEW_COMPLETED_MESSAGE
             if session.mode is SessionMode.REVIEW
@@ -277,9 +283,11 @@ async def ripasso_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     try:
         question, session = await service.start_session(SessionMode.REVIEW, None, user_id)
     except SessionCompletedError:
+        logger.debug("Review requested with nothing to review (telegram_user_id=%s)", user_id)
         context.user_data.pop("session", None)
         await context.bot.send_message(chat_id=chat_id, text=messages.NO_REVIEW_MESSAGE)
         return
+    logger.info("Session started (mode=%s, telegram_user_id=%s)", session.mode, user_id)
     context.user_data["session"] = session
     await _deliver_question(chat_id, user_id, question, service, context)
 
@@ -297,6 +305,11 @@ async def argomento_command(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     service = container.resolve(context, QuizFlowService)
     config = container.resolve(context, BotConfig)
     stats = await service.get_statistics(update.effective_user.id)
+    if not stats.topics:
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id, text=messages.NO_TOPICS_MESSAGE
+        )
+        return
     token = secrets.token_hex(4)
     context.user_data["topic_choices"] = [t.topic for t in stats.topics]
     context.user_data["topic_token"] = token
@@ -346,9 +359,14 @@ async def handle_topic_callback(update: Update, context: ContextTypes.DEFAULT_TY
     try:
         question, session = await service.start_session(SessionMode.TOPIC, topic, user_id)
     except SessionCompletedError:
+        logger.info("Session completed (mode=%s, telegram_user_id=%s)", SessionMode.TOPIC, user_id)
         context.user_data.pop("session", None)
         await context.bot.send_message(chat_id=chat_id, text=messages.TOPIC_COMPLETED_MESSAGE)
         return
+    # The keyboard is single-use: a second tap must be stale, not replace this session.
+    context.user_data.pop("topic_token", None)
+    context.user_data.pop("topic_choices", None)
+    logger.info("Session started (mode=%s, telegram_user_id=%s)", session.mode, user_id)
     context.user_data["session"] = session
     await _deliver_question(chat_id, user_id, question, service, context)
 
