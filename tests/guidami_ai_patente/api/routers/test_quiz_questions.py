@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 
 import pytest
 from fastapi.testclient import TestClient
+from httpx import Response
 from psycopg import sql
 from pywire import get_default_container
 
@@ -441,3 +442,43 @@ def test_review_next_rejects_an_unregistered_caller(
     )
 
     assert response.status_code == 403
+
+
+def _review_next(api_client: TestClient, headers: dict[str, str], session_id: str) -> Response:
+    return api_client.get(
+        "/quiz-questions/review/next", params={"session_id": session_id}, headers=headers
+    )
+
+
+@pytest.mark.integration
+def test_a_correct_review_answer_takes_the_question_out_of_the_session(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    _answer_wrongly(api_client, registered_headers, "0001")
+    assert _review_next(api_client, registered_headers, "S").json()["number"] == "0001"
+
+    api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": True, "session_id": "S"},
+        headers=registered_headers,
+    )
+
+    assert _review_next(api_client, registered_headers, "S").status_code == 204
+
+
+@pytest.mark.integration
+def test_a_wrong_review_answer_re_asks_the_question_in_the_session(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    _answer_wrongly(api_client, registered_headers, "0001")
+    assert _review_next(api_client, registered_headers, "S").json()["number"] == "0001"
+
+    api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": False, "session_id": "S"},
+        headers=registered_headers,
+    )
+
+    response = _review_next(api_client, registered_headers, "S")
+    assert response.status_code == 200
+    assert response.json()["number"] == "0001"
