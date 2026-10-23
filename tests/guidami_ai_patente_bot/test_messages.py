@@ -135,13 +135,18 @@ def test_the_review_section_is_omitted_when_nothing_was_answered_wrongly() -> No
 
 
 def _stats(
-    topics: list[TopicMastery] | None = None, *, in_review: int = 0, bank_total: int = 100
+    topics: list[TopicMastery] | None = None,
+    *,
+    in_review: int = 0,
+    bank_total: int = 100,
+    seen: int = 10,
+    mastered: int = 8,
 ) -> UserStatistics:
     return UserStatistics(
         answered=50,
-        seen=40,
+        seen=seen,
         bank_total=bank_total,
-        mastered=25,
+        mastered=mastered,
         in_review=in_review,
         topics=topics or [],
     )
@@ -156,14 +161,20 @@ def _topic(name: str, *, seen: int, mastered: int, total: int, insufficient: boo
 def test_statistics_show_the_totals_line_with_seen_and_mastered_percentage() -> None:
     text = messages.statistics_message(_stats(), 40)
 
-    assert "40/100" in text
-    assert "25%" in text
+    assert "Domande viste: 10/100" in text
+    assert "Padroneggiate: 8 (80%)" in text
 
 
 def test_statistics_with_an_empty_bank_do_not_divide_by_zero() -> None:
     text = messages.statistics_message(_stats(bank_total=0), 40)
 
-    assert "0%" in text
+    assert "Domande viste: 10/0" in text
+
+
+def test_statistics_with_nothing_seen_show_zero_percent_mastered() -> None:
+    text = messages.statistics_message(_stats(seen=0, mastered=0), 40)
+
+    assert "Padroneggiate: 0 (0%)" in text
 
 
 def test_ranked_topics_come_before_the_da_esplorare_header() -> None:
@@ -190,7 +201,7 @@ def test_the_review_hint_is_shown_only_when_there_are_questions_in_review() -> N
     without_review = messages.statistics_message(_stats(in_review=0), 40)
 
     assert "/ripasso" in with_review
-    assert "3" in with_review
+    assert "3 domande da ripassare" in with_review
     assert "/ripasso" not in without_review
 
 

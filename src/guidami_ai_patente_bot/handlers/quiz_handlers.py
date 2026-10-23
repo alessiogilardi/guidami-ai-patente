@@ -196,7 +196,6 @@ async def _send_question(
             else messages.TOPIC_COMPLETED_MESSAGE
         )
         await context.bot.send_message(chat_id=chat_id, text=text)
-        assert session is not None
         await _finish_session(chat_id, telegram_user_id, session, service, context)
         return
     context.user_data["session"] = session
@@ -264,8 +263,8 @@ async def statistiche_command(update: Update, context: ContextTypes.DEFAULT_TYPE
 async def ripasso_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handles `/ripasso`: starts a review session, replacing any in progress (FR-7).
 
-    With nothing to review, replies so and leaves the existing session (if any)
-    untouched.
+    With nothing to review, replies so and clears any existing session, so no
+    session remains (the success path likewise replaces without a summary).
     """
     assert update.effective_chat is not None
     assert update.effective_user is not None
@@ -276,6 +275,7 @@ async def ripasso_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     try:
         question, session = await service.start_session(SessionMode.REVIEW, None, user_id)
     except SessionCompletedError:
+        context.user_data.pop("session", None)
         await context.bot.send_message(chat_id=chat_id, text=messages.NO_REVIEW_MESSAGE)
         return
     context.user_data["session"] = session

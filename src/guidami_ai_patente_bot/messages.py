@@ -143,7 +143,7 @@ def statistics_message(stats: UserStatistics, label_max_chars: int) -> str:
     sections = [
         "📈 Statistiche\n\n"
         f"Domande viste: {stats.seen}/{stats.bank_total}\n"
-        f"Padroneggiate: {stats.mastered} ({_percent(stats.mastered, stats.bank_total)}%)"
+        f"Padroneggiate: {stats.mastered} ({_percent(stats.mastered, stats.seen)}%)"
     ]
     ranked = [t for t in stats.topics if not t.insufficient_data]
     explore = [t for t in stats.topics if t.insufficient_data]

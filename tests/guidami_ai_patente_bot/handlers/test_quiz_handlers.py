@@ -87,7 +87,7 @@ class _FlowServiceDouble:
     ) -> tuple[QuizQuestion, QuizSession]:
         self.start_calls.append((mode, topic, telegram_user_id))
         if self.review_empty:
-            raise SessionCompletedError(mode)
+            raise SessionCompletedError()
         new_session = QuizSession(
             seed="fresh-seed",
             index=0,
@@ -105,7 +105,7 @@ class _FlowServiceDouble:
     ) -> tuple[QuizQuestion, QuizSession]:
         self.propose_calls.append(telegram_user_id)
         if self.complete_on_propose:
-            raise SessionCompletedError(session.mode if session else SessionMode.RANDOM)
+            raise SessionCompletedError()
         index = session.index + 1 if session is not None else 0
         seed = session.seed if session is not None else "seed"
         new_session = QuizSession(
@@ -1077,6 +1077,18 @@ async def test_ripasso_with_nothing_to_review_replies_and_leaves_no_session() ->
     assert double.start_calls == [(SessionMode.REVIEW, None, _TELEGRAM_USER_ID)]
     assert context.bot.send_message.call_args.kwargs["text"] == messages.NO_REVIEW_MESSAGE
     assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+async def test_ripasso_with_nothing_to_review_clears_a_pending_session() -> None:
+    double = _FlowServiceDouble(question=_question(), review_empty=True)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
+
+    await ripasso_command(_update(), context)
+
+    assert "session" not in context.user_data
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.NO_REVIEW_MESSAGE
 
 
 @pytest.mark.asyncio
