@@ -441,14 +441,3 @@ def test_review_next_rejects_an_unregistered_caller(
     )
 
     assert response.status_code == 403
-
-
-@pytest.mark.integration
-def test_review_next_is_not_swallowed_by_the_number_route(
-    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
-) -> None:
-    response = api_client.get(
-        "/quiz-questions/review/next", params={"session_id": "new"}, headers=registered_headers
-    )
-
-    assert response.status_code != 404

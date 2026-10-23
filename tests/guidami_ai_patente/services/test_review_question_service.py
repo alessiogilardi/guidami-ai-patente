@@ -118,3 +118,21 @@ async def test_the_same_session_id_of_another_user_has_no_effect() -> None:
     service = _service({1: history_x, 2: history_y})
     assert await _next(service, "s1", user=1) is None
     assert await _next(service, "s1", user=2) == "A"
+
+
+@pytest.mark.asyncio
+async def test_a_question_wrong_exactly_max_repeats_times_is_served_once_more() -> None:
+    history = [_a("A", False, "s1")] * 2
+    assert await _next(_service({1: history}, max_repeats=2)) == "A"
+
+
+@pytest.mark.asyncio
+async def test_a_wrong_last_in_session_answer_decides_even_after_a_correct_one() -> None:
+    history = [_a("A", False), _a("A", True, "s1"), _a("A", False, "s1")]
+    assert await _next(_service({1: history})) == "A"
+
+
+@pytest.mark.asyncio
+async def test_a_correct_last_in_session_answer_decides_even_after_a_wrong_one() -> None:
+    history = [_a("A", False, "s1"), _a("A", True, "s1")]
+    assert await _next(_service({1: history})) is None
