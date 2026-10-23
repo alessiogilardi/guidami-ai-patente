@@ -7,9 +7,14 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Message, Update
 from telegram.ext import ContextTypes
 
 from guidami_ai_patente_bot import container, messages
-from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
-from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
-from guidami_ai_patente_bot.models import CitedGlossaryTerm, QuizSession
+from guidami_ai_patente_bot.configs import BotConfig
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus, SessionMode
+from guidami_ai_patente_bot.exceptions import (
+    QuizApiError,
+    SessionCompletedError,
+    StaleQuestionError,
+)
+from guidami_ai_patente_bot.models import CitedGlossaryTerm, QuizQuestion, QuizSession
 from guidami_ai_patente_bot.services import QuizFlowService
 
 ANSWER_CALLBACK_PREFIX = "quiz:answer:"
@@ -131,16 +136,14 @@ async def _send_text(chat_id: int, text: str, context: ContextTypes.DEFAULT_TYPE
         await context.bot.send_message(chat_id=chat_id, text=chunk)
 
 
-async def _send_question(
-    chat_id: int, telegram_user_id: int, context: ContextTypes.DEFAULT_TYPE
+async def _deliver_question(
+    chat_id: int,
+    telegram_user_id: int,
+    question: QuizQuestion,
+    service: QuizFlowService,
+    context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    """Proposes the next question in the chat's permutation and sends it (FR-1, FR-4)."""
-    assert context.user_data is not None
-    service = container.resolve(context, QuizFlowService)
-    session: QuizSession | None = context.user_data.get("session")
-    question, session = await service.propose_question(session, telegram_user_id)
-    context.user_data["session"] = session
-
+    """Sends `question` with its Vero/Falso keyboard, as a photo when it has an image."""
     keyboard = _question_keyboard(question.number)
     if question.image_url is None:
         await context.bot.send_message(chat_id=chat_id, text=question.text, reply_markup=keyboard)
@@ -153,6 +156,51 @@ async def _send_question(
         caption=question.text,
         reply_markup=keyboard,
     )
+
+
+async def _finish_session(
+    chat_id: int,
+    telegram_user_id: int,
+    session: QuizSession,
+    service: QuizFlowService,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    """Sends the session summary and clears the session (shared by /stop and completion).
+
+    A failed summary call is not caught: the session is then left in place (D-16).
+    """
+    assert context.user_data is not None
+    summary = await service.session_summary(telegram_user_id, session.seed)
+    await context.bot.send_message(chat_id=chat_id, text=messages.summary_message(summary))
+    del context.user_data["session"]
+
+
+async def _send_question(
+    chat_id: int, telegram_user_id: int, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Proposes the next question for the chat's session and sends it (FR-1, FR-4).
+
+    When a TOPIC or REVIEW session has no more questions, announces the completion,
+    shows the same summary as `/stop` and clears the session (spec FR-7).
+    """
+    assert context.user_data is not None
+    service = container.resolve(context, QuizFlowService)
+    session: QuizSession | None = context.user_data.get("session")
+    try:
+        question, session = await service.propose_question(session, telegram_user_id)
+    except SessionCompletedError:
+        assert session is not None
+        text = (
+            messages.REVIEW_COMPLETED_MESSAGE
+            if session.mode is SessionMode.REVIEW
+            else messages.TOPIC_COMPLETED_MESSAGE
+        )
+        await context.bot.send_message(chat_id=chat_id, text=text)
+        assert session is not None
+        await _finish_session(chat_id, telegram_user_id, session, service, context)
+        return
+    context.user_data["session"] = session
+    await _deliver_question(chat_id, telegram_user_id, question, service, context)
 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -197,12 +245,41 @@ async def stop_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         return
 
     service = container.resolve(context, QuizFlowService)
-    summary = await service.session_summary(update.effective_user.id, session.seed)
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text=messages.summary_message(summary),
+    await _finish_session(
+        update.effective_chat.id, update.effective_user.id, session, service, context
     )
-    del context.user_data["session"]
+
+
+async def statistiche_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handles `/statistiche`: shows the user's mastery statistics (FR-6)."""
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    service = container.resolve(context, QuizFlowService)
+    config = container.resolve(context, BotConfig)
+    stats = await service.get_statistics(update.effective_user.id)
+    text = messages.statistics_message(stats, config.topic_label_max_chars)
+    await _send_text(update.effective_chat.id, text, context)
+
+
+async def ripasso_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handles `/ripasso`: starts a review session, replacing any in progress (FR-7).
+
+    With nothing to review, replies so and leaves the existing session (if any)
+    untouched.
+    """
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    assert context.user_data is not None
+    service = container.resolve(context, QuizFlowService)
+    chat_id = update.effective_chat.id
+    user_id = update.effective_user.id
+    try:
+        question, session = await service.start_session(SessionMode.REVIEW, None, user_id)
+    except SessionCompletedError:
+        await context.bot.send_message(chat_id=chat_id, text=messages.NO_REVIEW_MESSAGE)
+        return
+    context.user_data["session"] = session
+    await _deliver_question(chat_id, user_id, question, service, context)
 
 
 async def handle_next_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

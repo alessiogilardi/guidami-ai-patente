@@ -1,7 +1,13 @@
 """The /stop summary is rendered as a structured, emoji-marked plain-text message."""
 
 from guidami_ai_patente_bot import messages
-from guidami_ai_patente_bot.models import SessionSummary, TopicSummary, WrongQuestion
+from guidami_ai_patente_bot.models import (
+    SessionSummary,
+    TopicMastery,
+    TopicSummary,
+    UserStatistics,
+    WrongQuestion,
+)
 
 
 def _summary(
@@ -126,3 +132,79 @@ def test_the_review_section_is_omitted_when_nothing_was_answered_wrongly() -> No
     text = messages.summary_message(_summary(2, 2))
 
     assert "Da ripassare:" not in text
+
+
+def _stats(
+    topics: list[TopicMastery] | None = None, *, in_review: int = 0, bank_total: int = 100
+) -> UserStatistics:
+    return UserStatistics(
+        answered=50,
+        seen=40,
+        bank_total=bank_total,
+        mastered=25,
+        in_review=in_review,
+        topics=topics or [],
+    )
+
+
+def _topic(name: str, *, seen: int, mastered: int, total: int, insufficient: bool) -> TopicMastery:
+    return TopicMastery(
+        topic=name, seen=seen, mastered=mastered, total=total, insufficient_data=insufficient
+    )
+
+
+def test_statistics_show_the_totals_line_with_seen_and_mastered_percentage() -> None:
+    text = messages.statistics_message(_stats(), 40)
+
+    assert "40/100" in text
+    assert "25%" in text
+
+
+def test_statistics_with_an_empty_bank_do_not_divide_by_zero() -> None:
+    text = messages.statistics_message(_stats(bank_total=0), 40)
+
+    assert "0%" in text
+
+
+def test_ranked_topics_come_before_the_da_esplorare_header() -> None:
+    topics = [
+        _topic("Segnali; x", seen=10, mastered=8, total=20, insufficient=False),
+        _topic("Precedenza; y", seen=1, mastered=0, total=15, insufficient=True),
+    ]
+
+    text = messages.statistics_message(_stats(topics), 40)
+
+    assert "Segnali: 80%" in text
+    assert text.index("Segnali") < text.index("Da esplorare") < text.index("Precedenza")
+    assert "Precedenza: 1/15" in text
+
+
+def test_the_da_esplorare_header_is_omitted_without_insufficient_topics() -> None:
+    topics = [_topic("Segnali", seen=10, mastered=5, total=20, insufficient=False)]
+
+    assert "Da esplorare" not in messages.statistics_message(_stats(topics), 40)
+
+
+def test_the_review_hint_is_shown_only_when_there_are_questions_in_review() -> None:
+    with_review = messages.statistics_message(_stats(in_review=3), 40)
+    without_review = messages.statistics_message(_stats(in_review=0), 40)
+
+    assert "/ripasso" in with_review
+    assert "3" in with_review
+    assert "/ripasso" not in without_review
+
+
+def test_topic_label_keeps_the_text_before_the_first_semicolon() -> None:
+    assert messages.topic_label("Segnali di pericolo; altro", 40) == "Segnali di pericolo"
+
+
+def test_topic_label_truncates_a_long_first_segment_with_an_ellipsis() -> None:
+    assert messages.topic_label("abcdefghijklmnop; x", 10) == "abcdefghi…"
+
+
+def test_topic_label_falls_back_to_the_full_name_when_the_first_segment_is_empty() -> None:
+    assert messages.topic_label("; Resto", 40) == "; Resto"
+
+
+def test_topic_label_returns_the_whole_name_without_a_semicolon() -> None:
+    assert messages.topic_label("Precedenza", 40) == "Precedenza"

@@ -22,7 +22,9 @@ from .handlers.quiz_handlers import (
     handle_next_callback,
     handle_translate_callback,
     quiz_command,
+    ripasso_command,
     start_command,
+    statistiche_command,
     stop_command,
 )
 
@@ -64,6 +66,8 @@ async def _run() -> None:
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
     application.add_handler(CommandHandler("stop", stop_command))
+    application.add_handler(CommandHandler("statistiche", statistiche_command))
+    application.add_handler(CommandHandler("ripasso", ripasso_command))
     application.add_handler(
         CallbackQueryHandler(handle_answer_callback, pattern=f"^{ANSWER_CALLBACK_PREFIX}")
     )

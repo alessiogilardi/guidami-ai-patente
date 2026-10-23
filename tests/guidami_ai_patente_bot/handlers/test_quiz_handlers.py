@@ -7,8 +7,13 @@ from unittest.mock import AsyncMock
 import pytest
 
 from guidami_ai_patente_bot import container, messages
-from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
-from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
+from guidami_ai_patente_bot.configs import BotConfig
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus, SessionMode
+from guidami_ai_patente_bot.exceptions import (
+    QuizApiError,
+    SessionCompletedError,
+    StaleQuestionError,
+)
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
@@ -19,7 +24,9 @@ from guidami_ai_patente_bot.handlers.quiz_handlers import (
     handle_next_callback,
     handle_translate_callback,
     quiz_command,
+    ripasso_command,
     start_command,
+    statistiche_command,
     stop_command,
 )
 from guidami_ai_patente_bot.models import (
@@ -28,7 +35,9 @@ from guidami_ai_patente_bot.models import (
     QuizQuestion,
     QuizSession,
     SessionSummary,
+    TopicMastery,
     TopicSummary,
+    UserStatistics,
     WrongQuestion,
 )
 from guidami_ai_patente_bot.services import QuizFlowService
@@ -64,11 +73,39 @@ class _FlowServiceDouble:
     )
     raise_summary_error: bool = False
     summary_calls: list[tuple[int, str]] = field(default_factory=list)
+    review_empty: bool = False
+    complete_on_propose: bool = False
+    statistics: UserStatistics = field(
+        default_factory=lambda: UserStatistics(
+            answered=0, seen=0, bank_total=0, mastered=0, in_review=0, topics=[]
+        )
+    )
+    start_calls: list[tuple[SessionMode, str | None, int]] = field(default_factory=list)
+
+    async def start_session(
+        self, mode: SessionMode, topic: str | None, telegram_user_id: int
+    ) -> tuple[QuizQuestion, QuizSession]:
+        self.start_calls.append((mode, topic, telegram_user_id))
+        if self.review_empty:
+            raise SessionCompletedError(mode)
+        new_session = QuizSession(
+            seed="fresh-seed",
+            index=0,
+            current_question_number=self.question.number,
+            mode=mode,
+            topic=topic,
+        )
+        return self.question, new_session
+
+    async def get_statistics(self, telegram_user_id: int) -> UserStatistics:
+        return self.statistics
 
     async def propose_question(
         self, session: QuizSession | None, telegram_user_id: int
     ) -> tuple[QuizQuestion, QuizSession]:
         self.propose_calls.append(telegram_user_id)
+        if self.complete_on_propose:
+            raise SessionCompletedError(session.mode if session else SessionMode.RANDOM)
         index = session.index + 1 if session is not None else 0
         seed = session.seed if session is not None else "seed"
         new_session = QuizSession(
@@ -119,6 +156,8 @@ class _StubContainer:
         self._service = service
 
     def resolve(self, target_type: type) -> object:
+        if target_type is BotConfig:
+            return SimpleNamespace(topic_label_max_chars=40)
         assert target_type is QuizFlowService
         return self._service
 
@@ -988,3 +1027,105 @@ async def test_stop_does_not_clear_the_session_when_the_summary_call_fails() -> 
     assert "session" in context.user_data, (
         "D-16: a failed summary call must not strand the user without their session"
     )
+
+
+@pytest.mark.asyncio
+async def test_statistiche_sends_the_rendered_statistics() -> None:
+    stats = UserStatistics(
+        answered=5,
+        seen=4,
+        bank_total=10,
+        mastered=2,
+        in_review=1,
+        topics=[
+            TopicMastery(topic="Segnali", seen=4, mastered=2, total=9, insufficient_data=False)
+        ],
+    )
+    context = _context(_FlowServiceDouble(question=_question(), statistics=stats))
+
+    await statistiche_command(_update(), context)
+
+    text = context.bot.send_message.call_args.kwargs["text"]
+    assert text == messages.statistics_message(stats, 40)
+
+
+@pytest.mark.asyncio
+async def test_a_long_statistics_message_is_split_into_chunks_within_the_limit() -> None:
+    topics = [
+        TopicMastery(topic=f"Argomento {i}", seen=1, mastered=0, total=9, insufficient_data=True)
+        for i in range(700)
+    ]
+    stats = UserStatistics(
+        answered=1, seen=1, bank_total=10, mastered=0, in_review=0, topics=topics
+    )
+    context = _context(_FlowServiceDouble(question=_question(), statistics=stats))
+
+    await statistiche_command(_update(), context)
+
+    chunks = [call.kwargs["text"] for call in context.bot.send_message.call_args_list]
+    assert len(chunks) > 1
+    assert all(len(chunk) <= 4096 for chunk in chunks)
+
+
+@pytest.mark.asyncio
+async def test_ripasso_with_nothing_to_review_replies_and_leaves_no_session() -> None:
+    double = _FlowServiceDouble(question=_question(), review_empty=True)
+    context = _context(double)
+
+    await ripasso_command(_update(), context)
+
+    assert double.start_calls == [(SessionMode.REVIEW, None, _TELEGRAM_USER_ID)]
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.NO_REVIEW_MESSAGE
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+async def test_ripasso_replaces_a_pending_random_session_with_a_review_session() -> None:
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
+
+    await ripasso_command(_update(), context)
+
+    session = context.user_data["session"]
+    assert session.mode is SessionMode.REVIEW
+    assert session.seed != "old"
+    assert session.current_question_number == "0001"
+    sent = context.bot.send_message.call_args.kwargs
+    assert sent["text"] == "Domanda?"
+    assert _button_texts(sent["reply_markup"]) == ["Vero", "Falso"]
+
+
+@pytest.mark.asyncio
+async def test_next_on_a_completed_review_shows_completion_summary_and_clears_session() -> None:
+    summary = SessionSummary(answered=2, correct=1, by_topic=[], wrong_questions=[])
+    double = _FlowServiceDouble(question=_question(), complete_on_propose=True, summary=summary)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="rev", index=1, current_question_number="0001", mode=SessionMode.REVIEW
+    )
+    update, _ = _callback_update("quiz:next")
+
+    await handle_next_callback(update, context)
+
+    texts = [call.kwargs["text"] for call in context.bot.send_message.call_args_list]
+    assert texts == [messages.REVIEW_COMPLETED_MESSAGE, messages.summary_message(summary)]
+    assert double.summary_calls == [(_TELEGRAM_USER_ID, "rev")]
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+async def test_stop_and_a_second_ripasso_work_cleanly_after_completion() -> None:
+    double = _FlowServiceDouble(question=_question(), complete_on_propose=True)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="rev", index=1, current_question_number="0001", mode=SessionMode.REVIEW
+    )
+    update, _ = _callback_update("quiz:next")
+    await handle_next_callback(update, context)
+
+    await stop_command(_update(), context)
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.NO_SESSION_MESSAGE
+
+    await ripasso_command(_update(), context)
+    assert context.user_data["session"].mode is SessionMode.REVIEW

@@ -7,7 +7,13 @@ each name individually — a call site reading `messages.STALE_NOTICE` self-docu
 that it is user-facing copy, not a domain constant.
 """
 
-from guidami_ai_patente_bot.models import SessionSummary, TopicSummary, WrongQuestion
+from guidami_ai_patente_bot.models import (
+    SessionSummary,
+    TopicMastery,
+    TopicSummary,
+    UserStatistics,
+    WrongQuestion,
+)
 
 NO_EXPLANATION_LINE = "Nessuna spiegazione disponibile per questa domanda."
 LOADING_EXPLANATION_LINE = "⏳ Generando spiegazione..."
@@ -36,6 +42,9 @@ UNAUTHORIZED_MESSAGE = "Non sei ancora abilitato a usare questo bot."
 
 
 EMPTY_SUMMARY_MESSAGE = "Nessuna domanda risposta in questa sessione."
+NO_REVIEW_MESSAGE = "Nessun errore da ripassare 🎉"
+REVIEW_COMPLETED_MESSAGE = "✅ Ripasso completato: non hai più errori da ripassare."
+TOPIC_COMPLETED_MESSAGE = "✅ Hai finito le domande di questo argomento."
 
 _PROGRESS_BAR_CELLS = 10
 _MAX_WRONG_QUESTIONS_SHOWN = 5
@@ -46,6 +55,16 @@ _QUESTION_MAX_CHARS = 60
 def _shorten(text: str, limit: int) -> str:
     """Cuts `text` to at most `limit` characters, marking the cut with an ellipsis."""
     return text if len(text) <= limit else f"{text[: limit - 1]}…"
+
+
+def topic_label(topic: str, max_chars: int) -> str:
+    """Shortens an official topic name to its first `;`-separated clause (FR-9).
+
+    Official names chain many clauses and can run past 300 characters. Falls back to
+    the full name when the first clause is empty, and truncates with an ellipsis.
+    """
+    first_clause = topic.split(";")[0].strip()
+    return _shorten(first_clause or topic.strip(), max_chars)
 
 
 def _counted(count: int, singular: str, plural: str) -> str:
@@ -65,7 +84,7 @@ def _topic_line(topic: TopicSummary) -> str:
     Official topic names chain many clauses with `;` and can run past 300 characters,
     far too long for a row that also carries the counts.
     """
-    label = _shorten(topic.topic.split(";")[0].strip(), _TOPIC_MAX_CHARS)
+    label = topic_label(topic.topic, _TOPIC_MAX_CHARS)
     return f"• {label}: {topic.correct}/{topic.answered}"
 
 
@@ -108,3 +127,45 @@ def summary_message(summary: SessionSummary) -> str:
 def outcome_line(correct: bool) -> str:
     """Renders the ✅/❌ line shown right after grading an answer (FR-2)."""
     return "✅ Risposta corretta!" if correct else "❌ Risposta sbagliata."
+
+
+def _percent(part: int, whole: int) -> int:
+    """Rounds `part / whole` to a whole percentage, half up; 0 when `whole` is 0."""
+    return (part * 100 + whole // 2) // whole if whole > 0 else 0
+
+
+def statistics_message(stats: UserStatistics, label_max_chars: int) -> str:
+    """Renders /statistiche: totals, ranked topics, the "Da esplorare" group, review hint (FR-6).
+
+    Topics keep the order received (ranked first by the backend). The `/ripasso` hint is
+    left out when nothing is in review. Plain text, like `summary_message`.
+    """
+    sections = [
+        "📈 Statistiche\n\n"
+        f"Domande viste: {stats.seen}/{stats.bank_total}\n"
+        f"Padroneggiate: {stats.mastered} ({_percent(stats.mastered, stats.bank_total)}%)"
+    ]
+    ranked = [t for t in stats.topics if not t.insufficient_data]
+    explore = [t for t in stats.topics if t.insufficient_data]
+    if ranked:
+        lines = [_ranked_line(t, label_max_chars) for t in ranked]
+        sections.append("Per argomento:\n" + "\n".join(lines))
+    if explore:
+        lines = [_explore_line(t, label_max_chars) for t in explore]
+        sections.append("Da esplorare:\n" + "\n".join(lines))
+    if stats.in_review > 0:
+        sections.append(
+            f"🔁 {_counted(stats.in_review, 'domanda', 'domande')} da ripassare: usa /ripasso"
+        )
+    return "\n\n".join(sections)
+
+
+def _ranked_line(topic: TopicMastery, label_max_chars: int) -> str:
+    """Renders one ranked topic row with its mastery percentage (mastered of seen)."""
+    label = topic_label(topic.topic, label_max_chars)
+    return f"• {label}: {_percent(topic.mastered, topic.seen)}%"
+
+
+def _explore_line(topic: TopicMastery, label_max_chars: int) -> str:
+    """Renders one insufficient-data topic row as seen/total."""
+    return f"• {topic_label(topic.topic, label_max_chars)}: {topic.seen}/{topic.total}"
