@@ -2,6 +2,7 @@
 
 from pydantic import BaseModel, ConfigDict
 
+from guidami_ai_patente_bot.enums import SessionMode
 from guidami_ai_patente_bot.models.cited_glossary_term import CitedGlossaryTerm
 
 
@@ -24,3 +25,5 @@ class QuizSession(BaseModel):
     current_question_number: str
     last_explanation: str | None = None
     last_explanation_hints: tuple[CitedGlossaryTerm, ...] = ()
+    mode: SessionMode = SessionMode.RANDOM
+    topic: str | None = None

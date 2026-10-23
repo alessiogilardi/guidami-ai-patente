@@ -5,7 +5,9 @@ from .quiz_explanation import QuizExplanation
 from .quiz_question import QuizQuestion
 from .quiz_session import QuizSession
 from .session_summary import SessionSummary
+from .topic_mastery import TopicMastery
 from .topic_summary import TopicSummary
+from .user_statistics import UserStatistics
 from .wrong_question import WrongQuestion
 
 __all__ = [
@@ -14,6 +16,8 @@ __all__ = [
     "QuizQuestion",
     "QuizSession",
     "SessionSummary",
+    "TopicMastery",
     "TopicSummary",
+    "UserStatistics",
     "WrongQuestion",
 ]

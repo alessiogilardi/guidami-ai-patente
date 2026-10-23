@@ -37,6 +37,8 @@ class QuizFlowService:
         seed = session.seed if session is not None else uuid.uuid4().hex
         index = session.index + 1 if session is not None else 0
         question = await self.api.propose_question(telegram_user_id, seed, index)
+        if question is None:  # Unreachable without a topic; Task 10 adds real dispatch.
+            raise QuizApiError("random proposal returned no question without a topic filter")
         new_session = QuizSession(seed=seed, index=index, current_question_number=question.number)
         return question, new_session
 

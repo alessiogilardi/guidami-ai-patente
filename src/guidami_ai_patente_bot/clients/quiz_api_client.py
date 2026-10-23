@@ -14,6 +14,7 @@ from guidami_ai_patente_bot.models import (
     QuizExplanation,
     QuizQuestion,
     SessionSummary,
+    UserStatistics,
 )
 
 
@@ -46,15 +47,45 @@ class QuizApiClient:
         response = await self._request("GET", "/me", telegram_user_id)
         return bool(response.json()["registered"])
 
-    async def propose_question(self, telegram_user_id: int, seed: str, index: int) -> QuizQuestion:
-        """Calls `GET /quiz-questions/random` (FR-1, FR-4)."""
+    async def propose_question(
+        self, telegram_user_id: int, seed: str, index: int, topic: str | None = None
+    ) -> QuizQuestion | None:
+        """Calls `GET /quiz-questions/random` (FR-1, FR-4).
+
+        `topic`, when given, restricts the permutation and is sent as a query param.
+        Returns `None` on a `404` only when `topic` is given (unknown or exhausted
+        topic, AD-7); without a topic a `404` still raises `QuizApiError`.
+        """
+        params: dict[str, Any] = {"seed": seed, "index": index}
+        if topic is not None:
+            params["topic"] = topic
+        accept = frozenset({HTTPStatus.NOT_FOUND}) if topic is not None else frozenset()
+        response = await self._request(
+            "GET", "/quiz-questions/random", telegram_user_id, params=params, accept=accept
+        )
+        if response.status_code == HTTPStatus.NOT_FOUND:
+            return None
+        return QuizQuestion.model_validate(response.json())
+
+    async def propose_review_question(
+        self, telegram_user_id: int, session_id: str
+    ) -> QuizQuestion | None:
+        """Calls `GET /quiz-questions/review/next`; `204` means the review is complete."""
         response = await self._request(
             "GET",
-            "/quiz-questions/random",
+            "/quiz-questions/review/next",
             telegram_user_id,
-            params={"seed": seed, "index": index},
+            params={"session_id": session_id},
+            accept=frozenset({HTTPStatus.NO_CONTENT}),
         )
+        if response.status_code == HTTPStatus.NO_CONTENT:
+            return None
         return QuizQuestion.model_validate(response.json())
+
+    async def get_statistics(self, telegram_user_id: int) -> UserStatistics:
+        """Calls `GET /quiz-answers/statistics`."""
+        response = await self._request("GET", "/quiz-answers/statistics", telegram_user_id)
+        return UserStatistics.model_validate(response.json())
 
     async def download_image(self, telegram_user_id: int, image_url: str) -> bytes:
         """Downloads the bytes at `image_url`, the exact path the API returned (FR-1)."""
@@ -147,9 +178,13 @@ class QuizApiClient:
         telegram_user_id: int,
         *,
         timeout: float | None = None,
+        accept: frozenset[HTTPStatus] = frozenset(),
         **kwargs: Any,
     ) -> httpx.Response:
         """Issues one HTTP call, attaching identity and wrapping any failure.
+
+        A response whose status is in `accept` is returned instead of raising; every
+        other error (including 403 -> `UnauthorizedError`) behaves as before.
 
         Covers FR-5, FR-6, FR-10. `timeout`, when given, overrides the client's
         default for this one call only (spec 0017, AD-10) — when omitted, the
@@ -161,7 +196,8 @@ class QuizApiClient:
             kwargs["timeout"] = timeout
         try:
             response = await self._http.request(method, url, headers=headers, **kwargs)
-            response.raise_for_status()
+            if response.status_code not in accept:
+                response.raise_for_status()
         except httpx.HTTPStatusError as exc:
             if exc.response.status_code == HTTPStatus.FORBIDDEN:
                 raise UnauthorizedError(f"{method} {url} failed: {exc}") from exc

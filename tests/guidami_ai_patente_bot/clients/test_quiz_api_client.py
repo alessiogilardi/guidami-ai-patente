@@ -263,3 +263,125 @@ async def test_get_session_summary_parses_the_response() -> None:
     assert (summary.answered, summary.correct) == (5, 3)
     assert summary.by_topic == [TopicSummary(topic="Precedenza", answered=5, correct=3)]
     assert summary.wrong_questions == [WrongQuestion(number="0001", text="Domanda?")]
+
+
+_QUESTION_BODY = {"number": "0001", "topic": "segnaletica", "text": "...", "image_url": None}
+
+
+@pytest.mark.asyncio
+async def test_propose_question_sends_topic_only_when_given() -> None:
+    seen: list[httpx.Request] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, json=_QUESTION_BODY)
+
+    client = _client(handler)
+
+    await client.propose_question(7, "abc", 0, topic="segnaletica")
+    await client.propose_question(7, "abc", 0)
+
+    assert seen[0].url.params["topic"] == "segnaletica"
+    assert "topic" not in seen[1].url.params
+
+
+@pytest.mark.asyncio
+async def test_propose_question_404_with_topic_returns_none() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404)
+
+    client = _client(handler)
+
+    assert await client.propose_question(7, "abc", 0, topic="nope") is None
+
+
+@pytest.mark.asyncio
+async def test_propose_question_404_without_topic_still_raises() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404)
+
+    client = _client(handler)
+
+    with pytest.raises(QuizApiError):
+        await client.propose_question(7, "abc", 0)
+
+
+@pytest.mark.asyncio
+async def test_propose_review_question_returns_question_on_200() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.path == "/quiz-questions/review/next"
+        assert request.url.params["session_id"] == "s1"
+        return httpx.Response(200, json=_QUESTION_BODY)
+
+    client = _client(handler)
+
+    question = await client.propose_review_question(7, "s1")
+
+    assert question is not None
+    assert question.number == "0001"
+
+
+@pytest.mark.asyncio
+async def test_propose_review_question_returns_none_on_204() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(204)
+
+    client = _client(handler)
+
+    assert await client.propose_review_question(7, "s1") is None
+
+
+@pytest.mark.asyncio
+async def test_get_statistics_parses_ranked_and_insufficient_topics() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.path == "/quiz-answers/statistics"
+        return httpx.Response(
+            200,
+            json={
+                "answered": 10,
+                "seen": 8,
+                "bank_total": 100,
+                "mastered": 3,
+                "in_review": 2,
+                "topics": [
+                    {
+                        "topic": "segnaletica",
+                        "seen": 6,
+                        "mastered": 3,
+                        "total": 40,
+                        "insufficient_data": False,
+                    },
+                    {
+                        "topic": "precedenza",
+                        "seen": 2,
+                        "mastered": 0,
+                        "total": 30,
+                        "insufficient_data": True,
+                    },
+                ],
+            },
+        )
+
+    client = _client(handler)
+
+    stats = await client.get_statistics(7)
+
+    assert (stats.answered, stats.seen, stats.bank_total) == (10, 8, 100)
+    assert (stats.mastered, stats.in_review) == (3, 2)
+    assert [t.insufficient_data for t in stats.topics] == [False, True]
+    assert stats.topics[0].topic == "segnaletica"
+
+
+@pytest.mark.asyncio
+async def test_new_calls_raise_unauthorized_on_403() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403)
+
+    client = _client(handler)
+
+    with pytest.raises(UnauthorizedError):
+        await client.get_statistics(7)
+    with pytest.raises(UnauthorizedError):
+        await client.propose_review_question(7, "s1")
+    with pytest.raises(UnauthorizedError):
+        await client.propose_question(7, "abc", 0, topic="x")
