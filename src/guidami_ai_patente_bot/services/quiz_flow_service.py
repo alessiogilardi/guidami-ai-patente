@@ -5,20 +5,27 @@ import uuid
 from pywire import Autowired, service
 
 from guidami_ai_patente_bot.clients import QuizApiClient
-from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
-from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus, SessionMode
+from guidami_ai_patente_bot.exceptions import (
+    QuizApiError,
+    SessionCompletedError,
+    StaleQuestionError,
+)
 from guidami_ai_patente_bot.models import (
     CitedGlossaryTerm,
     QuizExplanation,
     QuizQuestion,
     QuizSession,
     SessionSummary,
+    UserStatistics,
 )
 
 
 @service
 class QuizFlowService:
-    """Orchestrates one chat's question/answer loop over `QuizApiClient` (AD-5, AD-6).
+    """Orchestrates one chat's question/answer loop over `QuizApiClient` (AD-5, AD-6, AD-7).
+
+    Dispatches question proposals on the session's mode (random, topic, review).
 
     The only place in the bot with orchestration logic: handlers call exactly one of
     its methods and never depend on `QuizApiClient` directly.
@@ -26,20 +33,61 @@ class QuizFlowService:
 
     api: Autowired[QuizApiClient]
 
+    async def start_session(
+        self, mode: SessionMode, topic: str | None, telegram_user_id: int
+    ) -> tuple[QuizQuestion, QuizSession]:
+        """Starts a fresh session in `mode` at `index=0` with a newly generated seed (AD-7).
+
+        The seed doubles as the backend's `session_id` in every mode.
+
+        Raises:
+            SessionCompletedError: The mode has nothing to propose (empty topic, or
+                nothing left to review).
+        """
+        return await self._propose(mode, topic, uuid.uuid4().hex, 0, telegram_user_id)
+
     async def propose_question(
         self, session: QuizSession | None, telegram_user_id: int
     ) -> tuple[QuizQuestion, QuizSession]:
-        """Proposes the next question in the chat's seeded permutation (FR-1, FR-4).
+        """Proposes the next question for the session's mode (FR-1, FR-4, FR-7, FR-8).
 
-        A `None` session starts a fresh permutation with a freshly generated seed at
-        `index=0`; an existing session reuses its seed and advances `index` by one.
+        A `None` session starts a fresh RANDOM permutation; an existing session keeps
+        its seed, mode and topic and advances `index` by one. RANDOM draws from the
+        seeded permutation, TOPIC from the same permutation restricted to the topic,
+        REVIEW from the review queue keyed by the seed as `session_id`.
+
+        Raises:
+            SessionCompletedError: A TOPIC or REVIEW session has no more questions.
+                Never raised in RANDOM, where a backend 404 stays a `QuizApiError`.
         """
-        seed = session.seed if session is not None else uuid.uuid4().hex
-        index = session.index + 1 if session is not None else 0
-        question = await self.api.propose_question(telegram_user_id, seed, index)
-        if question is None:  # Unreachable without a topic; Task 10 adds real dispatch.
-            raise QuizApiError("random proposal returned no question without a topic filter")
-        new_session = QuizSession(seed=seed, index=index, current_question_number=question.number)
+        if session is None:
+            return await self.start_session(SessionMode.RANDOM, None, telegram_user_id)
+        return await self._propose(
+            session.mode, session.topic, session.seed, session.index + 1, telegram_user_id
+        )
+
+    async def _propose(
+        self, mode: SessionMode, topic: str | None, seed: str, index: int, telegram_user_id: int
+    ) -> tuple[QuizQuestion, QuizSession]:
+        """Fetches the question at `index` for `mode` and builds the resulting session."""
+        match mode:
+            case SessionMode.REVIEW:
+                question = await self.api.propose_review_question(telegram_user_id, seed)
+            case SessionMode.TOPIC:
+                question = await self.api.propose_question(telegram_user_id, seed, index, topic)
+            case SessionMode.RANDOM:
+                question = await self.api.propose_question(telegram_user_id, seed, index)
+        if question is None:
+            if mode is SessionMode.RANDOM:
+                raise QuizApiError("random proposal returned no question without a topic filter")
+            raise SessionCompletedError(mode)
+        new_session = QuizSession(
+            seed=seed,
+            index=index,
+            current_question_number=question.number,
+            mode=mode,
+            topic=topic,
+        )
         return question, new_session
 
     async def handle_answer(
@@ -112,3 +160,7 @@ class QuizFlowService:
     async def session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
         """Passes through to `GET /quiz-answers/summary` (spec 0016, FR-9)."""
         return await self.api.get_session_summary(telegram_user_id, session_id)
+
+    async def get_statistics(self, telegram_user_id: int) -> UserStatistics:
+        """Passes through to `GET /quiz-answers/statistics` so handlers never use the client."""
+        return await self.api.get_statistics(telegram_user_id)

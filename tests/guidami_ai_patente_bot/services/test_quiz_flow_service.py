@@ -4,14 +4,19 @@ from dataclasses import dataclass, field
 
 import pytest
 
-from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
-from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus, SessionMode
+from guidami_ai_patente_bot.exceptions import (
+    QuizApiError,
+    SessionCompletedError,
+    StaleQuestionError,
+)
 from guidami_ai_patente_bot.models import (
     CitedGlossaryTerm,
     QuizExplanation,
     QuizQuestion,
     QuizSession,
     SessionSummary,
+    UserStatistics,
 )
 from guidami_ai_patente_bot.services import QuizFlowService
 
@@ -40,15 +45,40 @@ class _ApiDouble:
         )
     )
     propose_calls: list[tuple[int, str, int]] = field(default_factory=list)
+    propose_topics: list[str | None] = field(default_factory=list)
+    review_calls: list[tuple[int, str]] = field(default_factory=list)
+    returns_none: bool = False
+    raise_propose_error: bool = False
+    statistics: UserStatistics = field(
+        default_factory=lambda: UserStatistics(
+            answered=0, seen=0, bank_total=10, mastered=0, in_review=0, topics=[]
+        )
+    )
+    statistics_calls: list[int] = field(default_factory=list)
     check_calls: list[tuple[int, str, bool, str]] = field(default_factory=list)
     label_calls: list[tuple[int, str]] = field(default_factory=list)
     explanation_calls: list[tuple[int, str, bool]] = field(default_factory=list)
     registration_calls: list[int] = field(default_factory=list)
     summary_calls: list[tuple[int, str]] = field(default_factory=list)
 
-    async def propose_question(self, telegram_user_id: int, seed: str, index: int) -> QuizQuestion:
+    async def propose_question(
+        self, telegram_user_id: int, seed: str, index: int, topic: str | None = None
+    ) -> QuizQuestion | None:
         self.propose_calls.append((telegram_user_id, seed, index))
-        return self.question
+        self.propose_topics.append(topic)
+        if self.raise_propose_error:
+            raise QuizApiError("boom")
+        return None if self.returns_none else self.question
+
+    async def propose_review_question(
+        self, telegram_user_id: int, session_id: str
+    ) -> QuizQuestion | None:
+        self.review_calls.append((telegram_user_id, session_id))
+        return None if self.returns_none else self.question
+
+    async def get_statistics(self, telegram_user_id: int) -> UserStatistics:
+        self.statistics_calls.append(telegram_user_id)
+        return self.statistics
 
     async def check_answer(
         self, telegram_user_id: int, number: str, answer: bool, session_id: str
@@ -254,3 +284,147 @@ async def test_a_translation_api_failure_propagates() -> None:
 
     with pytest.raises(QuizApiError):
         await service.handle_translation_request("Testo da tradurre.", 7, ())
+
+
+@pytest.mark.asyncio
+async def test_random_mode_proposes_without_a_topic() -> None:
+    api = _ApiDouble(question=_question())
+    service = _service(api)
+    previous = QuizSession(seed="abc", index=1, current_question_number="0001")
+
+    _, session = await service.propose_question(previous, 7)
+
+    assert api.propose_calls == [(7, "abc", 2)]
+    assert api.propose_topics == [None]
+    assert api.review_calls == []
+    assert session.mode is SessionMode.RANDOM
+
+
+@pytest.mark.asyncio
+async def test_topic_mode_proposes_with_the_topic_and_keeps_mode_and_topic() -> None:
+    api = _ApiDouble(question=_question())
+    service = _service(api)
+    previous = QuizSession(
+        seed="abc",
+        index=1,
+        current_question_number="0001",
+        mode=SessionMode.TOPIC,
+        topic="segnaletica",
+    )
+
+    _, session = await service.propose_question(previous, 7)
+
+    assert api.propose_calls == [(7, "abc", 2)]
+    assert api.propose_topics == ["segnaletica"]
+    assert session.mode is SessionMode.TOPIC
+    assert session.topic == "segnaletica"
+    assert session.seed == "abc"
+    assert session.index == 2
+
+
+@pytest.mark.asyncio
+async def test_review_mode_uses_the_seed_as_session_id() -> None:
+    api = _ApiDouble(question=_question("0009"))
+    service = _service(api)
+    previous = QuizSession(
+        seed="abc", index=1, current_question_number="0001", mode=SessionMode.REVIEW
+    )
+
+    _, session = await service.propose_question(previous, 7)
+
+    assert api.review_calls == [(7, "abc")]
+    assert api.propose_calls == []
+    assert session.mode is SessionMode.REVIEW
+    assert session.seed == "abc"
+    assert session.index == 2
+    assert session.current_question_number == "0009"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("mode", [SessionMode.TOPIC, SessionMode.REVIEW])
+async def test_no_question_in_topic_or_review_mode_completes_the_session(
+    mode: SessionMode,
+) -> None:
+    api = _ApiDouble(question=_question(), returns_none=True)
+    service = _service(api)
+    previous = QuizSession(
+        seed="abc", index=1, current_question_number="0001", mode=mode, topic="segnaletica"
+    )
+
+    with pytest.raises(SessionCompletedError):
+        await service.propose_question(previous, 7)
+
+
+@pytest.mark.asyncio
+async def test_a_random_mode_api_error_is_not_turned_into_completion() -> None:
+    api = _ApiDouble(question=_question(), raise_propose_error=True)
+    service = _service(api)
+
+    with pytest.raises(QuizApiError):
+        await service.propose_question(None, 7)
+
+
+@pytest.mark.asyncio
+async def test_start_session_builds_index_zero_with_a_fresh_seed_each_call() -> None:
+    api = _ApiDouble(question=_question())
+    service = _service(api)
+
+    _, first = await service.start_session(SessionMode.TOPIC, "segnaletica", 7)
+    _, second = await service.start_session(SessionMode.TOPIC, "segnaletica", 7)
+
+    assert first.index == 0
+    assert first.mode is SessionMode.TOPIC
+    assert first.topic == "segnaletica"
+    assert first.seed != second.seed
+    assert api.propose_calls[0] == (7, first.seed, 0)
+    assert api.propose_topics == ["segnaletica", "segnaletica"]
+
+
+@pytest.mark.asyncio
+async def test_start_session_review_with_nothing_to_review_raises_completed() -> None:
+    api = _ApiDouble(question=_question(), returns_none=True)
+    service = _service(api)
+
+    with pytest.raises(SessionCompletedError):
+        await service.start_session(SessionMode.REVIEW, None, 7)
+
+    assert len(api.review_calls) == 1
+
+
+@pytest.mark.asyncio
+async def test_start_session_review_sends_the_seed_as_session_id() -> None:
+    api = _ApiDouble(question=_question())
+    service = _service(api)
+
+    _, session = await service.start_session(SessionMode.REVIEW, None, 7)
+
+    assert api.review_calls == [(7, session.seed)]
+    assert session.mode is SessionMode.REVIEW
+    assert session.topic is None
+
+
+@pytest.mark.asyncio
+async def test_handle_answer_sends_the_seed_as_session_id_in_review_mode() -> None:
+    api = _ApiDouble(question=_question())
+    service = _service(api)
+    session = QuizSession(
+        seed="abc", index=0, current_question_number="0001", mode=SessionMode.REVIEW
+    )
+
+    await service.handle_answer(session, "0001", True, 7)
+
+    assert api.check_calls == [(7, "0001", True, "abc")]
+
+
+@pytest.mark.asyncio
+async def test_get_statistics_passes_through() -> None:
+    expected = UserStatistics(
+        answered=5, seen=4, bank_total=10, mastered=1, in_review=2, topics=[]
+    )
+    api = _ApiDouble(question=_question(), statistics=expected)
+    service = _service(api)
+
+    statistics = await service.get_statistics(7)
+
+    assert statistics == expected
+    assert api.statistics_calls == [7]
