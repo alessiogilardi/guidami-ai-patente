@@ -69,7 +69,13 @@ async def propose_question(
     return QuizQuestionMapper.from_summary_to_response(summary)
 
 
-@router.get("/review/next", response_model=QuizQuestionResponse)
+@router.get(
+    "/review/next",
+    response_model=QuizQuestionResponse,
+    responses={
+        204: {"description": "The review session is complete: no more questions to review."}
+    },
+)
 async def next_review_question(
     user: _RequireRegisteredUser,
     service: Autowired[ReviewQuestionService],

@@ -432,6 +432,13 @@ def test_review_next_is_204_when_nothing_is_in_review(
 
 
 @pytest.mark.integration
+def test_review_next_documents_its_204_in_the_openapi_schema(api_client: TestClient) -> None:
+    operation = api_client.app.openapi()["paths"]["/quiz-questions/review/next"]["get"]  # type: ignore[attr-defined]
+
+    assert "204" in operation["responses"]
+
+
+@pytest.mark.integration
 def test_review_next_rejects_an_unregistered_caller(
     bank: PostgresClient, api_client: TestClient
 ) -> None:
