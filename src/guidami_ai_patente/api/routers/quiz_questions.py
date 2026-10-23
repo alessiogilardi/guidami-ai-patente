@@ -3,17 +3,18 @@
 import asyncio
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Response
 from pywire import Autowired
 
 from domain.entities.users import UserEntity
 from guidami_ai_patente.mappers import ExplanationMapper, QuizQuestionMapper
-from guidami_ai_patente.models import ExplanationRequest, QuizAnswerCheckRequest
+from guidami_ai_patente.models import ExplanationRequest, QuizAnswerCheckRequest, ReviewRequest
 from guidami_ai_patente.services import (
     ExplanationService,
     LabelingService,
     QuizAnswerChecker,
     QuizProposalService,
+    ReviewQuestionService,
 )
 
 from ..dependencies.user_identity import require_registered_user
@@ -65,6 +66,24 @@ async def propose_question(
 ) -> QuizQuestionResponse:
     """Proposes the question at `index` of the permutation `seed` induces (FR-1)."""
     summary = await asyncio.to_thread(service.propose, seed, index, topic)
+    return QuizQuestionMapper.from_summary_to_response(summary)
+
+
+@router.get("/review/next", response_model=QuizQuestionResponse)
+async def next_review_question(
+    user: _RequireRegisteredUser,
+    service: Autowired[ReviewQuestionService],
+    session_id: str = Query(description="Client-owned id of the current review session."),
+) -> QuizQuestionResponse | Response:
+    """Proposes the next in-review question for the caller, or 204 when none is due (FR-4).
+
+    Declared before `/{number}` so the parameterised route does not swallow it.
+    """
+    summary = await service(
+        ReviewRequest(telegram_user_id=user.telegram_user_id, session_id=session_id)
+    )
+    if summary is None:
+        return Response(status_code=204)
     return QuizQuestionMapper.from_summary_to_response(summary)
 
 

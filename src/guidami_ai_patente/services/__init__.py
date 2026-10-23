@@ -13,6 +13,7 @@ from .mastery_calculator import MasteryCalculator
 from .quiz_answer_checker import QuizAnswerChecker
 from .quiz_image_service import QuizImageService
 from .quiz_proposal_service import QuizProposalService
+from .review_question_service import ReviewQuestionService
 from .session_summary_service import SessionSummaryService
 from .user_statistics_service import UserStatisticsService
 
@@ -29,6 +30,7 @@ __all__ = [
     "QuizAnswerChecker",
     "QuizImageService",
     "QuizProposalService",
+    "ReviewQuestionService",
     "SessionSummaryService",
     "UserStatisticsService",
     "evaluate_answer",

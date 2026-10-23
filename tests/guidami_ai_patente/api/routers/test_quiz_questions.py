@@ -393,3 +393,62 @@ def test_checking_the_same_question_twice_records_two_rows(
 
     count = bank.fetch(sql.SQL("SELECT count(*) FROM quiz_answers"))[0][0]
     assert count == 2
+
+
+def _answer_wrongly(api_client: TestClient, headers: dict[str, str], number: str) -> None:
+    correct = {"0001": True, "0002": False, "0003": True}[number]
+    api_client.post(
+        f"/quiz-questions/{number}/check",
+        json={"answer": not correct, "session_id": "old"},
+        headers=headers,
+    )
+
+
+@pytest.mark.integration
+def test_review_next_serves_an_in_review_question_without_the_answer(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    _answer_wrongly(api_client, registered_headers, "0001")
+
+    response = api_client.get(
+        "/quiz-questions/review/next", params={"session_id": "new"}, headers=registered_headers
+    )
+
+    assert response.status_code == 200
+    assert set(response.json()) == {"number", "topic", "text", "image_url"}
+    assert response.json()["number"] == "0001"
+
+
+@pytest.mark.integration
+def test_review_next_is_204_when_nothing_is_in_review(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.get(
+        "/quiz-questions/review/next", params={"session_id": "new"}, headers=registered_headers
+    )
+
+    assert response.status_code == 204
+
+
+@pytest.mark.integration
+def test_review_next_rejects_an_unregistered_caller(
+    bank: PostgresClient, api_client: TestClient
+) -> None:
+    response = api_client.get(
+        "/quiz-questions/review/next",
+        params={"session_id": "new"},
+        headers={"X-Telegram-User-Id": "999"},
+    )
+
+    assert response.status_code == 403
+
+
+@pytest.mark.integration
+def test_review_next_is_not_swallowed_by_the_number_route(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.get(
+        "/quiz-questions/review/next", params={"session_id": "new"}, headers=registered_headers
+    )
+
+    assert response.status_code != 404
