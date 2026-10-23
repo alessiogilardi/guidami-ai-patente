@@ -223,7 +223,7 @@ quiz_answers                                -- one row per submitted answer (spe
 ├── session_id (TEXT, NOT NULL)              -- opaque tag copied from the bot's per-QuizSession seed
 ├── user_answer (BOOLEAN, NOT NULL)          -- raw submitted value; correctness always derived via JOIN
 ├── answer_datetime (TIMESTAMPTZ, NOT NULL DEFAULT now())
-├── INDEX idx_quiz_answers_user_id (user_id)
+├── INDEX idx_quiz_answers_user_id_id (user_id, id)  -- per-user history in order (migration 0024)
 ├── INDEX idx_quiz_answers_quiz_id (quiz_id)
 └── INDEX idx_quiz_answers_session_id (session_id)
 
@@ -654,3 +654,5 @@ preferring it over verbatim `definition` and falling back when `NULL` — no cha
 `docs/second-brain/architecture.md`'s `glossary/` row for the full pipeline.*
 
 *Last updated: 2026-10-05 — verified against commit `1caea919`; `quiz_embedding_variants` narrowed to `topic_text` (stale rows of other variants are not reconciled away).*
+
+*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). `quiz_answers` swaps `idx_quiz_answers_user_id (user_id)` for `idx_quiz_answers_user_id_id (user_id, id)` so `QuizAnswerRepository.user_history` reads one user's answers in insertion order without a sort; migration `db/migrations/0024_quiz_answers_user_history_index.sql` (idempotent: creates the new index, drops the old) plus the matching `db/init.sql` edit. No new table or column. Mastery is not persisted: it is derived on read from `quiz_answers`.*

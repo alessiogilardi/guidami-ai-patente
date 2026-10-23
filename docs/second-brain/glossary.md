@@ -106,3 +106,5 @@ pre-spec-0001 pipeline "chunk" terminology this file already documents under **c
 *Last updated: 2026-09-25 — verified against commit `ae97d2e3` (working tree ahead).
 **chunk**'s file pointer corrected: `split_into_chunks` moved from `services/_chunking.py`
 to `utils/chunking.py` (no definition change).*
+
+*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). Added the mastery vocabulary. **In review**: a question the user answered wrongly and has not yet answered correctly `review_exit_streak` times in a row (`AppConfig`); it is what `/ripasso` serves. **Mastered**: a question that left review, i.e. reached that streak (derived by `services/mastery_calculator.py`, a Leitner-style box computed on read from `quiz_answers`, never stored). **Insufficient data**: a topic with fewer than `topic_min_seen` seen questions, reported without a mastery figure. **Session mode** (`SessionMode`, bot `enums/session_mode.py`): which kind of session a `QuizSession` is (plain quiz, review, topic) — it decides which backend endpoint `QuizFlowService` calls for the next question.*

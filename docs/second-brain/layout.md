@@ -1027,3 +1027,5 @@ stateless-standalone-function convention already established in `guidami_ai_pate
 and `glossary/utils/`; `enums/` gained `glossary_term_origin.py`; `agents/` gained
 `glossary_enricher/` (agent + `dto/`). Mirroring `tests/guidami_ai_patente/utils/` and
 `tests/guidami_ai_patente/agents/glossary_enricher/` added.*
+
+*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). New in `src/guidami_ai_patente/`: `services/mastery_calculator.py`, `services/user_statistics_service.py`, `services/review_question_service.py`, `models/{answered_question,question_mastery,topic_mastery,user_statistics,review_request}.py`, `mappers/user_statistics_mapper.py`. New in `src/guidami_ai_patente_bot/`: `enums/session_mode.py`, `exceptions/session_completed_error.py`, `models/{topic_mastery,user_statistics}.py`. Tests mirror these under `tests/guidami_ai_patente/{services,models,mappers}/` and `tests/guidami_ai_patente_bot/models/`. New migration `db/migrations/0024_quiz_answers_user_history_index.sql`.*

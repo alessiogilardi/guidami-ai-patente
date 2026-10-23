@@ -412,3 +412,5 @@ integration test in this repo should follow this shape, not the module-constant 
 Documented the module-level-env-capture-races-ahead-of-fixtures trap after it caused a real,
 unintended, billed OpenRouter call during this plan's own finishing-branch verification —
 fixed in `test_extraction_spike.py` with a call-time, two-condition gate.*
+
+*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). New coverage: integration tests (`-m integration`) for `QuizAnswerRepository.user_history`, `GET /quiz-answers/statistics` and `GET /quiz-questions/review/next`; unit tests for `MasteryCalculator`, `UserStatisticsService`, `ReviewQuestionService` and the statistics mapper, with collaborators substituted by fakes; bot handler tests for `/statistiche`, `/ripasso`, `/argomento` and the topic callback. The live Telegram session from the spec's Definition of Done is manual (needs a bot token). Twelve integration tests (explanation x2, label x4, vocabulary-context x1, comma-selector x5) fail on the base branch too and are unrelated.*
