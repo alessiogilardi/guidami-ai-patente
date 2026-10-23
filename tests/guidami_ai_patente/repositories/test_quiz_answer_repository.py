@@ -8,7 +8,7 @@ from pywire import get_default_container
 
 from commons.clients import PostgresClient
 from guidami_ai_patente.clients import PostgresClientProvider
-from guidami_ai_patente.models import TopicSummary, WrongQuestion
+from guidami_ai_patente.models import AnsweredQuestion, TopicSummary, WrongQuestion
 from guidami_ai_patente.repositories import QuizAnswerRepository, UserRepository
 
 _TABLES = (
@@ -165,3 +165,58 @@ def test_session_summary_breakdowns_are_scoped_to_the_requesting_user(
 
     assert summary.by_topic == [TopicSummary(topic="segnaletica", answered=1, correct=1)]
     assert summary.wrong_questions == []
+
+
+@pytest.mark.integration
+def test_user_history_preserves_insertion_order(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    repository.record_answer(42, "0002", "s1", True)
+    repository.record_answer(42, "0001", "s1", True)
+    repository.record_answer(42, "0002", "s2", False)
+
+    history = repository.user_history(42)
+
+    assert [(a.number, a.session_id) for a in history] == [
+        ("0002", "s1"),
+        ("0001", "s1"),
+        ("0002", "s2"),
+    ]
+
+
+@pytest.mark.integration
+def test_user_history_is_scoped_to_the_requesting_user(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    get_default_container().resolve(UserRepository).provision(99)
+    repository.record_answer(42, "0001", "shared", True)
+    repository.record_answer(99, "0002", "shared", True)
+
+    assert [a.number for a in repository.user_history(42)] == ["0001"]
+    assert [a.number for a in repository.user_history(99)] == ["0002"]
+
+
+@pytest.mark.integration
+def test_user_history_derives_correctness_from_the_stored_answer(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    repository.record_answer(42, "0001", "s1", True)  # stored answer True: correct
+    repository.record_answer(42, "0001", "s1", False)  # wrong
+    repository.record_answer(42, "0002", "s1", False)  # stored answer False: correct
+    repository.record_answer(42, "0002", "s1", True)  # wrong
+
+    history = repository.user_history(42)
+
+    assert history == [
+        AnsweredQuestion(number="0001", topic="segnaletica", session_id="s1", is_correct=True),
+        AnsweredQuestion(number="0001", topic="segnaletica", session_id="s1", is_correct=False),
+        AnsweredQuestion(number="0002", topic="precedenza", session_id="s1", is_correct=True),
+        AnsweredQuestion(number="0002", topic="precedenza", session_id="s1", is_correct=False),
+    ]
+
+
+@pytest.mark.integration
+def test_user_history_is_empty_for_an_unknown_user(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    assert repository.user_history(12345) == []

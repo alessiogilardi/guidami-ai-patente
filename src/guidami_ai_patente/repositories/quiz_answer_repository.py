@@ -1,11 +1,16 @@
-"""Records submitted answers and summarizes a session's results."""
+"""Records submitted answers, summarizes a session's results and exposes a user's history."""
 
 from psycopg import sql
 from pywire import Autowired, repository
 
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
-from guidami_ai_patente.models import SessionSummary, TopicSummary, WrongQuestion
+from guidami_ai_patente.models import (
+    AnsweredQuestion,
+    SessionSummary,
+    TopicSummary,
+    WrongQuestion,
+)
 
 
 @repository
@@ -90,6 +95,33 @@ class QuizAnswerRepository:
                 WrongQuestion(number=number, text=text) for number, text in wrong_rows
             ],
         )
+
+    def user_history(self, telegram_user_id: int) -> list[AnsweredQuestion]:
+        """Returns every answer the user ever recorded, oldest first (spec 0024, AD-2).
+
+        Correctness is derived in SQL against `quiz_questions.correct_answer` on every
+        call, never stored. Rows follow insertion order (`qa.id`), which callers rely on
+        to replay the history chronologically. No mastery rule lives here: the repository
+        only reads, `MasteryCalculator` interprets.
+        """
+        query = sql.SQL(
+            "SELECT q.number, q.topic, qa.session_id, qa.user_answer = q.correct_answer "
+            "FROM {answers} qa "
+            "JOIN {users} u ON u.id = qa.user_id "
+            "JOIN {questions} q ON q.id = qa.quiz_id "
+            "WHERE u.telegram_user_id = %s ORDER BY qa.id"
+        ).format(
+            answers=sql.Identifier(self.config.quiz_answers_table),
+            users=sql.Identifier(self.config.users_table),
+            questions=sql.Identifier(self.config.quiz_questions_table),
+        )
+        rows = self.postgres.client.fetch(query, [telegram_user_id])
+        return [
+            AnsweredQuestion(
+                number=number, topic=topic, session_id=session_id, is_correct=is_correct
+            )
+            for number, topic, session_id, is_correct in rows
+        ]
 
     def _session_scope(self) -> sql.Composed:
         """The `FROM ... WHERE` that limits a summary query to one user's one session (AD-16).
