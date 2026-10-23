@@ -76,7 +76,7 @@ class _FlowServiceDouble:
     )
     raise_summary_error: bool = False
     summary_calls: list[tuple[int, str]] = field(default_factory=list)
-    review_empty: bool = False
+    start_completes: bool = False
     complete_on_propose: bool = False
     propose_error: bool = False
     statistics: UserStatistics = field(
@@ -90,7 +90,7 @@ class _FlowServiceDouble:
         self, mode: SessionMode, topic: str | None, telegram_user_id: int
     ) -> tuple[QuizQuestion, QuizSession]:
         self.start_calls.append((mode, topic, telegram_user_id))
-        if self.review_empty:
+        if self.start_completes:
             raise SessionCompletedError()
         new_session = QuizSession(
             seed="fresh-seed",
@@ -1075,7 +1075,7 @@ async def test_a_long_statistics_message_is_split_into_chunks_within_the_limit()
 
 @pytest.mark.asyncio
 async def test_ripasso_with_nothing_to_review_replies_and_leaves_no_session() -> None:
-    double = _FlowServiceDouble(question=_question(), review_empty=True)
+    double = _FlowServiceDouble(question=_question(), start_completes=True)
     context = _context(double)
 
     await ripasso_command(_update(), context)
@@ -1087,7 +1087,7 @@ async def test_ripasso_with_nothing_to_review_replies_and_leaves_no_session() ->
 
 @pytest.mark.asyncio
 async def test_ripasso_with_nothing_to_review_clears_a_pending_session() -> None:
-    double = _FlowServiceDouble(question=_question(), review_empty=True)
+    double = _FlowServiceDouble(question=_question(), start_completes=True)
     context = _context(double)
     context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
 
@@ -1232,17 +1232,20 @@ async def test_a_valid_tap_starts_a_topic_session_and_replaces_a_random_one() ->
     double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED, _EXPLORE))
     context = _context(double)
     await argomento_command(_update(), context)
-    data = _keyboard_buttons(context.bot.send_message.call_args.kwargs)[1].callback_data
+    buttons = _keyboard_buttons(context.bot.send_message.call_args.kwargs)
+    # The button label is the short "Segnali: 50%", so passing the label on would fail below.
+    assert buttons[0].text.startswith("Segnali:")
+    data = buttons[0].callback_data
     context.user_data["session"] = QuizSession(seed="old", index=2, current_question_number="0009")
     update, query = _callback_update(data)
 
     await handle_topic_callback(update, context)
 
     query.answer.assert_awaited_once_with()
-    assert double.start_calls == [(SessionMode.TOPIC, "Precedenza", _TELEGRAM_USER_ID)]
+    assert double.start_calls == [(SessionMode.TOPIC, "Segnali; dettagli", _TELEGRAM_USER_ID)]
     session = context.user_data["session"]
     assert session.mode is SessionMode.TOPIC
-    assert session.topic == "Precedenza"
+    assert session.topic == "Segnali; dettagli"
     assert session.seed != "old"
     assert context.bot.send_message.call_args.kwargs["text"] == "Domanda?"
 
@@ -1276,9 +1279,24 @@ async def test_a_tap_with_a_bad_index_is_stale(index: str) -> None:
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("template", ["topic:{token}", "topic:"])
+async def test_a_tap_with_a_missing_field_is_stale(template: str) -> None:
+    double = _FlowServiceDouble(question=_question(), statistics=_topic_stats(_RANKED))
+    context = _context(double)
+    await argomento_command(_update(), context)
+    update, query = _callback_update(template.format(token=context.user_data["topic_token"]))
+
+    await handle_topic_callback(update, context)
+
+    query.answer.assert_awaited_once_with(messages.STALE_NOTICE)
+    assert double.start_calls == []
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
 async def test_a_tap_on_an_empty_topic_clears_the_session_and_announces_completion() -> None:
     double = _FlowServiceDouble(
-        question=_question(), statistics=_topic_stats(_RANKED), review_empty=True
+        question=_question(), statistics=_topic_stats(_RANKED), start_completes=True
     )
     context = _context(double)
     await argomento_command(_update(), context)
