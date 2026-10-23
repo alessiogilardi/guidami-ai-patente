@@ -1,5 +1,6 @@
 """ReviewQuestionService picks the next question to review (FR-4)."""
 
+import hashlib
 from types import SimpleNamespace
 
 import pytest
@@ -136,3 +137,33 @@ async def test_a_wrong_last_in_session_answer_decides_even_after_a_correct_one()
 async def test_a_correct_last_in_session_answer_decides_even_after_a_wrong_one() -> None:
     history = [_a("A", False, "s1"), _a("A", True, "s1")]
     assert await _next(_service({1: history})) is None
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("session", ["s1", "s2", "s3", "s4", "s5"])
+async def test_equal_streak_and_wrong_count_ties_break_on_the_md5_of_session_and_number(
+    session: str,
+) -> None:
+    numbers = ["0001", "0002", "0003", "0004"]
+    history = [_a(n, False) for n in numbers]
+    expected = min(
+        numbers,
+        key=lambda n: hashlib.md5((session + n).encode()).hexdigest(),  # noqa: S324
+    )
+
+    assert await _next(_service({1: history}), session) == expected
+
+
+@pytest.mark.asyncio
+async def test_an_unseen_question_is_served_first_and_then_the_re_ask_comes_back() -> None:
+    before = [_a("A", False), _a("B", False), _a("A", False, "s1")]
+    assert await _next(_service({1: before})) == "B"
+
+    after = [*before, _a("B", False, "s1")]
+    assert await _next(_service({1: after})) == "A"
+
+
+@pytest.mark.asyncio
+async def test_re_ask_order_follows_the_oldest_last_in_session_answer() -> None:
+    history = [_a("A", False, "s1"), _a("B", False, "s1"), _a("A", False, "s1")]
+    assert await _next(_service({1: history})) == "B"

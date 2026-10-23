@@ -2,6 +2,7 @@
 
 import asyncio
 import hashlib
+import logging
 
 from pywire import Autowired, service
 
@@ -16,6 +17,8 @@ from guidami_ai_patente.models import (
 from guidami_ai_patente.repositories import QuizAnswerRepository, QuizQuestionRepository
 
 from .mastery_calculator import MasteryCalculator
+
+logger = logging.getLogger(__name__)
 
 
 @service
@@ -43,6 +46,11 @@ class ReviewQuestionService(AsyncUseCase[ReviewRequest, QuizQuestionSummary | No
         """
         history = await asyncio.to_thread(self.answers.user_history, request.telegram_user_id)
         number = self._pick(history, request.session_id)
+        logger.debug(
+            "Review pick (history_size=%d, chosen=%s)",
+            len(history),
+            number,
+        )
         if number is None:
             return None
         return await asyncio.to_thread(self.questions.find_by_number, number)
@@ -52,7 +60,9 @@ class ReviewQuestionService(AsyncUseCase[ReviewRequest, QuizQuestionSummary | No
         in_session = {a.number for a in history if a.session_id == session_id}
         unseen = [s for s in states.values() if s.in_review and s.number not in in_session]
         if unseen:
+            logger.debug("Review pass: unseen in-review (candidates=%d)", len(unseen))
             return min(unseen, key=lambda s: self._unseen_key(s, session_id)).number
+        logger.debug("Review pass: re-ask (no unseen in-review questions left)")
         return self._oldest_reask(history, session_id)
 
     @staticmethod
