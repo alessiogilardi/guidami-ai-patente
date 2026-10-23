@@ -77,6 +77,46 @@ def test_no_epoch_field_is_declared_on_the_root(app_config: AppConfig) -> None:
     assert declared.isdisjoint({"candidate_variant", "dense_k", "text_k", "lexeme_fields"})
 
 
+def test_the_review_and_mastery_settings_have_defaults() -> None:
+    assert AppConfig.model_fields["review_exit_streak"].default == 2
+    assert AppConfig.model_fields["review_max_repeats_per_session"].default == 2
+    assert AppConfig.model_fields["topic_min_seen"].default == 5
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("review_exit_streak", 0),
+        ("topic_min_seen", 0),
+        ("review_max_repeats_per_session", -1),
+    ],
+)
+def test_out_of_bounds_review_settings_are_rejected(
+    postgres_test_config: PostgresConnectionConfig,
+    monkeypatch: pytest.MonkeyPatch,
+    field: str,
+    value: int,
+) -> None:
+    monkeypatch.setenv("AGENTS_DIR", "configs/agents")
+
+    with pytest.raises(ValidationError):
+        AppConfig(postgres=postgres_test_config, _env_file=None, **{field: value})  # pyright: ignore[reportCallIssue]
+
+
+def test_zero_max_repeats_per_session_is_valid(
+    postgres_test_config: PostgresConnectionConfig, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("AGENTS_DIR", "configs/agents")
+
+    config = AppConfig(
+        postgres=postgres_test_config,
+        _env_file=None,  # pyright: ignore[reportCallIssue]
+        review_max_repeats_per_session=0,  # pyright: ignore[reportCallIssue]
+    )
+
+    assert config.review_max_repeats_per_session == 0
+
+
 def test_the_new_spec_0016_tables_have_defaults(app_config: AppConfig) -> None:
     assert app_config.users_table == "users"
     assert app_config.quiz_answers_table == "quiz_answers"

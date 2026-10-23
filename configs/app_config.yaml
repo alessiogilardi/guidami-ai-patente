@@ -37,6 +37,10 @@ quiz_images_table: quiz_images
 users_table: users
 quiz_answers_table: quiz_answers
 
+review_exit_streak: 2
+review_max_repeats_per_session: 2
+topic_min_seen: 5
+
 labeling_deadline_s: 25.0
 explanation_deadline_s: 20.0
 translation_deadline_s: 20.0

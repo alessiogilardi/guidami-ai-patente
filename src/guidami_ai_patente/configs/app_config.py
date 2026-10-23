@@ -62,6 +62,30 @@ class AppConfig(BaseConfig):
     quiz_images_table: str = "quiz_images"
     users_table: str = "users"
     quiz_answers_table: str = "quiz_answers"
+    review_exit_streak: int = Field(
+        default=2,
+        ge=1,
+        description=(
+            "Consecutive correct answers after which a question leaves the review "
+            "(mistakes-to-review) pool."
+        ),
+    )
+    review_max_repeats_per_session: int = Field(
+        default=2,
+        ge=0,
+        description=(
+            "How many times one question may be re-proposed within a single review "
+            "session; 0 disables repeats."
+        ),
+    )
+    topic_min_seen: int = Field(
+        default=5,
+        ge=1,
+        description=(
+            "Minimum number of distinct questions a user must have answered in a topic "
+            "before that topic's mastery statistics are reported."
+        ),
+    )
     labeling_deadline_s: float = Field(
         default=25.0,
         gt=0.0,

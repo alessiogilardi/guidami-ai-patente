@@ -45,6 +45,11 @@ class BotConfig(BaseConfig):
             "would give up before the server's deadline could ever fire."
         ),
     )
+    topic_label_max_chars: int = Field(
+        default=40,
+        ge=10,
+        description="Maximum characters of a topic label shown on a Telegram button.",
+    )
     translation_request_timeout_seconds: float = Field(
         default=25.0,
         gt=0.0,

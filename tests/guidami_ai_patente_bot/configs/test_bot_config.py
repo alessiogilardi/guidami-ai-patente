@@ -11,6 +11,17 @@ def test_the_api_base_url_and_timeout_have_defaults() -> None:
     assert BotConfig.model_fields["request_timeout_seconds"].default == 15.0
 
 
+def test_the_topic_label_max_chars_defaults_to_40() -> None:
+    assert BotConfig.model_fields["topic_label_max_chars"].default == 40
+
+
+def test_a_topic_label_max_chars_below_ten_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "secret-token")
+
+    with pytest.raises(ValidationError):
+        BotConfig(_env_file=None, topic_label_max_chars=9)  # pyright: ignore[reportCallIssue]
+
+
 def test_the_telegram_bot_token_has_no_default(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("TELEGRAM_BOT_TOKEN", raising=False)
 
