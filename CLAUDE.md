@@ -108,7 +108,7 @@ end of the pytest session.
 | `uv run translate-glossary-terms [--force] [--dry-run]` | `glossary.translate_main:main` | Fills `glossary_entries.term_ru` independently and idempotently, in batches (spec 0019) |
 | `uv run simplify-glossary-definitions [--force] [--dry-run]` | `glossary.simplify_main:main` | Fills `glossary_entries.definition_plain` (a plain-language rewrite of the verbatim `definition`) independently and idempotently, in batches (spec 0022) |
 | `uv run serve` | `guidami_ai_patente.main:main` | Starts the FastAPI service on `AppConfig.host:port` |
-| `uv run telegram-bot` | `guidami_ai_patente_bot.main:main` | Starts the Telegram bot client, long-polling against a running `guidami_ai_patente` instance |
+| `uv run telegram-bot` | `guidami_ai_patente_bot.main:main` | Starts the Telegram bot client, long-polling against a running `guidami_ai_patente` instance. Besides the plain quiz loop it offers `/statistiche` (per-user statistics and per-topic mastery), `/ripasso` (review session over the questions still *in review*) and `/argomento` (topic keyboard that starts a session restricted to one topic) |
 
 `--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain that would run and
 exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
@@ -137,6 +137,8 @@ Started via `uv run serve` (`docker compose up -d` first, so Postgres is reachab
 | `POST /quiz-questions/{number}/check` | Grades a submitted true/false answer and advertises the `explanation_status` (`cached`/`uncached`/`unavailable`) for that question (FR-3, FR-4) |
 | `POST /quiz-questions/{number}/label` | Ensures a current comma labeling exists for the question, computing it live (retrieve → judge → write through) only on a genuine cache miss; no response body on success (spec 0017, FR-4). `404` for an unknown question; `503` on judge/write-through timeout or failure |
 | `GET /quiz-questions/{number}/explanation?submitted=` | Renders the explanation from an already-existing comma labeling only — it never triggers the judge. `200` with `status: insufficient_knowledge` and a machine-readable `reason` when the corpus does not justify the question (FR-7); `409` (`LabelingNotReadyError`) when the question is embedded but has no current labeling yet — the caller must call `POST /{number}/label` first. Optional `submitted` tailors the wording to the answer the user gave (FR-11). Each cited term in `translation_hints[]` carries an `origin` (`verbatim_corpus` or `agent_generated`) saying whether it was grounded on the precomputed corpus glossary or generated live, on demand, for a term the corpus pass has not reached yet (spec 0021) |
+| `GET /quiz-answers/statistics` | Per-user overall statistics plus per-topic mastery (mastery is derived on read from `quiz_answers`); gated by registered user |
+| `GET /quiz-questions/review/next?session_id=` | Serves the next question to review for a `session_id`: `200` in the same shape as `/random` (never includes `correct_answer`), `204` when the review session is complete, `403` for an unregistered user |
 | `GET /quiz-images/{filename}` | Serves a quiz image, authorized database-first: 404 unless some `quiz_questions` row actually references the filename (FR-12) |
 
 ### Running against a test-data subset
