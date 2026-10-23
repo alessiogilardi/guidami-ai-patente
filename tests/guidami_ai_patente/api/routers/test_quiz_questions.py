@@ -450,35 +450,57 @@ def _review_next(api_client: TestClient, headers: dict[str, str], session_id: st
     )
 
 
+def _seed_wrong_answers(bank: PostgresClient, number: str, times: int) -> None:
+    """Inserts `times` wrong answers for `number` in an unrelated session, bypassing /check."""
+    correct = {"0001": True, "0002": False, "0003": True}[number]
+    for _ in range(times):
+        bank.execute(
+            sql.SQL(
+                "INSERT INTO quiz_answers (user_id, quiz_id, session_id, user_answer) "
+                "SELECT u.id, q.id, 'old', %s FROM users u, quiz_questions q "
+                "WHERE u.telegram_user_id = 1 AND q.number = %s"
+            ),
+            [not correct, number],
+        )
+
+
+def _check(
+    api_client: TestClient, headers: dict[str, str], number: str, answer: bool, session_id: str
+) -> None:
+    response = api_client.post(
+        f"/quiz-questions/{number}/check",
+        json={"answer": answer, "session_id": session_id},
+        headers=headers,
+    )
+    assert response.status_code == 200
+
+
 @pytest.mark.integration
 def test_a_correct_review_answer_takes_the_question_out_of_the_session(
     bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    _answer_wrongly(api_client, registered_headers, "0001")
+    _seed_wrong_answers(bank, "0001", 1)
     assert _review_next(api_client, registered_headers, "S").json()["number"] == "0001"
 
-    api_client.post(
-        "/quiz-questions/0001/check",
-        json={"answer": True, "session_id": "S"},
-        headers=registered_headers,
-    )
+    _check(api_client, registered_headers, "0001", True, "S")
 
+    # 0001 is the sole in-review question, so once it is answered correctly nothing is left.
     assert _review_next(api_client, registered_headers, "S").status_code == 204
 
 
 @pytest.mark.integration
-def test_a_wrong_review_answer_re_asks_the_question_in_the_session(
+def test_a_wrong_review_answer_is_re_asked_after_the_unseen_questions(
     bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    _answer_wrongly(api_client, registered_headers, "0001")
+    # 0001 has more wrong answers than 0002, so it is served first (FR-4 ordering).
+    _seed_wrong_answers(bank, "0001", 2)
+    _seed_wrong_answers(bank, "0002", 1)
     assert _review_next(api_client, registered_headers, "S").json()["number"] == "0001"
 
-    api_client.post(
-        "/quiz-questions/0001/check",
-        json={"answer": False, "session_id": "S"},
-        headers=registered_headers,
-    )
+    _check(api_client, registered_headers, "0001", False, "S")
+    # The unseen-in-session pass beats the re-ask pass.
+    assert _review_next(api_client, registered_headers, "S").json()["number"] == "0002"
 
-    response = _review_next(api_client, registered_headers, "S")
-    assert response.status_code == 200
-    assert response.json()["number"] == "0001"
+    _check(api_client, registered_headers, "0002", True, "S")
+    # Only now is the wrong-once 0001 re-asked; this requires its wrong answer to be recorded.
+    assert _review_next(api_client, registered_headers, "S").json()["number"] == "0001"
