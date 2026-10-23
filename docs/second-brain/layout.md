@@ -78,12 +78,19 @@ repo/
 │   │                                #   require_registered_user, plain Depends() functions, not
 │   │                                #   pywire components — see patterns.md) gates every
 │   │                                #   business route; exceptions/ gained
-│   │                                #   unregistered_user_error.py -> 403. Eleven live endpoints:
-│   │                                #   GET /health, GET /me, seven quiz-domain routes (topics,
+│   │                                #   unregistered_user_error.py -> 403. Thirteen live endpoints:
+│   │                                #   GET /health, GET /me, eight quiz-domain routes (topics,
 │   │                                #   propose/fetch a question, check an answer, ensure a
-│   │                                #   labeling, fetch its image, explain the correct answer —
+│   │                                #   labeling, fetch its image, explain the correct answer,
+│   │                                #   and (spec 0024) GET /quiz-questions/review/next —
 │   │                                #   see architecture.md for the full list),
-│   │                                #   GET /quiz-answers/summary, and (spec 0018)
+│   │                                #   GET /quiz-answers/summary, (spec 0024)
+│   │                                #   GET /quiz-answers/statistics — backed by
+│   │                                #   services/{mastery_calculator,user_statistics_service,
+│   │                                #   review_question_service}.py, models/{answered_question,
+│   │                                #   question_mastery,topic_mastery,user_statistics,
+│   │                                #   review_request}.py and
+│   │                                #   mappers/user_statistics_mapper.py — and (spec 0018)
 │   │                                #   POST /explanations/translate — one route in
 │   │                                #   api/routers/explanation_translations.py, backed by
 │   │                                #   agents/explanation_translator/,
@@ -152,7 +159,12 @@ repo/
 │   │                                #   questions; rendered as plain text by
 │   │                                #   messages.summary_message; models/ mirrors it with
 │   │                                #   TopicSummary/WrongQuestion), never clearing the session
-│   │                                #   on a failed summary call, D-16). Entry point:
+│   │                                #   on a failed summary call, D-16). Since spec 0024:
+│   │                                #   enums/session_mode.py (SessionMode), exceptions/
+│   │                                #   session_completed_error.py, models/{topic_mastery,
+│   │                                #   user_statistics}.py, and the /statistiche, /ripasso and
+│   │                                #   /argomento handlers plus handle_topic_callback in
+│   │                                #   handlers/quiz_handlers.py. Entry point:
 │   │                                #   `guidami_ai_patente_bot.main:main`, registered as the
 │   │                                #   `telegram-bot` script; long polling only, no webhook
 │   │                                #   (AD-3); no ConversationHandler, plain handlers +
@@ -1028,4 +1040,4 @@ and `glossary/utils/`; `enums/` gained `glossary_term_origin.py`; `agents/` gain
 `glossary_enricher/` (agent + `dto/`). Mirroring `tests/guidami_ai_patente/utils/` and
 `tests/guidami_ai_patente/agents/glossary_enricher/` added.*
 
-*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). New in `src/guidami_ai_patente/`: `services/mastery_calculator.py`, `services/user_statistics_service.py`, `services/review_question_service.py`, `models/{answered_question,question_mastery,topic_mastery,user_statistics,review_request}.py`, `mappers/user_statistics_mapper.py`. New in `src/guidami_ai_patente_bot/`: `enums/session_mode.py`, `exceptions/session_completed_error.py`, `models/{topic_mastery,user_statistics}.py`. Tests mirror these under `tests/guidami_ai_patente/{services,models,mappers}/` and `tests/guidami_ai_patente_bot/models/`. New migration `db/migrations/0024_quiz_answers_user_history_index.sql`.*
+*Last updated: 2026-10-23 — verified against commit `ee6bce48`; spec 0024: mastery/statistics/review modules and bot session-mode files added to the tree and the endpoint count.*

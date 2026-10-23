@@ -655,4 +655,4 @@ preferring it over verbatim `definition` and falling back when `NULL` — no cha
 
 *Last updated: 2026-10-05 — verified against commit `1caea919`; `quiz_embedding_variants` narrowed to `topic_text` (stale rows of other variants are not reconciled away).*
 
-*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). `quiz_answers` swaps `idx_quiz_answers_user_id (user_id)` for `idx_quiz_answers_user_id_id (user_id, id)` so `QuizAnswerRepository.user_history` reads one user's answers in insertion order without a sort; migration `db/migrations/0024_quiz_answers_user_history_index.sql` (idempotent: creates the new index, drops the old) plus the matching `db/init.sql` edit. No new table or column. Mastery is not persisted: it is derived on read from `quiz_answers`.*
+*Last updated: 2026-10-23 — verified against commit `ee6bce48`; spec 0024: `idx_quiz_answers_user_id` replaced by `idx_quiz_answers_user_id_id (user_id, id)` (migration `0024_quiz_answers_user_history_index.sql`); mastery is derived on read, never stored.*

@@ -103,6 +103,22 @@ codebase (per the legacy architecture docs) — confirmed gone from `src/`.
 Stale references to them survive only as outdated comments in
 `orchestrators/context_keys.py`; don't use them as a model for new code.
 
+### Derived mastery, `AsyncUseCase` owning its thread hop, single-use topic keyboard (spec 0024)
+
+- **Derived state, never stored.** Review/mastery state is recomputed on every read by
+  `MasteryCalculator` from the user's ordered `quiz_answers` history, so changing
+  `review_exit_streak` re-grades history with no migration. Used by `UserStatisticsService`
+  and `ReviewQuestionService`.
+- **`AsyncUseCase` crossing into sync repositories itself.** The two services above wrap
+  their blocking repository calls in `asyncio.to_thread` inside `execute`, so their routers
+  hold no `to_thread` and just `await` (as `SessionSummaryService` does).
+- **Token-guarded topic keyboard.** `/argomento` buttons carry `topic:<token>:<i>` (Telegram
+  caps callback data at 64 bytes), not the topic name; the names live in
+  `user_data["topic_choices"]` and the keyboard's `topic_token`. A newer keyboard overwrites
+  the token, and a successful tap pops both keys, so an older or already-used keyboard
+  resolves to no topic (`_chosen_topic`) and is answered with the stale notice, leaving the
+  current session untouched.
+
 ## Available, not yet adopted
 
 - `commons/utils/hash_utils.py::HashUtils.make_hashable` and
@@ -465,4 +481,4 @@ check now guards the top of `_vocabulary_outcome`, short-circuiting to `(None, (
 before either the DB or the live branch is scheduled — a deployment kill switch (set to
 `False` in `configs/app_config.yaml`), not a third degrade path.*
 
-*Last updated: 2026-10-23 — verified against commit `4d1c4b44` (mastery/statistics/review spec). Three patterns. (1) Derived mastery: review/mastery state is never stored; `MasteryCalculator` recomputes a Leitner-style box from the user's ordered `quiz_answers` history on every read, so changing `review_exit_streak` re-grades history with no migration. (2) An `AsyncUseCase` whose blocking repository calls are wrapped in `asyncio.to_thread` inside the use case (`UserStatisticsService`, `ReviewQuestionService`), keeping routers thin with no thread-offloading. (3) Topic keyboard with token-guarded callback data: the bot's `/argomento` inline buttons carry `topic:<token>:<i>` (an index into the keyboard's topic list plus a per-keyboard token) instead of the topic name, because Telegram caps callback data at 64 bytes; the handler resolves the index against the per-chat `user_data["topic_choices"]` list, and a stale token or malformed index resolves to no topic (`_chosen_topic`).*
+*Last updated: 2026-10-23 — verified against commit `ee6bce48`; spec 0024: derived mastery, `AsyncUseCase` owning its `asyncio.to_thread` hop, single-use token-guarded topic keyboard.*
