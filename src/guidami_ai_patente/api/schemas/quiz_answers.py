@@ -18,6 +18,27 @@ class WrongQuestionResponse(BaseModel):
     text: str
 
 
+class TopicMasteryResponse(BaseModel):
+    """One topic's seen/mastered counts against its total, for GET /statistics."""
+
+    topic: str
+    seen: int
+    mastered: int
+    total: int
+    insufficient_data: bool
+
+
+class UserStatisticsResponse(BaseModel):
+    """A user's answer, coverage and mastery counts with the ranked topic breakdown."""
+
+    answered: int
+    seen: int
+    bank_total: int
+    mastered: int
+    in_review: int
+    topics: list[TopicMasteryResponse]
+
+
 class SessionSummaryResponse(BaseModel):
     """A session's totals, its per-topic breakdown and the questions worth reviewing."""
 

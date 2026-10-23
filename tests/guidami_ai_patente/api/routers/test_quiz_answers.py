@@ -90,3 +90,63 @@ def test_the_summary_endpoint_is_gated(bank: PostgresClient, api_client: TestCli
     )
 
     assert response.status_code == 403
+
+
+@pytest.mark.integration
+def test_statistics_have_the_full_shape(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": False, "session_id": "s1"},
+        headers=registered_headers,
+    )
+
+    response = api_client.get("/quiz-answers/statistics", headers=registered_headers)
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "answered": 1,
+        "seen": 1,
+        "bank_total": 1,
+        "mastered": 0,
+        "in_review": 1,
+        "topics": [
+            {
+                "topic": "segnaletica",
+                "seen": 1,
+                "mastered": 0,
+                "total": 1,
+                "insufficient_data": True,
+            }
+        ],
+    }
+
+
+@pytest.mark.integration
+def test_statistics_endpoint_is_gated(bank: PostgresClient, api_client: TestClient) -> None:
+    response = api_client.get("/quiz-answers/statistics", headers={"X-Telegram-User-Id": "999"})
+
+    assert response.status_code == 403
+
+
+@pytest.mark.integration
+def test_two_users_see_only_their_own_statistics(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    bank.execute(
+        sql.SQL("INSERT INTO users (telegram_user_id, registered) VALUES (%s, true)"), [2]
+    )
+    other = {"X-Telegram-User-Id": "2"}
+    api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": True, "session_id": "s1"},
+        headers=registered_headers,
+    )
+
+    mine = api_client.get("/quiz-answers/statistics", headers=registered_headers).json()
+    theirs = api_client.get("/quiz-answers/statistics", headers=other).json()
+
+    assert mine["answered"] == 1
+    assert theirs["answered"] == 0
+    assert theirs["seen"] == 0

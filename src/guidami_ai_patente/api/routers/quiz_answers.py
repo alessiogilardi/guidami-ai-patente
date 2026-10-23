@@ -6,12 +6,12 @@ from fastapi import APIRouter, Depends, Query
 from pywire import Autowired
 
 from domain.entities.users import UserEntity
-from guidami_ai_patente.mappers import SessionSummaryMapper
+from guidami_ai_patente.mappers import SessionSummaryMapper, UserStatisticsMapper
 from guidami_ai_patente.models import SessionSummaryRequest
-from guidami_ai_patente.services import SessionSummaryService
+from guidami_ai_patente.services import SessionSummaryService, UserStatisticsService
 
 from ..dependencies.user_identity import require_registered_user
-from ..schemas.quiz_answers import SessionSummaryResponse
+from ..schemas.quiz_answers import SessionSummaryResponse, UserStatisticsResponse
 
 router = APIRouter(prefix="/quiz-answers", tags=["quiz-answers"])
 
@@ -42,3 +42,18 @@ async def get_session_summary(
         SessionSummaryRequest(telegram_user_id=user.telegram_user_id, session_id=session_id)
     )
     return SessionSummaryMapper.from_summary_to_response(summary)
+
+
+@router.get("/statistics", response_model=UserStatisticsResponse)
+async def get_user_statistics(
+    user: Annotated[UserEntity, Depends(require_registered_user)],
+    service: Autowired[UserStatisticsService],
+) -> UserStatisticsResponse:
+    """Returns the caller's answered/seen/mastered counts and per-topic mastery (FR-3).
+
+    Plain `await`: `UserStatisticsService` is an `AsyncUseCase` and crosses into the
+    sync repositories itself. `user` is declared before `service` for the same pywire
+    parameter-default ordering reason as `get_session_summary`.
+    """
+    statistics = await service(user.telegram_user_id)
+    return UserStatisticsMapper.from_statistics_to_response(statistics)
